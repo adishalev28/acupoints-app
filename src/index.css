@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-teal-primary: #0d7377;
+  --color-teal-dark: #0a5c5f;
+  --color-teal-light: #e0f2f1;
+  --font-family-heebo: 'Heebo', sans-serif;
+}
+
+* {
+  font-family: var(--font-family-heebo);
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #f9fafb;
+  color: #111827;
+  -webkit-tap-highlight-color: transparent;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 9999px;
+}

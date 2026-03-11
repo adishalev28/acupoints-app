@@ -1,6 +1,7 @@
 import type { Point } from '../types'
 import { zone11Points } from './zones/zone11'
 import { zone22Points } from './zones/zone22'
+import { zone11ExtraPoints } from './zones/zone11extra'
 import { zone22ExtraPoints } from './zones/zone22extra'
 import { zone33Points } from './zones/zone33'
 import { zone44Points } from './zones/zone44'
@@ -15,6 +16,7 @@ import { zoneDTPoints } from './zones/zoneDT'
 
 export const points: Point[] = [
   ...zone11Points,
+  ...zone11ExtraPoints,
   ...zone22Points,
   ...zone22ExtraPoints,
   ...zone33Points,

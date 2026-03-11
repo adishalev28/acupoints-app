@@ -3,7 +3,7 @@ import type { Point } from '../../types'
 // Extra hand points — נקודות נוספות בכף היד (מאסטר דונג)
 export const zone22ExtraPoints: Point[] = [
   {
-    id: 'EX22.01',
+    id: 'FenBai',
     zone: '22',
     pinyinName: 'FenBai',
     chineseName: '分白',
@@ -18,7 +18,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.02',
+    id: 'GuGuan',
     zone: '22',
     pinyinName: 'GuGuan',
     chineseName: '骨關',
@@ -33,7 +33,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.03',
+    id: 'HuaiLing',
     zone: '22',
     pinyinName: 'HuaiLing',
     chineseName: '',
@@ -48,7 +48,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.04',
+    id: 'JianNing',
     zone: '22',
     pinyinName: 'JianNing',
     chineseName: '肩寧',
@@ -63,7 +63,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.05',
+    id: 'MuGuan',
     zone: '22',
     pinyinName: 'MuGuan',
     chineseName: '木關',
@@ -78,7 +78,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.06',
+    id: 'NeiBai',
     zone: '22',
     pinyinName: 'NeiBai',
     chineseName: '內白',
@@ -93,7 +93,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.07',
+    id: 'SanChaYi',
     zone: '22',
     pinyinName: 'SanChaYi',
     chineseName: '三叉一',
@@ -108,7 +108,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.08',
+    id: 'SanChaEr',
     zone: '22',
     pinyinName: 'SanChaEr',
     chineseName: '三叉二',
@@ -123,7 +123,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.09',
+    id: 'SanChaSan',
     zone: '22',
     pinyinName: 'SanChaSan',
     chineseName: '三叉三',
@@ -138,7 +138,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.10',
+    id: 'SanJian',
     zone: '22',
     pinyinName: 'SanJian',
     chineseName: '',
@@ -153,7 +153,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.11',
+    id: 'ShangXiaGao',
     zone: '22',
     pinyinName: 'ShangXiaGao',
     chineseName: '',
@@ -168,7 +168,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.12',
+    id: 'WaiBai',
     zone: '22',
     pinyinName: 'WaiBai',
     chineseName: '外白',
@@ -183,7 +183,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.13',
+    id: 'ZhiHan',
     zone: '22',
     pinyinName: 'ZhiHan',
     chineseName: '',
@@ -198,7 +198,7 @@ export const zone22ExtraPoints: Point[] = [
     sources: [{ source: 'sean-goodman' }],
   },
   {
-    id: 'EX22.14',
+    id: 'ZhongKui',
     zone: '22',
     pinyinName: 'ZhongKui',
     chineseName: '中魁',

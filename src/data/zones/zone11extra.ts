@@ -37,7 +37,8 @@ export const zone11ExtraPoints: Point[] = [
     chineseName: '側間',
     hebrewName: 'מרחק צדדי',
     englishName: 'Side Distance',
-    location: '',
+    location:
+      'בין DaJian (11.01) ל-XiaoJian (11.02), בצד הרדיאלי של המקטע הפרוקסימלי של האצבע המורה, צד פלמרי (כף היד).',
     needling: '',
     reactionAreas: ['ענף משנה לב', 'ענף משנה ריאה', '6 פו'],
     indications: [

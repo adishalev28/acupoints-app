@@ -5,7 +5,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'FenBai',
     zone: '22',
-    pinyinName: 'FenBai',
+    pinyinName: 'Fen Bai',
     chineseName: '分白',
     hebrewName: '',
     englishName: '',
@@ -20,7 +20,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'GuGuan',
     zone: '22',
-    pinyinName: 'GuGuan',
+    pinyinName: 'Gu Guan',
     chineseName: '骨關',
     hebrewName: '',
     englishName: '',
@@ -35,7 +35,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'HuaiLing',
     zone: '22',
-    pinyinName: 'HuaiLing',
+    pinyinName: 'Huai Ling',
     chineseName: '',
     hebrewName: '',
     englishName: '',
@@ -50,7 +50,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'JianNing',
     zone: '22',
-    pinyinName: 'JianNing',
+    pinyinName: 'Jian Ning',
     chineseName: '肩寧',
     hebrewName: '',
     englishName: '',
@@ -65,7 +65,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'MuGuan',
     zone: '22',
-    pinyinName: 'MuGuan',
+    pinyinName: 'Mu Guan',
     chineseName: '木關',
     hebrewName: '',
     englishName: '',
@@ -80,7 +80,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'NeiBai',
     zone: '22',
-    pinyinName: 'NeiBai',
+    pinyinName: 'Nei Bai',
     chineseName: '內白',
     hebrewName: '',
     englishName: '',
@@ -95,7 +95,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'SanChaYi',
     zone: '22',
-    pinyinName: 'SanChaYi',
+    pinyinName: 'San Cha Yi',
     chineseName: '三叉一',
     hebrewName: '',
     englishName: '',
@@ -110,7 +110,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'SanChaEr',
     zone: '22',
-    pinyinName: 'SanChaEr',
+    pinyinName: 'San Cha Er',
     chineseName: '三叉二',
     hebrewName: '',
     englishName: '',
@@ -125,7 +125,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'SanChaSan',
     zone: '22',
-    pinyinName: 'SanChaSan',
+    pinyinName: 'San Cha San',
     chineseName: '三叉三',
     hebrewName: '',
     englishName: '',
@@ -140,7 +140,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'SanJian',
     zone: '22',
-    pinyinName: 'SanJian',
+    pinyinName: 'San Jian',
     chineseName: '',
     hebrewName: '',
     englishName: '',
@@ -155,7 +155,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'ShangXiaGao',
     zone: '22',
-    pinyinName: 'ShangXiaGao',
+    pinyinName: 'Shang Xia Gao',
     chineseName: '',
     hebrewName: '',
     englishName: '',
@@ -170,7 +170,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'WaiBai',
     zone: '22',
-    pinyinName: 'WaiBai',
+    pinyinName: 'Wai Bai',
     chineseName: '外白',
     hebrewName: '',
     englishName: '',
@@ -185,7 +185,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'ZhiHan',
     zone: '22',
-    pinyinName: 'ZhiHan',
+    pinyinName: 'Zhi Han',
     chineseName: '',
     hebrewName: '',
     englishName: '',
@@ -200,7 +200,7 @@ export const zone22ExtraPoints: Point[] = [
   {
     id: 'ZhongKui',
     zone: '22',
-    pinyinName: 'ZhongKui',
+    pinyinName: 'Zhong Kui',
     chineseName: '中魁',
     hebrewName: '',
     englishName: '',

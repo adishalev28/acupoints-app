@@ -9,6 +9,7 @@ export const zone33Points: Point[] = [
     chineseName: '其門',
     hebrewName: 'שער עוקב',
     englishName: 'This Gate',
+    imageId: '33.01-03',
     location:
       '33.01 Qi Men ממוקמת על הצד הרדיאלי של הזרוע בערוץ יאנג מינג של היד, 2 צון פרוקסימלית ל-LI-5 Yang Xi, על הקו המחבר LI-5 Yang Xi ל-LI-11 Qu Chi.',
     needling:
@@ -38,6 +39,7 @@ export const zone33Points: Point[] = [
     chineseName: '其角',
     hebrewName: 'זווית עוקבת',
     englishName: 'This Angle',
+    imageId: '33.01-03',
     location:
       '33.02 Qi Jiao ממוקמת על הצד הרדיאלי של הזרוע בערוץ יאנג מינג של היד, 2 צון פרוקסימלית ל-33.01 Qi Men, על הקו המחבר LI-5 Yang Xi ל-LI-11 Qu Chi.',
     needling: 'ראה 33.01 Qi Men.',
@@ -53,6 +55,7 @@ export const zone33Points: Point[] = [
     chineseName: '其正',
     hebrewName: 'ישר עוקב',
     englishName: 'This Straight',
+    imageId: '33.01-03',
     location:
       '33.03 Qi Zheng ממוקמת על הצד הרדיאלי של הזרוע בערוץ יאנג מינג של היד, 2 צון פרוקסימלית ל-33.02 Qi Jiao, על הקו המחבר LI-5 Yang Xi ל-LI-11 Qu Chi.',
     needling: 'ראה 33.01 Qi Men.',
@@ -190,6 +193,7 @@ export const zone33Points: Point[] = [
     chineseName: '手五金',
     hebrewName: 'חמש מתכות יד',
     englishName: 'Arm Five Metal',
+    imageId: '33.08-09',
     location:
       'על הצד הגבי של האמה, בגבול המדיאלי של האולנה, 6.5 צון פרוקסימלית לשורש כף היד. הנקודה ממוקמת 0.5 צון לטרלית ו-0.5 צון פרוקסימלית ל-33.06 Huo Shan.',
     needling:
@@ -220,6 +224,7 @@ export const zone33Points: Point[] = [
     chineseName: '手千金',
     hebrewName: 'אלף מתכות יד',
     englishName: 'Arm Thousand Metal',
+    imageId: '33.08-09',
     location:
       '1.5 צון פרוקסימלית ל-33.08 Shou Wu Jin, ו-8 צון פרוקסימלית לשורש כף היד.',
     needling:

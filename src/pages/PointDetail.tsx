@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { points } from '../data/points'
 import { zones } from '../data/zones'
@@ -60,6 +60,42 @@ export default function PointDetail() {
 
   const point = points.find(p => p.id === id)
 
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [id])
+
+  // Swipe navigation
+  const touchStart = useRef<{ x: number; y: number } | null>(null)
+  const goNext = useCallback(() => {
+    const idx = points.findIndex(p => p.id === id)
+    if (idx < points.length - 1) navigate(`/point/${points[idx + 1].id}`)
+  }, [id, navigate])
+  const goPrev = useCallback(() => {
+    const idx = points.findIndex(p => p.id === id)
+    if (idx > 0) navigate(`/point/${points[idx - 1].id}`)
+  }, [id, navigate])
+
+  useEffect(() => {
+    const onTouchStart = (e: TouchEvent) => {
+      touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
+    }
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!touchStart.current) return
+      const dx = e.changedTouches[0].clientX - touchStart.current.x
+      const dy = e.changedTouches[0].clientY - touchStart.current.y
+      touchStart.current = null
+      if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return
+      if (dx > 0) goPrev()
+      else goNext()
+    }
+    window.addEventListener('touchstart', onTouchStart, { passive: true })
+    window.addEventListener('touchend', onTouchEnd)
+    return () => {
+      window.removeEventListener('touchstart', onTouchStart)
+      window.removeEventListener('touchend', onTouchEnd)
+    }
+  }, [goNext, goPrev])
+
   if (!point) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -102,11 +138,27 @@ export default function PointDetail() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          {zone && (
-            <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
-              {zone.name} ({point.zone})
-            </span>
-          )}
+          <div className="flex items-center gap-2">
+            {prevPoint ? (
+              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-1 text-white/70 hover:text-white">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            ) : <div className="w-7" />}
+            {zone && (
+              <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+                {zone.name} ({point.zone})
+              </span>
+            )}
+            {nextPoint ? (
+              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-1 text-white/70 hover:text-white">
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            ) : <div className="w-7" />}
+          </div>
           <button onClick={() => toggleFavorite(point.id)} className="p-1 -ml-1">
             <svg
               className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-300 fill-amber-300' : 'text-white/50'}`}

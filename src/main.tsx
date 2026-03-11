@@ -15,9 +15,6 @@ if ('serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js')
 
-      // Check for updates every 30 minutes
-      setInterval(() => registration.update(), 30 * 60 * 1000)
-
       // When a new SW is found and activated, reload to get fresh content
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing

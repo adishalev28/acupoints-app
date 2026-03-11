@@ -201,6 +201,7 @@ export const zone22Points: Point[] = [
       'חוסר כליה',
     ],
     additionalInfo: '',
+    imageId: '22.08-09',
     sources: [{ source: 'tung-study' }],
   },
   {
@@ -225,6 +226,7 @@ export const zone22Points: Point[] = [
       'כאבי מותניים',
     ],
     additionalInfo: '',
+    imageId: '22.08-09',
     sources: [{ source: 'tung-study' }],
   },
   {

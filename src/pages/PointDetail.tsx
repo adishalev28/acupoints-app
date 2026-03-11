@@ -7,16 +7,17 @@ import { useNotes } from '../hooks/useNotes'
 import { isGroupedIndications } from '../types'
 
 /** Try point image: .jpg then .png then .webp, hide if none exists */
-function PointImage({ pointId }: { pointId: string }) {
+function PointImage({ pointId, imageId }: { pointId: string; imageId?: string }) {
   const formats = ['jpg', 'png', 'webp']
   const [formatIdx, setFormatIdx] = useState(0)
+  const fileBase = imageId || pointId
 
   if (formatIdx >= formats.length) return null
 
   return (
     <div className="flex justify-center">
       <img
-        src={`/images/${pointId}.${formats[formatIdx]}`}
+        src={`/images/${fileBase}.${formats[formatIdx]}`}
         alt={`${pointId}`}
         className="w-full max-w-xs rounded-xl border border-gray-100"
         onError={() => setFormatIdx(prev => prev + 1)}
@@ -211,7 +212,7 @@ export default function PointDetail() {
       <div className="px-4 py-4 space-y-3">
 
         {/* Image (if exists) */}
-        <PointImage pointId={point.id} />
+        <PointImage pointId={point.id} imageId={point.imageId} />
 
         {/* 1. Location */}
         <Section

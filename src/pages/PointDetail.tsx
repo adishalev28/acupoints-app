@@ -4,6 +4,7 @@ import { points } from '../data/points'
 import { zones } from '../data/zones'
 import { useFavorites } from '../hooks/useFavorites'
 import { useNotes } from '../hooks/useNotes'
+import { isGroupedIndications } from '../types'
 
 /** Try point image: .jpg then .png then .webp, hide if none exists */
 function PointImage({ pointId }: { pointId: string }) {
@@ -212,13 +213,30 @@ export default function PointDetail() {
           }
           title="התוויות"
         >
-          <div className="flex flex-wrap gap-1.5">
-            {point.indications.map((indication, i) => (
-              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-medium border border-blue-100">
-                {indication}
-              </span>
-            ))}
-          </div>
+          {isGroupedIndications(point.indications) ? (
+            <div className="space-y-3">
+              {point.indications.map((group, gi) => (
+                <div key={gi}>
+                  <h4 className="text-xs font-bold text-gray-500 mb-1.5">{group.category}</h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {group.items.map((item, ii) => (
+                      <span key={ii} className="inline-flex items-center px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-medium border border-blue-100">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-wrap gap-1.5">
+              {point.indications.map((indication, i) => (
+                <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-lg bg-blue-50 text-blue-700 text-xs font-medium border border-blue-100">
+                  {indication}
+                </span>
+              ))}
+            </div>
+          )}
         </Section>
 
         {/* 5. Additional Info */}

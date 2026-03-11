@@ -17,6 +17,25 @@ export interface DaoMaGroup {
   pointIds: string[]
 }
 
+export interface IndicationGroup {
+  category: string
+  items: string[]
+}
+
+export function isGroupedIndications(
+  indications: string[] | IndicationGroup[],
+): indications is IndicationGroup[] {
+  return indications.length > 0 && typeof indications[0] !== 'string'
+}
+
+export function flattenIndications(indications: string[] | IndicationGroup[]): string[] {
+  if (!indications.length) return []
+  if (isGroupedIndications(indications)) {
+    return indications.flatMap(g => g.items)
+  }
+  return indications as string[]
+}
+
 export interface Point {
   id: string
   zone: string
@@ -27,7 +46,7 @@ export interface Point {
   location: string
   needling: string
   reactionAreas: string[]
-  indications: string[]
+  indications: string[] | IndicationGroup[]
   additionalInfo: string
   imageId?: string
   sources: SourceInfo[]

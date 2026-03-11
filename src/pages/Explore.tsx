@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react'
 import { points } from '../data/points'
 import { zones } from '../data/zones'
+import { flattenIndications } from '../types'
 import SearchBar from '../components/SearchBar'
 import FilterTabs, { type FilterTab } from '../components/FilterTabs'
 import ZoneFilter from '../components/ZoneFilter'
@@ -30,7 +31,7 @@ export default function Explore() {
       const q = search.trim().toLowerCase()
       result = result.filter(p => {
         if (activeTab === 'indications') {
-          return p.indications.some(ind => ind.toLowerCase().includes(q))
+          return flattenIndications(p.indications).some(ind => ind.toLowerCase().includes(q))
         }
         if (activeTab === 'reactionAreas') {
           return p.reactionAreas.some(ra => ra.toLowerCase().includes(q))
@@ -42,7 +43,7 @@ export default function Explore() {
           p.chineseName.includes(q) ||
           p.hebrewName.includes(q) ||
           p.englishName.toLowerCase().includes(q) ||
-          p.indications.some(ind => ind.toLowerCase().includes(q)) ||
+          flattenIndications(p.indications).some(ind => ind.toLowerCase().includes(q)) ||
           p.reactionAreas.some(ra => ra.toLowerCase().includes(q))
         )
       })

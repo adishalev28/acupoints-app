@@ -1,6 +1,16 @@
 import type { Point } from '../../types'
 
 // Extra hand points — נקודות נוספות בכף היד (מאסטר דונג)
+//
+// === נקודות שעדיין לא הועלו (שמות + אזורי תגובה לעתיד) ===
+// Jin Xing (Venus / נוגה) — אזורי תגובה: לא צוין
+// San Feng (Three Winds / שלוש רוחות) — ענף מצטלב ריאה, ענף מצטלב לב, ענף משנה כליה
+// San Hai (Three Seas / שלושה ימים) — עצב כליה, שלפוחית שתן, רחם
+// San He (Three Rivers / שלושה נהרות) — 6 יאנגים
+// San Hou (Three Hair / שלוש שערות) — ענף לב
+// San Mao (Three Hair / שלוש שערות) — עצב ריאה, עצב קיבה
+// San Xing (Three Stars / שלושה כוכבים) — עצב כבד, עצב כיס מרה, עצב טחול
+// ============================================================
 export const zone22ExtraPoints: Point[] = [
   {
     id: 'FenBai',
@@ -11,7 +21,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Separate White',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['ענף כליה', 'ענף לב'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-fen-bai',
@@ -26,7 +36,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Bone Barrier',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה', 'עצב כליה'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-gu-guan',
@@ -41,7 +51,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Effective Ankle',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב טחול'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-huai-ling',
@@ -71,7 +81,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Wood Barrier',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב כליה', 'עצב כבד', 'עצב כיס מרה'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-mu-guan',
@@ -86,7 +96,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Inner White',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב טחול'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-nei-bai',
@@ -101,7 +111,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Three Intersections First',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה', 'ענף משלים כליה'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-san-cha-yi',
@@ -116,7 +126,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Three Intersections Second',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב טחול', 'ענף משנה כבד'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-san-cha-er',
@@ -131,7 +141,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Three Intersections Third',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב כליה'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-san-cha-san',
@@ -146,7 +156,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Three Shoulder Point',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה', 'עצב כליה'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-san-jian',
@@ -161,7 +171,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Upper and Lower Height',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב כליה', 'מוח'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-shang-xia-gao',
@@ -176,7 +186,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Outer White',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['עצב טחול'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-wai-bai',
@@ -191,7 +201,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Stop Sweating',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['ענף לב', 'ענף ריאה'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-zhi-han',
@@ -206,7 +216,7 @@ export const zone22ExtraPoints: Point[] = [
     englishName: 'Heavy Head',
     location: '',
     needling: '',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה', 'ענף משנה לב'],
     indications: [],
     additionalInfo: '',
     imageId: 'extra-zhong-kui',

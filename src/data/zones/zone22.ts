@@ -11,7 +11,7 @@ export const zone22Points: Point[] = [
     englishName: 'Double Child',
     location: 'בליטת התנר, 1 צון מתחת לקפל העור בין המטקרפלים הראשון והשני, כף היד כלפי מעלה.',
     needling: '1 צון עומק.',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה'],
     indications: [
       'כאבי גב',
       'דלקת ריאות',
@@ -31,7 +31,7 @@ export const zone22Points: Point[] = [
     englishName: 'Double Saint',
     location: 'בין המטקרפלים הראשון והשני, 2 צון מקפל העור, מול לינגגו בצד הגבי.',
     needling: 'מחט 1.5 צון לעומק 1 צון. דאו-מא עם צ\'ונגזי.',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה'],
     indications: [
       'כאבי גב',
       'דלקת ריאות',
@@ -58,7 +58,7 @@ export const zone22Points: Point[] = [
     englishName: 'Upper White',
     location: '0.5 צון פרוקסימלית למפרק המטקרפו-פלנגיאלי הגבי של אצבע מורה/אמה.',
     needling: '0.3-0.5 צון עומק.',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה ריאה', 'ענף משנה לב', 'עצב כליה'],
     indications: [
       'דלקת לחמית',
       'סיאטיקה',
@@ -81,7 +81,7 @@ export const zone22Points: Point[] = [
     englishName: 'Big White',
     location: 'גב כף היד, 0.5 צון ממפרק אגודל-אצבע מורה, בין המטקרפלים הראשון והשני. זהה לסאנג\'יאן (LI 3).',
     needling: '0.5-1 צון עומק לסיאטיקה. מחט משולשת לאסתמה/חום (הקזת דם). אסור בהיריון.',
-    reactionAreas: [],
+    reactionAreas: ['ענף ריאה'],
     indications: [
       'אסתמה בילדים',
       'חום גבוה',
@@ -100,7 +100,7 @@ export const zone22Points: Point[] = [
     englishName: 'Adroit Bone',
     location: 'מפגש האגודל ואצבע המורה, בין המטקרפלים הראשון והשני, 1.2 צון פרוקסימלית לדאבאי.',
     needling: '1.5-2 צון עומק, השחלה דרך צ\'ונגשיאן. אסור בהיריון. דאו-מא עם דאבאי.',
-    reactionAreas: [],
+    reactionAreas: ['ענף ריאה'],
     indications: [
       'סיאטיקה',
       'כאבי גב תחתון',
@@ -135,7 +135,7 @@ export const zone22Points: Point[] = [
     englishName: 'Center White / Ghost Gate',
     location: 'בין המטקרפלים הגביים של אצבע קטנה ואצבע טבעת, 0.5 צון פרוקסימלית למפרק MCP.',
     needling: '0.3-0.5 צון עומק.',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה כליה'],
     indications: [
       'כאבי גב תחתון (כלייתי)',
       'כאבי גב',
@@ -164,7 +164,7 @@ export const zone22Points: Point[] = [
     englishName: 'Lower White',
     location: 'בין המטקרפלים הרביעי והחמישי, 1.5 צון פרוקסימלית למפרק MCP, 1 צון מאחורי ג\'ונגבאי.',
     needling: '0.3-0.5 צון עומק. דאו-מא עם ג\'ונגבאי.',
-    reactionAreas: [],
+    reactionAreas: ['ענף מצטלב כליה', 'ענף מצטלב כבד', 'עצב לב', 'עצב טחול'],
     indications: [
       'כאב שיניים',
       'כאבי כבד',
@@ -187,7 +187,7 @@ export const zone22Points: Point[] = [
     englishName: 'Wrist Flow 1',
     location: 'צד לטרלי של המטקרפל החמישי הגבי, 2.5 צון דיסטלית לקפל שורש כף היד.',
     needling: '1-1.5 צון עומק לאורך העצם.',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה כליה'],
     indications: [
       'כאב ראש',
       'ראייה מטושטשת',
@@ -213,7 +213,7 @@ export const zone22Points: Point[] = [
     englishName: 'Wrist Flow 2',
     location: 'צד לטרלי גבי של המטקרפל החמישי, 1.5 צון דיסטלית לקפל שורש כף היד, 1 צון מאחורי ואנשוני.',
     needling: '1-1.5 צון עומק.',
-    reactionAreas: [],
+    reactionAreas: ['ענף משנה כליה'],
     indications: [
       'דימום מהאף',
       'כל ההתוויות של ואנשוני',
@@ -238,7 +238,7 @@ export const zone22Points: Point[] = [
     englishName: 'Hand Release',
     location: 'בין המטקרפלים הרביעי והחמישי, קצה האצבע הקטנה כשהאצבעות נעולות. חופף לשאופו (HT 8).',
     needling: '0.3-0.5 צון עומק, השהייה 10-20 דקות, או הקזת דם.',
-    reactionAreas: [],
+    reactionAreas: ['עצב רגיש כליה'],
     indications: [
       'התעלפות/חוסר תחושה במהלך דיקור',
       'כאב דוקר מהפרעת צ\'י/דם',
@@ -256,7 +256,7 @@ export const zone22Points: Point[] = [
     englishName: 'Earth Water',
     location: 'יחידת שלוש נקודות בצד הרדיאלי של כף היד במטקרפל הראשון. טושוי 1: 1 צון פרוקסימלית לפרק האצבע. טושוי 2: 0.5 צון מאחור. טושוי 3: 0.5 צון מאחור.',
     needling: '0.5-1 צון עומק לאורך עצם המטקרפל.',
-    reactionAreas: [],
+    reactionAreas: ['ענף טחול', 'ענף כליה'],
     indications: [
       'דלקת קיבה',
       'מחלת קיבה כרונית',

@@ -174,12 +174,20 @@ export default function PointDetail() {
 
         {/* Point ID + Pinyin */}
         <div className="text-center">
-          <div className="text-2xl font-bold tracking-wide">
-            {point.id}
-          </div>
-          <div className="text-lg font-medium mt-0.5 text-white/90">
-            {point.pinyinName}
-          </div>
+          {/^\d/.test(point.id) ? (
+            <>
+              <div className="text-2xl font-bold tracking-wide">
+                {point.id}
+              </div>
+              <div className="text-lg font-medium mt-0.5 text-white/90">
+                {point.pinyinName}
+              </div>
+            </>
+          ) : (
+            <div className="text-2xl font-bold tracking-wide">
+              {point.pinyinName}
+            </div>
+          )}
           <div className="text-sm text-white/70 mt-1">
             [{point.chineseName}]
           </div>
@@ -394,7 +402,7 @@ export default function PointDetail() {
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
-              <span>{prevPoint.id}</span>
+              <span>{/^\d/.test(prevPoint.id) ? prevPoint.id : prevPoint.pinyinName}</span>
             </button>
           ) : <div className="flex-1" />}
           {nextPoint ? (
@@ -402,7 +410,7 @@ export default function PointDetail() {
               onClick={() => navigate(`/point/${nextPoint.id}`)}
               className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-white rounded-xl border border-gray-200 text-sm text-gray-600 hover:bg-gray-50"
             >
-              <span>{nextPoint.id}</span>
+              <span>{/^\d/.test(nextPoint.id) ? nextPoint.id : nextPoint.pinyinName}</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>

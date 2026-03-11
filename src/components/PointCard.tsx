@@ -20,7 +20,7 @@ export default function PointCard({ point }: PointCardProps) {
 
       <div className="flex-1 min-w-0">
         <div className="font-bold text-gray-900">
-          {point.id} {point.pinyinName}
+          {/^\d/.test(point.id) ? `${point.id} ${point.pinyinName}` : point.pinyinName}
         </div>
         <div className="text-sm text-gray-500">
           [{point.chineseName}]

@@ -85,8 +85,8 @@ export default function PointDetail() {
       const dy = e.changedTouches[0].clientY - touchStart.current.y
       touchStart.current = null
       if (Math.abs(dx) < 60 || Math.abs(dy) > Math.abs(dx)) return
-      if (dx > 0) goPrev()
-      else goNext()
+      if (dx > 0) goNext()
+      else goPrev()
     }
     window.addEventListener('touchstart', onTouchStart, { passive: true })
     window.addEventListener('touchend', onTouchEnd)

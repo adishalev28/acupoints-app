@@ -18,6 +18,7 @@ export const zoneDTPoints: Point[] = [
       'כאבי חזה',
       'שיעול',
     ],
+    sources: [{ source: 'other', notes: 'Needs verification' }],
     additionalInfo: 'נקודה בגב העליון. חשובה לכאבי גב עליון.',
   },
   {
@@ -36,6 +37,7 @@ export const zoneDTPoints: Point[] = [
       'בעיות עור',
       'חום',
     ],
+    sources: [{ source: 'other', notes: 'Needs verification' }],
     additionalInfo: 'קבוצה של 7 נקודות להקזת דם. יעילות לשחרור חום ושיפור זרימת דם.',
   },
   {
@@ -54,6 +56,7 @@ export const zoneDTPoints: Point[] = [
       'אלרגיות',
       'חום',
     ],
+    sources: [{ source: 'other', notes: 'Needs verification' }],
     additionalInfo: 'קבוצה של 5 נקודות להקזת דם באזור הגב האמצעי.',
   },
   {
@@ -72,6 +75,7 @@ export const zoneDTPoints: Point[] = [
       'בעיות כליה',
       'כאבי רגליים',
     ],
+    sources: [{ source: 'other', notes: 'Needs verification' }],
     additionalInfo: 'שלוש נקודות בגב התחתון. יעילות לכאבי גב תחתון.',
   },
   {
@@ -90,6 +94,7 @@ export const zoneDTPoints: Point[] = [
       'כאבי ראש אחוריים',
       'סחרחורת',
     ],
+    sources: [{ source: 'other', notes: 'Needs verification' }],
     additionalInfo: 'נקודה בצוואר. זהירות בדיקור — אזור רגיש.',
   },
   {
@@ -108,6 +113,7 @@ export const zoneDTPoints: Point[] = [
       'כאבי ראש',
       'מתח שרירי',
     ],
+    sources: [{ source: 'other', notes: 'Needs verification' }],
     additionalInfo: 'צמד נקודות על הכתפיים. יעילות לשחרור מתח.',
   },
 ]

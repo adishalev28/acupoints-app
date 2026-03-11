@@ -19,6 +19,7 @@ export const zoneVTPoints: Point[] = [
       'קוצר נשימה',
     ],
     additionalInfo: 'זהירות בדיקור — אזור קרוב לריאות. יש לדקור בזווית ובעומק מתאימים.',
+    sources: [{ source: 'other', notes: 'Needs verification' }],
   },
   {
     id: 'VT.02',
@@ -37,6 +38,7 @@ export const zoneVTPoints: Point[] = [
       'כאבי מחזור',
     ],
     additionalInfo: 'נקודה על הבטן. יעילה לבעיות כבד ועיכול.',
+    sources: [{ source: 'other', notes: 'Needs verification' }],
   },
   {
     id: 'VT.03',
@@ -54,6 +56,7 @@ export const zoneVTPoints: Point[] = [
       'שיעול',
     ],
     additionalInfo: 'זהירות בדיקור באזור החזה.',
+    sources: [{ source: 'other', notes: 'Needs verification' }],
   },
   {
     id: 'VT.04',
@@ -72,5 +75,6 @@ export const zoneVTPoints: Point[] = [
       'בעיות שתן',
     ],
     additionalInfo: 'נקודה תחתונה באזור הבטן.',
+    sources: [{ source: 'other', notes: 'Needs verification' }],
   },
 ]

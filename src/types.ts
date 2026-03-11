@@ -4,6 +4,19 @@ export interface Zone {
   nameEn: string
 }
 
+export type PointSource = 'tung-study' | 'sean-goodman' | 'mccann-atlas' | 'other'
+
+export interface SourceInfo {
+  source: PointSource
+  notes?: string
+}
+
+export interface DaoMaGroup {
+  groupName: string
+  groupNameChinese?: string
+  pointIds: string[]
+}
+
 export interface Point {
   id: string
   zone: string
@@ -17,4 +30,6 @@ export interface Point {
   indications: string[]
   additionalInfo: string
   imageId?: string
+  sources: SourceInfo[]
+  daoMaGroup?: string
 }

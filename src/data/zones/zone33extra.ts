@@ -9,6 +9,7 @@ export const zone33ExtraPoints: Point[] = [
     chineseName: '肝靈三',
     hebrewName: 'יעילות כבד שלוש',
     englishName: 'Liver Efficient Three',
+    imageId: 'gan ling',
     location:
       'שלוש נקודות ממוקמות על האמה.\nGan Ling San [肝靈三]: 3 צון דיסטלית ל-Ht-3 Shao Hai ו-0.5 צון מדיאלית.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
@@ -36,6 +37,7 @@ export const zone33ExtraPoints: Point[] = [
     chineseName: '肝靈二',
     hebrewName: 'יעילות כבד שתיים',
     englishName: 'Liver Efficient Two',
+    imageId: 'gan ling',
     location: '3 צון דיסטלית ל-Gan Ling San.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
     reactionAreas: ['עצב כבד', 'עצב כליה'],
@@ -51,6 +53,7 @@ export const zone33ExtraPoints: Point[] = [
     chineseName: '肝靈一',
     hebrewName: 'יעילות כבד אחת',
     englishName: 'Liver Efficient One',
+    imageId: 'gan ling',
     location: '3 צון דיסטלית ל-Gan Ling Er.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
     reactionAreas: ['עצב כבד', 'עצב כליה'],

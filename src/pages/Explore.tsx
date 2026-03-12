@@ -53,6 +53,25 @@ export default function Explore() {
     return result
   }, [search, activeTab, selectedZone])
 
+  // Search suggestions (top 5 matching points by id/name)
+  const suggestions = useMemo(() => {
+    const q = search.trim().toLowerCase()
+    if (!q || q.length < 1) return []
+    return points
+      .filter(p =>
+        p.id.toLowerCase().includes(q) ||
+        p.zone.includes(q) ||
+        p.pinyinName.toLowerCase().includes(q) ||
+        p.chineseName.includes(q)
+      )
+      .slice(0, 5)
+      .map(p => ({
+        id: p.id,
+        label: /^\d/.test(p.id) ? `${p.id} ${p.pinyinName.toLowerCase()}` : p.pinyinName.toLowerCase(),
+        highlight: q,
+      }))
+  }, [search])
+
   // Group by zone
   const grouped = useMemo(() => {
     const groups: Record<string, typeof points> = {}
@@ -66,12 +85,18 @@ export default function Explore() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-teal-primary text-white px-6 pt-8 pb-6">
-        <h1 className="text-xl font-bold mb-4">חקור</h1>
-        <SearchBar value={search} onChange={setSearch} placeholder={placeholder} />
+      <div className="bg-teal-primary text-white px-4 pt-4 pb-3">
+        <h1 className="text-lg font-bold mb-2">חקור</h1>
+        <SearchBar
+          value={search}
+          onChange={setSearch}
+          placeholder={placeholder}
+          suggestions={suggestions}
+          onSuggestionSelect={(id) => setSearch(id)}
+        />
       </div>
 
-      <div className="px-6 py-4 space-y-3">
+      <div className="px-4 py-2 space-y-2">
         {/* Filter Tabs */}
         <FilterTabs active={activeTab} onChange={setActiveTab} />
 
@@ -98,7 +123,7 @@ export default function Explore() {
       </div>
 
       {/* Points List */}
-      <div className="px-6 pb-6 space-y-4">
+      <div className="px-4 pb-6 space-y-3">
         {Object.entries(grouped).map(([zoneId, zonePoints]) => {
           const zone = zones.find(z => z.id === zoneId)
           return (

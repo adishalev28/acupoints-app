@@ -64,7 +64,7 @@ export default function Explore() {
         p.pinyinName.toLowerCase().includes(q) ||
         p.chineseName.includes(q)
       )
-      .slice(0, 5)
+      .slice(0, 20)
       .map(p => ({
         id: p.id,
         label: /^\d/.test(p.id) ? `${p.id} ${p.pinyinName.toLowerCase()}` : p.pinyinName.toLowerCase(),

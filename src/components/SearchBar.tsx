@@ -75,7 +75,7 @@ export default function SearchBar({ value, onChange, placeholder = 'חיפוש..
 
       {/* Suggestions dropdown */}
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 z-50 overflow-hidden">
+        <div className="absolute top-full left-0 right-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 z-50 overflow-y-auto max-h-48">
           {suggestions.map((s) => (
             <button
               key={s.id}

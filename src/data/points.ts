@@ -6,6 +6,7 @@ import { zone22ExtraPoints } from './zones/zone22extra'
 import { zone33Points } from './zones/zone33'
 import { zone33ExtraPoints } from './zones/zone33extra'
 import { zone44Points } from './zones/zone44'
+import { zone44ExtraPoints } from './zones/zone44extra'
 import { zone55Points } from './zones/zone55'
 import { zone66Points } from './zones/zone66'
 import { zone77Points } from './zones/zone77'
@@ -23,6 +24,7 @@ export const points: Point[] = [
   ...zone33Points,
   ...zone33ExtraPoints,
   ...zone44Points,
+  ...zone44ExtraPoints,
   ...zone55Points,
   ...zone66Points,
   ...zone77Points,

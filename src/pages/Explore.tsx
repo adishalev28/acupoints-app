@@ -39,6 +39,7 @@ export default function Explore() {
         // "all" tab — search everything
         return (
           p.id.includes(q) ||
+          p.zone.includes(q) ||
           p.pinyinName.toLowerCase().includes(q) ||
           p.chineseName.includes(q) ||
           p.hebrewName.includes(q) ||

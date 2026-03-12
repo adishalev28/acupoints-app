@@ -8,7 +8,7 @@ export default function Home() {
       {/* Header */}
       <div className="bg-teal-primary text-white px-6 pt-12 pb-8">
         <h1 className="text-2xl font-bold mb-1">נקודות דיקור</h1>
-        <p className="text-teal-100 text-sm">מאסטר דונג &bull; שון גודמן &bull; ד״ר טאן</p>
+        <p className="text-teal-100 text-sm">מאסטר דונג &bull; שון גודמן</p>
       </div>
 
       {/* Quick Stats */}

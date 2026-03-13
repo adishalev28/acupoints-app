@@ -9,7 +9,7 @@ export default function PointCard({ point }: PointCardProps) {
   return (
     <Link
       to={`/point/${point.id}`}
-      className="flex items-center gap-4 px-4 py-3.5 bg-white rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-all"
+      className="flex items-center gap-4 px-4 py-3.5 bg-gray-100 rounded-lg border border-gray-300 shadow-sm hover:shadow-md transition-all"
     >
       {/* Point image or placeholder */}
       <div className="w-14 h-14 rounded-md bg-gray-50 border border-gray-200 flex items-center justify-center flex-shrink-0 overflow-hidden">

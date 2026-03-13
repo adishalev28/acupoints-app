@@ -5,7 +5,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.01',
     zone: '22',
-    pinyinName: 'ChongZi',
+    pinyinName: 'Chong Zi',
     chineseName: '重子',
     hebrewName: 'ילד כפול',
     englishName: 'Double Child',
@@ -30,7 +30,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.02',
     zone: '22',
-    pinyinName: 'ChongXian',
+    pinyinName: 'Chong Xian',
     chineseName: '重仙',
     hebrewName: 'אלמותי כפול',
     englishName: 'Double Immortal',
@@ -57,7 +57,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.03',
     zone: '22',
-    pinyinName: 'ShangBai',
+    pinyinName: 'Shang Bai',
     chineseName: '上白',
     hebrewName: 'לבן עליון',
     englishName: 'Upper White',
@@ -88,7 +88,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.04',
     zone: '22',
-    pinyinName: 'DaBai',
+    pinyinName: 'Da Bai',
     chineseName: '大白',
     hebrewName: 'לבן גדול',
     englishName: 'Big White',
@@ -125,7 +125,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.05',
     zone: '22',
-    pinyinName: 'LingGu',
+    pinyinName: 'Ling Gu',
     chineseName: '靈骨',
     hebrewName: 'עצם רוחנית',
     englishName: 'Spirit Bone',
@@ -186,7 +186,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.06',
     zone: '22',
-    pinyinName: 'ZhongBai',
+    pinyinName: 'Zhong Bai',
     chineseName: '中白',
     hebrewName: 'לבן אמצעי / שער רוחות',
     englishName: 'Center White / Ghost Gate',
@@ -224,7 +224,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.07',
     zone: '22',
-    pinyinName: 'XiaBai',
+    pinyinName: 'Xia Bai',
     chineseName: '下白',
     hebrewName: 'לבן תחתון',
     englishName: 'Lower White',
@@ -251,7 +251,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.08',
     zone: '22',
-    pinyinName: 'WanShunYi',
+    pinyinName: 'Wan Shun Yi',
     chineseName: '腕順一',
     hebrewName: 'זרימת שורש כף יד 1',
     englishName: 'Wrist Flow 1',
@@ -286,7 +286,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.09',
     zone: '22',
-    pinyinName: 'WanShunEr',
+    pinyinName: 'Wan Shun Er',
     chineseName: '腕順二',
     hebrewName: 'זרימת שורש כף יד 2',
     englishName: 'Wrist Flow 2',
@@ -313,7 +313,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.10',
     zone: '22',
-    pinyinName: 'ShouJie',
+    pinyinName: 'Shou Jie',
     chineseName: '手解',
     hebrewName: 'שחרור יד',
     englishName: 'Hand Release',
@@ -345,7 +345,7 @@ export const zone22Points: Point[] = [
   {
     id: '22.11',
     zone: '22',
-    pinyinName: 'TuShui',
+    pinyinName: 'Tu Shui',
     chineseName: '土水',
     hebrewName: 'אדמה מים',
     englishName: 'Earth Water',

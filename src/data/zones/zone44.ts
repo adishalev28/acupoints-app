@@ -5,7 +5,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.01',
     zone: '44',
-    pinyinName: 'SanJin',
+    pinyinName: 'San Jin',
     chineseName: '三金穴',
     hebrewName: 'שלושת המתכות',
     englishName: 'Three Metals',
@@ -28,7 +28,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.02',
     zone: '44',
-    pinyinName: 'HouZhui',
+    pinyinName: 'Hou Zhui',
     chineseName: '後椎穴',
     hebrewName: 'חוליה אחורית',
     englishName: 'Back Vertebra',
@@ -49,7 +49,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.03',
     zone: '44',
-    pinyinName: 'ShouYing',
+    pinyinName: 'Shou Ying',
     chineseName: '首英穴',
     hebrewName: 'חכמת ראש',
     englishName: 'Head Wisdom',
@@ -71,7 +71,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.04',
     zone: '44',
-    pinyinName: 'FuDing',
+    pinyinName: 'Fu Ding',
     chineseName: '富頂穴',
     hebrewName: 'פסגת עושר',
     englishName: 'Wealth Top',
@@ -89,7 +89,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.05',
     zone: '44',
-    pinyinName: 'HouZhi',
+    pinyinName: 'Hou Zhi',
     chineseName: '後枝穴',
     hebrewName: 'ענף אחורי',
     englishName: 'Back Branch',
@@ -110,7 +110,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.06',
     zone: '44',
-    pinyinName: 'JianZhong',
+    pinyinName: 'Jian Zhong',
     chineseName: '肩中穴',
     hebrewName: 'מרכז כתף',
     englishName: 'Shoulder Center',
@@ -150,7 +150,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.07',
     zone: '44',
-    pinyinName: 'BeiMian',
+    pinyinName: 'Bei Mian',
     chineseName: '背面穴',
     hebrewName: 'צד גב',
     englishName: 'Back Face',
@@ -174,7 +174,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.08',
     zone: '44',
-    pinyinName: 'RenZong',
+    pinyinName: 'Ren Zong',
     chineseName: '人宗穴',
     hebrewName: 'אב אדם',
     englishName: 'Human Ancestor',
@@ -198,7 +198,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.09',
     zone: '44',
-    pinyinName: 'DiZong',
+    pinyinName: 'Di Zong',
     chineseName: '地宗穴',
     hebrewName: 'אב אדמה',
     englishName: 'Earth Ancestor',
@@ -227,7 +227,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.10',
     zone: '44',
-    pinyinName: 'TianZong',
+    pinyinName: 'Tian Zong',
     chineseName: '天宗穴',
     hebrewName: 'אב שמיים',
     englishName: 'Heavenly Ancestor',
@@ -254,7 +254,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.11',
     zone: '44',
-    pinyinName: 'YunBai',
+    pinyinName: 'Yun Bai',
     chineseName: '雲白穴',
     hebrewName: 'ענן לבן',
     englishName: 'White Cloud',
@@ -284,7 +284,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.12',
     zone: '44',
-    pinyinName: 'LiBai',
+    pinyinName: 'Li Bai',
     chineseName: '李白穴',
     hebrewName: 'לי באי',
     englishName: 'White Plum',
@@ -317,7 +317,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.13',
     zone: '44',
-    pinyinName: 'ZhiTong',
+    pinyinName: 'Zhi Tong',
     chineseName: '支通穴',
     hebrewName: 'חיבור ענף',
     englishName: 'Branch Connect',
@@ -335,7 +335,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.14',
     zone: '44',
-    pinyinName: 'LuoTong',
+    pinyinName: 'Luo Tong',
     chineseName: '落通穴',
     hebrewName: 'חיבור נפילה',
     englishName: 'Lower Connect',
@@ -352,7 +352,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.15',
     zone: '44',
-    pinyinName: 'XiaQu',
+    pinyinName: 'Xia Qu',
     chineseName: '下曲穴',
     hebrewName: 'עיקול תחתון',
     englishName: 'Lower Curve',
@@ -377,7 +377,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.16',
     zone: '44',
-    pinyinName: 'ShangQu',
+    pinyinName: 'Shang Qu',
     chineseName: '上曲穴',
     hebrewName: 'עיקול עליון',
     englishName: 'Upper Curve',
@@ -403,7 +403,7 @@ export const zone44Points: Point[] = [
   {
     id: '44.17',
     zone: '44',
-    pinyinName: 'ShuiYu',
+    pinyinName: 'Shui Yu',
     chineseName: '水愈穴',
     hebrewName: 'ריפוי מים',
     englishName: 'Water Heal',

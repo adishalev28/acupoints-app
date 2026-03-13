@@ -5,7 +5,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.01',
     zone: '33',
-    pinyinName: 'QiMen',
+    pinyinName: 'Qi Men',
     chineseName: '其門',
     hebrewName: 'שער עוקב',
     englishName: 'This Gate',
@@ -35,7 +35,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.02',
     zone: '33',
-    pinyinName: 'QiJiao',
+    pinyinName: 'Qi Jiao',
     chineseName: '其角',
     hebrewName: 'זווית עוקבת',
     englishName: 'This Angle',
@@ -51,7 +51,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.03',
     zone: '33',
-    pinyinName: 'QiZheng',
+    pinyinName: 'Qi Zheng',
     chineseName: '其正',
     hebrewName: 'ישר עוקב',
     englishName: 'This Straight',
@@ -67,7 +67,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.04',
     zone: '33',
-    pinyinName: 'HuoChuan',
+    pinyinName: 'Huo Chuan',
     chineseName: '火串',
     hebrewName: 'חוט אש',
     englishName: 'Connect Fire',
@@ -99,7 +99,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.05',
     zone: '33',
-    pinyinName: 'HuoLing',
+    pinyinName: 'Huo Ling',
     chineseName: '火陵',
     hebrewName: 'גבעת אש',
     englishName: 'Fire Mound',
@@ -130,7 +130,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.06',
     zone: '33',
-    pinyinName: 'HuoShan',
+    pinyinName: 'Huo Shan',
     chineseName: '火山',
     hebrewName: 'הר אש',
     englishName: 'Fire Mountain',
@@ -161,7 +161,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.07',
     zone: '33',
-    pinyinName: 'HuoFuHai',
+    pinyinName: 'Huo Fu Hai',
     chineseName: '火腑海',
     hebrewName: 'ים מעי אש',
     englishName: 'Fire Bowel Sea',
@@ -189,7 +189,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.08',
     zone: '33',
-    pinyinName: 'ShouWuJin',
+    pinyinName: 'Shou Wu Jin',
     chineseName: '手五金',
     hebrewName: 'חמש מתכות יד',
     englishName: 'Arm Five Metal',
@@ -220,7 +220,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.09',
     zone: '33',
-    pinyinName: 'ShouQianJin',
+    pinyinName: 'Shou Qian Jin',
     chineseName: '手千金',
     hebrewName: 'אלף מתכות יד',
     englishName: 'Arm Thousand Metal',
@@ -238,7 +238,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.10',
     zone: '33',
-    pinyinName: 'ChangMen',
+    pinyinName: 'Chang Men',
     chineseName: '腸門',
     hebrewName: 'שער המעי',
     englishName: 'Intestine Gate',
@@ -270,7 +270,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.11',
     zone: '33',
-    pinyinName: 'GanMen',
+    pinyinName: 'Gan Men',
     chineseName: '肝門',
     hebrewName: 'שער הכבד',
     englishName: 'Liver Gate',
@@ -295,7 +295,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.12',
     zone: '33',
-    pinyinName: 'XinMen',
+    pinyinName: 'Xin Men',
     chineseName: '心門',
     hebrewName: 'שער הלב',
     englishName: 'Heart Gate',
@@ -323,7 +323,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.13',
     zone: '33',
-    pinyinName: 'RenShi',
+    pinyinName: 'Ren Shi',
     chineseName: '人士',
     hebrewName: 'חכם אדם',
     englishName: 'Human Scholar',
@@ -345,7 +345,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.14',
     zone: '33',
-    pinyinName: 'DiShi',
+    pinyinName: 'Di Shi',
     chineseName: '地士',
     hebrewName: 'חכם אדמה',
     englishName: 'Earth Scholar',
@@ -369,7 +369,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.15',
     zone: '33',
-    pinyinName: 'TianShi',
+    pinyinName: 'Tian Shi',
     chineseName: '天士',
     hebrewName: 'חכם שמיים',
     englishName: 'Heavenly Scholar',
@@ -394,7 +394,7 @@ export const zone33Points: Point[] = [
   {
     id: '33.16',
     zone: '33',
-    pinyinName: 'QuLing',
+    pinyinName: 'Qu Ling',
     chineseName: '曲陵',
     hebrewName: 'גבעה עקומה',
     englishName: 'Curved Mound',

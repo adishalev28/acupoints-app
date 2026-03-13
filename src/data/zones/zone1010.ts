@@ -5,7 +5,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.01',
     zone: '1010',
-    pinyinName: 'ZhengHui',
+    pinyinName: 'Zheng Hui',
     chineseName: '正會',
     hebrewName: 'מפגש נכון',
     englishName: 'Correct Meeting',
@@ -29,7 +29,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.02',
     zone: '1010',
-    pinyinName: 'ZhouYuan',
+    pinyinName: 'Zhou Yuan',
     chineseName: '州圓',
     hebrewName: 'מחוז עגול',
     englishName: 'Prefecture Round',
@@ -53,7 +53,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.03',
     zone: '1010',
-    pinyinName: 'ZhouKun',
+    pinyinName: 'Zhou Kun',
     chineseName: '州昆',
     hebrewName: 'מחוז אח בכור',
     englishName: 'Prefecture Elder Brother',
@@ -77,7 +77,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.04',
     zone: '1010',
-    pinyinName: 'ZhouLun',
+    pinyinName: 'Zhou Lun',
     chineseName: '州崙',
     hebrewName: 'מחוז הר',
     englishName: 'Prefecture Mountain',
@@ -102,7 +102,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.05',
     zone: '1010',
-    pinyinName: 'QianHui',
+    pinyinName: 'Qian Hui',
     chineseName: '前會',
     hebrewName: 'מפגש קדמי',
     englishName: 'Anterior Meeting',
@@ -123,7 +123,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.06',
     zone: '1010',
-    pinyinName: 'HouHui',
+    pinyinName: 'Hou Hui',
     chineseName: '後會',
     hebrewName: 'מפגש אחורי',
     englishName: 'Posterior Meeting',
@@ -149,7 +149,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.07',
     zone: '1010',
-    pinyinName: 'ZongShu',
+    pinyinName: 'Zong Shu',
     chineseName: '總樞',
     hebrewName: 'ציר כללי',
     englishName: 'Total Pivot',
@@ -173,7 +173,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.08',
     zone: '1010',
-    pinyinName: 'ZhengJing',
+    pinyinName: 'Zheng Jing',
     chineseName: '鎮靜',
     hebrewName: 'שלווה',
     englishName: 'Tranquility',
@@ -198,7 +198,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.09',
     zone: '1010',
-    pinyinName: 'ShangLi',
+    pinyinName: 'Shang Li',
     chineseName: '上里',
     hebrewName: 'מיל עליון',
     englishName: 'Upper Mile',
@@ -216,7 +216,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.10',
     zone: '1010',
-    pinyinName: 'SiFuEr',
+    pinyinName: 'Si Fu Er',
     chineseName: '四腑二',
     hebrewName: 'ארבע חללים שני',
     englishName: 'Four Bowels Second',
@@ -235,7 +235,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.11',
     zone: '1010',
-    pinyinName: 'SiFuYi',
+    pinyinName: 'Si Fu Yi',
     chineseName: '四腑一',
     hebrewName: 'ארבע חללים ראשון',
     englishName: 'Four Bowels First',
@@ -255,7 +255,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.12',
     zone: '1010',
-    pinyinName: 'ZhengBen',
+    pinyinName: 'Zheng Ben',
     chineseName: '正本',
     hebrewName: 'בסיס נכון',
     englishName: 'Correct Base',
@@ -280,7 +280,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.13',
     zone: '1010',
-    pinyinName: 'MaJinShui',
+    pinyinName: 'Ma Jin Shui',
     chineseName: '馬金水',
     hebrewName: 'סוס זהב מים',
     englishName: 'Horse Gold Water',
@@ -302,7 +302,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.14',
     zone: '1010',
-    pinyinName: 'MaKuaiShui',
+    pinyinName: 'Ma Kuai Shui',
     chineseName: '馬快水',
     hebrewName: 'סוס מים מהירים',
     englishName: 'Horse Fast Water',
@@ -324,7 +324,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.15',
     zone: '1010',
-    pinyinName: 'FuKuai',
+    pinyinName: 'Fu Kuai',
     chineseName: '腑快',
     hebrewName: 'חללים מהירים',
     englishName: 'Bowels Fast',
@@ -343,7 +343,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.16',
     zone: '1010',
-    pinyinName: 'LiuKuai',
+    pinyinName: 'Liu Kuai',
     chineseName: '六快',
     hebrewName: 'שש מהירים',
     englishName: 'Six Fast',
@@ -361,7 +361,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.17',
     zone: '1010',
-    pinyinName: 'QiKuai',
+    pinyinName: 'Qi Kuai',
     chineseName: '七快',
     hebrewName: 'שבע מהירים',
     englishName: 'Seven Fast',
@@ -381,7 +381,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.18',
     zone: '1010',
-    pinyinName: 'MuZhi',
+    pinyinName: 'Mu Zhi',
     chineseName: '木枝',
     hebrewName: 'ענף עץ',
     englishName: 'Wood Branch',
@@ -402,7 +402,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.19',
     zone: '1010',
-    pinyinName: 'ShuiTong',
+    pinyinName: 'Shui Tong',
     chineseName: '水通',
     hebrewName: 'מעבר מים',
     englishName: 'Water Through',
@@ -425,7 +425,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.20',
     zone: '1010',
-    pinyinName: 'ShuiJin',
+    pinyinName: 'Shui Jin',
     chineseName: '水金',
     hebrewName: 'מתכת מים',
     englishName: 'Water Metal',
@@ -458,7 +458,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.21',
     zone: '1010',
-    pinyinName: 'YuHuo',
+    pinyinName: 'Yu Huo',
     chineseName: '玉火',
     hebrewName: 'אש ירקן',
     englishName: 'Jade Fire',
@@ -482,7 +482,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.22',
     zone: '1010',
-    pinyinName: 'BiYi',
+    pinyinName: 'Bi Yi',
     chineseName: '鼻翼',
     hebrewName: 'כנף האף',
     englishName: 'Nasal Wing',
@@ -512,7 +512,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.23',
     zone: '1010',
-    pinyinName: 'ZhouHuo',
+    pinyinName: 'Zhou Huo',
     chineseName: '州火',
     hebrewName: 'מחוז אש',
     englishName: 'Perfect Fire',
@@ -531,7 +531,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.24',
     zone: '1010',
-    pinyinName: 'ZhouJin',
+    pinyinName: 'Zhou Jin',
     chineseName: '州金',
     hebrewName: 'מחוז מתכת',
     englishName: 'Prefecture Metal',
@@ -549,7 +549,7 @@ export const zone1010Points: Point[] = [
   {
     id: '1010.25',
     zone: '1010',
-    pinyinName: 'ZhouShui',
+    pinyinName: 'Zhou Shui',
     chineseName: '州水',
     hebrewName: 'מחוז מים',
     englishName: 'Prefecture Water',

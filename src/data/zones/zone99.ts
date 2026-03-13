@@ -5,7 +5,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.01',
     zone: '99',
-    pinyinName: 'ErHuan',
+    pinyinName: 'Er Huan',
     chineseName: '耳環',
     hebrewName: 'טבעת אוזן',
     englishName: 'Ear Ring',
@@ -22,7 +22,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.02',
     zone: '99',
-    pinyinName: 'MuEr',
+    pinyinName: 'Mu Er',
     chineseName: '木耳',
     hebrewName: 'עץ אוזן',
     englishName: 'Wood Ear',
@@ -42,7 +42,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.03',
     zone: '99',
-    pinyinName: 'HuoEr',
+    pinyinName: 'Huo Er',
     chineseName: '火耳',
     hebrewName: 'אש אוזן',
     englishName: 'Fire Ear',
@@ -61,7 +61,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.04',
     zone: '99',
-    pinyinName: 'TuEr',
+    pinyinName: 'Tu Er',
     chineseName: '土耳',
     hebrewName: 'אדמה אוזן',
     englishName: 'Earth Ear',
@@ -80,7 +80,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.05',
     zone: '99',
-    pinyinName: 'JinEr',
+    pinyinName: 'Jin Er',
     chineseName: '金耳',
     hebrewName: 'מתכת אוזן',
     englishName: 'Metal Ear',
@@ -98,7 +98,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.06',
     zone: '99',
-    pinyinName: 'ShuiEr',
+    pinyinName: 'Shui Er',
     chineseName: '水耳',
     hebrewName: 'מים אוזן',
     englishName: 'Water Ear',
@@ -116,7 +116,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.07',
     zone: '99',
-    pinyinName: 'ErBei',
+    pinyinName: 'Er Bei',
     chineseName: '耳背',
     hebrewName: 'גב אוזן',
     englishName: 'Back of Ear',
@@ -139,7 +139,7 @@ export const zone99Points: Point[] = [
   {
     id: '99.08',
     zone: '99',
-    pinyinName: 'ErSan',
+    pinyinName: 'Er San',
     chineseName: '耳三',
     hebrewName: 'שלוש אוזן',
     englishName: 'Three of Ear',

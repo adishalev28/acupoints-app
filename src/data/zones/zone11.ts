@@ -5,7 +5,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.01',
     zone: '11',
-    pinyinName: 'DaJian',
+    pinyinName: 'Da Jian',
     chineseName: '大間',
     hebrewName: 'מרחק גדול',
     englishName: 'Big Distance',
@@ -34,7 +34,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.02',
     zone: '11',
-    pinyinName: 'XiaoJian',
+    pinyinName: 'Xiao Jian',
     chineseName: '小間',
     hebrewName: 'מרחק קטן',
     englishName: 'Small Distance',
@@ -60,7 +60,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.03',
     zone: '11',
-    pinyinName: 'FuJian',
+    pinyinName: 'Fu Jian',
     chineseName: '浮間',
     hebrewName: 'מרחק צף',
     englishName: 'Floating Space',
@@ -84,7 +84,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.04',
     zone: '11',
-    pinyinName: 'WaiJian',
+    pinyinName: 'Wai Jian',
     chineseName: '外間',
     hebrewName: 'מרחק חיצוני',
     englishName: 'Outer Space',
@@ -107,7 +107,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.05',
     zone: '11',
-    pinyinName: 'ZhongJian',
+    pinyinName: 'Zhong Jian',
     chineseName: '中間',
     hebrewName: 'מרחק מרכזי',
     englishName: 'Center Space',
@@ -127,7 +127,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.06',
     zone: '11',
-    pinyinName: 'HuanChao',
+    pinyinName: 'Huan Chao',
     chineseName: '還巢',
     hebrewName: 'חזרה לקן',
     englishName: 'Return to Nest',
@@ -155,7 +155,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.07',
     zone: '11',
-    pinyinName: 'ZhiSiMa',
+    pinyinName: 'Zhi Si Ma',
     chineseName: '指駟馬',
     hebrewName: 'ארבעת סוסי האצבע',
     englishName: 'Finger Four Horses',
@@ -177,7 +177,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.08',
     zone: '11',
-    pinyinName: 'ZhiWuJin / ZhiQianJin',
+    pinyinName: 'Zhi Wu Jin / Zhi Qian Jin',
     chineseName: '指五金 / 指千金',
     hebrewName: 'חמש מתכות אצבע / אלף מתכות אצבע',
     englishName: 'Finger Five Metal and Finger One Thousand Metal',
@@ -198,7 +198,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.09',
     zone: '11',
-    pinyinName: 'XinXi',
+    pinyinName: 'Xin Xi',
     chineseName: '心膝',
     hebrewName: 'לב ברך',
     englishName: 'Heart Knee',
@@ -219,7 +219,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.10',
     zone: '11',
-    pinyinName: 'MuHuo',
+    pinyinName: 'Mu Huo',
     chineseName: '木火',
     hebrewName: 'עץ אש',
     englishName: 'Wood Fire',
@@ -243,7 +243,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.11',
     zone: '11',
-    pinyinName: 'FeiXin',
+    pinyinName: 'Fei Xin',
     chineseName: '肺心',
     hebrewName: 'ריאה לב',
     englishName: 'Lung Heart',
@@ -270,7 +270,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.12',
     zone: '11',
-    pinyinName: 'ErJiaoMing',
+    pinyinName: 'Er Jiao Ming',
     chineseName: '二角明',
     hebrewName: 'שתי זוויות בהירות',
     englishName: 'Two Bright Corners',
@@ -320,7 +320,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.14',
     zone: '11',
-    pinyinName: 'ZhiSanZhong',
+    pinyinName: 'Zhi San Zhong',
     chineseName: '指三重',
     hebrewName: 'שלוש כבדויות אצבע',
     englishName: 'Finger Three Weights',
@@ -340,7 +340,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.15',
     zone: '11',
-    pinyinName: 'ZhiShen',
+    pinyinName: 'Zhi Shen',
     chineseName: '指腎',
     hebrewName: 'כליה אצבע',
     englishName: 'Kidney Finger',
@@ -363,7 +363,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.16',
     zone: '11',
-    pinyinName: 'HuoXi',
+    pinyinName: 'Huo Xi',
     chineseName: '火膝',
     hebrewName: 'אש ברך',
     englishName: 'Fire Knee',
@@ -425,7 +425,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.18',
     zone: '11',
-    pinyinName: 'PiZhong',
+    pinyinName: 'Pi Zhong',
     chineseName: '脾腫',
     hebrewName: 'נפיחות טחול',
     englishName: 'Spleen Swelling',
@@ -454,7 +454,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.19',
     zone: '11',
-    pinyinName: 'XinChang',
+    pinyinName: 'Xin Chang',
     chineseName: '心常',
     hebrewName: 'לב תקין',
     englishName: 'Normal Heart',
@@ -477,7 +477,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.20',
     zone: '11',
-    pinyinName: 'MuYan',
+    pinyinName: 'Mu Yan',
     chineseName: '木炎',
     hebrewName: 'דלקת עץ',
     englishName: 'Wood Inflammation',
@@ -502,7 +502,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.21',
     zone: '11',
-    pinyinName: 'SanYan',
+    pinyinName: 'San Yan',
     chineseName: '三眼',
     hebrewName: 'שלוש עיניים',
     englishName: 'Three Eyes',
@@ -525,7 +525,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.22',
     zone: '11',
-    pinyinName: 'FuYuan',
+    pinyinName: 'Fu Yuan',
     chineseName: '復原',
     hebrewName: 'שיקום',
     englishName: 'Recovery',
@@ -548,7 +548,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.23',
     zone: '11',
-    pinyinName: 'YanHuang',
+    pinyinName: 'Yan Huang',
     chineseName: '眼黃',
     hebrewName: 'עין צהובה',
     englishName: 'Yellow Eyes',
@@ -571,7 +571,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.24',
     zone: '11',
-    pinyinName: 'FuKe',
+    pinyinName: 'Fu Ke',
     chineseName: '婦科',
     hebrewName: 'גינקולוגיה',
     englishName: 'Gynecology',
@@ -669,7 +669,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.25',
     zone: '11',
-    pinyinName: 'ZhiXian',
+    pinyinName: 'Zhi Xian',
     chineseName: '止涎',
     hebrewName: 'עצירת ריור',
     englishName: 'Stop Drooling',
@@ -694,7 +694,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.26',
     zone: '11',
-    pinyinName: 'ZhiWu',
+    pinyinName: 'Zhi Wu',
     chineseName: '制污',
     hebrewName: 'שליטה בלכלוך',
     englishName: 'Control Dirt',
@@ -728,7 +728,7 @@ export const zone11Points: Point[] = [
   {
     id: '11.27',
     zone: '11',
-    pinyinName: 'WuHu',
+    pinyinName: 'Wu Hu',
     chineseName: '五虎',
     hebrewName: 'חמישה נמרים',
     englishName: 'Five Tigers',

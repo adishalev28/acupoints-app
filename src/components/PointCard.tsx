@@ -9,10 +9,10 @@ export default function PointCard({ point }: PointCardProps) {
   return (
     <Link
       to={`/point/${point.id}`}
-      className="flex items-center gap-3 p-3 bg-white rounded-xl border border-gray-100 hover:border-teal-primary/30 transition-colors"
+      className="flex items-center gap-4 p-4 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
     >
       {/* Point image or placeholder */}
-      <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0 overflow-hidden">
+      <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">
         {point.imageId ? (
           <img
             src={`/images/${point.imageId}.jpg`}
@@ -21,25 +21,25 @@ export default function PointCard({ point }: PointCardProps) {
             loading="lazy"
           />
         ) : (
-          <svg className="w-7 h-7 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+          <svg className="w-9 h-9 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
           </svg>
         )}
       </div>
 
       <div className="flex-1 min-w-0">
-        <div className="font-bold text-gray-900 text-sm">
+        <div className="font-bold text-gray-900 text-base">
           {/^\d/.test(point.id) ? `${point.id} ${point.pinyinName}` : point.pinyinName}
         </div>
-        <div className="text-xs text-gray-500">
+        <div className="text-sm text-gray-500">
           [{point.chineseName}]
         </div>
-        <div className="text-xs text-teal-primary">
+        <div className="text-sm text-gray-600">
           {point.hebrewName}
         </div>
       </div>
 
-      <svg className="w-5 h-5 text-gray-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <svg className="w-5 h-5 text-gray-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
       </svg>
     </Link>

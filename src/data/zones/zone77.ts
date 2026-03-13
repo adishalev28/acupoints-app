@@ -339,6 +339,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.12',
     zone: '77',
+    imageId: '77.12',
     pinyinName: 'FuChang',
     chineseName: '腑腸穴',
     hebrewName: 'מעי חלל',
@@ -361,6 +362,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.13',
     zone: '77',
+    imageId: '77.13',
     pinyinName: 'SiHuaLi',
     chineseName: '四花裏穴',
     hebrewName: 'ארבע פרחים פנימי',
@@ -382,6 +384,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.14',
     zone: '77',
+    imageId: '77.14',
     pinyinName: 'SiHuaWai',
     chineseName: '四花外穴',
     hebrewName: 'ארבע פרחים חיצוני',
@@ -643,6 +646,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.22',
     zone: '77',
+    imageId: '77.22',
     pinyinName: 'CeSanLi',
     chineseName: '側三里穴',
     hebrewName: 'צד שלוש מיילים',
@@ -684,6 +688,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.23',
     zone: '77',
+    imageId: '77.23',
     pinyinName: 'CeXiaSanLi',
     chineseName: '側下三里穴',
     hebrewName: 'צד תחתון שלוש מיילים',
@@ -700,6 +705,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.24',
     zone: '77',
+    imageId: '77.24',
     pinyinName: 'ZuQianJin',
     chineseName: '足千金穴',
     hebrewName: 'אלף זהב רגל',
@@ -720,6 +726,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.25',
     zone: '77',
+    imageId: '77.25',
     pinyinName: 'ZuWuJin',
     chineseName: '足五金穴',
     hebrewName: 'חמש מתכות רגל',
@@ -740,6 +747,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.26',
     zone: '77',
+    imageId: '77.26',
     pinyinName: 'QiHu',
     chineseName: '七虎穴',
     hebrewName: 'שבעה נמרים',
@@ -762,6 +770,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.27',
     zone: '77',
+    imageId: '77.27',
     pinyinName: 'WaiSanGuan',
     chineseName: '外三關穴',
     hebrewName: 'שלושה שערים חיצוניים',
@@ -792,6 +801,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.28',
     zone: '77',
+    imageId: '77.28',
     pinyinName: 'GuangMing',
     chineseName: '光明穴',
     hebrewName: 'אור בהיר',

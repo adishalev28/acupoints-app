@@ -106,9 +106,8 @@ export default function Explore() {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-teal-primary text-white px-4 pt-3 pb-3">
-        <h1 className="text-center text-xs font-bold tracking-widest uppercase mb-3 opacity-90">Master Tung&#39;s Points</h1>
-        <h2 className="text-lg font-bold mb-2">חקור</h2>
+      <div className="bg-teal-primary text-white px-4 pt-4 pb-3">
+        <h1 className="text-center text-lg font-bold tracking-wide uppercase mb-3">MASTER TUNG&#39;S POINTS</h1>
         <SearchBar
           value={search}
           onChange={setSearch}

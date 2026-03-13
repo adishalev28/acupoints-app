@@ -5,6 +5,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.01',
     zone: '66',
+    imageId: '66.01',
     pinyinName: 'HaiBao',
     chineseName: '海豹穴',
     hebrewName: 'כלב ים',
@@ -37,6 +38,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.02',
     zone: '66',
+    imageId: '66.02',
     pinyinName: 'MuFu',
     chineseName: '木婦穴',
     hebrewName: 'אשת עץ',
@@ -65,6 +67,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.03',
     zone: '66',
+    imageId: '66.03',
     pinyinName: 'HuoYing',
     chineseName: '火硬穴',
     hebrewName: 'אש קשה',
@@ -129,6 +132,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.04',
     zone: '66',
+    imageId: '66.04',
     pinyinName: 'HuoZhu',
     chineseName: '火主穴',
     hebrewName: 'אדון האש',
@@ -180,6 +184,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.05',
     zone: '66',
+    imageId: '66.05',
     pinyinName: 'MenJin',
     chineseName: '門金穴',
     hebrewName: 'שער מתכת',
@@ -212,6 +217,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.06',
     zone: '66',
+    imageId: '66.06',
     pinyinName: 'MuLiu',
     chineseName: '木留穴',
     hebrewName: 'שהייה בעץ',
@@ -236,6 +242,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.07',
     zone: '66',
+    imageId: '66.07',
     pinyinName: 'MuDou',
     chineseName: '木斗穴',
     hebrewName: 'כף עץ',
@@ -261,6 +268,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.08',
     zone: '66',
+    imageId: '66.08',
     pinyinName: 'LiuWan',
     chineseName: '六完穴',
     hebrewName: 'שישי שלם',
@@ -283,6 +291,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.09',
     zone: '66',
+    imageId: '66.09',
     pinyinName: 'ShuiQu',
     chineseName: '水曲穴',
     hebrewName: 'עיקול מים',
@@ -312,6 +321,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.10',
     zone: '66',
+    imageId: '66.10',
     pinyinName: 'HuoLian',
     chineseName: '火連穴',
     hebrewName: 'חיבור אש',
@@ -337,6 +347,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.11',
     zone: '66',
+    imageId: '66.11',
     pinyinName: 'HuoJu',
     chineseName: '火菊穴',
     hebrewName: 'חרצית אש',
@@ -365,6 +376,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.12',
     zone: '66',
+    imageId: '66.12',
     pinyinName: 'HuoSan',
     chineseName: '火散穴',
     hebrewName: 'פיזור אש',
@@ -392,6 +404,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.13',
     zone: '66',
+    imageId: '66.13',
     pinyinName: 'ShuiJing',
     chineseName: '水晶穴',
     hebrewName: 'קריסטל מים',
@@ -412,6 +425,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.14',
     zone: '66',
+    imageId: '66.14',
     pinyinName: 'ShuiXiang',
     chineseName: '水相穴',
     hebrewName: 'שר מים',
@@ -433,6 +447,7 @@ export const zone66Points: Point[] = [
   {
     id: '66.15',
     zone: '66',
+    imageId: '66.15',
     pinyinName: 'ShuiXian',
     chineseName: '水仙穴',
     hebrewName: 'נרקיס מים',

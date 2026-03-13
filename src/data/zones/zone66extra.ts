@@ -5,6 +5,7 @@ export const zone66ExtraPoints: Point[] = [
   {
     id: 'LiuXi',
     zone: '66',
+    imageId: 'LiuXi',
     pinyinName: 'LiuXi',
     chineseName: '六郄穴',
     hebrewName: 'שש נקבים',

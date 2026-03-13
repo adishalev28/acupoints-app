@@ -9,7 +9,7 @@ export default function PointCard({ point }: PointCardProps) {
   return (
     <Link
       to={`/point/${point.id}`}
-      className="flex items-center gap-4 p-4 bg-gray-100 rounded-xl hover:bg-gray-200 transition-colors"
+      className="flex items-center gap-4 p-4 bg-gray-200 rounded-xl hover:bg-gray-300 transition-colors"
     >
       {/* Point image or placeholder */}
       <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center flex-shrink-0 overflow-hidden">

@@ -5,6 +5,7 @@ export const zone55Points: Point[] = [
   {
     id: '55.01',
     zone: '55',
+    imageId: '55.01',
     pinyinName: 'HuoBao',
     chineseName: '火包穴',
     hebrewName: 'שק אש',
@@ -35,6 +36,7 @@ export const zone55Points: Point[] = [
   {
     id: '55.02',
     zone: '55',
+    imageId: '55.02',
     pinyinName: 'HuaGuYi',
     chineseName: '花骨一穴',
     hebrewName: 'עצם פרח 1',
@@ -67,6 +69,7 @@ export const zone55Points: Point[] = [
   {
     id: '55.03',
     zone: '55',
+    imageId: '55.03',
     pinyinName: 'HuaGuEr',
     chineseName: '花骨二穴',
     hebrewName: 'עצם פרח 2',
@@ -85,6 +88,7 @@ export const zone55Points: Point[] = [
   {
     id: '55.04',
     zone: '55',
+    imageId: '55.04',
     pinyinName: 'HuaGuSan',
     chineseName: '花骨三穴',
     hebrewName: 'עצם פרח 3',
@@ -104,6 +108,7 @@ export const zone55Points: Point[] = [
   {
     id: '55.05',
     zone: '55',
+    imageId: '55.05',
     pinyinName: 'HuaGuSi',
     chineseName: '花骨四穴',
     hebrewName: 'עצם פרח 4',
@@ -126,6 +131,7 @@ export const zone55Points: Point[] = [
   {
     id: '55.06',
     zone: '55',
+    imageId: '55.06',
     pinyinName: 'ShangLiu',
     chineseName: '上瘤穴',
     hebrewName: 'גידול עליון',

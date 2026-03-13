@@ -5,6 +5,7 @@ export const zone55ExtraPoints: Point[] = [
   {
     id: 'FuLing',
     zone: '55',
+    imageId: 'fu ling',
     pinyinName: 'FuLing',
     chineseName: '婦靈穴',
     hebrewName: 'יעילות אישה',
@@ -26,6 +27,7 @@ export const zone55ExtraPoints: Point[] = [
   {
     id: 'SanSheng',
     zone: '55',
+    imageId: 'san sheng',
     pinyinName: 'SanSheng',
     chineseName: '三聖穴',
     hebrewName: 'שלושת החכמים',

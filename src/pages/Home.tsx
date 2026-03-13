@@ -1,8 +1,17 @@
+import { useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { points } from '../data/points'
 import { zones } from '../data/zones'
 
 export default function Home() {
+  const pointsPerZone = useMemo(() => {
+    const counts: Record<string, number> = {}
+    for (const p of points) {
+      counts[p.zone] = (counts[p.zone] || 0) + 1
+    }
+    return counts
+  }, [])
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -27,8 +36,28 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Zone Grid */}
+      <div className="px-6 mt-6">
+        <h2 className="text-lg font-bold text-gray-900 mb-3">בחר אזור</h2>
+        <div className="grid grid-cols-2 gap-2.5">
+          {zones.map(zone => (
+            <Link
+              key={zone.id}
+              to={`/explore?zone=${zone.id}`}
+              className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-gray-100 hover:border-teal-primary/40 hover:bg-teal-50/30 active:bg-teal-50 transition-colors"
+            >
+              <span className="text-xs text-gray-400">{pointsPerZone[zone.id] || 0}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium text-gray-800">{zone.name}</span>
+                <span className="text-sm font-bold text-teal-primary">{zone.id}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
       {/* Quick Actions */}
-      <div className="px-6 mt-6 space-y-3">
+      <div className="px-6 mt-6 pb-6 space-y-3">
         <Link
           to="/explore"
           className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:border-teal-primary/30 transition-colors"

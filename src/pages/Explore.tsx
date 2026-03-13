@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react'
+import { useMemo, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { points } from '../data/points'
 import { zones } from '../data/zones'
 import { flattenIndications } from '../types'
@@ -8,9 +9,29 @@ import ZoneFilter from '../components/ZoneFilter'
 import PointCard from '../components/PointCard'
 
 export default function Explore() {
-  const [search, setSearch] = useState('')
-  const [activeTab, setActiveTab] = useState<FilterTab>('all')
-  const [selectedZone, setSelectedZone] = useState<string | null>(null)
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const search = searchParams.get('q') ?? ''
+  const activeTab = (searchParams.get('tab') as FilterTab) || 'all'
+  const selectedZone = searchParams.get('zone')
+
+  const updateParams = useCallback((updates: Record<string, string | null>) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev)
+      for (const [key, value] of Object.entries(updates)) {
+        if (value === null || value === '') {
+          next.delete(key)
+        } else {
+          next.set(key, value)
+        }
+      }
+      return next
+    }, { replace: true })
+  }, [setSearchParams])
+
+  const setSearch = useCallback((v: string) => updateParams({ q: v }), [updateParams])
+  const setActiveTab = useCallback((v: FilterTab) => updateParams({ tab: v === 'all' ? null : v }), [updateParams])
+  const setSelectedZone = useCallback((v: string | null) => updateParams({ zone: v }), [updateParams])
 
   const placeholder = activeTab === 'indications'
     ? 'חיפוש לפי התוויות...'

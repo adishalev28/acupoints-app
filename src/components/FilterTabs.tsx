@@ -21,7 +21,7 @@ export default function FilterTabs({ active, onChange }: FilterTabsProps) {
           className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
             active === tab.id
               ? 'bg-teal-primary text-white'
-              : 'bg-white text-gray-600 border border-gray-200'
+              : 'bg-white dark:bg-dark-card text-gray-600 dark:text-dark-muted border border-gray-200 dark:border-dark-border'
           }`}
         >
           {tab.label}

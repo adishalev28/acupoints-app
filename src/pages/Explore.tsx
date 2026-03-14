@@ -7,9 +7,11 @@ import SearchBar from '../components/SearchBar'
 import FilterTabs, { type FilterTab } from '../components/FilterTabs'
 import ZoneFilter from '../components/ZoneFilter'
 import PointCard from '../components/PointCard'
+import { useSearchHistory } from '../hooks/useSearchHistory'
 
 export default function Explore() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const { history, addSearch, clearHistory } = useSearchHistory()
 
   const search = searchParams.get('q') ?? ''
   const activeTab = (searchParams.get('tab') as FilterTab) || 'all'
@@ -74,7 +76,7 @@ export default function Explore() {
     return result
   }, [search, activeTab, selectedZone])
 
-  // Search suggestions (top 5 matching points by id/name)
+  // Search suggestions (top 20 matching points by id/name)
   const suggestions = useMemo(() => {
     const q = search.trim().toLowerCase()
     if (!q || q.length < 1) return []
@@ -113,7 +115,10 @@ export default function Explore() {
           onChange={setSearch}
           placeholder={placeholder}
           suggestions={suggestions}
-          onSuggestionSelect={(id) => setSearch(id)}
+          onSuggestionSelect={(id) => { addSearch(id); setSearch(id) }}
+          searchHistory={history}
+          onHistorySelect={(q) => { setSearch(q) }}
+          onClearHistory={clearHistory}
         />
       </div>
 
@@ -137,7 +142,7 @@ export default function Explore() {
               נקה סינון
             </button>
           )}
-          <span className="text-sm text-gray-500 mr-auto">
+          <span className="text-sm text-gray-500 dark:text-dark-muted mr-auto">
             {filtered.length} נקודות נמצאו
           </span>
         </div>
@@ -149,7 +154,7 @@ export default function Explore() {
           const zone = zones.find(z => z.id === zoneId)
           return (
             <div key={zoneId}>
-              <h2 className="text-sm font-bold text-gray-500 mb-2">
+              <h2 className="text-sm font-bold text-gray-500 dark:text-dark-muted mb-2">
                 אזור {zoneId} — {zone?.name}
               </h2>
               <div className="space-y-2">
@@ -162,7 +167,7 @@ export default function Explore() {
         })}
 
         {filtered.length === 0 && (
-          <div className="text-center py-12 text-gray-400">
+          <div className="text-center py-12 text-gray-400 dark:text-dark-muted">
             <svg className="w-12 h-12 mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>

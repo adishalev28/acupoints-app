@@ -1,9 +1,16 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-teal-primary: #0d7377;
   --color-teal-dark: #0a5c5f;
   --color-teal-light: #e0f2f1;
+  --color-dark-bg: #0f172a;
+  --color-dark-card: #1e293b;
+  --color-dark-border: #334155;
+  --color-dark-text: #e2e8f0;
+  --color-dark-muted: #94a3b8;
   --font-family-heebo: 'Heebo', sans-serif;
 }
 
@@ -18,6 +25,19 @@ body {
   color: #111827;
   -webkit-tap-highlight-color: transparent;
   min-height: 100vh;
+}
+
+.dark body,
+html.dark body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #0d7377;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar {

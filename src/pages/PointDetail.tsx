@@ -30,10 +30,10 @@ function PointImage({ pointId, imageId }: { pointId: string; imageId?: string })
 /** Section wrapper with icon and title */
 function Section({ icon, title, children }: { icon: React.ReactNode; title: string; children: React.ReactNode }) {
   return (
-    <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-      <div className="flex items-center gap-2.5 px-4 py-3 bg-gray-50/80 border-b border-gray-100">
+    <div className="bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm overflow-hidden">
+      <div className="flex items-center gap-2.5 px-4 py-3 bg-gray-50/80 dark:bg-dark-bg/50 border-b border-gray-100 dark:border-dark-border">
         <span className="text-teal-primary">{icon}</span>
-        <h3 className="font-bold text-gray-800 text-sm">{title}</h3>
+        <h3 className="font-bold text-gray-800 dark:text-dark-text text-sm">{title}</h3>
       </div>
       <div className="px-4 py-3">
         {children}
@@ -82,7 +82,7 @@ function AdditionalInfoContent({ text }: { text: string }) {
           {section.name && (
             <h5 className="font-bold text-teal-700 text-sm mb-1">{section.name}</h5>
           )}
-          <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
+          <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
             {section.content}
           </p>
         </div>
@@ -108,6 +108,8 @@ export default function PointDetail() {
   const { getNote, setNote } = useNotes()
   const [noteText, setNoteText] = useState('')
   const [editingNote, setEditingNote] = useState(false)
+  const [showSwipeHint, setShowSwipeHint] = useState(() => !localStorage.getItem('swipeHintSeen'))
+  const [shareStatus, setShareStatus] = useState<'idle' | 'copied'>('idle')
 
   const point = points.find(p => p.id === id)
 
@@ -178,48 +180,76 @@ export default function PointDetail() {
     setEditingNote(true)
   }
 
+  const handleShare = async () => {
+    const url = window.location.href
+    const text = `${point.pinyinName} (${point.hebrewName}) — ${point.chineseName}`
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: point.pinyinName, text, url })
+      } catch { /* user cancelled */ }
+    } else {
+      await navigator.clipboard.writeText(`${text}\n${url}`)
+      setShareStatus('copied')
+      setTimeout(() => setShareStatus('idle'), 2000)
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50 pb-24">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24">
       {/* Header — compact with point identity */}
       <div className="bg-teal-primary text-white px-5 pt-7 pb-5">
         {/* Top row: back + zone + favorite */}
         <div className="flex items-center justify-between mb-3">
-          <button onClick={() => navigate(-1)} className="p-1 -mr-1">
+          <button onClick={() => navigate(-1)} className="p-2.5 -mr-2" aria-label="חזרה">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
           <div className="flex items-center gap-2">
             {prevPoint ? (
-              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-1 text-white/70 hover:text-white">
+              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-2.5 text-white/70 hover:text-white" aria-label={`נקודה קודמת: ${prevPoint.pinyinName}`}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-            ) : <div className="w-7" />}
+            ) : <div className="w-10" />}
             {zone && (
               <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
                 {zone.name} ({point.zone})
               </span>
             )}
             {nextPoint ? (
-              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-1 text-white/70 hover:text-white">
+              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-2.5 text-white/70 hover:text-white" aria-label={`נקודה הבאה: ${nextPoint.pinyinName}`}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-            ) : <div className="w-7" />}
+            ) : <div className="w-10" />}
           </div>
-          <button onClick={() => toggleFavorite(point.id)} className="p-1 -ml-1">
-            <svg
-              className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-300 fill-amber-300' : 'text-white/50'}`}
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </button>
+          <div className="flex items-center gap-1">
+            <button onClick={handleShare} className="p-2.5" aria-label="שתף נקודה">
+              {shareStatus === 'copied' ? (
+                <svg className="w-5 h-5 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+              ) : (
+                <svg className="w-5 h-5 text-white/50 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                </svg>
+              )}
+            </button>
+            <button onClick={() => toggleFavorite(point.id)} className="p-2.5 -ml-2" aria-label={isFavorite(point.id) ? 'הסר ממועדפים' : 'הוסף למועדפים'}>
+              <svg
+                className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-300 fill-amber-300' : 'text-white/50'}`}
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Point ID + Pinyin */}
@@ -266,6 +296,23 @@ export default function PointDetail() {
         )}
       </div>
 
+      {/* Swipe hint - shown once */}
+      {showSwipeHint && (
+        <div className="mx-4 mt-3 flex items-center justify-between gap-2 px-4 py-2.5 bg-teal-50 border border-teal-100 rounded-xl text-xs text-teal-700">
+          <span>החלק ימינה/שמאלה למעבר בין נקודות</span>
+          <button
+            onClick={() => {
+              setShowSwipeHint(false)
+              localStorage.setItem('swipeHintSeen', '1')
+            }}
+            className="text-teal-500 hover:text-teal-700 font-bold"
+            aria-label="סגור רמז"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
       {/* Content sections */}
       <div className="px-4 py-4 space-y-3">
 
@@ -282,7 +329,7 @@ export default function PointDetail() {
           }
           title="מיקום"
         >
-          <p className="text-gray-700 text-sm leading-relaxed">{point.location}</p>
+          <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{point.location}</p>
         </Section>
 
         {/* 2. Needling */}
@@ -294,7 +341,7 @@ export default function PointDetail() {
           }
           title="טכניקת דיקור"
         >
-          <p className="text-gray-700 text-sm leading-relaxed">{point.needling}</p>
+          <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{point.needling}</p>
         </Section>
 
         {/* 3. Reaction Areas */}
@@ -308,7 +355,7 @@ export default function PointDetail() {
         >
           <div className="flex flex-wrap gap-2">
             {point.reactionAreas.map((area, i) => (
-              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full bg-teal-50 text-teal-700 text-xs font-medium border border-teal-100">
+              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-primary/10 text-teal-700 dark:text-teal-300 text-xs font-medium border border-teal-100 dark:border-teal-primary/30">
                 {area}
               </span>
             ))}
@@ -334,7 +381,7 @@ export default function PointDetail() {
                   const colors = categoryColors[group.category] || categoryColors['כללי']
                   return (
                     <div key={gi}>
-                      <h4 className="text-xs font-bold text-gray-500 mb-1.5">{group.category}</h4>
+                      <h4 className="text-xs font-bold text-gray-500 dark:text-dark-muted mb-1.5">{group.category}</h4>
                       <div className="flex flex-wrap gap-1.5">
                         {group.items.map((item, ii) => (
                           <span key={ii} className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-medium border ${colors.bg} ${colors.text} ${colors.border}`}>
@@ -376,9 +423,9 @@ export default function PointDetail() {
           >
             <div className="space-y-1">
               {point.sources.map((s, i) => (
-                <div key={i} className="text-xs text-gray-500">
-                  <span className="font-medium text-gray-600">{sourceLabel(s.source)}</span>
-                  {s.notes && <span className="text-gray-400"> — {s.notes}</span>}
+                <div key={i} className="text-xs text-gray-500 dark:text-dark-muted">
+                  <span className="font-medium text-gray-600 dark:text-gray-400">{sourceLabel(s.source)}</span>
+                  {s.notes && <span className="text-gray-400 dark:text-gray-500"> — {s.notes}</span>}
                 </div>
               ))}
             </div>
@@ -386,14 +433,14 @@ export default function PointDetail() {
         )}
 
         {/* 7. Personal Note */}
-        <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-          <div className="flex items-center gap-2.5 px-4 py-3 bg-amber-50/80 border-b border-amber-100/50">
+        <div className="bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm overflow-hidden">
+          <div className="flex items-center gap-2.5 px-4 py-3 bg-amber-50/80 dark:bg-amber-500/10 border-b border-amber-100/50 dark:border-amber-500/20">
             <span className="text-amber-500">
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
               </svg>
             </span>
-            <h3 className="font-bold text-gray-800 text-sm">הערה אישית</h3>
+            <h3 className="font-bold text-gray-800 dark:text-dark-text text-sm">הערה אישית</h3>
           </div>
           <div className="px-4 py-3">
             {editingNote ? (
@@ -402,7 +449,7 @@ export default function PointDetail() {
                   value={noteText}
                   onChange={e => setNoteText(e.target.value)}
                   rows={3}
-                  className="w-full p-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-teal-primary focus:ring-1 focus:ring-teal-primary resize-none"
+                  className="w-full p-3 rounded-xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-bg text-gray-900 dark:text-dark-text text-sm focus:outline-none focus:border-teal-primary focus:ring-2 focus:ring-teal-primary/30 resize-none"
                   placeholder="כתוב הערה..."
                   autoFocus
                 />
@@ -415,7 +462,7 @@ export default function PointDetail() {
                   </button>
                   <button
                     onClick={() => setEditingNote(false)}
-                    className="px-4 py-2 bg-gray-100 text-gray-600 text-xs font-medium rounded-lg"
+                    className="px-4 py-2 bg-gray-100 dark:bg-dark-border text-gray-600 dark:text-dark-text text-xs font-medium rounded-lg"
                   >
                     ביטול
                   </button>
@@ -423,7 +470,7 @@ export default function PointDetail() {
               </div>
             ) : savedNote ? (
               <div>
-                <p className="text-gray-700 text-sm whitespace-pre-wrap">{savedNote}</p>
+                <p className="text-gray-700 dark:text-gray-300 text-sm whitespace-pre-wrap">{savedNote}</p>
                 <button
                   onClick={handleStartEdit}
                   className="mt-2 text-teal-primary text-xs font-medium"
@@ -434,7 +481,7 @@ export default function PointDetail() {
             ) : (
               <button
                 onClick={handleStartEdit}
-                className="w-full py-3 border-2 border-dashed border-gray-200 rounded-xl text-gray-400 text-xs hover:border-teal-primary/30 transition-colors"
+                className="w-full py-3 border-2 border-dashed border-gray-200 dark:border-dark-border rounded-xl text-gray-400 dark:text-dark-muted text-xs hover:border-teal-primary/30 transition-colors"
               >
                 הוסף הערה...
               </button>
@@ -447,7 +494,7 @@ export default function PointDetail() {
           {prevPoint ? (
             <button
               onClick={() => navigate(`/point/${prevPoint.id}`)}
-              className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-white rounded-xl border border-gray-200 text-sm text-gray-600 hover:bg-gray-50"
+              className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-dark-border text-sm text-gray-600 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-border"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -458,7 +505,7 @@ export default function PointDetail() {
           {nextPoint ? (
             <button
               onClick={() => navigate(`/point/${nextPoint.id}`)}
-              className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-white rounded-xl border border-gray-200 text-sm text-gray-600 hover:bg-gray-50"
+              className="flex-1 flex items-center justify-center gap-1.5 py-3 bg-white dark:bg-dark-card rounded-xl border border-gray-200 dark:border-dark-border text-sm text-gray-600 dark:text-dark-text hover:bg-gray-50 dark:hover:bg-dark-border"
             >
               <span>{/^\d/.test(nextPoint.id) ? nextPoint.id : nextPoint.pinyinName}</span>
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

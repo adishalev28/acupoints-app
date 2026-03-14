@@ -13,7 +13,7 @@ export default function HandDorsal({ highlightPoints = [], className = '' }: Han
       xmlns="http://www.w3.org/2000/svg"
     >
       {/* Background */}
-      <rect width="300" height="420" fill="white" rx="12" />
+      <rect width="300" height="420" fill="currentColor" rx="12" className="text-white dark:text-dark-card" />
 
       {/* Hand outline - dorsal view */}
       <g stroke="#374151" strokeWidth="1.5" fill="#f9fafb">

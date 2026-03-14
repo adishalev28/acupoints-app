@@ -22,15 +22,15 @@ export default function Home() {
 
       {/* Quick Stats */}
       <div className="px-6 -mt-4">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+        <div className="bg-white dark:bg-dark-card rounded-2xl shadow-sm border border-gray-100 dark:border-dark-border p-5">
           <div className="grid grid-cols-2 gap-4">
             <div className="text-center">
               <div className="text-3xl font-bold text-teal-primary">{points.length}</div>
-              <div className="text-sm text-gray-500 mt-1">נקודות במאגר</div>
+              <div className="text-sm text-gray-500 dark:text-dark-muted mt-1">נקודות במאגר</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-teal-primary">{zones.length}</div>
-              <div className="text-sm text-gray-500 mt-1">אזורים</div>
+              <div className="text-sm text-gray-500 dark:text-dark-muted mt-1">אזורים</div>
             </div>
           </div>
         </div>
@@ -38,17 +38,17 @@ export default function Home() {
 
       {/* Zone Grid */}
       <div className="px-6 mt-6">
-        <h2 className="text-lg font-bold text-gray-900 mb-3">בחר אזור</h2>
+        <h2 className="text-lg font-bold text-gray-900 dark:text-dark-text mb-3">בחר אזור</h2>
         <div className="grid grid-cols-2 gap-2.5">
           {zones.map(zone => (
             <Link
               key={zone.id}
               to={`/explore?zone=${zone.id}`}
-              className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-gray-100 hover:border-teal-primary/40 hover:bg-teal-50/30 active:bg-teal-50 transition-colors"
+              className="flex items-center justify-between p-3.5 bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/40 hover:bg-teal-50/30 dark:hover:bg-teal-primary/10 active:bg-teal-50 transition-colors"
             >
-              <span className="text-xs text-gray-400">{pointsPerZone[zone.id] || 0}</span>
+              <span className="text-xs text-gray-400 dark:text-dark-muted">{pointsPerZone[zone.id] || 0}</span>
               <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-800">{zone.name}</span>
+                <span className="text-sm font-medium text-gray-800 dark:text-dark-text">{zone.name}</span>
                 <span className="text-sm font-bold text-teal-primary">{zone.id}</span>
               </div>
             </Link>
@@ -60,31 +60,31 @@ export default function Home() {
       <div className="px-6 mt-6 pb-6 space-y-3">
         <Link
           to="/explore"
-          className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:border-teal-primary/30 transition-colors"
+          className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
         >
-          <div className="w-12 h-12 rounded-full bg-teal-light flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-teal-light dark:bg-teal-primary/20 flex items-center justify-center">
             <svg className="w-6 h-6 text-teal-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </div>
           <div>
-            <div className="font-bold text-gray-900">חקור נקודות</div>
-            <div className="text-sm text-gray-500">חיפוש לפי שם, אינדיקציה או אזור</div>
+            <div className="font-bold text-gray-900 dark:text-dark-text">חקור נקודות</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">חיפוש לפי שם, אינדיקציה או אזור</div>
           </div>
         </Link>
 
         <Link
           to="/favorites"
-          className="flex items-center gap-4 p-5 bg-white rounded-2xl border border-gray-100 hover:border-teal-primary/30 transition-colors"
+          className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
         >
-          <div className="w-12 h-12 rounded-full bg-amber-50 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-full bg-amber-50 dark:bg-amber-500/20 flex items-center justify-center">
             <svg className="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
             </svg>
           </div>
           <div>
-            <div className="font-bold text-gray-900">מועדפים</div>
-            <div className="text-sm text-gray-500">הנקודות השמורות שלך</div>
+            <div className="font-bold text-gray-900 dark:text-dark-text">מועדפים</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">הנקודות השמורות שלך</div>
           </div>
         </Link>
       </div>

@@ -72,6 +72,20 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           </p>
         </div>
 
+        {/* Home link */}
+        <Link
+          to="/"
+          onClick={onClose}
+          className="flex items-center gap-3 px-4 py-3 text-sm font-bold text-teal-primary
+            hover:bg-teal-50 dark:hover:bg-teal-primary/10 transition-colors
+            border-b border-gray-200 dark:border-dark-border"
+        >
+          <svg className="w-5 h-5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1m-2 0h2" />
+          </svg>
+          <span className="font-heebo">חזרה לנקודות</span>
+        </Link>
+
         {/* Principle Links */}
         <ul className="py-1">
           {principles.map((principle) => (

@@ -39,12 +39,12 @@ export default function PrincipleDetail() {
             </svg>
           </button>
           <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
-            עקרון {principle.number} מתוך 12
+            עקרון {principle.number} מתוך {principles.length}
           </span>
           <div className="w-10" />
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold font-heebo">{principle.title}</div>
+          <div className="text-xl font-bold font-heebo leading-tight break-words">{principle.title}</div>
           {principle.titleEn && (
             <div className="text-sm text-white/70 mt-1">{principle.titleEn}</div>
           )}

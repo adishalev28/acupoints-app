@@ -118,7 +118,7 @@ export const zone77Points: Point[] = [
   {
     id: '77.05-07',
     zone: '77',
-    imageId: '77.05-07',
+    imageId: '77.05',
     pinyinName: 'Yi Zhong / Er Zhong / San Zhong',
     chineseName: '一重穴 / 二重穴 / 三重穴',
     hebrewName: 'שלושת המשקלות',

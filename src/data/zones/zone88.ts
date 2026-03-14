@@ -6,6 +6,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.01-03',
     zone: '88',
+    imageId: '88.01',
     pinyinName: 'Tōng Guān / Tōng Shān / Tōng Tiān',
     chineseName: '通關 / 通山 / 通天',
     hebrewName: 'שלושת חודרי הרגל',
@@ -64,6 +65,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.04-06',
     zone: '88',
+    imageId: '88.04',
     pinyinName: 'Jiě Mèi Yī / Jiě Mèi Èr / Jiě Mèi Sān',
     chineseName: '姐妹一 / 姐妹二 / 姐妹三',
     hebrewName: 'שלוש אחיות',
@@ -114,6 +116,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.07-08',
     zone: '88',
+    imageId: '88.07',
     pinyinName: 'Gǎn Mào Yī / Gǎn Mào Èr',
     chineseName: '感冒一 / 感冒二',
     hebrewName: 'הצטננות',
@@ -136,6 +139,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.09-11',
     zone: '88',
+    imageId: '88.09',
     pinyinName: 'Tōng Shèn / Tōng Wèi / Tōng Bèi',
     chineseName: '通腎 / 通胃 / 通背',
     hebrewName: 'שלושה חודרי כליה',
@@ -186,6 +190,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.12-14',
     zone: '88',
+    imageId: '88.12',
     pinyinName: 'Míng Huáng / Tiān Huáng / Qí Huáng',
     chineseName: '明黃 / 天黃 / 其黃',
     hebrewName: 'שלושה צהובים עליונים',
@@ -282,6 +287,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.15',
     zone: '88',
+    imageId: '88.15',
     pinyinName: 'Huǒ Zhī',
     chineseName: '火枝',
     hebrewName: 'ענף אש',
@@ -313,6 +319,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.16',
     zone: '88',
+    imageId: '88.16',
     pinyinName: 'Huǒ Quán',
     chineseName: '火全',
     hebrewName: 'אש שלמה',
@@ -346,6 +353,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.17',
     zone: '88',
+    imageId: '88.17',
     pinyinName: 'Sì Mǎ Zhōng',
     chineseName: '駟馬中',
     hebrewName: 'סוס דוהר אמצעי',
@@ -423,6 +431,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.18',
     zone: '88',
+    imageId: '88.18',
     pinyinName: 'Sì Mǎ Shàng',
     chineseName: '駟馬上',
     hebrewName: 'סוס דוהר עליון',
@@ -500,6 +509,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.19',
     zone: '88',
+    imageId: '88.19',
     pinyinName: 'Sì Mǎ Xià',
     chineseName: '駟馬下',
     hebrewName: 'סוס דוהר תחתון',
@@ -577,6 +587,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.20-22',
     zone: '88',
+    imageId: '88.20',
     pinyinName: 'Xià Quán / Zhōng Quán / Shàng Quán',
     chineseName: '下泉 / 中泉 / 上泉',
     hebrewName: 'שלוש מעיינות',
@@ -612,6 +623,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.23-24',
     zone: '88',
+    imageId: '88.23',
     pinyinName: 'Jīn Qián Xià / Jīn Qián Shàng',
     chineseName: '金前下 / 金前上',
     hebrewName: 'זהב קדמי',
@@ -632,6 +644,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.25',
     zone: '88',
+    imageId: '88.25',
     pinyinName: 'Zhōng Jiǔ Lǐ',
     chineseName: '中九里',
     hebrewName: 'תשע מיילים אמצעי',
@@ -699,6 +712,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.26',
     zone: '88',
+    imageId: '88.26',
     pinyinName: 'Shàng Jiǔ Lǐ',
     chineseName: '上九里',
     hebrewName: 'תשע מיילים עליון',
@@ -732,6 +746,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.27',
     zone: '88',
+    imageId: '88.27',
     pinyinName: 'Xià Jiǔ Lǐ',
     chineseName: '下九里',
     hebrewName: 'תשע מיילים תחתון',
@@ -768,6 +783,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.28',
     zone: '88',
+    imageId: '88.28',
     pinyinName: 'Jiě',
     chineseName: '解',
     hebrewName: 'שחרור',
@@ -798,6 +814,7 @@ export const zone88Points: Point[] = [
   {
     id: '88.29-31',
     zone: '88',
+    imageId: '88.29',
     pinyinName: 'Nèi Tōng Guān / Nèi Tōng Shān / Nèi Tōng Tiān',
     chineseName: '內通關 / 內通山 / 內通天',
     hebrewName: 'שלושה חודרי רגל פנימיים',

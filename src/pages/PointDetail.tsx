@@ -42,6 +42,55 @@ function Section({ icon, title, children }: { icon: React.ReactNode; title: stri
   )
 }
 
+/** Render additionalInfo with paragraph breaks and section headers */
+function AdditionalInfoContent({ text }: { text: string }) {
+  let processed = text
+
+  // Insert paragraph breaks before English person names mid-text (after ". ")
+  // Pattern: 2-4 capitalized words (may include hyphens), followed by colon
+  processed = processed.replace(
+    /\.\s+((?:[A-Z][a-z]+(?:-[A-Z][a-z]+)?\s+){1,3}[A-Z][a-z]+(?:-[A-Z][a-z]+)?):\s/g,
+    '.\n\n$1: '
+  )
+
+  // Split into paragraphs
+  const paragraphs = processed.split(/\n\n/).map(p => p.trim()).filter(Boolean)
+
+  // English person name at start: "Hu Wen Zhi:", "Chen Du Ren:", "Lai Jing-Xiong:"
+  const enNameRe = /^((?:[A-Z][a-z]+(?:-[A-Z][a-z]+)?\s+){1,3}[A-Z][a-z]+(?:-[A-Z][a-z]+)?):\s*([\s\S]*)$/
+
+  // Hebrew section header keywords (transliterated names with ', ד"ר, מקרים, etc.)
+  const HEADER_KEYWORDS = /['׳]|ד"ר|מקרים|הדמיה|^שם\sה|מאסטר/
+
+  const sections = paragraphs.map(para => {
+    const enMatch = para.match(enNameRe)
+    if (enMatch) return { name: enMatch[1], content: enMatch[2] }
+
+    // Hebrew section header: short text (≤60 chars) before first colon, with keyword
+    const heMatch = para.match(/^(.{3,60}?):\s*([\s\S]*)$/)
+    if (heMatch && HEADER_KEYWORDS.test(heMatch[1])) {
+      return { name: heMatch[1], content: heMatch[2] }
+    }
+
+    return { content: para }
+  })
+
+  return (
+    <div className="space-y-4">
+      {sections.map((section, i) => (
+        <div key={i}>
+          {section.name && (
+            <h5 className="font-bold text-teal-700 text-sm mb-1">{section.name}</h5>
+          )}
+          <p className="text-gray-700 text-sm leading-relaxed whitespace-pre-line">
+            {section.content}
+          </p>
+        </div>
+      ))}
+    </div>
+  )
+}
+
 /** Source label */
 function sourceLabel(source: string): string {
   switch (source) {
@@ -311,7 +360,7 @@ export default function PointDetail() {
             }
             title="מידע נוסף"
           >
-            <p className="text-gray-700 text-sm leading-relaxed">{point.additionalInfo}</p>
+            <AdditionalInfoContent text={point.additionalInfo} />
           </Section>
         )}
 

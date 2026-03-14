@@ -6,6 +6,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: '88.33',
     zone: '88',
+    imageId: '88.33',
     pinyinName: 'Jin Ying',
     chineseName: '金營',
     hebrewName: 'ניהול מתכת',
@@ -27,6 +28,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: '88.34',
     zone: '88',
+    imageId: '88.34',
     pinyinName: 'Mu Huang',
     chineseName: '木黃穴',
     hebrewName: 'עץ צהוב',
@@ -51,6 +53,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: '88.35',
     zone: '88',
+    imageId: '88.35',
     pinyinName: 'Qi Li',
     chineseName: '七里穴',
     hebrewName: 'שבעה מיילים',
@@ -81,6 +84,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'SanLing88',
     zone: '88',
+    imageId: 'SanLing88',
     pinyinName: 'San Ling',
     chineseName: '三靈',
     hebrewName: 'שלוש יעילויות',
@@ -107,6 +111,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'SanPi88',
     zone: '88',
+    imageId: 'SanPi88',
     pinyinName: 'San Pi',
     chineseName: '三脾穴',
     hebrewName: 'שלוש טחול',
@@ -125,6 +130,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'TongChang',
     zone: '88',
+    imageId: 'TongChang',
     pinyinName: 'Tong Chang',
     chineseName: '通腸',
     hebrewName: 'חודר למעיים',
@@ -148,6 +154,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'TongXin88',
     zone: '88',
+    imageId: 'TongXin88',
     pinyinName: 'Tong Xin',
     chineseName: '通心穴',
     hebrewName: 'חודר ללב',
@@ -174,6 +181,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'TongLing88',
     zone: '88',
+    imageId: 'TongLing88',
     pinyinName: 'Tong Ling',
     chineseName: '通靈穴',
     hebrewName: 'חודר לרוח',
@@ -201,6 +209,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'TuChang',
     zone: '88',
+    imageId: 'TuChang',
     pinyinName: 'Tu Chang',
     chineseName: '土昌穴',
     hebrewName: 'אדמה משגשגת',
@@ -227,6 +236,7 @@ export const zone88ExtraPoints: Point[] = [
   {
     id: 'TuLing',
     zone: '88',
+    imageId: 'TuLing',
     pinyinName: 'Tu Ling',
     chineseName: '土靈穴',
     hebrewName: 'יעילות אדמה',

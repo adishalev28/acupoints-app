@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { principles } from '../data/principles'
 
@@ -16,6 +16,29 @@ export default function PrincipleDetail() {
     window.scrollTo(0, 0)
   }, [id])
 
+  // סווייפ בין עקרונות
+  const touchStartX = useRef(0)
+  const touchStartY = useRef(0)
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+    // רק סווייפ אופקי (לא אנכי)
+    if (Math.abs(deltaX) > 60 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      // RTL: סווייפ ימינה = הבא, סווייפ שמאלה = הקודם
+      if (deltaX > 0 && next) {
+        navigate(`/principle/${next.id}`)
+      } else if (deltaX < 0 && prev) {
+        navigate(`/principle/${prev.id}`)
+      }
+    }
+  }
+
   if (!principle) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-bg">
@@ -25,7 +48,11 @@ export default function PrincipleDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24 overflow-x-hidden">
+    <div
+      className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24 overflow-x-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Header */}
       <div className="bg-teal-primary text-white px-5 pt-12 pb-6">
         <div className="flex items-center justify-between mb-3">

@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import Explore from './pages/Explore'
 import PointDetail from './pages/PointDetail'
 import Favorites from './pages/Favorites'
+import PrincipleDetail from './pages/PrincipleDetail'
 
 export default function App() {
   return (
@@ -14,6 +15,7 @@ export default function App() {
           <Route path="/explore" element={<Explore />} />
           <Route path="/point/:id" element={<PointDetail />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/principle/:id" element={<PrincipleDetail />} />
         </Route>
       </Routes>
     </BrowserRouter>

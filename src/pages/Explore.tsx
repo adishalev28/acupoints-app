@@ -123,6 +123,20 @@ export default function Explore() {
       </div>
 
       <div className="px-4 py-2 space-y-2">
+        {/* Search Results — above zone grid for quick access */}
+        {search.trim() && filtered.length > 0 && (
+          <div className="space-y-1.5 pb-1">
+            {filtered.slice(0, 10).map(point => (
+              <PointCard key={point.id} point={point} />
+            ))}
+            {filtered.length > 10 && (
+              <p className="text-center text-xs text-gray-400 dark:text-dark-muted py-1">
+                ועוד {filtered.length - 10} נקודות...
+              </p>
+            )}
+          </div>
+        )}
+
         {/* Filter Tabs */}
         <FilterTabs active={activeTab} onChange={setActiveTab} />
 

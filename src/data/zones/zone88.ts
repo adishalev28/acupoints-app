@@ -784,7 +784,7 @@ export const zone88Points: Point[] = [
     id: '88.28',
     zone: '88',
     imageId: '88.28',
-    pinyinName: 'Jiě',
+    pinyinName: 'Jiě (Jin Yin)',
     chineseName: '解',
     hebrewName: 'שחרור',
     englishName: 'Release Point',

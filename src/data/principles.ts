@@ -479,6 +479,7 @@ export const principles: Principle[] = [
           'אצבע רביעית (קמיצה) — כבד',
           'אצבע חמישית (זרת) — כליות',
         ],
+        imageUrl: '/images/palm-diagnosis.jpg',
       },
       {
         heading: 'אצבע ראשונה — אגודל (טחול)',

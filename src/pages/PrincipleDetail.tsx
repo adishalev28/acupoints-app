@@ -87,11 +87,11 @@ export default function PrincipleDetail() {
               className="bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm p-4"
             >
               {section.heading && (
-                <h3 className="font-bold text-gray-800 dark:text-dark-text text-sm mb-2 font-heebo" dir="ltr">
+                <h3 className="font-bold text-gray-800 dark:text-dark-text text-sm mb-2 font-heebo">
                   {section.heading}
                 </h3>
               )}
-              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line" dir="ltr">
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
                 {section.body}
               </p>
               {section.listItems && section.listItems.length > 0 && (
@@ -102,7 +102,7 @@ export default function PrincipleDetail() {
                       className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                     >
                       <span className="text-teal-primary mt-0.5">&#8226;</span>
-                      <span dir="ltr" className="text-left">{item}</span>
+                      <span className="text-right">{item}</span>
                     </li>
                   ))}
                 </ul>

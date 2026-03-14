@@ -25,7 +25,7 @@ export default function PrincipleDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24">
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24 overflow-x-hidden">
       {/* Header */}
       <div className="bg-teal-primary text-white px-5 pt-12 pb-6">
         <div className="flex items-center justify-between mb-3">
@@ -46,7 +46,7 @@ export default function PrincipleDetail() {
         <div className="text-center">
           <div className="text-xl font-bold font-heebo leading-tight break-words">{principle.title}</div>
           {principle.titleEn && (
-            <div className="text-sm text-white/70 mt-1">{principle.titleEn}</div>
+            <div className="text-sm text-white/70 mt-1" dir="ltr">{principle.titleEn}</div>
           )}
         </div>
       </div>
@@ -60,11 +60,11 @@ export default function PrincipleDetail() {
               className="bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border shadow-sm p-4"
             >
               {section.heading && (
-                <h3 className="font-bold text-gray-800 dark:text-dark-text text-sm mb-2 font-heebo">
+                <h3 className="font-bold text-gray-800 dark:text-dark-text text-sm mb-2 font-heebo" dir="ltr">
                   {section.heading}
                 </h3>
               )}
-              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line">
+              <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed whitespace-pre-line" dir="ltr">
                 {section.body}
               </p>
               {section.listItems && section.listItems.length > 0 && (
@@ -75,7 +75,7 @@ export default function PrincipleDetail() {
                       className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300"
                     >
                       <span className="text-teal-primary mt-0.5">&#8226;</span>
-                      <span>{item}</span>
+                      <span dir="ltr" className="text-left">{item}</span>
                     </li>
                   ))}
                 </ul>

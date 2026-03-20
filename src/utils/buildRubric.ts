@@ -21,19 +21,9 @@ interface CategoryDef {
   icon: string
 }
 
+// NOTE: Order matters! More specific categories are checked FIRST.
+// "כאב ושלד-שריר" is LAST because "כאב" is very generic and would catch everything.
 const categoryDefs: CategoryDef[] = [
-  {
-    name: 'כאב ושלד-שריר',
-    keywords: [
-      'כאב', 'כאבי', 'לומבגו', 'צרוויקלגיה', 'עמוד שדרה', 'ברכי', 'ברכיים',
-      'כתף', 'מפרק', 'גיד', 'דרבן', 'פשיטיס', 'שוק', 'מותן', 'עקב',
-      'פריצת דיסק', 'דרבנות', 'נוקשות', 'שגרון', 'ארתריטיס', 'פיברומיאלגיה',
-      'קרפלית', 'CTS', 'אכילס', 'קוקסידיניה', 'וויפלש', 'נקע', 'מרפק',
-      'שכמה', 'סיאטיקה', 'ירך', 'קרסול', 'אצבע', 'שורש כף',
-    ],
-    color: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', darkBg: 'dark:bg-blue-900/30', darkText: 'dark:text-blue-300' },
-    icon: '🦴',
-  },
   {
     name: 'נוירולוגי ומוח',
     keywords: [
@@ -117,6 +107,19 @@ const categoryDefs: CategoryDef[] = [
     ],
     color: { bg: 'bg-orange-50', text: 'text-orange-700', border: 'border-orange-200', darkBg: 'dark:bg-orange-900/30', darkText: 'dark:text-orange-300' },
     icon: '🩹',
+  },
+  // LAST — "כאב" is generic, so check all specific categories first
+  {
+    name: 'כאב ושלד-שריר',
+    keywords: [
+      'כאב', 'כאבי', 'לומבגו', 'צרוויקלגיה', 'עמוד שדרה', 'ברכי', 'ברכיים',
+      'כתף', 'מפרק', 'גיד', 'דרבן', 'פשיטיס', 'שוק', 'מותן', 'עקב',
+      'פריצת דיסק', 'דרבנות', 'נוקשות', 'שגרון', 'ארתריטיס', 'פיברומיאלגיה',
+      'קרפלית', 'CTS', 'אכילס', 'קוקסידיניה', 'וויפלש', 'נקע', 'מרפק',
+      'שכמה', 'סיאטיקה', 'ירך', 'קרסול', 'אצבע', 'שורש כף',
+    ],
+    color: { bg: 'bg-blue-50', text: 'text-blue-700', border: 'border-blue-200', darkBg: 'dark:bg-blue-900/30', darkText: 'dark:text-blue-300' },
+    icon: '🦴',
   },
 ]
 

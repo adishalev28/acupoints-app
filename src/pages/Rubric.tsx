@@ -1,12 +1,46 @@
-import { useState, useMemo } from 'react'
+import { useMemo, useCallback } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { rubricData, getPointsForIndication, getTotalIndications } from '../utils/buildRubric'
 import type { RubricCategory, RubricEntry } from '../utils/buildRubric'
 import PointCard from '../components/PointCard'
 
 export default function Rubric() {
-  const [selectedCategory, setSelectedCategory] = useState<RubricCategory | null>(null)
-  const [selectedIndication, setSelectedIndication] = useState<string | null>(null)
-  const [search, setSearch] = useState('')
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const categoryName = searchParams.get('cat')
+  const selectedIndication = searchParams.get('ind')
+  const search = searchParams.get('q') ?? ''
+
+  const selectedCategory = useMemo(() => {
+    if (!categoryName) return null
+    return rubricData.find(c => c.name === categoryName) ?? null
+  }, [categoryName])
+
+  const updateParams = useCallback((updates: Record<string, string | null>) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev)
+      for (const [key, value] of Object.entries(updates)) {
+        if (value === null || value === '') {
+          next.delete(key)
+        } else {
+          next.set(key, value)
+        }
+      }
+      return next
+    })
+  }, [setSearchParams])
+
+  const setCategory = useCallback((cat: RubricCategory | null) => {
+    updateParams({ cat: cat?.name ?? null, ind: null, q: null })
+  }, [updateParams])
+
+  const setIndication = useCallback((ind: string | null) => {
+    updateParams({ ind })
+  }, [updateParams])
+
+  const setSearch = useCallback((q: string) => {
+    updateParams({ q: q || null })
+  }, [updateParams])
 
   // Filter indications across all categories when searching
   const searchResults = useMemo(() => {
@@ -36,7 +70,7 @@ export default function Rubric() {
         <div className="bg-teal-primary text-white px-4 pt-4 pb-3">
           <div className="flex items-center gap-3 mb-2">
             <button
-              onClick={() => setSelectedIndication(null)}
+              onClick={() => setIndication(null)}
               className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
               aria-label="חזרה"
             >
@@ -44,7 +78,7 @@ export default function Rubric() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <div className="flex-1">
+            <div className="flex-1 min-w-0">
               <h1 className="text-lg font-bold">רובריקה</h1>
               <p className="text-sm text-white/70 truncate">{selectedIndication}</p>
             </div>
@@ -53,8 +87,8 @@ export default function Rubric() {
 
         <div className="px-4 py-3">
           <div className="flex items-center justify-between mb-3">
-            <h2 className="text-base font-bold text-gray-800 dark:text-dark-text">{selectedIndication}</h2>
-            <span className="text-xs text-gray-500 dark:text-dark-muted bg-gray-100 dark:bg-dark-card px-2 py-1 rounded-full">
+            <h2 className="text-base font-bold text-gray-800 dark:text-dark-text flex-1 min-w-0">{selectedIndication}</h2>
+            <span className="text-xs text-gray-500 dark:text-dark-muted bg-gray-100 dark:bg-dark-card px-2 py-1 rounded-full flex-shrink-0 mr-2">
               {indicationPoints.length} נקודות
             </span>
           </div>
@@ -75,7 +109,7 @@ export default function Rubric() {
         <div className="bg-teal-primary text-white px-4 pt-4 pb-3">
           <div className="flex items-center gap-3 mb-2">
             <button
-              onClick={() => setSelectedCategory(null)}
+              onClick={() => setCategory(null)}
               className="p-1.5 rounded-lg hover:bg-white/10 transition-colors"
               aria-label="חזרה"
             >
@@ -111,11 +145,11 @@ export default function Rubric() {
             {selectedCategory.entries.map(entry => (
               <button
                 key={entry.indication}
-                onClick={() => setSelectedIndication(entry.indication)}
+                onClick={() => setIndication(entry.indication)}
                 className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-card transition-colors text-right"
               >
                 <span className="text-sm text-gray-800 dark:text-dark-text flex-1">{entry.indication}</span>
-                <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${selectedCategory.color.bg} ${selectedCategory.color.text} ${selectedCategory.color.darkBg} ${selectedCategory.color.darkText}`}>
+                <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 mr-2 ${selectedCategory.color.bg} ${selectedCategory.color.text} ${selectedCategory.color.darkBg} ${selectedCategory.color.darkText}`}>
                   {entry.pointIds.length}
                 </span>
               </button>
@@ -177,13 +211,13 @@ export default function Rubric() {
                     {entries.map(entry => (
                       <button
                         key={entry.indication}
-                        onClick={() => setSelectedIndication(entry.indication)}
+                        onClick={() => setIndication(entry.indication)}
                         className="w-full flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-gray-50 dark:hover:bg-dark-card transition-colors text-right"
                       >
                         <span className="text-sm text-gray-800 dark:text-dark-text flex-1">
                           {highlightText(entry.indication, search)}
                         </span>
-                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${category.color.bg} ${category.color.text} ${category.color.darkBg} ${category.color.darkText}`}>
+                        <span className={`text-xs font-medium px-2 py-0.5 rounded-full flex-shrink-0 mr-2 ${category.color.bg} ${category.color.text} ${category.color.darkBg} ${category.color.darkText}`}>
                           {entry.pointIds.length}
                         </span>
                       </button>
@@ -210,7 +244,7 @@ export default function Rubric() {
               {rubricData.map(cat => (
                 <button
                   key={cat.name}
-                  onClick={() => setSelectedCategory(cat)}
+                  onClick={() => setCategory(cat)}
                   className={`p-4 rounded-xl border ${cat.color.border} ${cat.color.bg} ${cat.color.darkBg} hover:shadow-md transition-all text-right`}
                 >
                   <div className="text-2xl mb-2">{cat.icon}</div>

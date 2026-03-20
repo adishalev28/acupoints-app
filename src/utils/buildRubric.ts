@@ -129,32 +129,20 @@ function categorizeIndication(indication: string): string {
   return 'כללי'
 }
 
-/**
- * Split compound indications like "כאבי גב, דלקת ריאות, הצטננות"
- * into individual indications for better rubric granularity.
- */
-function splitIndication(indication: string): string[] {
-  // Split on comma, but not inside parentheses
-  const parts = indication.split(/,(?![^(]*\))/).map(s => s.trim()).filter(Boolean)
-  return parts.length > 0 ? parts : [indication]
-}
-
 function buildRubricData(): RubricCategory[] {
   // Map: indication → Set<pointId>
+  // Keep indications as-is from the data (no splitting on commas)
   const indicationToPoints = new Map<string, Set<string>>()
 
   for (const point of points) {
     const indications = flattenIndications(point.indications)
     for (const rawInd of indications) {
-      const parts = splitIndication(rawInd)
-      for (const ind of parts) {
-        const trimmed = ind.trim()
-        if (!trimmed) continue
-        if (!indicationToPoints.has(trimmed)) {
-          indicationToPoints.set(trimmed, new Set())
-        }
-        indicationToPoints.get(trimmed)!.add(point.id)
+      const trimmed = rawInd.trim()
+      if (!trimmed) continue
+      if (!indicationToPoints.has(trimmed)) {
+        indicationToPoints.set(trimmed, new Set())
       }
+      indicationToPoints.get(trimmed)!.add(point.id)
     }
   }
 

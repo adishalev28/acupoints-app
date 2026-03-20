@@ -1,21 +1,27 @@
-import { useMemo, useCallback } from 'react'
+import { useMemo, useCallback, useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { points } from '../data/points'
 import { zones } from '../data/zones'
-import { flattenIndications } from '../types'
 import SearchBar from '../components/SearchBar'
 import FilterTabs, { type FilterTab } from '../components/FilterTabs'
 import ZoneFilter from '../components/ZoneFilter'
 import PointCard from '../components/PointCard'
 import { useSearchHistory } from '../hooks/useSearchHistory'
+import { scorePoint } from '../utils/searchScoring'
 
 export default function Explore() {
   const [searchParams, setSearchParams] = useSearchParams()
   const { history, addSearch, clearHistory } = useSearchHistory()
+  const [visibleCount, setVisibleCount] = useState(10)
 
   const search = searchParams.get('q') ?? ''
   const activeTab = (searchParams.get('tab') as FilterTab) || 'all'
   const selectedZone = searchParams.get('zone')
+
+  // Reset visible count when search/filter changes
+  useEffect(() => {
+    setVisibleCount(10)
+  }, [search, activeTab, selectedZone])
 
   const updateParams = useCallback((updates: Record<string, string | null>) => {
     setSearchParams(prev => {
@@ -49,28 +55,14 @@ export default function Explore() {
       result = result.filter(p => p.zone === selectedZone)
     }
 
-    // Filter by search
+    // Filter & rank by search
     if (search.trim()) {
-      const q = search.trim().toLowerCase()
-      result = result.filter(p => {
-        if (activeTab === 'indications') {
-          return flattenIndications(p.indications).some(ind => ind.toLowerCase().includes(q))
-        }
-        if (activeTab === 'reactionAreas') {
-          return p.reactionAreas.some(ra => ra.toLowerCase().includes(q))
-        }
-        // "all" tab — search everything
-        return (
-          p.id.includes(q) ||
-          p.zone.includes(q) ||
-          p.pinyinName.toLowerCase().includes(q) ||
-          p.chineseName.includes(q) ||
-          p.hebrewName.includes(q) ||
-          p.englishName.toLowerCase().includes(q) ||
-          flattenIndications(p.indications).some(ind => ind.toLowerCase().includes(q)) ||
-          p.reactionAreas.some(ra => ra.toLowerCase().includes(q))
-        )
-      })
+      const scored = result
+        .map(point => ({ point, score: scorePoint(point, search, activeTab) }))
+        .filter(s => s.score > 0)
+        .sort((a, b) => b.score - a.score)
+
+      return scored.map(s => s.point)
     }
 
     return result
@@ -126,13 +118,16 @@ export default function Explore() {
         {/* Search Results — above zone grid for quick access */}
         {search.trim() && filtered.length > 0 && (
           <div className="space-y-1.5 pb-1">
-            {filtered.slice(0, 10).map(point => (
+            {filtered.slice(0, visibleCount).map(point => (
               <PointCard key={point.id} point={point} />
             ))}
-            {filtered.length > 10 && (
-              <p className="text-center text-xs text-gray-400 dark:text-dark-muted py-1">
-                ועוד {filtered.length - 10} נקודות...
-              </p>
+            {filtered.length > visibleCount && (
+              <button
+                onClick={() => setVisibleCount(prev => prev + 10)}
+                className="w-full py-2.5 rounded-lg bg-teal-primary/10 dark:bg-teal-primary/20 text-teal-primary text-sm font-medium hover:bg-teal-primary/20 dark:hover:bg-teal-primary/30 transition-colors"
+              >
+                הצג עוד ({filtered.length - visibleCount} נקודות נוספות)
+              </button>
             )}
           </div>
         )}

@@ -33,7 +33,7 @@ export default function Layout() {
             to="/"
             aria-label="דף הבית"
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-4 py-2 text-xs font-medium transition-colors ${
+              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-2 py-2 text-xs font-medium transition-colors ${
                 isActive ? 'text-teal-primary' : 'text-gray-400 dark:text-dark-muted'
               }`
             }
@@ -48,7 +48,7 @@ export default function Layout() {
             to="/explore"
             aria-label="חקור נקודות"
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-4 py-2 text-xs font-medium transition-colors ${
+              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-2 py-2 text-xs font-medium transition-colors ${
                 isActive ? 'text-teal-primary' : 'text-gray-400 dark:text-dark-muted'
               }`
             }
@@ -63,7 +63,7 @@ export default function Layout() {
             to="/favorites"
             aria-label="נקודות מועדפות"
             className={({ isActive }) =>
-              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-4 py-2 text-xs font-medium transition-colors ${
+              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-2 py-2 text-xs font-medium transition-colors ${
                 isActive ? 'text-teal-primary' : 'text-gray-400 dark:text-dark-muted'
               }`
             }
@@ -74,11 +74,26 @@ export default function Layout() {
             <span>מועדפים</span>
           </NavLink>
 
+          <NavLink
+            to="/rubric"
+            aria-label="רובריקה"
+            className={({ isActive }) =>
+              `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-2 py-2 text-xs font-medium transition-colors ${
+                isActive ? 'text-teal-primary' : 'text-gray-400 dark:text-dark-muted'
+              }`
+            }
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+            <span>רובריקה</span>
+          </NavLink>
+
           {/* Dark mode toggle */}
           <button
             onClick={toggle}
             aria-label={dark ? 'מצב בהיר' : 'מצב כהה'}
-            className="flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-4 py-2 text-xs font-medium text-gray-400 dark:text-dark-muted transition-colors"
+            className="flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-2 py-2 text-xs font-medium text-gray-400 dark:text-dark-muted transition-colors"
           >
             {dark ? (
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

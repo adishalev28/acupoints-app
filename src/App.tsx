@@ -7,6 +7,7 @@ import Favorites from './pages/Favorites'
 import Rubric from './pages/Rubric'
 import PrincipleDetail from './pages/PrincipleDetail'
 import OrganFinder from './pages/OrganFinder'
+import MirrorMap from './pages/MirrorMap'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/rubric" element={<Rubric />} />
           <Route path="/organs" element={<OrganFinder />} />
+          <Route path="/mirror" element={<MirrorMap />} />
           <Route path="/principle/:id" element={<PrincipleDetail />} />
         </Route>
       </Routes>

@@ -44,7 +44,7 @@ export default function Layout() {
 
           <NavLink
             to="/explore"
-            aria-label="חקור נקודות"
+            aria-label="חפש נקודות"
             className={({ isActive }) =>
               `flex flex-col items-center gap-1 min-w-[48px] min-h-[48px] justify-center px-2 py-2 text-xs font-medium transition-colors ${
                 isActive ? 'text-teal-primary' : 'text-gray-400 dark:text-dark-muted'
@@ -54,7 +54,7 @@ export default function Layout() {
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <span>חקור</span>
+            <span>חפש</span>
           </NavLink>
 
           <NavLink

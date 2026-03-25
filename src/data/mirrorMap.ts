@@ -80,6 +80,7 @@ const UPPER_LOWER_STANDARD: [string, string][] = [
   ['elbow',    'knee'],
   ['forearm',  'lowerLeg'],
   ['hand',     'foot'],
+  ['fingers',  'foot'],
 ]
 
 const UPPER_LOWER_INVERSE: [string, string][] = [
@@ -88,6 +89,7 @@ const UPPER_LOWER_INVERSE: [string, string][] = [
   ['elbow',    'knee'],
   ['arm',      'lowerLeg'],
   ['shoulder', 'foot'],
+  ['fingers',  'hip'],
 ]
 
 // ───────────────────────────────────────
@@ -102,6 +104,7 @@ const TORSO_STANDARD: [string, string][] = [
   ['elbow',    'navel'],
   ['forearm',  'lowerAbdomen'],
   ['hand',     'genitalia'],
+  ['fingers',  'genitalia'],
   // Lower limb equivalents
   ['hip',      'head'],
   ['thigh',    'chest'],
@@ -116,6 +119,7 @@ const TORSO_INVERSE: [string, string][] = [
   ['elbow',    'navel'],
   ['arm',      'lowerAbdomen'],
   ['shoulder', 'genitalia'],
+  ['fingers',  'head'],
   // Lower limb equivalents
   ['foot',     'head'],
   ['lowerLeg', 'chest'],

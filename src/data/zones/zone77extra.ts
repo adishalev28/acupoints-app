@@ -30,6 +30,7 @@ export const zone77ExtraPoints: Point[] = [
     zone: '77',
     imageId: 'ShuangLong',
     pinyinName: 'Shuang Long',
+    absoluteNeedle: '72' as const,
     chineseName: '雙龍穴',
     hebrewName: 'דרקון כפול',
     englishName: 'Double Dragon',

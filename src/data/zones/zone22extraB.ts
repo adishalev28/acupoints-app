@@ -132,6 +132,7 @@ export const zone22ExtraBPoints: Point[] = [
     id: 'ShangXiaGao',
     zone: '22',
     pinyinName: 'Shang Xia Gao',
+    absoluteNeedle: '72' as const,
     chineseName: '上高穴 / 下高穴',
     hebrewName: 'גובה עליון ותחתון',
     englishName: 'Upper and Lower Height',

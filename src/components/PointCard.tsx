@@ -29,8 +29,14 @@ export default function PointCard({ point }: PointCardProps) {
       </div>
 
       <div className="flex-1 min-w-0">
-        <div className="font-bold text-gray-900 dark:text-dark-text text-sm">
-          {/^\d/.test(point.id) ? `${point.id} ${point.pinyinName}` : point.pinyinName}
+        <div className="font-bold text-gray-900 dark:text-dark-text text-sm flex items-center gap-1.5">
+          <span>{/^\d/.test(point.id) ? `${point.id} ${point.pinyinName}` : point.pinyinName}</span>
+          {point.absoluteNeedle === '72' && (
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300 border border-amber-300 dark:border-amber-700" title="72 המחטים המוחלטות">🥇</span>
+          )}
+          {point.absoluteNeedle === '32' && (
+            <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-300 border border-gray-300 dark:border-gray-600" title="32 שנותנות פתרון">🥈</span>
+          )}
         </div>
         <div className="text-xs text-gray-500 dark:text-dark-muted">
           [{point.chineseName}]

@@ -29,6 +29,7 @@ export const zone55ExtraPoints: Point[] = [
     zone: '55',
     imageId: 'san sheng',
     pinyinName: 'San Sheng',
+    absoluteNeedle: '72' as const,
     chineseName: '三聖穴',
     hebrewName: 'שלושת החכמים',
     englishName: 'Three Sages',

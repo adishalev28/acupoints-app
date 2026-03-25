@@ -51,4 +51,5 @@ export interface Point {
   imageId?: string
   sources: SourceInfo[]
   daoMaGroup?: string
+  absoluteNeedle?: '72' | '32'
 }

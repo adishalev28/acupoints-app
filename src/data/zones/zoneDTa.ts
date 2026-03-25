@@ -7,6 +7,7 @@ export const zoneDTaPoints: Point[] = [
     zone: 'DT',
     imageId: 'DT.01',
     pinyinName: 'DT.01-02 Fēn Zhī Shàng / Xià',
+    absoluteNeedle: '32' as const,
     chineseName: '分枝上穴 / 分枝下穴',
     hebrewName: 'מפריד ענפים עליון / תחתון',
     englishName: 'Branch Separator Upper / Lower',

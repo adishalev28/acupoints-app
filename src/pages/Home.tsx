@@ -12,6 +12,9 @@ export default function Home() {
     return counts
   }, [])
 
+  const absolute72 = useMemo(() => points.filter(p => p.absoluteNeedle === '72').length, [])
+  const solution32 = useMemo(() => points.filter(p => p.absoluteNeedle === '32').length, [])
+
   return (
     <div className="min-h-screen">
       {/* Header */}
@@ -32,6 +35,28 @@ export default function Home() {
               <div className="text-3xl font-bold text-teal-primary">{zones.length}</div>
               <div className="text-sm text-gray-500 dark:text-dark-muted mt-1">אזורים</div>
             </div>
+          </div>
+          <div className="grid grid-cols-2 gap-3 mt-4 pt-4 border-t border-gray-100 dark:border-dark-border">
+            <Link
+              to="/explore?filter=72"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 hover:bg-amber-100 dark:hover:bg-amber-900/30 transition-colors"
+            >
+              <span className="text-lg">🥇</span>
+              <div className="text-right">
+                <div className="text-xl font-bold text-amber-700 dark:text-amber-300">{absolute72}</div>
+                <div className="text-[11px] text-amber-600 dark:text-amber-400">מחטים מוחלטות</div>
+              </div>
+            </Link>
+            <Link
+              to="/explore?filter=32"
+              className="flex items-center justify-center gap-2 py-3 rounded-xl bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+            >
+              <span className="text-lg">🥈</span>
+              <div className="text-right">
+                <div className="text-xl font-bold text-gray-600 dark:text-gray-300">{solution32}</div>
+                <div className="text-[11px] text-gray-500 dark:text-gray-400">נותנות פתרון</div>
+              </div>
+            </Link>
           </div>
         </div>
       </div>

@@ -17,6 +17,7 @@ export default function Explore() {
   const search = searchParams.get('q') ?? ''
   const activeTab = (searchParams.get('tab') as FilterTab) || 'all'
   const selectedZone = searchParams.get('zone')
+  const absoluteFilter = searchParams.get('filter') as '72' | '32' | null
 
   // Reset visible count when search/filter changes
   useEffect(() => {
@@ -49,6 +50,11 @@ export default function Explore() {
 
   const filtered = useMemo(() => {
     let result = points
+
+    // Filter by absolute needle type
+    if (absoluteFilter === '72' || absoluteFilter === '32') {
+      result = result.filter(p => p.absoluteNeedle === absoluteFilter)
+    }
 
     // Filter by zone
     if (selectedZone) {

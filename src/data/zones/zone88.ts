@@ -13,7 +13,7 @@ export const zone88Points: Point[] = [
     englishName: 'Three Penetrating Points',
     location: '88.01 Tōng Guān: על קו האמצע הקדמי של עצם הירך, במרכז קו הפיקה בקירוב, 2 צון פרוקסימלית ל-Tong Ling (נקודת אקסטרה).\n88.02 Tōng Shān: 2 צון פרוקסימלית ל-88.01 (通關).\n88.03 Tōng Tiān: 2 צון פרוקסימלית ל-88.02 (通山).',
     needling: 'דיקור אנכי. 88.01 — עומק 0.3-0.5 צון, 88.02 — עומק 0.5-0.8 צון, 88.03 — עומק 0.5-1.0 צון.',
-    reactionAreas: ['לב (ראשי)'],
+    reactionAreas: ['ראשי:לב'],
     indications: [
       'מחלות לב',
       'אי-ספיקת לב',
@@ -72,7 +72,7 @@ export const zone88Points: Point[] = [
     englishName: 'Three Sisters',
     location: '88.04 Jiě Mèi Yī: 8 צון מעל הפינה המדיאלית העליונה של הפיקה. 1 צון מדיאלית ו-1 צון מעל 88.02 (通山). על אותו קו כמו 88.09-11.\n88.05 Jiě Mèi Èr: 2.5 צון מעל 88.04 (姐妹一).\n88.06 Jiě Mèi Sān: 2.5 צון מעל 88.05 (姐妹二).',
     needling: 'דיקור אנכי, עומק 1.5-2.5 צון.',
-    reactionAreas: ['כליה (ענף)', 'שישה פו'],
+    reactionAreas: ['ענף:כליה', 'שש-פו'],
     indications: [
       'גידולי רחם (שיפור בתסמינים)',
       'דלקת רחם',
@@ -123,7 +123,7 @@ export const zone88Points: Point[] = [
     englishName: 'Common Cold',
     location: '88.07 Gǎn Mào Yī: 1 צון מדיאלית ל-88.04 (姐妹一).\n88.08 Gǎn Mào Èr: 1 צון מדיאלית ל-88.05 (姐妹二).',
     needling: 'דיקור אנכי, עומק 0.8-1.5 צון. נדקרות בדרך כלל בשתי הרגליים בו-זמנית.',
-    reactionAreas: ['שישה פו', 'ריאה (ענף)'],
+    reactionAreas: ['שש-פו', 'ענף:ריאה'],
     indications: [
       'הצטננות חמורה',
       'צמרמורות',
@@ -146,7 +146,7 @@ export const zone88Points: Point[] = [
     englishName: 'Three Penetrating Kidney',
     location: '88.09 Tōng Shèn: בשקע בפינה העליונה-מדיאלית של הפיקה.\n88.10 Tōng Wèi: 2 צון פרוקסימלית ל-88.09.\n88.11 Tōng Bèi: 2 צון פרוקסימלית ל-88.10 (4 צון מ-88.09).',
     needling: 'דיקור אנכי, עומק 0.3-0.8 צון.',
-    reactionAreas: ['כליה (ענף)'],
+    reactionAreas: ['ענף:כליה'],
     indications: [
       'ישיאס',
       'שפיכה מוקדמת',
@@ -197,7 +197,7 @@ export const zone88Points: Point[] = [
     englishName: 'Upper Three Yellows',
     location: '88.12 Míng Huáng: בצד המדיאלי של מרכז הירך, 9 צון מעל קפל הברך, בשקע.\n88.13 Tiān Huáng: 3 צון פרוקסימלית ל-88.12.\n88.14 Qí Huáng: 3 צון דיסטלית ל-88.12.',
     needling: 'דיקור אנכי, עומק 1-3 צון. למחלות כבד — דיקור בצד ימין. 88.12 ו-88.13 נדקרים בשלושה עומקים: עמוק — כליות, בינוני — כבד, שטחי — לב.',
-    reactionAreas: ['כבד (ראשי)', 'לב (ראשי)'],
+    reactionAreas: ['ראשי:כבד', 'ראשי:לב'],
     indications: [
       'שחמת כבד',
       'הפטיטיס',
@@ -294,7 +294,7 @@ export const zone88Points: Point[] = [
     englishName: 'Fire Branch',
     location: '1.5 צון דיסטלית ל-88.12, באמצע הדרך בין 88.12 ל-88.14.',
     needling: 'דיקור אנכי, עומק 1.5-2 צון.',
-    reactionAreas: ['עצב-כבד', 'כיס מרה', 'לב (תת-ענף)'],
+    reactionAreas: ['עצב:כבד', 'כיס מרה', 'תת-ענף:לב'],
     indications: [
       'צהבת',
       'סחרחורת מצהבת',
@@ -326,7 +326,7 @@ export const zone88Points: Point[] = [
     englishName: 'Fire Complete',
     location: '1.5 צון מתחת ל-其黃 (88.14).',
     needling: 'דיקור אנכי, עומק 1.5-2 צון.',
-    reactionAreas: ['עצב-כבד', 'כיס מרה', 'לב (תת-ענף)'],
+    reactionAreas: ['עצב:כבד', 'כיס מרה', 'תת-ענף:לב'],
     indications: [
       'צהבת',
       'סחרחורת מצהבת',
@@ -360,7 +360,7 @@ export const zone88Points: Point[] = [
     englishName: 'Rapid Horse Center',
     location: 'על המשטח הקדמי של הירך, על הקו המחבר בין ה-ASIS לפינה הלטרלית העליונה של הפיקה, בנקודת האמצע.',
     needling: 'דיקור אנכי, עומק 0.8-2.5 צון.',
-    reactionAreas: ['ריאה (ראשי)', 'כבד (תת-ענף)'],
+    reactionAreas: ['ראשי:ריאה', 'תת-ענף:כבד'],
     indications: [
       'כאב צלעות',
       'כאב שד',
@@ -438,7 +438,7 @@ export const zone88Points: Point[] = [
     englishName: 'Rapid Horse Upper',
     location: '2 צון פרוקסימלית ל-88.17 סי מא ג\'ונג.',
     needling: 'דיקור אנכי, עומק 0.8-2.5 צון.',
-    reactionAreas: ['ריאה (ראשי)', 'כבד (תת-ענף)'],
+    reactionAreas: ['ראשי:ריאה', 'תת-ענף:כבד'],
     indications: [
       'כאב צלעות',
       'כאב שד',
@@ -516,7 +516,7 @@ export const zone88Points: Point[] = [
     englishName: 'Rapid Horse Lower',
     location: '2 צון דיסטלית ל-88.17 סי מא ג\'ונג (השתמש באורך הפיקה = 2 צון, הכפל ב-3 מפינת הפיקה).',
     needling: 'דיקור אנכי, עומק 0.8-2.5 צון.',
-    reactionAreas: ['ריאה (ראשי)', 'כבד (תת-ענף)'],
+    reactionAreas: ['ראשי:ריאה', 'תת-ענף:כבד'],
     indications: [
       'כאב צלעות',
       'כאב שד',
@@ -594,7 +594,7 @@ export const zone88Points: Point[] = [
     englishName: 'Three Fountains',
     location: '88.20 Xià Quán: 2.5 צון פרוקסימלית לקפל הברך, על קו האמצע של הצד הלטרלי של הירך, מעל גיד הביצפס פמוריס.\n88.21 Zhōng Quán: 2 צון פרוקסימלית ל-88.20 שיא צ\'ואן.\n88.22 Shàng Quán: 2 צון פרוקסימלית ל-88.21 ג\'ונג צ\'ואן.',
     needling: 'דיקור אנכי, עומק 0.5-1 צון.',
-    reactionAreas: ['עצב מוטורי-ריאה', 'פנים'],
+    reactionAreas: ['עצב:ריאה', 'פנים'],
     indications: [
       'שיתוק פנים (בל)',
       'סטיית פה ועין',
@@ -630,7 +630,7 @@ export const zone88Points: Point[] = [
     englishName: 'Gold Front',
     location: '88.23 Jīn Qián Xià: 1 צון מעל הפינה הלטרלית העליונה של הפיקה.\n88.24 Jīn Qián Shàng: 1.5 צון מעל 88.23 ג\'ין צ\'יאן שיא.',
     needling: 'דיקור אנכי, עומק 0.3-0.5 צון. שתי הנקודות נדקרות יחד בשתי הרגליים בו-זמנית.',
-    reactionAreas: ['עצב מוטורי-ריאה', 'כבד (צומת)'],
+    reactionAreas: ['עצב:ריאה', 'הצטלבות:כבד'],
     indications: [
       'בליטת עצם החזה (חזה יונה)',
       'חולשת ריאות וכבד',
@@ -651,7 +651,7 @@ export const zone88Points: Point[] = [
     englishName: 'Center Nine Miles',
     location: 'באמצע הצד הלטרלי של הירך, 9 צון מעל הגבול העליון של הפיקה.',
     needling: 'דיקור אנכי, עומק 0.8-1.5 צון. הוראות דיקור של יואן גואו בן: דיקור בצד ימין — לטיפול בהפרעות בזרוע שמאל (כיוון קצה המחט לחלק העליון השמאלי). דיקור אנכי לעבר עצם הירך — לטיפול בחוליות עמוד השדרה. דיקור בצד ימין — לטיפול בהפרעות ברגל שמאל (כיוון קצה המחט לחלק התחתון השמאלי).',
-    reactionAreas: ['עצב-ריאה (ענף)', 'עצב גמיש-גפיים'],
+    reactionAreas: ['ענף:ריאה', 'עצב גמיש-גפיים'],
     indications: [
       'כאב גב (דורסלגיה)',
       'לומבאגו (כאב גב תחתון)',
@@ -719,7 +719,7 @@ export const zone88Points: Point[] = [
     englishName: 'Upper Nine Miles',
     location: '1.5 צון קדמית (אנטריורית) ל-88.25, 9 צון פרוקסימלית מפינת הפיקה.',
     needling: 'דיקור אנכי, עומק 0.8-1.5 צון.',
-    reactionAreas: ['עצב-לב', 'עצב-כליה'],
+    reactionAreas: ['עצב:לב', 'עצב:כליה'],
     indications: [
       'כאב זרוע (לטרלי)',
       'בטן נפוחה עקב חוסר כליה',
@@ -790,7 +790,7 @@ export const zone88Points: Point[] = [
     englishName: 'Release Point',
     location: '1 צון מעל הגבול הלטרלי של הפיקה, 0.3 צון מדיאלית. 0.3 צון מדיאלית ל-88.23.',
     needling: 'דיקור אנכי, עומק 0.3-0.5 צון. לכאב לאחר זריקה/דיקור — להחדיר את המחט, לסובב לאט עד שהכאב פוחת, ואז לשלוף. ספרו של מאסטר טאנג אומר מקסימום 8 דקות, אך יונג ויי צ\'יה אומר שניתן להשאיר יותר.',
-    reactionAreas: ['עצב רגיש של לב וכלי דם'],
+    reactionAreas: ['עצב:לב'],
     indications: [
       'הפרעה בזרימת צ\'י/דם לאחר דיקור (מחלת מחט)',
       'דימום פנימי (המטומה)',
@@ -821,7 +821,7 @@ export const zone88Points: Point[] = [
     englishName: 'Three Inner Penetrating Points',
     location: '88.29 Nèi Tōng Guān: 0.5 צון מדיאלית ל-88.01.\n88.30 Nèi Tōng Shān: 0.5 צון מדיאלית ל-88.02.\n88.31 Nèi Tōng Tiān: 0.5 צון מדיאלית ל-88.03.',
     needling: 'דיקור אנכי, עומק 0.3-0.5 צון. אזהרה: אין לדקור את כל שש הנקודות (88.01-03 + 88.29-31) בשתי הרגליים בו-זמנית. בדרך כלל שלוש נקודות בצד אחד או ארבע נקודות בשני הצדדים.',
-    reactionAreas: ['לב (ראשי)'],
+    reactionAreas: ['ראשי:לב'],
     indications: [
       'המיפלגיה (שיתוק חצי גוף)',
       'חולשה בארבע גפיים',
@@ -849,7 +849,7 @@ export const zone88Points: Point[] = [
     englishName: 'Loss of Voice',
     location: 'שתי נקודות — הראשונה בצד המדיאלי של הברך בחלק התחתון של הפיקה, השנייה 2 נקודות דיסטלית לראשונה.',
     needling: 'דיקור רוחבי (טרנסוורסלי), עומק 0.5-1.5 צון לכיוון החלק האחורי של הרגל.',
-    reactionAreas: ['עצב-כליה', 'גרון'],
+    reactionAreas: ['עצב:כליה', 'גרון'],
     indications: [
       'דיספוניה (קושי בדיבור)',
       'דלקת גרון (לרינגיטיס)',

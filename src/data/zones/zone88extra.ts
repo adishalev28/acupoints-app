@@ -13,7 +13,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Managing Metal',
     location: '2 נקודות: Jin Ying Xia (金營下) — 2 צון מעל ו-0.5 צון לטרלית ל-88.26 Shang Jiu Li, 11 צון מעל הגבול העליון של הפטלה. Jin Ying Shang (金營上) — 2 צון מעל Jin Ying Xia.',
     needling: 'דיקור ניצב, עומק 1-2 צון.',
-    reactionAreas: ['ריאה-עצב', 'לב-ענף-משני'],
+    reactionAreas: ['עצב:ריאה', 'תת-ענף:לב'],
     indications: [
       'הרעלת תרופות, הרעלת מזון',
       'גסטרואנטריטיס חריפה',
@@ -35,7 +35,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Yellow Wood',
     location: '3 צון דיסטלית ל-88.14 Qi Huang, באותו קו רוחבי עם הגבול העליון של הפטלה.',
     needling: 'דיקור ניצב, עומק 1.5-2 צון.',
-    reactionAreas: ['כיס מרה-ראשי', 'כבד-עצב', 'טחול-עצב'],
+    reactionAreas: ['ראשי:כיס מרה', 'עצב:כבד', 'עצב:טחול'],
     indications: [
       'צהבת',
       'דלקת כיס מרה, אבני מרה, כולסטזיס (ירידה בהפרשת/זרימת מרה)',
@@ -60,7 +60,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Seven Miles',
     location: '2 צון דיסטלית ל-88.25 Zhong Jiu Li.',
     needling: 'דיקור ניצב, עומק 0.8-1.5 צון.',
-    reactionAreas: ['ריאה-עצב', 'תנועת ארבע הגפיים'],
+    reactionAreas: ['עצב:ריאה', 'תנועת ארבע הגפיים'],
     indications: [
       'מחלות עור',
       'המיפלגיה (שיתוק חד-צדדי), אפזיה, שבץ מוחי — תרדמת',
@@ -91,7 +91,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Three Efficacies',
     location: '3 נקודות: הראשונה 1 צון מעל BL-40 Wei Zhong. השנייה 1 צון מעל הראשונה. השלישית 1 צון מעל השנייה.',
     needling: 'הקזת דם.',
-    reactionAreas: ['לב-עצב', 'ריאה-ענף', 'עצב סיאטי'],
+    reactionAreas: ['עצב:לב', 'ענף:ריאה', 'עצב סיאטי'],
     indications: [
       'כאב ראש עורפי',
       'כאב צוואר',
@@ -118,7 +118,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Three Spleen',
     location: '3 נקודות: Pi Yi (脾一) — 1 צון מדיאלית ו-1.5 צון פרוקסימלית ל-88.09 Tong Shen. Pi Er (脾二) — 2 צון פרוקסימלית ל-Pi Yi. Pi San (脾三) — 2 צון פרוקסימלית ל-Pi Er.',
     needling: 'דיקור ניצב, עומק 1-1.5 צון.',
-    reactionAreas: ['טחול-עצב', 'כבד-עצב'],
+    reactionAreas: ['עצב:טחול', 'עצב:כבד'],
     indications: [
       'טחול מוגדל',
       'דלקת לבלב',
@@ -137,7 +137,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Penetrating Intestines',
     location: '3 נקודות: הראשונה 1 צון מעל ו-0.5 צון לטרלית ל-88.03 Tong Tian. השנייה 2 צון מעל הראשונה. השלישית 2 צון מעל השנייה.',
     needling: 'דיקור ניצב, עומק 1-2 צון.',
-    reactionAreas: ['שש-פו', 'ריאה-הצטלבות', 'לב-הצטלבות'],
+    reactionAreas: ['שש-פו', 'הצטלבות:ריאה', 'הצטלבות:לב'],
     indications: [
       'דלקת מעיים חריפה',
       'עצירות',
@@ -161,7 +161,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Penetrating Heart',
     location: 'על הקו האמצעי-קדמי של הירך (מרכז הפטלה), 1 צון מעל הגבול העליון של הפטלה.',
     needling: 'דיקור ניצב, עומק 0.3-0.8 צון.',
-    reactionAreas: ['לב-ראשי'],
+    reactionAreas: ['ראשי:לב'],
     indications: [
       'כאב ראש מצחי (עקב לב מוגדל)',
       'סחרחורת',
@@ -188,7 +188,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Penetrating the Sprite',
     location: 'על הקו האמצעי-קדמי של הירך (מרכז הפטלה), 2 צון פרוקסימלית ל-Tong Xin (88). ניתן למדוד את 2 הצונים בעזרת הפטלה, שאורכה 2 צון.',
     needling: 'דיקור ניצב, עומק 0.3-0.8 צון.',
-    reactionAreas: ['לב-ראשי'],
+    reactionAreas: ['ראשי:לב'],
     indications: [
       'כאב ראש מצחי (עקב לב מוגדל)',
       'סחרחורת',
@@ -216,7 +216,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Flourishing Earth',
     location: '5 נקודות: Tu Chang Yi (土昌一) — 2 צון מדיאלית ל-88.10 Tong Wei, באותו מיקום כמו Xue Hai SP-10. Tu Chang Er (土昌二) — 2 צון פרוקסימלית ל-Tu Chang Yi. Tu Chang San (土昌三) — 2 צון פרוקסימלית ל-Tu Chang Er. Tu Chang Si (土昌四) — 2 צון פרוקסימלית ל-Tu Chang San. Tu Chang Wu (土昌五) — 2 צון פרוקסימלית ל-Tu Chang Si.',
     needling: 'דיקור ניצב, עומק 1.5-2 צון.',
-    reactionAreas: ['טחול-ראשי', 'כבד-עצב', 'כיס מרה-עצב'],
+    reactionAreas: ['ראשי:טחול', 'עצב:כבד', 'עצב:כיס מרה'],
     indications: [
       'דלקת טחול, טחול מוגדל',
       'כאב בכל ארבע הגפיים',
@@ -243,7 +243,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Earth Efficiency',
     location: '1 צון מדיאלית ל-88.10 Tong Shen, ממוקמת בין 88.10 Tong Shen ל-Tu Chang Yi (88).',
     needling: 'דיקור ניצב, עומק 1-1.5 צון.',
-    reactionAreas: ['טחול-עצב', 'כבד-עצב'],
+    reactionAreas: ['עצב:טחול', 'עצב:כבד'],
     indications: [
       'אנמיה אפלסטית',
       'לוקמיה',

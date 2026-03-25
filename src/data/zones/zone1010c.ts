@@ -13,7 +13,7 @@ export const zone1010cPoints: Point[] = [
     location:
       'שני מיקומים: לפי ספרו של מאסטר דונג — 1 צון לטרלית ל-MaJinShui (1010.13) ו-0.6 צון מעלה. לפי Hu Wen Zhi — 0.6 צון לטרלית ל-MaJinShui (1010.13).',
     needling: 'דיקור ניצב, 0.1-0.3 צון.',
-    reactionAreas: ['כבד', 'מרה'],
+    reactionAreas: ['כבד', 'כיס מרה'],
     indications: [
       'אבני מרה (כולליתיאזיס)',
       'חוסר כבד/מרה',
@@ -35,7 +35,7 @@ export const zone1010cPoints: Point[] = [
     location: '0.4 צון מתחת לזווית הפה.',
     needling:
       'דיקור שטחי, חודר מ-ShuiJin (1010.20) אל ShuiTong (1010.19). דיקור שטחי לטרלי, 0.5 צון.',
-    reactionAreas: ['כליה-עצב'],
+    reactionAreas: ['עצב:כליה'],
     indications: [
       'כאבי גב תחתון (לומבגו)',
       'עייפות עקב חוסר כליה',
@@ -70,7 +70,7 @@ export const zone1010cPoints: Point[] = [
     location: '0.5 צון מדיאלית ומטה מ-ShuiTong (1010.19).',
     needling:
       'דיקור שטחי, חודר מ-ShuiJin (1010.20) אל ShuiTong (1010.19). דיקור רוחבי לכיוון עצם הלחי, 0.1-0.5 צון. דיקור תת-עורי לכיוון עצם הלחי לתוצאה מיידית בשיעול/אסתמה.',
-    reactionAreas: ['כליה-עצב'],
+    reactionAreas: ['עצב:כליה'],
     indications: [
       'כאבי גב תחתון (לומבגו)',
       'עייפות עקב חוסר כליה',
@@ -125,7 +125,7 @@ export const zone1010cPoints: Point[] = [
     englishName: 'Nasal Wing',
     location: 'שקע בשפה העליונה של כנף האף.',
     needling: 'דיקור ניצב, 0.1-0.2 צון.',
-    reactionAreas: ['ריאה-עצב', 'טחול-עצב', 'כליה-עצב'],
+    reactionAreas: ['עצב:ריאה', 'עצב:טחול', 'עצב:כליה'],
     indications: [
       'כאב מעל הגבה',
       'סחרחורת',

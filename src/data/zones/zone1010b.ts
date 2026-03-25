@@ -12,7 +12,7 @@ export const zone1010bPoints: Point[] = [
     englishName: 'Four Bowels Second',
     location: '0.5 צון מעל מרכז הגבה.',
     needling: 'דיקור רוחבי לכיוון הגבה, 0.5 צון. הקזת דם.',
-    reactionAreas: ['עיניים', 'פנים', 'ריאה-עצב'],
+    reactionAreas: ['עיניים', 'פנים', 'עצב:ריאה'],
     indications: [
       'כאב ראש, ורטיגו, נפיחות',
       'כאב גלגל עין, לחץ תוך-עיני, כאב אורביטלי',
@@ -86,7 +86,7 @@ export const zone1010bPoints: Point[] = [
     location:
       'בשפה התחתונה של עצם הלחי, בקו הזווית החיצונית של העין. 0.15 צון מתחת ל-QuanLiao (SI 18).',
     needling: 'דיקור ניצב, 0.1-0.3 צון.',
-    reactionAreas: ['כליה-משלים', 'ריאה'],
+    reactionAreas: ['מסייע:כליה', 'ריאה'],
     indications: [
       'אבני כליה',
       'דלקת כליות',
@@ -111,7 +111,7 @@ export const zone1010bPoints: Point[] = [
     englishName: 'Horse Fast Water',
     location: '0.4 צון מתחת ל-MaJinShui (1010.13).',
     needling: 'דיקור ניצב, 0.1-0.3 צון.',
-    reactionAreas: ['כליה-עצב', 'שלפוחית שתן'],
+    reactionAreas: ['עצב:כליה', 'שלפוחית'],
     indications: [
       'אבני שלפוחית, דלקת שלפוחית השתן',
       'הטלת שתן תכופה (דחיפות)',

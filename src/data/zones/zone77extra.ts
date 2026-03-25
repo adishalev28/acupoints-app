@@ -35,7 +35,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Double Dragon',
     location: '2 נקודות: ShuangLong Yi (雙龍一) — 1.5 צון מתחת לעין הברך (ST-35 DuBi) בשקע בצד הלטרלי של הטיביה. ShuangLong Er (雙龍二) — 0.6 צון דיסטלית ל-ShuangLong Yi.',
     needling: 'דיקור ניצב, 0.5-0.8 צון.',
-    reactionAreas: ['ריאה-ענף'],
+    reactionAreas: ['ענף:ריאה'],
     indications: [
       'סרטן שד, גידולי שד',
       'מסטיטיס',
@@ -56,7 +56,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Six Water',
     location: '6 נקודות: ShuiZhi (水枝) — 2 צון לטרלית לקצה המלאולוס המדיאלי, 6 צון פרוקסימלית, 1 צון מעל KI-9 ZhuBin. ShuiMing (水明) — 1 צון מעל ShuiZhi. ShuiQing (水清) — 1 צון מעל ShuiMing. ShuiZhen (水珍) — 1 צון מעל ShuiQing. ShuiYin (水陰) — 1 צון מעל ShuiZhen. ShuiQuan (水泉) — 1 צון מעל ShuiYin.',
     needling: 'דיקור ניצב, 1-1.5 צון.',
-    reactionAreas: ['כליה-עצב', 'ששת הפו'],
+    reactionAreas: ['עצב:כליה', 'שש-פו'],
     indications: [
       'כאב ראש, מיגרנה (אפקט מיוחד)',
       'מתח וכאב צוואר',
@@ -84,7 +84,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Upper/Lower Transport',
     location: 'ShangYu (上俞) — בקפל הפופליטאלי, 0.5 צון לטרלית ל-BL-40 WeiZhong. XiaYu (下俞) — בקפל הפופליטאלי, 0.5 צון מדיאלית ל-BL-40 WeiZhong.',
     needling: 'הקזת דם.',
-    reactionAreas: ['לב-עצב', 'ריאה-ענף-משני'],
+    reactionAreas: ['עצב:לב', 'תת-ענף:ריאה'],
     indications: [
       'אוטם שריר הלב, אנגינה פקטוריס, קרדיומגליה',
       'כאב ראש',
@@ -105,7 +105,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Yin Mound Spring',
     location: 'בצד המדיאלי של השוק, בשקע שנוצר מהזווית של הקונדיל המדיאלי של הטיביה והשפה האחורית של הטיביה.',
     needling: 'דיקור ניצב, 1-1.5 צון.',
-    reactionAreas: ['כליה-עצב'],
+    reactionAreas: ['עצב:כליה'],
     indications: [
       'מנופאוזה, גלי חום, הזעות לילה, אי-שקט, דיכאון',
       'נדודי שינה',
@@ -137,7 +137,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Lung Bloodletting Region',
     location: 'בצד הלטרלי של הרגל, מתחת לאזור הפה והשיניים, עד 3 צון מעל המלאולוס הלטרלי.',
     needling: 'הקזת דם.',
-    reactionAreas: ['ריאה-עצב'],
+    reactionAreas: ['עצב:ריאה'],
     indications: [
       'כאב חזה (פלירודיניה), דלקת ריאות, אסתמה, ברונכיטיס, אמפיזמה, שחמת ריאות',
       'כאב חזה, דלקת ריאות, אסתמה, ברונכיטיס, אמפיזמה, שחמת ריאות, תורקלגיה (כאב גב אמצעי), כאב כתף',
@@ -157,7 +157,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Liver Bloodletting Region',
     location: 'בצד הקדמי של השוק, 2 צון מתחת לברך (חופף חלקית עם אזור הלב).',
     needling: 'הקזת דם.',
-    reactionAreas: ['כבד-עצב'],
+    reactionAreas: ['עצב:כבד'],
     indications: [
       'כאב מעל העין',
       'כאב בהיפוכונדריום מסטגנציית צ\'י כבד, כאב צלעות מסטגנציית צ\'י כבד',
@@ -175,7 +175,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Heart Bloodletting Region',
     location: 'בצד הקדמי של השוק, בין הברך ל-2 צון מעל הקרסול.',
     needling: 'הקזת דם.',
-    reactionAreas: ['לב-עצב'],
+    reactionAreas: ['עצב:לב'],
     indications: [
       'חוסר לב, אי-ספיקת לב, לחץ בחזה, דפיקות לב, הפרעת קצב לב, קוצר נשימה',
       'היפרכולסטרולמיה (כולסטרול גבוה), היפרליפידמיה (שומנים גבוהים)',
@@ -260,7 +260,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Kidneys and Bladder Bloodletting Region',
     location: 'בצד המדיאלי של הרגל, מקפל הברך עד המלאולוס המדיאלי.',
     needling: 'הקזת דם.',
-    reactionAreas: ['כליה-עצב', 'שלפוחית'],
+    reactionAreas: ['עצב:כליה', 'שלפוחית'],
     indications: [
       'כאב בטן תחתונה, לחץ בטן תחתונה',
       'הפרעות רבייה נשיות, הפרעות רבייה גבריות',

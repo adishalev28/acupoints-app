@@ -11,7 +11,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Separate White',
     location: 'איתור כשהיד אגרוף. על גב כף היד, בין עצמות המטקרפוס השנייה והשלישית, 1 צון פרוקסימלית ל-22.03 Shang Bai.',
     needling: 'דיקור כשהיד אגרוף. ניצב, 0.3-0.5 צון.',
-    reactionAreas: ['ענף כליה', 'ענף לב'],
+    reactionAreas: ['ענף:כליה', 'ענף:לב'],
     indications: [
       'דלקת חניכיים',
       'קרטיטיס (דלקת קרנית)',
@@ -36,7 +36,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Bone Barrier',
     location: 'על בסיס כף היד, בשקע כ-0.5 צון דיסטלית לבליטת עצם הסקפואיד.',
     needling: 'דיקור כשהיד אגרוף. ניצב, 0.3-0.5 צון לטיפול באגן ובטן תחתונה. שטחי לתוך כף היד, 1.5 צון, לטיפול בהפרעות עקב וכף רגל.',
-    reactionAreas: ['ענף משנה ריאה', 'עצב כליה'],
+    reactionAreas: ['תת-ענף:ריאה', 'עצב:כליה'],
     indications: [
       'סיאטיקה (יעיל מאוד)',
       'דואודניטיס (דלקת תריסריון)',
@@ -69,7 +69,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Effective Ankle',
     location: 'Huai Ling (踝靈) — על האגודל, בצד הרדיאלי של בליטת ראש עצם המטפלנגאלית הראשונה. Nei Huai Ling (內踝靈) — על האגודל, בצד האולנרי של בליטת ראש עצם המטפלנגאלית הראשונה. Zhong Huai Ling (中踝靈) — על גב האגודל, על קו האמצע בין Huai Ling ל-Nei Huai Ling.',
     needling: 'Huai Ling, Nei Huai Ling — ניצב, 0.3-0.5 צון. Zhong Huai Ling — שטחי, 0.3-0.5 צון.',
-    reactionAreas: ['עצב טחול'],
+    reactionAreas: ['עצב:טחול'],
     indications: [
       'נקע קרסול / כאב קרסול (מדיאלי, לטרלי, גבי)',
       'כאב עקב / דלקת גיד אכילס',
@@ -130,7 +130,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Wood Barrier',
     location: 'על בסיס כף היד, כ-0.5 צון דיסטלית לבליטת עצם הפיסיפורם. Li Guo Zheng מוסיף נקודה, Zhong Guan, בין Gu Guan ל-Mu Guan.',
     needling: 'דיקור כשהיד אגרוף. ניצב, 0.3-0.5 צון לטיפול באגן ובטן תחתונה. שטחי לתוך כף היד, 1.5 צון, לטיפול בהפרעות עקב וכף רגל.',
-    reactionAreas: ['עצב כליה', 'עצב כבד', 'עצב כיס מרה'],
+    reactionAreas: ['עצב:כליה', 'עצב:כבד', 'עצב:כיס מרה'],
     indications: [
       'לומבגו (כאב גב תחתון)',
       'לחץ בחזה',
@@ -164,7 +164,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Inner White',
     location: 'על גב כף היד, בין עצמות המטקרפוס הרביעית והחמישית, 0.5 צון פרוקסימלית למפרק המטקרפופלנגאלי. גם בין עצמות המטקרפוס השלישית והרביעית, 0.5 צון פרוקסימלית למפרק. לאיתור — לסגור אגרוף.',
     needling: 'כשהיד אגרוף, ניצב, 0.3-0.5 צון.',
-    reactionAreas: ['עצב טחול'],
+    reactionAreas: ['עצב:טחול'],
     indications: [
       'חצבת / ויטיליגו / פורפורה / אורטיקריה',
       'הגדלת טחול (ספלנומגליה)',
@@ -188,7 +188,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Three Intersections First',
     location: 'על גב כף היד, בין המפרקים המטקרפופלנגאליים השני והשלישי. לאתר כשהיד אגרוף.',
     needling: 'טכניקת השחלה ניצבית, 1-1.5 צון. להשחיל בין עצמות המטקרפוס השנייה והשלישית.',
-    reactionAreas: ['ענף משנה ריאה', 'ענף משלים כליה'],
+    reactionAreas: ['תת-ענף:ריאה', 'מסייע:כליה'],
     indications: [
       'קרטיטיס / כאב עיניים (יעיל מאוד) / ניוון עצב ראייה / ניוון רשתית / AMD / רטיניטיס',
       'לומבגו / סיאטיקה (יעיל מאוד)',
@@ -211,7 +211,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Three Intersections Second',
     location: 'על גב כף היד, בין המפרקים המטקרפופלנגאליים השלישי והרביעי. לאתר כשהיד אגרוף.',
     needling: 'טכניקת השחלה ניצבית, 1-1.5 צון. להשחיל בין עצמות המטקרפוס השנייה והשלישית.',
-    reactionAreas: ['עצב טחול', 'ענף משנה כבד'],
+    reactionAreas: ['עצב:טחול', 'תת-ענף:כבד'],
     indications: [
       'הגדלת טחול / דלקת לבלב',
       'המיפלגיה (שיתוק חצי גוף)',
@@ -236,7 +236,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Three Intersections Third',
     location: 'על גב כף היד, בין המפרקים המטקרפופלנגאליים הרביעי והחמישי. לאתר כשהיד אגרוף.',
     needling: 'טכניקת השחלה ניצבית, 1-1.5 צון. להשחיל בין עצמות המטקרפוס השנייה והשלישית.',
-    reactionAreas: ['עצב כליה'],
+    reactionAreas: ['עצב:כליה'],
     indications: [
       'הצטננות חמורה',
       'כאב ראש / ראייה מטושטשת',
@@ -263,7 +263,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Three Winds',
     location: '3 נקודות על כף היד (פלמרית), בין עצמות המטקרפוס הראשונה והשנייה. הנקודה הראשונה 0.25 צון פרוקסימלית לצומת שתי האצבעות, השנייה 0.25 צון פרוקסימלית לראשונה, והשלישית 0.25 צון פרוקסימלית לשנייה.',
     needling: 'ניצב, 0.2-0.5 צון.',
-    reactionAreas: ['ענף מצטלב ריאה', 'ענף מצטלב לב', 'ענף משנה כליה'],
+    reactionAreas: ['הצטלבות:ריאה', 'הצטלבות:לב', 'תת-ענף:כליה'],
     indications: [
       'כאב ראש מסוג רוח (טואו פנג טונג)',
       'מיגרנה',

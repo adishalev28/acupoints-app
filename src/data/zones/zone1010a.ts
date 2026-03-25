@@ -128,7 +128,7 @@ export const zone1010aPoints: Point[] = [
     location:
       '1.5 צון קדמית ל-ZhengHui (1010.01). הנקודה ממוקמת 0.5 צון אחורית ל-QianDing (DU 21).',
     needling: 'דיקור אלכסוני, 0.1-0.3 צון.',
-    reactionAreas: ['מוח-משלים'],
+    reactionAreas: ['מסייע:מוח'],
     indications: [
       'ורטיגו',
       'סחרחורת',

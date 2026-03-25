@@ -12,7 +12,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'ding ke',
     location: 'כשכף היד מונחת על האפיגסטריום, הנקודה נמצאת 1.6 צון פרוקסימלית ו-0.5 צון קדמית ל-LI-11 צ\'ו צ\'י.',
     needling: 'דיקור ניצב, 0.3-0.5 צון.',
-    reactionAreas: ['Lung-Nerve'],
+    reactionAreas: ['עצב:ריאה'],
     indications: [
       'שיעול, שיעול כרוני, שיעול עם ליחה צהובה',
       'כאבי ברכיים',
@@ -30,7 +30,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'jian zhong2',
     location: '2 צון מתחת ל-44.06 ג\'יין ג\'ונג.',
     needling: 'דיקור ניצב, 0.5-1 צון.',
-    reactionAreas: ['Heart-sub-branch'],
+    reactionAreas: ['תת-ענף:לב'],
     indications: [
       'כאבי ברכיים, דלקת מפרק ברך (אוסטאוארתריטיס)',
       'טרשת עורקים, ניקוי דם',
@@ -57,7 +57,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'PianJian',
     location: 'באמצע הדרך בין ג\'יין פנג (44) ל-44.16 שאנג צ\'ו.',
     needling: 'דיקור ניצב, 0.3-0.5 צון.\nדיקור טרנסוורסלי, 0.5-1 צון, מלמעלה למטה.',
-    reactionAreas: ['Liver-supplementary', 'Heart-branch', 'Kidney-supplementary'],
+    reactionAreas: ['מסייע:כבד', 'ענף:לב', 'מסייע:כליה'],
     indications: [
       'ישיאס',
       'כאבי גב תחתון (לומבגו)',
@@ -79,7 +79,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'shen jian',
     location: 'באמצע הדרך בין ג\'יין פנג (44) ל-44.11 יון באי.',
     needling: 'דיקור ניצב, 0.3-0.5 צון.\nדיקור טרנסוורסלי, 0.5-1 צון, מלמעלה למטה.',
-    reactionAreas: ['Armpit', 'Lung-Nerve', 'Heart-sub-branch'],
+    reactionAreas: ['בית שחי', 'עצב:ריאה', 'תת-ענף:לב'],
     indications: [
       'פוליו (השפעה מיוחדת)',
       'CVA (שבץ), שיתוק יד, שיתוק רגל, המיפלגיה (שיתוק חד-צדדי), שיתוק (השפעה מיוחדת)',
@@ -104,7 +104,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'san ling',
     location: 'סאן לינג יי [三靈一] — 0.5 צון פרוקסימלית ל-Lu-5 צ\'י זה.\nסאן לינג ער [三靈二] — 0.5 צון לטרלית ל-Lu-5 צ\'י זה.\nסאן לינג סאן [三靈三] — 0.5 צון מדיאלית ל-Lu-5 צ\'י זה.',
     needling: 'דיקור ניצב, 0.5-1.2 צון.\nהקזת דם לטיפול בקשיי נשימה עקב היפוקסיה לבבית.',
-    reactionAreas: ['Heart-sub-branch', 'Lung-sub-branch'],
+    reactionAreas: ['תת-ענף:לב', 'תת-ענף:ריאה'],
     indications: [
       'כאבי חזה (פלאורודיניה) (השפעה מיוחדת), כאבי חזה המקרינים לגב (השפעה מיוחדת)',
       'אוטם שריר הלב (השפעה מיוחדת)',
@@ -124,7 +124,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'san shen',
     location: 'סאן שן יי [三神一] — 1.5 צון פרוקסימלית לבליטת האולקרנון בצד המדיאלי של עצם הזרוע.\nסאן שן ער [三神二] — 1 צון פרוקסימלית לסאן שן יי.\nסאן שן סאן [三神三] — 1 צון פרוקסימלית לסאן שן ער.',
     needling: 'לטיפול ביובש בפה, ברונכיטיס וכאב גרון — דיקור אלכסוני מלמעלה למטה, 0.5 צון.\nלטיפול בחסר כליה — דיקור אלכסוני מלמעלה למטה, 1 צון.',
-    reactionAreas: ['Kidney-supplementary', 'Liver-supplementary', 'Lung-sub-branch'],
+    reactionAreas: ['מסייע:כליה', 'מסייע:כבד', 'תת-ענף:ריאה'],
     indications: [
       'פיאלונפריטיס (זיהום כליות)',
       'פרוטאינוריה (חלבון בשתן)',
@@ -151,7 +151,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'zheng ji san',
     location: 'ג\'נג ג\'י יי [正脊一] — 2 צון מעל LI-11 צ\'ו צ\'י.\nג\'נג ג\'י ער [正脊二] — 2 צון מעל ג\'נג ג\'י יי.\nג\'נג ג\'י סאן [正脊三] — 2 צון מעל ג\'נג ג\'י ער.',
     needling: 'דיקור ניצב, 0.5-1 צון.',
-    reactionAreas: ['Heart-supplementary', 'Liver-supplementary', 'Spine'],
+    reactionAreas: ['מסייע:לב', 'מסייע:כבד', 'עמוד שדרה'],
     indications: [
       'אוסטאופורוזיס של עמוד השדרה',
       'ספונדילופיטים (צמיחות עצם בחוליות)',
@@ -175,7 +175,7 @@ export const zone44ExtraPoints: Point[] = [
     imageId: 'yu ying',
     location: 'בצד האחורי של עצם הזרוע בגבול הלטרלי, 6 צון פרוקסימלית לקמט המרפק או 1.5 צון מעל 44.03 שואו יינג.',
     needling: 'דיקור ניצב, 0.3-0.5 צון.',
-    reactionAreas: ['Liver-supplementary', 'Heart-intersection', 'Spine-Nerve'],
+    reactionAreas: ['מסייע:כבד', 'הצטלבות:לב', 'עצב:עמוד שדרה'],
     indications: [
       'עקירת חוליה, דלקת כליות (נפריטיס), כאבי גב תחתון (לומבגו)',
       'ברונכיטיס',

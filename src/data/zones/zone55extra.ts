@@ -12,7 +12,7 @@ export const zone55ExtraPoints: Point[] = [
     englishName: "Woman's Efficacy",
     location: 'בצד הפלנטרי של אצבע 2 ברגל, משני צדי הקפל הפרוקסימלי.',
     needling: 'הקזת דם, דיקור ניצב 0.3-0.5 צון. אסור בדיקור ומוקסה בהריון.',
-    reactionAreas: ['כבד-משלים', 'רחם'],
+    reactionAreas: ['מסייע:כבד', 'רחם'],
     indications: [
       'דלקת רחם (מטריטיס)',
       'סרטן רחם',
@@ -34,7 +34,7 @@ export const zone55ExtraPoints: Point[] = [
     englishName: 'Three Sages',
     location: '3 נקודות על קו האמצע של כף הרגל. SanShengYi (三聖一) — 1 צון פרוקסימלית ל-KI-1 יונג צ\'ואן. SanShengEr (三聖二) — 1 צון פרוקסימלית ל-SanShengYi. SanShengSan (三聖三) — 1 צון פרוקסימלית ל-SanShengEr.',
     needling: 'דיקור ניצב 0.5-1 צון. מומלץ שהמטופל ישתעל בזמן החדרת המחט להפחתת כאב.',
-    reactionAreas: ['עצב הלב', 'כליה-משלים', 'מוח'],
+    reactionAreas: ['עצב:לב', 'מסייע:כליה', 'מוח'],
     indications: [
       'יתר לחץ דם (אפקט מיוחד)',
       'לחץ דם נמוך (היפוטנזיה), היפוטנזיה אורתוסטטית',

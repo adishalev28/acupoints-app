@@ -12,7 +12,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Six Ravines',
     location: '6 נקודות. ShangXi (上郄) — 1 צון דיסטלית ל-ST-41 JieXi. XiaXi (下郄) — 1 צון דיסטלית ל-ShangXi. WaiXi (外郄) — 1 צון לטרלית ל-ShangXi. QianXi (前郄) — 1 צון דיסטלית ל-WaiXi. NeiXi (內郄) — 1 צון מדיאלית ל-ShangXi. ShuiXi (水郄) — 1 צון דיסטלית ל-NeiXi.',
     needling: 'דיקור 0.5-1 צון. הקזת דם.',
-    reactionAreas: ['עצבים גולגולתיים', 'עצב הלב', 'עצב הריאה'],
+    reactionAreas: ['עצבים גולגולתיים', 'עצב:לב', 'עצב:ריאה'],
     indications: [
       'כאב ראש, לחץ בראש, מיגרנה',
       'כאבי צוואר',
@@ -41,7 +41,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Below Metal Gate',
     location: '1 צון דיסטלית ל-66.05 MenJin, ליד ST-44 NeiTing, על גב כף הרגל בין עצמות המטטרסל השנייה והשלישית.',
     needling: 'דיקור ניצב 0.5-1 צון.',
-    reactionAreas: ['קיבה-עוזר', 'תריסריון'],
+    reactionAreas: ['מסייע:קיבה', 'תריסריון'],
     indications: [
       'דלקת מעיים, גסטריטיס, נפיחות בטנית, כאב בטן, אפנדיציטיס',
       'דיסמנוריאה (כאבי מחזור), תסמונת קדם-מחזורית (PMS)',
@@ -66,7 +66,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Water Gate',
     location: 'מאחורי המלאולוס המדיאלי, בין 66.13 ShuiJing ל-KI-6 ZhaoHai. פוסטריורית ל-ShuiJing.',
     needling: 'דיקור ניצב 0.3-0.5 צון.',
-    reactionAreas: ['כליה-ענף', 'רחם'],
+    reactionAreas: ['ענף:כליה', 'רחם'],
     indications: [
       'דלקת רחם, גידולי רחם, לחץ ונוקשות בבטן',
       'שליה שארית, זירוז לידה, לידה קשה (דיסטוציה)',
@@ -89,7 +89,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Water Divide',
     location: 'מאחורי המלאולוס המדיאלי, פוסטריורית ל-ShuiMen, קרוב ל-KI-6 ZhaoHai.',
     needling: 'דיקור ניצב 0.3-0.5 צון.',
-    reactionAreas: ['כליה-ענף', 'רחם'],
+    reactionAreas: ['ענף:כליה', 'רחם'],
     indications: [
       'דלקת רחם, גידולי רחם, לחץ ונוקשות בבטן',
       'שליה שארית, זירוז לידה, לידה קשה (דיסטוציה)',
@@ -112,7 +112,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Ten Thousand Pains',
     location: 'מתחת ל-BL-62 ShenMai, בצד הלטרלי של כף הרגל על עצם העקב (קלקנאוס).',
     needling: 'דיקור ניצב או אלכסוני 0.3-0.5 צון.',
-    reactionAreas: ['שלפוחית השתן-ענף', 'כליה-ענף'],
+    reactionAreas: ['ענף:שלפוחית', 'ענף:כליה'],
     indications: [
       'כאב בכל הגוף, כאב כרוני',
       'כאב קרסול, נקע קרסול',
@@ -135,7 +135,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Tu Bu Temporal Zone Bloodletting',
     location: 'אזור הקזת דם בצד הלטרלי של השוק. מחולק לאזורי תגובה: שליש עליון — פה ושיניים. שליש אמצעי — ריאות. שליש תחתון — אוזניים וחזה. כף הרגל/קרסול — אזור הטמפורלי של הראש.',
     needling: 'הקזת דם. לא לדיקור רגיל.',
-    reactionAreas: ['ריאות', 'אוזניים', 'חזה', 'פה ושיניים', 'אזור טמפורלי של הראש'],
+    reactionAreas: ['ריאה', 'אוזניים', 'חזה', 'פה ושיניים', 'אזור טמפורלי של הראש'],
     indications: [
       'כאב ראש טמפורלי (צדי)',
       'כאב אוזניים, טינטון',
@@ -177,7 +177,7 @@ export const zone66ExtraPoints: Point[] = [
     englishName: 'Tu Bu Posterior Zone Bloodletting',
     location: 'אזור הקזת דם בצד האחורי של השוק. כל האזור מתאים לכליות ושלפוחית השתן. אזור כף הרגל/קרסול — אזור הטמפורלי של הראש.',
     needling: 'הקזת דם. לא לדיקור רגיל.',
-    reactionAreas: ['כליות', 'שלפוחית השתן', 'אזור טמפורלי של הראש'],
+    reactionAreas: ['כליה', 'שלפוחית', 'אזור טמפורלי של הראש'],
     indications: [
       'כאב ראש טמפורלי (צדי)',
       'דלקת כליות, בעיות שלפוחית שתן',

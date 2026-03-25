@@ -13,7 +13,7 @@ export const zone33ExtraPoints: Point[] = [
     location:
       'שלוש נקודות ממוקמות על האמה.\nGan Ling San [肝靈三]: 3 צון דיסטלית ל-Ht-3 Shao Hai ו-0.5 צון מדיאלית.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
-    reactionAreas: ['עצב כבד', 'עצב כליה'],
+    reactionAreas: ['עצב:כבד', 'עצב:כליה'],
     indications: [
       'דלקת כבד (הפטיטיס), שחמת כבד, כאבי כבד',
       'כאבי צלעות',
@@ -40,7 +40,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'gan ling',
     location: '3 צון דיסטלית ל-Gan Ling San.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
-    reactionAreas: ['עצב כבד', 'עצב כליה'],
+    reactionAreas: ['עצב:כבד', 'עצב:כליה'],
     indications: ['כל ההתוויות של Gan Ling San'],
     additionalInfo:
       'ראה Gan Ling San. שלוש הנקודות נדקרות תמיד יחד.',
@@ -56,7 +56,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'gan ling',
     location: '3 צון דיסטלית ל-Gan Ling Er.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
-    reactionAreas: ['עצב כבד', 'עצב כליה'],
+    reactionAreas: ['עצב:כבד', 'עצב:כליה'],
     indications: ['כל ההתוויות של Gan Ling San'],
     additionalInfo:
       'ראה Gan Ling San. שלוש הנקודות נדקרות תמיד יחד.',
@@ -74,7 +74,7 @@ export const zone33ExtraPoints: Point[] = [
       '7 צון פרוקסימלית ל-Pc-7 Da Ling, בחלל שבין הרדיוס לאולנה, על הקו המחבר Pc-7 Da Ling ל-Pc-3 Qu Ze.',
     needling:
       'אנכי, 0.2-0.5 צון עומק.\nהקזת דם.',
-    reactionAreas: ['עצב כליה'],
+    reactionAreas: ['עצב:כליה'],
     indications: [
       'קרדיומגלי (הגדלת לב)',
       'אוטם שריר הלב, לחץ בחזה, דפיקות לב',
@@ -96,7 +96,7 @@ export const zone33ExtraPoints: Point[] = [
     location:
       '1 צון לטרלית ל-33.07 Huo Fu Hai.',
     needling: 'אנכי, 0.5-1 צון עומק.',
-    reactionAreas: ['ענף משנה ריאה', 'עצב כליה'],
+    reactionAreas: ['תת-ענף:ריאה', 'עצב:כליה'],
     indications: [
       'דלקת גרון (לרינגיטיס), אפוניה (אובדן קול)',
       'סרטן גרון',
@@ -120,7 +120,7 @@ export const zone33ExtraPoints: Point[] = [
       '0.5 צון לטרלית ל-33.16 Qu Ling.',
     needling:
       'אנכי, 0.3-0.5 צון עומק.\nלכאבי כתף — דיקור רוחבי מ-33.16 Qu Ling לכיוון Zhong Li / Jian Li.\nהקזת דם מהנקודות יכולה לטפל במלאות חזה, כאבי חזה, בעיות לב, אסתמה וכתף קפואה.',
-    reactionAreas: ['ענף ריאה', 'ענף לב'],
+    reactionAreas: ['ענף:ריאה', 'ענף:לב'],
     indications: [
       'הצטננות חמורה',
       'חסימת אף, נזלת, נזלת אלרגית (קדחת השחת)',
@@ -146,7 +146,7 @@ export const zone33ExtraPoints: Point[] = [
       '0.5 צון לטרלית ל-Jian Li.',
     needling:
       'אנכי, 0.3-0.5 צון עומק.\nלכאבי כתף — דיקור רוחבי מ-33.16 Qu Ling לכיוון Zhong Li / Jian Li.\nהקזת דם מהנקודות יכולה לטפל במלאות חזה, כאבי חזה, בעיות לב, אסתמה וכתף קפואה.',
-    reactionAreas: ['ענף ריאה', 'ענף לב'],
+    reactionAreas: ['ענף:ריאה', 'ענף:לב'],
     indications: ['כל ההתוויות של Jian Li'],
     additionalInfo:
       'ראה Jian Li. שתי הנקודות נדקרות יחד עם 33.16 Qu Ling.',
@@ -162,7 +162,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'mu ding',
     location: '',
     needling: 'אנכי, 0.2-0.3 צון עומק.',
-    reactionAreas: ['עצב קיבה', 'עצב לב'],
+    reactionAreas: ['עצב:קיבה', 'עצב:לב'],
     indications: [
       'כאב ראש קדמי (מצחי), כאב ראש בקודקוד, כאב ראש מתח',
       'הקאות',
@@ -185,7 +185,7 @@ export const zone33ExtraPoints: Point[] = [
     location:
       '0.5 צון דיסטלית ל-Ht-3 Shao Hai.',
     needling: 'אנכי, 0.2-0.3 צון עומק.',
-    reactionAreas: ['עצב כבד', 'עצב כיס מרה'],
+    reactionAreas: ['עצב:כבד', 'עצב:כיס מרה'],
     indications: [
       'ניוון עצב הראייה',
       'קוצר ראייה (מיופיה)',
@@ -213,7 +213,7 @@ export const zone33ExtraPoints: Point[] = [
       'על הצד הגבי של האמה, רדיאלית לאולנה, 1 צון פרוקסימלית ל-Si-6 Yang Lao, בין הגידים של Extensor carpi ulnaris ו-Extensor digiti minimi.\n\nLee Kuo Zheng מוסיף עוד שתי נקודות:\nShang Shi ממוקמת 2 צון פרוקסימלית ל-Zhong Shi.\nZhong Shi ממוקמת 2 צון פרוקסימלית ל-Xia Shi.',
     needling:
       'אנכי, 1-1.5 צון עומק לכאבי גב תחתון וסיאטיקה.\nאלכסוני לכיוון הרדיוס לטיפול בכאבי חזה.\nאלכסוני, 1.5 צון לכיוון המרפק, לטיפול בכאבי גב אמצעי ותחתון וכאבים באזור השכמות והזרוע.',
-    reactionAreas: ['עצב לב', 'עצב כליה'],
+    reactionAreas: ['עצב:לב', 'עצב:כליה'],
     indications: [
       'כאבי גב תחתון (לומבגו), סיאטיקה',
       'פרסתזיה ביד',
@@ -239,7 +239,7 @@ export const zone33ExtraPoints: Point[] = [
     location:
       '0.5 צון דיסטלית ל-Pc-3 Qu Ze.',
     needling: 'אנכי, 0.2-0.3 צון עומק.',
-    reactionAreas: ['עצב כבד'],
+    reactionAreas: ['עצב:כבד'],
     indications: [
       'כאב ראש בקודקוד',
       'טינטון',
@@ -262,7 +262,7 @@ export const zone33ExtraPoints: Point[] = [
     location:
       'שלוש נקודות ממוקמות על האמה.\nTu Wei San [土胃三]: 2 צון דיסטלית ל-Ht-3 Shao Hai.',
     needling: 'אנכי, 0.2-0.5 צון עומק.',
-    reactionAreas: ['עצב טחול'],
+    reactionAreas: ['עצב:טחול'],
     indications: [
       'גסטריטיס (דלקת רירית הקיבה), דואודניטיס (דלקת התריסריון)',
       'כיב קיבה, כיב תריסריון, מחלת כיב פפטי (PUD)',
@@ -284,7 +284,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'tu wei',
     location: '2 צון דיסטלית ל-Tu Wei San.',
     needling: 'אנכי, 0.2-0.5 צון עומק.',
-    reactionAreas: ['עצב טחול'],
+    reactionAreas: ['עצב:טחול'],
     indications: ['כל ההתוויות של Tu Wei San'],
     additionalInfo:
       'ראה Tu Wei San. שלוש הנקודות נדקרות תמיד יחד.',
@@ -300,7 +300,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'tu wei',
     location: '2 צון דיסטלית ל-Tu Wei Er.',
     needling: 'אנכי, 0.2-0.5 צון עומק.',
-    reactionAreas: ['עצב טחול'],
+    reactionAreas: ['עצב:טחול'],
     indications: ['כל ההתוויות של Tu Wei San'],
     additionalInfo:
       'ראה Tu Wei San. שלוש הנקודות נדקרות תמיד יחד.',
@@ -318,7 +318,7 @@ export const zone33ExtraPoints: Point[] = [
       'שלוש נקודות על האמה.\nXin Ling Yi [心靈一]: 1.5 צון פרוקסימלית ל-Pc-7 Da Ling, על הקו המחבר Pc-7 ל-Pc-3 Qu Ze.',
     needling:
       'אנכי, 0.5-1.5 צון עומק.\nרוחבי, 15 מעלות לכיוון הזרוע — לטיפול במחלות לב.\nרוחבי, 35 מעלות לכיוון הזרוע — לטיפול במחלות חזה.\nאלכסוני, לכיוון האצבעות — לטיפול בהפרעות בידיים וברגליים.\nלטיפול בכאב ראש מצחי — השחלת מחט 4 צון מדיסטלי לפרוקסימלי כדי להפעיל את שלוש הנקודות.',
-    reactionAreas: ['ענף לב'],
+    reactionAreas: ['ענף:לב'],
     indications: [
       'הפרעת קצב (אריתמיה)',
       'דלקת שריר הלב (מיוקרדיטיס), תעוקת חזה (אנגינה פקטוריס)',
@@ -355,7 +355,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'xin ling',
     location: '2.5 צון פרוקסימלית ל-Pc-7 Da Ling.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
-    reactionAreas: ['ענף לב'],
+    reactionAreas: ['ענף:לב'],
     indications: ['כל ההתוויות של Xin Ling Yi'],
     additionalInfo:
       'ראה Xin Ling Yi. שלוש הנקודות נדקרות תמיד יחד.',
@@ -371,7 +371,7 @@ export const zone33ExtraPoints: Point[] = [
     imageId: 'xin ling',
     location: '3.5 צון פרוקסימלית ל-Pc-7 Da Ling.',
     needling: 'אנכי, 0.5-1.5 צון עומק.',
-    reactionAreas: ['ענף לב'],
+    reactionAreas: ['ענף:לב'],
     indications: ['כל ההתוויות של Xin Ling Yi'],
     additionalInfo:
       'ראה Xin Ling Yi. שלוש הנקודות נדקרות תמיד יחד.',
@@ -389,7 +389,7 @@ export const zone33ExtraPoints: Point[] = [
       'שלוש נקודות ממוקמות על האמה.\nYao Ling Er [腰靈二]: 4.5 צון פרוקסימלית ל-Pc-7 Da Ling, בחלל שבין הרדיוס לאולנה, על הקו המחבר Pc-7 Da Ling ל-Pc-3 Qu Ze.',
     needling:
       'אנכי, 0.2-0.3 צון עומק.\nהקזת דם מערוצי החיבור באזור הנקודה יעילה יותר.',
-    reactionAreas: ['עצב כליה'],
+    reactionAreas: ['עצב:כליה'],
     indications: [
       'דלקת כליות (נפריטיס) (השפעה מיוחדת)',
       'לומבגו (כאבי גב תחתון) (השפעה מיוחדת)',
@@ -413,7 +413,7 @@ export const zone33ExtraPoints: Point[] = [
     location: '0.5 צון רדיאלית ל-Yao Ling Er.',
     needling:
       'אנכי, 0.2-0.3 צון עומק.\nהקזת דם מערוצי החיבור באזור הנקודה יעילה יותר.',
-    reactionAreas: ['עצב כליה'],
+    reactionAreas: ['עצב:כליה'],
     indications: ['כל ההתוויות של Yao Ling Er'],
     additionalInfo:
       'ראה Yao Ling Er. שלוש הנקודות נדקרות תמיד יחד.',
@@ -430,7 +430,7 @@ export const zone33ExtraPoints: Point[] = [
     location: '0.5 צון אולנרית ל-Yao Ling Er.',
     needling:
       'אנכי, 0.2-0.3 צון עומק.\nהקזת דם מערוצי החיבור באזור הנקודה יעילה יותר.',
-    reactionAreas: ['עצב כליה'],
+    reactionAreas: ['עצב:כליה'],
     indications: ['כל ההתוויות של Yao Ling Er'],
     additionalInfo:
       'ראה Yao Ling Er. שלוש הנקודות נדקרות תמיד יחד.',

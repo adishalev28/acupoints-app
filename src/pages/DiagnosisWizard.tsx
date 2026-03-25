@@ -2,7 +2,7 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { rubricData, type RubricCategory } from '../utils/buildRubric'
 import { points } from '../data/points'
-import type { Point } from '../types'
+import { flattenIndications, type Point } from '../types'
 
 type Step = 'categories' | 'symptoms' | 'results'
 
@@ -18,27 +18,38 @@ export default function DiagnosisWizard() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
 
   // ── Scored results ──
+  // Uses broad substring matching: if a symptom like "סיאטיקה" is selected,
+  // ANY point whose indications contain "סיאטיקה" is included (not just exact matches).
   const scoredPoints = useMemo(() => {
     if (selectedSymptoms.size === 0) return []
 
-    // Build indication → pointIds lookup from rubricData
-    const indicationToPointIds = new Map<string, string[]>()
-    for (const cat of rubricData) {
-      for (const entry of cat.entries) {
-        indicationToPointIds.set(entry.indication, entry.pointIds)
-      }
-    }
+    // Extract core search term from each symptom (strip common suffixes/prefixes for broader matching)
+    const symptomKeywords = Array.from(selectedSymptoms).map(s => {
+      // Use the main keyword — first word or the whole thing if short
+      return s.trim()
+    })
 
-    // Score each point
+    // Score each point by checking all its indications against selected symptoms
     const pointScores = new Map<string, { score: number; matched: string[] }>()
 
-    for (const symptom of selectedSymptoms) {
-      const pointIds = indicationToPointIds.get(symptom) ?? []
-      for (const pid of pointIds) {
-        const existing = pointScores.get(pid) ?? { score: 0, matched: [] }
-        existing.score++
-        existing.matched.push(symptom)
-        pointScores.set(pid, existing)
+    for (const point of points) {
+      const allIndications = flattenIndications(point.indications).join(' ')
+
+      for (let i = 0; i < symptomKeywords.length; i++) {
+        const symptom = symptomKeywords[i]
+        // Extract core keyword from the symptom for substring matching
+        // e.g. "סיאטיקה (חוסר ריאה)" → match any indication containing "סיאטיקה"
+        const coreKeyword = symptom.split(/[,(\/—]/)[0].trim()
+
+        if (coreKeyword && allIndications.includes(coreKeyword)) {
+          const existing = pointScores.get(point.id) ?? { score: 0, matched: [] }
+          const originalSymptom = Array.from(selectedSymptoms)[i]
+          if (!existing.matched.includes(originalSymptom)) {
+            existing.score++
+            existing.matched.push(originalSymptom)
+          }
+          pointScores.set(point.id, existing)
+        }
       }
     }
 

@@ -6,6 +6,7 @@ import { useFavorites } from '../hooks/useFavorites'
 import { useNotes } from '../hooks/useNotes'
 import { isGroupedIndications } from '../types'
 import { categorizeIndications, categoryColors } from '../utils/categorizeIndications'
+import { normalizeReactionArea, HIERARCHY_LEVELS } from '../utils/reactionAreaNormalization'
 
 /** Try point image: .jpg then .png then .webp, hide if none exists */
 function PointImage({ pointId, imageId }: { pointId: string; imageId?: string }) {
@@ -354,11 +355,24 @@ export default function PointDetail() {
           title="אזור תגובה"
         >
           <div className="flex flex-wrap gap-2">
-            {point.reactionAreas.map((area, i) => (
-              <span key={i} className="inline-flex items-center px-3 py-1.5 rounded-full bg-teal-50 dark:bg-teal-primary/10 text-teal-700 dark:text-teal-300 text-xs font-medium border border-teal-100 dark:border-teal-primary/30">
-                {area}
-              </span>
-            ))}
+            {point.reactionAreas.map((area, i) => {
+              const norm = normalizeReactionArea(area)
+              const lvl = norm.level ? HIERARCHY_LEVELS[norm.level] : null
+              return (
+                <span
+                  key={i}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border ${
+                    lvl
+                      ? `${lvl.bg} ${lvl.darkBg} ${lvl.text} ${lvl.darkText} ${lvl.border} ${lvl.darkBorder}`
+                      : 'bg-teal-50 dark:bg-teal-primary/10 text-teal-700 dark:text-teal-300 border-teal-100 dark:border-teal-primary/30'
+                  }`}
+                >
+                  {lvl && <span className={`w-2 h-2 rounded-full ${lvl.dot}`} />}
+                  {norm.normalized}
+                  {norm.sourceNote && <span className="opacity-50">({norm.sourceNote})</span>}
+                </span>
+              )
+            })}
           </div>
         </Section>
 

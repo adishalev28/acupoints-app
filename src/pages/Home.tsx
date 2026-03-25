@@ -97,6 +97,19 @@ export default function Home() {
         </Link>
 
         <Link
+          to="/diagnosis"
+          className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
+        >
+          <div className="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-500/20 flex items-center justify-center">
+            <span className="text-2xl">🩺</span>
+          </div>
+          <div>
+            <div className="font-bold text-gray-900 dark:text-dark-text">אבחון קליני</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">בחר סימפטומים → קבל המלצת נקודות מדורגת</div>
+          </div>
+        </Link>
+
+        <Link
           to="/explore"
           className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
         >

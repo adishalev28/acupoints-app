@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { rubricData, type RubricCategory } from '../utils/buildRubric'
 import { points } from '../data/points'
 import { flattenIndications, type Point } from '../types'
+import { getSideBadge } from '../utils/treatmentPrinciples'
 
 type Step = 'categories' | 'symptoms' | 'results'
 
@@ -254,6 +255,18 @@ export default function DiagnosisWizard() {
               </h2>
             </div>
 
+            {/* Treatment principles banner */}
+            {scoredPoints.length > 0 && (
+              <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 text-xs text-blue-800 dark:text-blue-200 space-y-1">
+                <div className="font-bold flex items-center gap-1.5">
+                  <span>📐</span> עקרונות בחירת צד
+                </div>
+                <div>↔️ <strong>צד נגדי:</strong> כאב בימין → דקור בשמאל (ולהפך)</div>
+                <div>↕️ <strong>למעלה↔למטה:</strong> כאב מעל הטבור → דקור ברגליים | כאב מתחת → דקור בידיים</div>
+                <div>⚠️ <strong>ביטוי חיצוני גובר</strong> על כל הכללים — תמיד דקור במקום שבו מופיע הביטוי</div>
+              </div>
+            )}
+
             {scoredPoints.length === 0 ? (
               <div className="text-center text-gray-400 dark:text-dark-muted py-12">
                 לא נמצאו נקודות מתאימות
@@ -287,8 +300,16 @@ export default function DiagnosisWizard() {
                             {point.id}
                           </span>
                         </div>
-                        <div className="text-xs text-gray-500 dark:text-dark-muted mt-1">
-                          אזור {point.zone} · {point.pinyinName}
+                        <div className="text-xs text-gray-500 dark:text-dark-muted mt-1 flex items-center gap-2 justify-end flex-wrap">
+                          <span>אזור {point.zone} · {point.pinyinName}</span>
+                          {(() => {
+                            const badge = getSideBadge(point)
+                            return (
+                              <span className={`inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full border text-[10px] font-medium ${badge.color}`}>
+                                {badge.emoji} {badge.text}
+                              </span>
+                            )
+                          })()}
                         </div>
                         {/* Matched symptoms */}
                         <div className="flex flex-wrap gap-1 mt-2 justify-end">

@@ -7,6 +7,7 @@ import { useNotes } from '../hooks/useNotes'
 import { isGroupedIndications } from '../types'
 import { categorizeIndications, categoryColors } from '../utils/categorizeIndications'
 import { normalizeReactionArea, HIERARCHY_LEVELS } from '../utils/reactionAreaNormalization'
+import { getTreatmentPrinciples } from '../utils/treatmentPrinciples'
 
 /** Try point image: .jpg then .png then .webp, hide if none exists */
 function PointImage({ pointId, imageId }: { pointId: string; imageId?: string }) {
@@ -343,6 +344,36 @@ export default function PointDetail() {
           title="טכניקת דיקור"
         >
           <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{point.needling}</p>
+
+          {/* Treatment principles inline */}
+          {(() => {
+            const tp = getTreatmentPrinciples(point)
+            return (
+              <div className="mt-3 p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 space-y-1.5">
+                <div className="text-xs font-bold text-blue-800 dark:text-blue-200 flex items-center gap-1.5">
+                  <span>📐</span> עקרונות בחירת צד
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-blue-100 dark:bg-blue-800/40 text-blue-800 dark:text-blue-200 border border-blue-200 dark:border-blue-700">
+                    {tp.sideEmoji} {tp.sideHebrew}
+                  </span>
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
+                    📍 {tp.levelHebrew}
+                  </span>
+                </div>
+                {tp.levelPrinciple && (
+                  <div className="text-[11px] text-blue-700 dark:text-blue-300">{tp.levelPrinciple}</div>
+                )}
+                {tp.notes.length > 0 && (
+                  <div className="text-[10px] text-blue-600/80 dark:text-blue-400/70 space-y-0.5">
+                    {tp.notes.map((note, i) => (
+                      <div key={i}>• {note}</div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })()}
         </Section>
 
         {/* 3. Reaction Areas */}

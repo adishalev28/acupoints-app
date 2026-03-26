@@ -9,6 +9,7 @@ import PrincipleDetail from './pages/PrincipleDetail'
 import OrganFinder from './pages/OrganFinder'
 import MirrorMap from './pages/MirrorMap'
 import DiagnosisWizard from './pages/DiagnosisWizard'
+import DaoMa from './pages/DaoMa'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/organs" element={<OrganFinder />} />
           <Route path="/mirror" element={<MirrorMap />} />
           <Route path="/diagnosis" element={<DiagnosisWizard />} />
+          <Route path="/dao-ma" element={<DaoMa />} />
           <Route path="/principle/:id" element={<PrincipleDetail />} />
         </Route>
       </Routes>

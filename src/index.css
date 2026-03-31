@@ -47,3 +47,11 @@ html.dark body {
   background: #d1d5db;
   border-radius: 9999px;
 }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

@@ -24,6 +24,7 @@ export default function DiagnosisWizard() {
   const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(null)
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
   const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(null)
+  const [symptomSearch, setSymptomSearch] = useState('')
 
   // ── Scored results ──
   // Uses broad substring matching: if a symptom like "סיאטיקה" is selected,
@@ -92,6 +93,7 @@ export default function DiagnosisWizard() {
 
   function openCategory(cat: RubricCategory) {
     setActiveCategory(cat)
+    setSymptomSearch('')
     setStep('symptoms')
   }
 
@@ -222,28 +224,61 @@ export default function DiagnosisWizard() {
         )}
 
         {/* Step 2: Symptom selection */}
-        {step === 'symptoms' && activeCategory && (
+        {step === 'symptoms' && activeCategory && (() => {
+          const filteredEntries = symptomSearch
+            ? activeCategory.entries.filter(e => e.indication.includes(symptomSearch))
+            : activeCategory.entries
+          return (
           <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <button
-                onClick={goBackToCategories}
-                className="text-sm text-teal-primary hover:underline flex items-center gap-1"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                </svg>
-                הוסף מקטגוריה נוספת
-              </button>
-              <div className="flex items-center gap-2">
-                <span className={`text-sm font-bold ${activeCategory.color.text} ${activeCategory.color.darkText}`}>
-                  {activeCategory.name}
-                </span>
-                <span className="text-xl">{activeCategory.icon}</span>
-              </div>
+            {/* Category tabs - horizontal scroll */}
+            <div className="flex gap-1.5 overflow-x-auto pb-1 -mx-1 px-1 scrollbar-hide">
+              {rubricData.map(cat => (
+                <button
+                  key={cat.name}
+                  onClick={() => { setActiveCategory(cat); setSymptomSearch('') }}
+                  className={`shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-full border text-xs font-medium transition-colors
+                    ${cat.name === activeCategory.name
+                      ? `${cat.color.bg} ${cat.color.text} ${cat.color.border} ${cat.color.darkBg} ${cat.color.darkText}`
+                      : 'bg-white dark:bg-dark-card border-gray-200 dark:border-dark-border text-gray-500 dark:text-dark-muted hover:border-gray-300'
+                    }`}
+                >
+                  <span>{cat.icon}</span>
+                  <span>{cat.name}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* Search field */}
+            <div className="relative">
+              <input
+                type="text"
+                value={symptomSearch}
+                onChange={e => setSymptomSearch(e.target.value)}
+                placeholder="חפש סימפטום..."
+                className="w-full py-2.5 px-4 pr-10 rounded-xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card text-sm text-gray-800 dark:text-dark-text text-right placeholder:text-gray-400 dark:placeholder:text-dark-muted focus:outline-none focus:border-teal-primary"
+              />
+              <svg className="w-5 h-5 text-gray-400 absolute top-1/2 -translate-y-1/2 right-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              {symptomSearch && (
+                <button
+                  onClick={() => setSymptomSearch('')}
+                  className="absolute top-1/2 -translate-y-1/2 left-3 text-gray-400 hover:text-gray-600"
+                >
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {/* Symptom count */}
+            <div className="text-xs text-gray-400 dark:text-dark-muted text-right">
+              {filteredEntries.length} סימפטומים{symptomSearch ? ` (מסונן מתוך ${activeCategory.entries.length})` : ''}
             </div>
 
             <div className="space-y-1.5">
-              {activeCategory.entries.map(entry => {
+              {filteredEntries.map(entry => {
                 const isSelected = selectedSymptoms.has(entry.indication)
                 return (
                   <button
@@ -273,9 +308,15 @@ export default function DiagnosisWizard() {
                   </button>
                 )
               })}
+              {filteredEntries.length === 0 && (
+                <div className="text-center text-gray-400 dark:text-dark-muted py-8 text-sm">
+                  לא נמצאו סימפטומים עבור "{symptomSearch}"
+                </div>
+              )}
             </div>
           </div>
-        )}
+          )
+        })()}
 
         {/* Step 2.5: Root Cause Selection */}
         {step === 'rootCause' && activePathMap && (

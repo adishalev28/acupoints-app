@@ -24,6 +24,7 @@ export interface PathogenesisMap {
   symptomEn: string
   icon: string
   question: string             // Follow-up question to ask
+  matchKeywords: string[]      // Keywords to match rubric indications (broader matching)
   roots: {
     rootId: string             // Reference to RootCause.id
     pointIds: string[]         // Recommended points for this root
@@ -146,6 +147,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Sciatica',
     icon: '🦵',
     question: 'מה שורש הבעיה?',
+    matchKeywords: ['סיאטיקה', 'ישיאס'],
     roots: [
       {
         rootId: 'lung-deficiency',
@@ -186,6 +188,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Lower Back Pain',
     icon: '🔙',
     question: 'מה אופי הכאב?',
+    matchKeywords: ['כאב גב תחתון', 'לומבגו', 'כאב גב', 'כאבי גב', 'פריצת דיסק'],
     roots: [
       {
         rootId: 'kidney-deficiency',
@@ -218,6 +221,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Shoulder Pain',
     icon: '💪',
     question: 'היכן הכאב בדיוק?',
+    matchKeywords: ['כאב כתף', 'כאבי כתף', 'כתף קפואה', 'כתף', 'שכמה'],
     roots: [
       {
         rootId: 'wind-invasion',
@@ -247,6 +251,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Migraine',
     icon: '🤯',
     question: 'מה מאפיין את הכאב?',
+    matchKeywords: ['מיגרנה', 'כאב ראש', 'כאבי ראש', 'כאב ראש כרוני', 'כאב ראש חד'],
     roots: [
       {
         rootId: 'liver-stagnation',
@@ -286,6 +291,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Facial Paralysis',
     icon: '😶',
     question: 'מה הגורם?',
+    matchKeywords: ['פציאליס', 'שיתוק פנים', 'פנים מעוותים', 'בל\'ס'],
     roots: [
       {
         rootId: 'wind-invasion',
@@ -309,6 +315,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Digestive Issues',
     icon: '🫃',
     question: 'מה הסימפטום העיקרי?',
+    matchKeywords: ['עיכול', 'קיבה', 'כאבי קיבה', 'כאבי בטן', 'גסטריטיס', 'שלשול', 'עצירות', 'בחילה', 'הקאה', 'נפיחות בטן', 'רפלוקס', 'מעי', 'כאב בטן'],
     roots: [
       {
         rootId: 'spleen-deficiency',
@@ -340,6 +347,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Insomnia',
     icon: '😴',
     question: 'מה מפריע לשינה?',
+    matchKeywords: ['נדודי שינה', 'אינסומניה', 'שינה', 'קושי להירדם'],
     roots: [
       {
         rootId: 'heart-fire',
@@ -371,6 +379,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Asthma',
     icon: '🫁',
     question: 'מה סוג האסתמה?',
+    matchKeywords: ['אסתמה', 'קוצר נשימה', 'שיעול כרוני', 'ברונכיטיס'],
     roots: [
       {
         rootId: 'lung-deficiency',
@@ -395,6 +404,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Knee Pain',
     icon: '🦿',
     question: 'מה אופי הכאב?',
+    matchKeywords: ['כאב ברכיים', 'כאבי ברכיים', 'כאב ברך', 'ברכיים', 'ברך'],
     roots: [
       {
         rootId: 'kidney-deficiency',
@@ -425,6 +435,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     symptomEn: 'Skin Problems',
     icon: '🩹',
     question: 'מה סוג הבעיה?',
+    matchKeywords: ['עור', 'אקנה', 'אקזמה', 'פסוריאזיס', 'גרד', 'אורטיקריה', 'דרמטיטיס', 'ויטיליגו'],
     roots: [
       {
         rootId: 'lung-deficiency',
@@ -461,8 +472,11 @@ export function getRootCause(rootId: string): RootCause | undefined {
 }
 
 export function getPathogenesisForSymptom(symptom: string): PathogenesisMap | undefined {
+  // First try matchKeywords (broader matching)
+  const normalized = symptom.trim()
   return pathogenesisMaps.find(p =>
-    symptom.includes(p.symptom) || p.symptom.includes(symptom)
+    p.matchKeywords.some(kw => normalized.includes(kw) || kw.includes(normalized)) ||
+    normalized.includes(p.symptom) || p.symptom.includes(normalized)
   )
 }
 

@@ -4,8 +4,9 @@ import { rubricData, type RubricCategory } from '../utils/buildRubric'
 import { points } from '../data/points'
 import { flattenIndications, type Point } from '../types'
 import { getSideBadge } from '../utils/treatmentPrinciples'
+import { getRootCause, getPathogenesisForSymptom, type PathogenesisMap } from '../data/pathogenesis'
 
-type Step = 'categories' | 'symptoms' | 'results'
+type Step = 'categories' | 'symptoms' | 'rootCause' | 'results'
 
 interface ScoredPoint {
   point: Point
@@ -13,10 +14,16 @@ interface ScoredPoint {
   matchedSymptoms: string[]
 }
 
+interface SelectedRoot {
+  map: PathogenesisMap
+  rootId: string
+}
+
 export default function DiagnosisWizard() {
   const [step, setStep] = useState<Step>('categories')
   const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(null)
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
+  const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(null)
 
   // ── Scored results ──
   // Uses broad substring matching: if a symptom like "סיאטיקה" is selected,
@@ -94,14 +101,47 @@ export default function DiagnosisWizard() {
   }
 
   function showResults() {
+    // Check if any selected symptom has a pathogenesis map
+    const symptoms = Array.from(selectedSymptoms)
+    for (const s of symptoms) {
+      const coreKeyword = s.split(/[,(\/—-]/)[0].trim()
+      const map = getPathogenesisForSymptom(coreKeyword)
+      if (map) {
+        setSelectedRoot(null)
+        setStep('rootCause')
+        return
+      }
+    }
+    setStep('results')
+  }
+
+  function selectRoot(map: PathogenesisMap, rootId: string) {
+    setSelectedRoot({ map, rootId })
+    setStep('results')
+  }
+
+  function skipRootCause() {
+    setSelectedRoot(null)
     setStep('results')
   }
 
   function resetAll() {
     setSelectedSymptoms(new Set())
     setActiveCategory(null)
+    setSelectedRoot(null)
     setStep('categories')
   }
+
+  // Get the matching pathogenesis map for display
+  const activePathMap = useMemo(() => {
+    const symptoms = Array.from(selectedSymptoms)
+    for (const s of symptoms) {
+      const coreKeyword = s.split(/[,(\/—-]/)[0].trim()
+      const map = getPathogenesisForSymptom(coreKeyword)
+      if (map) return map
+    }
+    return null
+  }, [selectedSymptoms])
 
   return (
     <div className="min-h-screen pb-24">
@@ -237,6 +277,79 @@ export default function DiagnosisWizard() {
           </div>
         )}
 
+        {/* Step 2.5: Root Cause Selection */}
+        {step === 'rootCause' && activePathMap && (
+          <div className="space-y-3">
+            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-2xl p-4 border border-amber-200 dark:border-amber-800">
+              <div className="flex items-center gap-2 mb-3 justify-end">
+                <div>
+                  <h2 className="font-bold text-amber-900 dark:text-amber-100 text-lg">🌳 אבחון שורש המחלה</h2>
+                  <p className="text-xs text-amber-700 dark:text-amber-300">
+                    {activePathMap.icon} {activePathMap.symptom} - {activePathMap.question}
+                  </p>
+                </div>
+              </div>
+              <p className="text-xs text-amber-600 dark:text-amber-400 mb-3 text-right">
+                אותו סימפטום יכול לנבוע משורשים שונים. בחר את השורש לפי הסימנים של המטופל:
+              </p>
+
+              <div className="space-y-2">
+                {activePathMap.roots.map(root => {
+                  const rootInfo = getRootCause(root.rootId)
+                  if (!rootInfo) return null
+                  return (
+                    <button
+                      key={root.rootId}
+                      onClick={() => selectRoot(activePathMap, root.rootId)}
+                      className="w-full text-right p-3 rounded-xl border border-amber-200 dark:border-amber-700 bg-white dark:bg-dark-card hover:border-amber-400 dark:hover:border-amber-500 transition-colors"
+                    >
+                      <div className="flex items-start gap-2 justify-end">
+                        <div className="flex-1">
+                          <div className="font-bold text-gray-900 dark:text-dark-text text-sm flex items-center gap-1.5 justify-end">
+                            {rootInfo.name}
+                            {rootInfo.phase && (
+                              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300">
+                                {rootInfo.phase}
+                              </span>
+                            )}
+                            {root.priority === 1 && (
+                              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">
+                                נפוץ
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-[11px] text-gray-500 dark:text-dark-muted mt-0.5">{rootInfo.description.slice(0, 80)}...</p>
+                          {rootInfo.signs.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mt-1.5 justify-end">
+                              {rootInfo.signs.slice(0, 4).map(s => (
+                                <span key={s} className="text-[9px] px-1.5 py-0.5 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">
+                                  {s}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {root.daoMa && (
+                            <div className="text-[10px] text-amber-600 dark:text-amber-400 mt-1">
+                              🐴 {root.daoMa} • {root.pointIds.length} נקודות
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+
+              <button
+                onClick={skipRootCause}
+                className="w-full mt-3 py-2 rounded-xl border border-gray-200 dark:border-dark-border text-gray-500 dark:text-dark-muted text-sm hover:bg-gray-50 dark:hover:bg-dark-card transition-colors"
+              >
+                דלג - הצג את כל הנקודות
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Step 3: Results */}
         {step === 'results' && (
           <div className="space-y-3">
@@ -254,6 +367,45 @@ export default function DiagnosisWizard() {
                 {scoredPoints.length} נקודות מתאימות
               </h2>
             </div>
+
+            {/* Root cause protocol card */}
+            {selectedRoot && (() => {
+              const rootInfo = getRootCause(selectedRoot.rootId)
+              const rootData = selectedRoot.map.roots.find(r => r.rootId === selectedRoot.rootId)
+              if (!rootInfo || !rootData) return null
+              return (
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-amber-700 space-y-2">
+                  <div className="flex items-center gap-2 justify-end">
+                    <h3 className="font-bold text-amber-900 dark:text-amber-100">
+                      🎯 פרוטוקול: {selectedRoot.map.symptom} - {rootInfo.name}
+                    </h3>
+                  </div>
+                  {rootInfo.phase && (
+                    <div className="text-xs text-amber-700 dark:text-amber-300">
+                      פאזה: {rootInfo.phase} | איבר: {rootInfo.organ || 'כללי'}
+                    </div>
+                  )}
+                  <p className="text-sm text-amber-800 dark:text-amber-200 leading-relaxed">{rootData.protocol}</p>
+                  <div className="flex flex-wrap gap-1.5 justify-end">
+                    {rootData.pointIds.map(pid => (
+                      <Link
+                        key={pid}
+                        to={`/point/${pid}`}
+                        className="text-xs px-2 py-1 rounded-lg bg-amber-200/60 dark:bg-amber-800/40 text-amber-900 dark:text-amber-100 font-mono font-bold hover:bg-amber-300 dark:hover:bg-amber-700 transition-colors"
+                      >
+                        {pid}
+                      </Link>
+                    ))}
+                  </div>
+                  <div className="flex items-center gap-3 text-[10px] text-amber-600 dark:text-amber-400 pt-1">
+                    {rootData.needleSide && (
+                      <span>↔️ {rootData.needleSide === 'contralateral' ? 'צד נגדי' : rootData.needleSide === 'bilateral' ? 'דו-צדדי' : 'אותו צד'}</span>
+                    )}
+                    {rootData.daoMa && <span>🐴 {rootData.daoMa}</span>}
+                  </div>
+                </div>
+              )
+            })()}
 
             {/* Treatment principles banner */}
             {scoredPoints.length > 0 && (

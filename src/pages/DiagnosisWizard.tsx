@@ -596,18 +596,18 @@ export default function DiagnosisWizard() {
               const rootData = selectedRoot.map.roots.find(r => r.rootId === selectedRoot.rootId)
               if (!rootInfo || !rootData) return null
               return (
-                <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-amber-700 space-y-2">
+                <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200 dark:border-amber-700 space-y-2 text-right">
                   <div className="flex items-center gap-2 justify-end">
                     <h3 className="font-bold text-amber-900 dark:text-amber-100">
                       🎯 פרוטוקול: {selectedRoot.map.symptom} - {rootInfo.name}
                     </h3>
                   </div>
                   {rootInfo.phase && (
-                    <div className="text-xs text-amber-700 dark:text-amber-300">
+                    <div className="text-xs text-amber-700 dark:text-amber-300 text-right">
                       פאזה: {rootInfo.phase} | איבר: {rootInfo.organ || 'כללי'}
                     </div>
                   )}
-                  <p className="text-sm text-amber-800 dark:text-amber-200 leading-relaxed">{rootData.protocol}</p>
+                  <p className="text-sm text-amber-800 dark:text-amber-200 leading-relaxed text-right">{rootData.protocol}</p>
                   <div className="flex flex-wrap gap-1.5 justify-end">
                     {rootData.pointIds.map(pid => (
                       <Link
@@ -619,7 +619,7 @@ export default function DiagnosisWizard() {
                       </Link>
                     ))}
                   </div>
-                  <div className="flex items-center gap-3 text-[10px] text-amber-600 dark:text-amber-400 pt-1">
+                  <div className="flex items-center gap-3 text-[10px] text-amber-600 dark:text-amber-400 pt-1 justify-end">
                     {rootData.needleSide && (
                       <span>↔️ {rootData.needleSide === 'contralateral' ? 'צד נגדי' : rootData.needleSide === 'bilateral' ? 'דו-צדדי' : 'אותו צד'}</span>
                     )}
@@ -631,9 +631,9 @@ export default function DiagnosisWizard() {
 
             {/* Treatment principles banner */}
             {scoredPoints.length > 0 && (
-              <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 text-xs text-blue-800 dark:text-blue-200 space-y-1">
-                <div className="font-bold flex items-center gap-1.5">
-                  <span>📐</span> עקרונות בחירת צד
+              <div className="p-3 rounded-xl bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 text-xs text-blue-800 dark:text-blue-200 space-y-1 text-right">
+                <div className="font-bold flex items-center gap-1.5 justify-end">
+                  עקרונות בחירת צד <span>📐</span>
                 </div>
                 <div>↔️ <strong>צד נגדי:</strong> כאב בימין → דקור בשמאל (ולהפך)</div>
                 <div>↕️ <strong>למעלה↔למטה:</strong> כאב מעל הטבור → דקור ברגליים | כאב מתחת → דקור בידיים</div>
@@ -653,7 +653,7 @@ export default function DiagnosisWizard() {
                     to={`/point/${point.id}`}
                     className="block bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border p-4 hover:border-teal-primary/30 transition-colors"
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-3 flex-row-reverse">
                       {/* Score badge */}
                       <div className="shrink-0 w-12 h-12 rounded-xl bg-teal-primary/10 dark:bg-teal-primary/20 flex flex-col items-center justify-center">
                         <span className="text-lg font-bold text-teal-primary">{score}</span>

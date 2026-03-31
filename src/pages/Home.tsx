@@ -61,6 +61,22 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Clinical Diagnosis - prominent placement */}
+      <div className="px-6 mt-4">
+        <Link
+          to="/diagnosis"
+          className="flex items-center gap-4 p-5 bg-gradient-to-l from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors"
+        >
+          <div className="w-12 h-12 rounded-full bg-white dark:bg-dark-card shadow-sm flex items-center justify-center">
+            <span className="text-2xl">🩺</span>
+          </div>
+          <div className="flex-1">
+            <div className="font-bold text-gray-900 dark:text-dark-text">אבחון קליני</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">בחר סימפטומים → קבל המלצת נקודות מדורגת</div>
+          </div>
+        </Link>
+      </div>
+
       {/* Zone Grid */}
       <div className="px-6 mt-6">
         <h2 className="text-lg font-bold text-gray-900 dark:text-dark-text mb-3">בחר אזור</h2>
@@ -109,18 +125,6 @@ export default function Home() {
           </div>
         </Link>
 
-        <Link
-          to="/diagnosis"
-          className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
-        >
-          <div className="w-12 h-12 rounded-full bg-emerald-50 dark:bg-emerald-500/20 flex items-center justify-center">
-            <span className="text-2xl">🩺</span>
-          </div>
-          <div>
-            <div className="font-bold text-gray-900 dark:text-dark-text">אבחון קליני</div>
-            <div className="text-sm text-gray-500 dark:text-dark-muted">בחר סימפטומים → קבל המלצת נקודות מדורגת</div>
-          </div>
-        </Link>
 
       </div>
     </div>

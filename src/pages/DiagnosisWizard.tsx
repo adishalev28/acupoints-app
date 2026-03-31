@@ -21,21 +21,54 @@ interface SelectedRoot {
 
 export default function DiagnosisWizard() {
   const navigate = useNavigate()
-  const [step, setStepRaw] = useState<Step>('categories')
-  const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(null)
-  const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
+
+  // ── Restore state from sessionStorage (survives navigation to point pages) ──
+  const savedState = useRef(() => {
+    try {
+      const raw = sessionStorage.getItem('diagnosis_wizard_state')
+      if (raw) return JSON.parse(raw) as {
+        step: Step
+        categoryName: string | null
+        symptoms: string[]
+        rootMapSymptom: string | null
+        rootId: string | null
+      }
+    } catch {}
+    return null
+  })
+
+  const restored = savedState.current()
+  const restoredCategory = restored?.categoryName
+    ? rubricData.find(c => c.name === restored.categoryName) ?? null
+    : null
+
+  const [step, setStepRaw] = useState<Step>(restored?.step ?? 'categories')
+  const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(restoredCategory)
+  const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(
+    new Set(restored?.symptoms ?? [])
+  )
   const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(null)
   const [symptomSearch, setSymptomSearch] = useState('')
   const [globalSearch, setGlobalSearch] = useState('')
 
+  // ── Persist wizard state to sessionStorage ──
+  const saveState = useCallback((s: Step, cat: RubricCategory | null, syms: Set<string>, root: SelectedRoot | null) => {
+    try {
+      sessionStorage.setItem('diagnosis_wizard_state', JSON.stringify({
+        step: s,
+        categoryName: cat?.name ?? null,
+        symptoms: Array.from(syms),
+        rootMapSymptom: root?.map.symptom ?? null,
+        rootId: root?.rootId ?? null,
+      }))
+    } catch {}
+  }, [])
+
   // ── Browser history sync ──
-  // Push a history entry each time we move forward in the wizard,
-  // so the phone/browser back button returns to the previous step.
   const isPopRef = useRef(false)
 
   const setStep = useCallback((newStep: Step) => {
     setStepRaw(prev => {
-      // Only push history when going forward (not from popstate)
       if (!isPopRef.current && newStep !== prev) {
         window.history.pushState({ wizardStep: newStep }, '')
       }
@@ -44,31 +77,35 @@ export default function DiagnosisWizard() {
     })
   }, [])
 
+  // Save state on every change
+  useEffect(() => {
+    saveState(step, activeCategory, selectedSymptoms, selectedRoot)
+  }, [step, activeCategory, selectedSymptoms, selectedRoot, saveState])
+
   useEffect(() => {
     // Push initial state
-    window.history.replaceState({ wizardStep: 'categories' }, '')
+    window.history.replaceState({ wizardStep: step }, '')
 
     const onPopState = (e: PopStateEvent) => {
       const wizardStep = e.state?.wizardStep as Step | undefined
       if (wizardStep) {
-        // Go back within the wizard
         isPopRef.current = true
         setStepRaw(wizardStep)
-        // If going back to categories, clear category selection
         if (wizardStep === 'categories') {
           setActiveCategory(null)
           setSymptomSearch('')
           setGlobalSearch('')
         }
       } else {
-        // No wizard state — user went back past the wizard entry, navigate home
+        // Clear saved state when leaving the wizard
+        sessionStorage.removeItem('diagnosis_wizard_state')
         navigate('/', { replace: true })
       }
     }
 
     window.addEventListener('popstate', onPopState)
     return () => window.removeEventListener('popstate', onPopState)
-  }, [navigate])
+  }, [navigate, step])
 
   // ── Global search across all categories ──
   const globalSearchResults = useMemo(() => {
@@ -189,6 +226,9 @@ export default function DiagnosisWizard() {
     setSelectedSymptoms(new Set())
     setActiveCategory(null)
     setSelectedRoot(null)
+    setGlobalSearch('')
+    setSymptomSearch('')
+    sessionStorage.removeItem('diagnosis_wizard_state')
     setStep('categories')
   }
 

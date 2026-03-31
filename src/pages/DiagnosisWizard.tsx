@@ -25,6 +25,20 @@ export default function DiagnosisWizard() {
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
   const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(null)
   const [symptomSearch, setSymptomSearch] = useState('')
+  const [globalSearch, setGlobalSearch] = useState('')
+
+  // ── Global search across all categories ──
+  const globalSearchResults = useMemo(() => {
+    if (!globalSearch || globalSearch.length < 2) return null
+    const results: { category: RubricCategory; matches: typeof rubricData[0]['entries'] }[] = []
+    for (const cat of rubricData) {
+      const matches = cat.entries.filter(e => e.indication.includes(globalSearch))
+      if (matches.length > 0) {
+        results.push({ category: cat, matches })
+      }
+    }
+    return results
+  }, [globalSearch])
 
   // ── Scored results ──
   // Uses broad substring matching: if a symptom like "סיאטיקה" is selected,
@@ -94,6 +108,7 @@ export default function DiagnosisWizard() {
   function openCategory(cat: RubricCategory) {
     setActiveCategory(cat)
     setSymptomSearch('')
+    setGlobalSearch('')
     setStep('symptoms')
   }
 
@@ -200,26 +215,109 @@ export default function DiagnosisWizard() {
         {/* Step 1: Categories */}
         {step === 'categories' && (
           <div className="space-y-3">
-            <p className="text-sm text-gray-500 dark:text-dark-muted text-right px-1">
-              בחר קטגוריה כדי לבחור סימפטומים
-            </p>
-            <div className="grid grid-cols-2 gap-2.5">
-              {rubricData.map(cat => (
+            {/* Global search */}
+            <div className="relative">
+              <input
+                type="text"
+                value={globalSearch}
+                onChange={e => setGlobalSearch(e.target.value)}
+                placeholder="חפש בעיה... (למשל: מיגרנה, סיאטיקה, עצירות)"
+                className="w-full py-3 px-4 pr-10 rounded-xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card text-sm text-gray-800 dark:text-dark-text text-right placeholder:text-gray-400 dark:placeholder:text-dark-muted focus:outline-none focus:border-teal-primary"
+              />
+              <svg className="w-5 h-5 text-gray-400 absolute top-1/2 -translate-y-1/2 right-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              {globalSearch && (
                 <button
-                  key={cat.name}
-                  onClick={() => openCategory(cat)}
-                  className={`flex items-center gap-3 p-4 rounded-xl border text-right transition-colors
-                    ${cat.color.bg} ${cat.color.border} ${cat.color.darkBg}
-                    hover:opacity-80 active:opacity-70`}
+                  onClick={() => setGlobalSearch('')}
+                  className="absolute top-1/2 -translate-y-1/2 left-3 text-gray-400 hover:text-gray-600"
                 >
-                  <div className="flex-1">
-                    <div className={`text-sm font-bold ${cat.color.text} ${cat.color.darkText}`}>{cat.name}</div>
-                    <div className="text-xs text-gray-500 dark:text-dark-muted mt-0.5">{cat.entries.length} סימפטומים</div>
-                  </div>
-                  <span className="text-2xl">{cat.icon}</span>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
-              ))}
+              )}
             </div>
+
+            {/* Search results */}
+            {globalSearchResults ? (
+              globalSearchResults.length > 0 ? (
+                <div className="space-y-3">
+                  <p className="text-xs text-gray-400 dark:text-dark-muted text-right">
+                    נמצאו {globalSearchResults.reduce((sum, r) => sum + r.matches.length, 0)} תוצאות ב-{globalSearchResults.length} קטגוריות
+                  </p>
+                  {globalSearchResults.map(({ category, matches }) => (
+                    <div key={category.name} className={`rounded-xl border overflow-hidden ${category.color.border} ${category.color.darkBg}`}>
+                      <div className={`flex items-center gap-2 px-4 py-2.5 ${category.color.bg}`}>
+                        <span className="text-lg">{category.icon}</span>
+                        <span className={`text-sm font-bold ${category.color.text} ${category.color.darkText}`}>{category.name}</span>
+                        <span className="text-xs text-gray-500 dark:text-dark-muted mr-auto">{matches.length} תוצאות</span>
+                      </div>
+                      <div className="bg-white dark:bg-dark-card divide-y divide-gray-50 dark:divide-dark-border">
+                        {matches.slice(0, 5).map(entry => {
+                          const isSelected = selectedSymptoms.has(entry.indication)
+                          return (
+                            <button
+                              key={entry.indication}
+                              onClick={() => toggleSymptom(entry.indication)}
+                              className={`w-full flex items-center gap-3 px-4 py-2.5 text-right transition-colors
+                                ${isSelected ? 'bg-teal-50 dark:bg-teal-primary/20' : 'hover:bg-gray-50 dark:hover:bg-dark-card'}`}
+                            >
+                              <span className="text-xs text-gray-400 dark:text-dark-muted shrink-0">{entry.pointIds.length} נק׳</span>
+                              <span className="flex-1 text-sm text-gray-800 dark:text-dark-text">{entry.indication}</span>
+                              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors
+                                ${isSelected ? 'bg-teal-primary border-teal-primary' : 'border-gray-300 dark:border-dark-border'}`}>
+                                {isSelected && (
+                                  <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                                  </svg>
+                                )}
+                              </div>
+                            </button>
+                          )
+                        })}
+                        {matches.length > 5 && (
+                          <button
+                            onClick={() => { setActiveCategory(category); setSymptomSearch(globalSearch); setGlobalSearch(''); setStep('symptoms') }}
+                            className={`w-full py-2 text-center text-xs font-medium ${category.color.text} ${category.color.darkText} hover:opacity-70`}
+                          >
+                            הצג עוד {matches.length - 5} תוצאות ב{category.name} ←
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center text-gray-400 dark:text-dark-muted py-8 text-sm">
+                  לא נמצאו סימפטומים עבור "{globalSearch}"
+                </div>
+              )
+            ) : (
+              /* Default: category grid */
+              <>
+                <p className="text-sm text-gray-500 dark:text-dark-muted text-right px-1">
+                  או בחר קטגוריה:
+                </p>
+                <div className="grid grid-cols-2 gap-2.5">
+                  {rubricData.map(cat => (
+                    <button
+                      key={cat.name}
+                      onClick={() => openCategory(cat)}
+                      className={`flex items-center gap-3 p-4 rounded-xl border text-right transition-colors
+                        ${cat.color.bg} ${cat.color.border} ${cat.color.darkBg}
+                        hover:opacity-80 active:opacity-70`}
+                    >
+                      <div className="flex-1">
+                        <div className={`text-sm font-bold ${cat.color.text} ${cat.color.darkText}`}>{cat.name}</div>
+                        <div className="text-xs text-gray-500 dark:text-dark-muted mt-0.5">{cat.entries.length} סימפטומים</div>
+                      </div>
+                      <span className="text-2xl">{cat.icon}</span>
+                    </button>
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         )}
 

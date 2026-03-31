@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { rubricData, type RubricCategory } from '../utils/buildRubric'
 import { points } from '../data/points'
 import { flattenIndications, type Point } from '../types'
@@ -20,12 +20,55 @@ interface SelectedRoot {
 }
 
 export default function DiagnosisWizard() {
-  const [step, setStep] = useState<Step>('categories')
+  const navigate = useNavigate()
+  const [step, setStepRaw] = useState<Step>('categories')
   const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(null)
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
   const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(null)
   const [symptomSearch, setSymptomSearch] = useState('')
   const [globalSearch, setGlobalSearch] = useState('')
+
+  // ── Browser history sync ──
+  // Push a history entry each time we move forward in the wizard,
+  // so the phone/browser back button returns to the previous step.
+  const isPopRef = useRef(false)
+
+  const setStep = useCallback((newStep: Step) => {
+    setStepRaw(prev => {
+      // Only push history when going forward (not from popstate)
+      if (!isPopRef.current && newStep !== prev) {
+        window.history.pushState({ wizardStep: newStep }, '')
+      }
+      isPopRef.current = false
+      return newStep
+    })
+  }, [])
+
+  useEffect(() => {
+    // Push initial state
+    window.history.replaceState({ wizardStep: 'categories' }, '')
+
+    const onPopState = (e: PopStateEvent) => {
+      const wizardStep = e.state?.wizardStep as Step | undefined
+      if (wizardStep) {
+        // Go back within the wizard
+        isPopRef.current = true
+        setStepRaw(wizardStep)
+        // If going back to categories, clear category selection
+        if (wizardStep === 'categories') {
+          setActiveCategory(null)
+          setSymptomSearch('')
+          setGlobalSearch('')
+        }
+      } else {
+        // No wizard state — user went back past the wizard entry, navigate home
+        navigate('/', { replace: true })
+      }
+    }
+
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [navigate])
 
   // ── Global search across all categories ──
   const globalSearchResults = useMemo(() => {

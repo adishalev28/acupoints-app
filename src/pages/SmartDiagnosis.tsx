@@ -169,6 +169,7 @@ export default function SmartDiagnosis() {
       isPopRef.current = true
       if (state === 'choose') {
         setPath('choose')
+        sessionStorage.removeItem('smart_diag_state')
       } else if (state === 'direct-organs') {
         setPath('direct')
         setDirectStep('organs')
@@ -363,6 +364,7 @@ export default function SmartDiagnosis() {
       setGuidedStep(prev)
     } else {
       setPath('choose')
+      sessionStorage.removeItem('smart_diag_state')
     }
   }
 

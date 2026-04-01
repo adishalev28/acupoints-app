@@ -34,20 +34,34 @@ interface PointResult {
 export default function SmartDiagnosis() {
   const navigate = useNavigate()
 
+  // ── Restore state from sessionStorage on mount ──
+  const restored = useRef(() => {
+    try {
+      const raw = sessionStorage.getItem('smart_diag_state')
+      if (raw) {
+        const s = JSON.parse(raw)
+        if (s.path && s.path !== 'choose') return s
+      }
+    } catch {}
+    return null
+  }).current()
+
   // Path selection
-  const [path, setPath] = useState<Path>('choose')
+  const [path, setPath] = useState<Path>(restored?.path ?? 'choose')
 
   // Direct path state
-  const [directStep, setDirectStep] = useState<DirectStep>('organs')
-  const [selectedOrgan, setSelectedOrgan] = useState<OrganProfile | null>(null)
-  const [conditionType, setConditionType] = useState<'deficiency' | 'excess' | 'stagnation' | null>(null)
+  const [directStep, setDirectStep] = useState<DirectStep>(restored?.directStep ?? 'organs')
+  const [selectedOrgan, setSelectedOrgan] = useState<OrganProfile | null>(
+    restored?.selectedOrganId ? getOrganProfile(restored.selectedOrganId) ?? null : null
+  )
+  const [conditionType, setConditionType] = useState<'deficiency' | 'excess' | 'stagnation' | null>(restored?.conditionType ?? null)
 
   // Guided path state
-  const [guidedStep, setGuidedStep] = useState<GuidedStep>('symptom')
-  const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set())
-  const [selectedTissue, setSelectedTissue] = useState<string | null>(null)
-  const [location, setLocation] = useState<LocationChoice>({ vertical: null, side: null })
-  const [palmFindings, setPalmFindings] = useState<Set<string>>(new Set())
+  const [guidedStep, setGuidedStep] = useState<GuidedStep>(restored?.guidedStep ?? 'symptom')
+  const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set(restored?.symptoms ?? []))
+  const [selectedTissue, setSelectedTissue] = useState<string | null>(restored?.selectedTissue ?? null)
+  const [location, setLocation] = useState<LocationChoice>(restored?.location ?? { vertical: null, side: null })
+  const [palmFindings, setPalmFindings] = useState<Set<string>>(new Set(restored?.palmFindings ?? []))
   const [symptomSearch, setSymptomSearch] = useState('')
 
   // Shared
@@ -56,12 +70,26 @@ export default function SmartDiagnosis() {
   // ── Browser history sync ──
   const isPopRef = useRef(false)
 
+  // Compute initial history state key from restored state
+  function getHistoryKey(p: Path, ds: DirectStep, gs: GuidedStep): string {
+    if (p === 'choose') return 'choose'
+    if (p === 'direct') return ds === 'results' ? 'direct-results' : 'direct-organs'
+    return `guided-${gs}`
+  }
+
   useEffect(() => {
-    window.history.replaceState({ smartDiag: 'choose' }, '')
+    // Use restored state for initial history entry
+    const initialKey = getHistoryKey(
+      restored?.path ?? 'choose',
+      restored?.directStep ?? 'organs',
+      restored?.guidedStep ?? 'symptom'
+    )
+    window.history.replaceState({ smartDiag: initialKey }, '')
 
     const onPopState = (e: PopStateEvent) => {
       const state = e.state?.smartDiag
       if (!state) {
+        sessionStorage.removeItem('smart_diag_state')
         navigate('/', { replace: true })
         return
       }
@@ -73,7 +101,7 @@ export default function SmartDiagnosis() {
         setDirectStep('organs')
       } else if (state === 'direct-results') {
         setPath('direct')
-        setDirectStep('organs') // go back to organ selection
+        setDirectStep('organs')
       } else if (state.startsWith('guided-')) {
         setPath('guided')
         const step = state.replace('guided-', '') as GuidedStep
@@ -92,7 +120,7 @@ export default function SmartDiagnosis() {
     isPopRef.current = false
   }
 
-  // ── Save/restore state ──
+  // ── Persist state to sessionStorage ──
   useEffect(() => {
     try {
       sessionStorage.setItem('smart_diag_state', JSON.stringify({
@@ -102,31 +130,6 @@ export default function SmartDiagnosis() {
       }))
     } catch {}
   }, [path, directStep, selectedOrgan, conditionType, guidedStep, selectedSymptoms, selectedTissue, location, palmFindings])
-
-  // Restore on mount
-  useEffect(() => {
-    try {
-      const raw = sessionStorage.getItem('smart_diag_state')
-      if (raw) {
-        const s = JSON.parse(raw)
-        if (s.path && s.path !== 'choose') {
-          setPath(s.path)
-          if (s.path === 'direct') {
-            setDirectStep(s.directStep || 'organs')
-            if (s.selectedOrganId) setSelectedOrgan(getOrganProfile(s.selectedOrganId) ?? null)
-            if (s.conditionType) setConditionType(s.conditionType)
-          }
-          if (s.path === 'guided') {
-            setGuidedStep(s.guidedStep || 'symptom')
-            if (s.symptoms?.length) setSelectedSymptoms(new Set(s.symptoms))
-            if (s.selectedTissue) setSelectedTissue(s.selectedTissue)
-            if (s.location) setLocation(s.location)
-            if (s.palmFindings?.length) setPalmFindings(new Set(s.palmFindings))
-          }
-        }
-      }
-    } catch {}
-  }, [])
 
   // ── Compute results for direct path ──
   const directResults = useMemo((): PointResult[] => {

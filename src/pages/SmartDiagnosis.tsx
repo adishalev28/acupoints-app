@@ -194,8 +194,16 @@ export default function SmartDiagnosis() {
     isPopRef.current = false
   }
 
-  // ── Persist state to sessionStorage ──
+  // ── Persist state to sessionStorage (only when past the choose screen) ──
   useEffect(() => {
+    if (path === 'choose') {
+      sessionStorage.removeItem('smart_diag_state')
+      return
+    }
+    // Only save when we're deep enough that coming back from a point page matters
+    const isDeep = (path === 'direct' && directStep === 'results') ||
+                   (path === 'guided' && guidedSteps.indexOf(guidedStep) >= guidedSteps.indexOf('location'))
+    if (!isDeep) return
     try {
       sessionStorage.setItem('smart_diag_state', JSON.stringify({
         path, directStep, selectedOrganId: selectedOrgan?.id ?? null,

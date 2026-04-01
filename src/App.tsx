@@ -10,6 +10,7 @@ import OrganFinder from './pages/OrganFinder'
 import MirrorMap from './pages/MirrorMap'
 import DiagnosisWizard from './pages/DiagnosisWizard'
 import DaoMa from './pages/DaoMa'
+import SmartDiagnosis from './pages/SmartDiagnosis'
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/mirror" element={<MirrorMap />} />
           <Route path="/diagnosis" element={<DiagnosisWizard />} />
           <Route path="/dao-ma" element={<DaoMa />} />
+          <Route path="/smart-diagnosis" element={<SmartDiagnosis />} />
           <Route path="/principle/:id" element={<PrincipleDetail />} />
         </Route>
       </Routes>

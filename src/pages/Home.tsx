@@ -61,18 +61,30 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Clinical Diagnosis - prominent placement */}
-      <div className="px-6 mt-4">
+      {/* Smart Diagnosis - prominent placement */}
+      <div className="px-6 mt-4 space-y-2.5">
         <Link
-          to="/diagnosis"
+          to="/smart-diagnosis"
           className="flex items-center gap-4 p-5 bg-gradient-to-l from-emerald-50 to-teal-50 dark:from-emerald-900/20 dark:to-teal-900/20 rounded-2xl border border-emerald-200 dark:border-emerald-800 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors"
         >
           <div className="w-12 h-12 rounded-full bg-white dark:bg-dark-card shadow-sm flex items-center justify-center">
             <span className="text-2xl">🩺</span>
           </div>
           <div className="flex-1">
-            <div className="font-bold text-gray-900 dark:text-dark-text">אבחון קליני</div>
-            <div className="text-sm text-gray-500 dark:text-dark-muted">בחר סימפטומים → קבל המלצת נקודות מדורגת</div>
+            <div className="font-bold text-gray-900 dark:text-dark-text">אבחון חכם</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">בחר איבר ישירות או השתמש בשאלון מודרך</div>
+          </div>
+        </Link>
+        <Link
+          to="/diagnosis"
+          className="flex items-center gap-3 px-5 py-3 bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
+        >
+          <div className="w-8 h-8 rounded-lg bg-teal-50 dark:bg-teal-primary/20 flex items-center justify-center shrink-0">
+            <span className="text-lg">📋</span>
+          </div>
+          <div className="flex-1">
+            <div className="text-sm font-medium text-gray-700 dark:text-dark-text">אבחון לפי סימפטומים</div>
+            <div className="text-xs text-gray-400 dark:text-dark-muted">חיפוש סימפטומים → נקודות מדורגות</div>
           </div>
         </Link>
       </div>

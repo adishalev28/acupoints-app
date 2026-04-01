@@ -98,12 +98,20 @@ export default function SmartDiagnosis() {
   const navigate = useNavigate()
 
   // ── Restore state from sessionStorage on mount ──
+  const validGuidedSteps = ['symptom', 'character', 'triggers', 'associated', 'location', 'palm', 'results']
   const restored = useRef(() => {
     try {
       const raw = sessionStorage.getItem('smart_diag_state')
       if (raw) {
         const s = JSON.parse(raw)
-        if (s.path && s.path !== 'choose') return s
+        if (s.path && s.path !== 'choose') {
+          // Validate guided step — old versions may have 'tissue' which no longer exists
+          if (s.path === 'guided' && s.guidedStep && !validGuidedSteps.includes(s.guidedStep)) {
+            sessionStorage.removeItem('smart_diag_state')
+            return null
+          }
+          return s
+        }
       }
     } catch {}
     return null

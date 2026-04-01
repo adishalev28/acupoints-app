@@ -1,12 +1,11 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { points } from '../data/points'
-import { type Point } from '../types'
+import { flattenIndications, type Point } from '../types'
 import { organProfiles, tissueOrganMap, getOrganProfile, type OrganProfile } from '../data/organTherapy'
 import { daoMaClinicalGroups, organToDaoMa } from '../data/daoMaGroups'
 import { getPointsByOrgan } from '../utils/reactionAreaNormalization'
 import { getSideBadge } from '../utils/treatmentPrinciples'
-import { rubricData } from '../utils/buildRubric'
 
 // ── Types ──
 
@@ -58,11 +57,12 @@ export default function SmartDiagnosis() {
 
   // Guided path state
   const [guidedStep, setGuidedStep] = useState<GuidedStep>(restored?.guidedStep ?? 'symptom')
+  const [freeTextSymptom, setFreeTextSymptom] = useState(restored?.freeTextSymptom ?? '')
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set(restored?.symptoms ?? []))
   const [selectedTissue, setSelectedTissue] = useState<string | null>(restored?.selectedTissue ?? null)
   const [location, setLocation] = useState<LocationChoice>(restored?.location ?? { vertical: null, side: null })
   const [palmFindings, setPalmFindings] = useState<Set<string>>(new Set(restored?.palmFindings ?? []))
-  const [symptomSearch, setSymptomSearch] = useState('')
+  // symptomSearch removed — guided path now uses freeTextSymptom
 
   // Shared
   const [showNourishing, setShowNourishing] = useState(false)
@@ -125,11 +125,11 @@ export default function SmartDiagnosis() {
     try {
       sessionStorage.setItem('smart_diag_state', JSON.stringify({
         path, directStep, selectedOrganId: selectedOrgan?.id ?? null,
-        conditionType, guidedStep, symptoms: Array.from(selectedSymptoms),
+        conditionType, guidedStep, freeTextSymptom, symptoms: Array.from(selectedSymptoms),
         selectedTissue, location, palmFindings: Array.from(palmFindings),
       }))
     } catch {}
-  }, [path, directStep, selectedOrgan, conditionType, guidedStep, selectedSymptoms, selectedTissue, location, palmFindings])
+  }, [path, directStep, selectedOrgan, conditionType, guidedStep, freeTextSymptom, selectedSymptoms, selectedTissue, location, palmFindings])
 
   // ── Compute results for direct path ──
   const directResults = useMemo((): PointResult[] => {
@@ -226,20 +226,7 @@ export default function SmartDiagnosis() {
     return null
   }, [selectedTissue])
 
-  // ── Guided search results ──
-  const searchResults = useMemo(() => {
-    if (!symptomSearch || symptomSearch.length < 2) return null
-    const results: { catName: string; icon: string; matches: { indication: string; pointCount: number }[] }[] = []
-    for (const cat of rubricData) {
-      const matches = cat.entries
-        .filter(e => e.indication.includes(symptomSearch))
-        .map(e => ({ indication: e.indication, pointCount: e.pointIds.length }))
-      if (matches.length > 0) {
-        results.push({ catName: cat.name, icon: cat.icon, matches })
-      }
-    }
-    return results
-  }, [symptomSearch])
+  // (search results removed — guided path now uses free text)
 
   // ── Navigation helpers ──
   function choosePath(p: 'direct' | 'guided') {
@@ -280,23 +267,16 @@ export default function SmartDiagnosis() {
     setSelectedOrgan(null)
     setConditionType(null)
     setGuidedStep('symptom')
+    setFreeTextSymptom('')
     setSelectedSymptoms(new Set())
     setSelectedTissue(null)
     setLocation({ vertical: null, side: null })
     setPalmFindings(new Set())
-    setSymptomSearch('')
     setShowNourishing(false)
     sessionStorage.removeItem('smart_diag_state')
   }
 
-  function toggleSymptom(s: string) {
-    setSelectedSymptoms(prev => {
-      const next = new Set(prev)
-      if (next.has(s)) next.delete(s)
-      else next.add(s)
-      return next
-    })
-  }
+  // toggleSymptom kept for future use if needed
 
   // ══════════════════════════════════════════════════════════════════
   // RENDER
@@ -487,97 +467,81 @@ export default function SmartDiagnosis() {
         )}
 
         {/* ════════════════════════════════════════════════════════════ */}
-        {/* GUIDED PATH — Step 1: Symptom                               */}
+        {/* GUIDED PATH — Step 1: Symptom (free text + continue)         */}
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'guided' && guidedStep === 'symptom' && (
           <div className="space-y-3">
-            <p className="text-sm text-gray-500 dark:text-dark-muted text-right">מה הבעיה של המטופל?</p>
+            <div className="text-right">
+              <p className="text-sm font-bold text-gray-700 dark:text-dark-text">מה הבעיה של המטופל?</p>
+              <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">
+                הקלד את הסימפטום — השאלון יעזור לך לזהות מאיפה הוא מגיע
+              </p>
+            </div>
 
-            {/* Search */}
+            {/* Free text input */}
             <div className="relative">
               <input
                 type="text"
-                value={symptomSearch}
-                onChange={e => setSymptomSearch(e.target.value)}
-                placeholder="חפש סימפטום... (למשל: כאב ראש, סיאטיקה)"
-                className="w-full py-3 px-4 pr-10 rounded-xl border border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card text-sm text-gray-800 dark:text-dark-text text-right placeholder:text-gray-400 focus:outline-none focus:border-teal-primary"
+                value={freeTextSymptom}
+                onChange={e => setFreeTextSymptom(e.target.value)}
+                placeholder="למשל: מיגרנה, כאב גב, סיאטיקה, אקזמה..."
+                className="w-full py-3.5 px-4 pr-10 rounded-xl border-2 border-gray-200 dark:border-dark-border bg-white dark:bg-dark-card text-base text-gray-800 dark:text-dark-text text-right placeholder:text-gray-400 focus:outline-none focus:border-teal-primary"
               />
               <svg className="w-5 h-5 text-gray-400 absolute top-1/2 -translate-y-1/2 right-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
-              {symptomSearch && (
-                <button onClick={() => setSymptomSearch('')} className="absolute top-1/2 -translate-y-1/2 left-3 text-gray-400">
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              )}
             </div>
 
-            {/* Search results */}
-            {searchResults && searchResults.length > 0 && (
-              <div className="space-y-2">
-                <p className="text-xs text-gray-400 text-right">
-                  {searchResults.reduce((s, r) => s + r.matches.length, 0)} תוצאות
-                </p>
-                {searchResults.map(cat => (
-                  <div key={cat.catName} className="bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border overflow-hidden">
-                    <div className="px-3 py-2 bg-gray-50 dark:bg-gray-800 text-xs font-medium text-gray-600 dark:text-gray-400 text-right">
-                      {cat.icon} {cat.catName}
-                    </div>
-                    {cat.matches.slice(0, 4).map(m => {
-                      const sel = selectedSymptoms.has(m.indication)
-                      return (
-                        <button
-                          key={m.indication}
-                          onClick={() => toggleSymptom(m.indication)}
-                          className={`w-full flex items-center gap-2 px-3 py-2.5 text-right border-t border-gray-50 dark:border-dark-border transition-colors
-                            ${sel ? 'bg-teal-50 dark:bg-teal-primary/20' : 'hover:bg-gray-50 dark:hover:bg-gray-800'}`}
-                        >
-                          <span className="text-[10px] text-gray-400 shrink-0">{m.pointCount} נק׳</span>
-                          <span className="flex-1 text-sm text-gray-800 dark:text-dark-text">{m.indication}</span>
-                          <div className={`w-4 h-4 rounded border-2 flex items-center justify-center shrink-0
-                            ${sel ? 'bg-teal-primary border-teal-primary' : 'border-gray-300 dark:border-dark-border'}`}>
-                            {sel && <svg className="w-2.5 h-2.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
-                          </div>
-                        </button>
-                      )
-                    })}
-                  </div>
-                ))}
-              </div>
-            )}
-
-            {searchResults && searchResults.length === 0 && (
-              <div className="text-center text-gray-400 py-8 text-sm">לא נמצאו תוצאות עבור "{symptomSearch}"</div>
-            )}
-
-            {/* Selected symptoms bar */}
-            {selectedSymptoms.size > 0 && (
-              <div className="p-3 bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border">
-                <div className="text-xs font-bold text-gray-600 dark:text-dark-muted text-right mb-2">
-                  {selectedSymptoms.size} סימפטומים נבחרו
-                </div>
-                <div className="flex flex-wrap gap-1.5 justify-end">
-                  {Array.from(selectedSymptoms).map(s => (
+            {/* Quick suggestions */}
+            {!freeTextSymptom && (
+              <div className="space-y-1.5">
+                <p className="text-xs text-gray-400 dark:text-dark-muted text-right">או בחר בעיה נפוצה:</p>
+                <div className="flex flex-wrap gap-2 justify-end">
+                  {['מיגרנה', 'סיאטיקה', 'כאב גב תחתון', 'כאב כתף', 'נדודי שינה', 'כאב ברכיים', 'בעיות עיכול', 'אסתמה', 'בעיות עור'].map(s => (
                     <button
                       key={s}
-                      onClick={() => toggleSymptom(s)}
-                      className="text-[11px] px-2 py-1 rounded-full bg-teal-50 dark:bg-teal-primary/20 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-700 flex items-center gap-1"
+                      onClick={() => setFreeTextSymptom(s)}
+                      className="text-sm px-3 py-1.5 rounded-full bg-white dark:bg-dark-card border border-gray-200 dark:border-dark-border text-gray-700 dark:text-dark-text hover:border-teal-primary/40 transition-colors"
                     >
-                      <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                      {s.length > 30 ? s.slice(0, 30) + '…' : s}
+                      {s}
                     </button>
                   ))}
                 </div>
-                <button
-                  onClick={() => goGuidedNext('symptom')}
-                  className="w-full mt-3 py-2.5 rounded-xl bg-teal-primary text-white font-bold text-sm hover:bg-teal-dark transition-colors"
-                >
-                  המשך →
-                </button>
               </div>
             )}
+
+            {/* Preview: how many points match */}
+            {freeTextSymptom.length >= 2 && (() => {
+              const count = points.filter(p =>
+                flattenIndications(p.indications).some(ind => ind.includes(freeTextSymptom))
+              ).length
+              return (
+                <div className="p-3 bg-teal-50 dark:bg-teal-primary/10 rounded-xl border border-teal-200 dark:border-teal-700 text-right">
+                  <div className="text-sm text-teal-700 dark:text-teal-300">
+                    <span className="font-bold">{count}</span> נקודות קשורות ל"{freeTextSymptom}"
+                  </div>
+                  <div className="text-xs text-teal-600 dark:text-teal-400 mt-1">
+                    השאלות הבאות יעזרו לזהות מאיפה הבעיה מגיעה ולמיין את הנקודות
+                  </div>
+                </div>
+              )
+            })()}
+
+            {/* Continue button */}
+            <button
+              onClick={() => {
+                if (!freeTextSymptom) return
+                goGuidedNext('symptom')
+              }}
+              disabled={!freeTextSymptom}
+              className={`w-full py-3 rounded-xl font-bold text-sm transition-colors
+                ${freeTextSymptom
+                  ? 'bg-teal-primary text-white hover:bg-teal-dark'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-400 cursor-not-allowed'
+                }`}
+            >
+              המשך לשאלון →
+            </button>
           </div>
         )}
 
@@ -783,6 +747,7 @@ export default function SmartDiagnosis() {
         {path === 'guided' && guidedStep === 'results' && (
           <GuidedResults
             guidedOrgan={guidedOrgan}
+            freeTextSymptom={freeTextSymptom}
             selectedSymptoms={selectedSymptoms}
             location={location}
             palmFindings={palmFindings}
@@ -868,6 +833,7 @@ export default function SmartDiagnosis() {
 
 function GuidedResults({
   guidedOrgan,
+  freeTextSymptom,
   selectedSymptoms,
   location,
   palmFindings,
@@ -875,6 +841,7 @@ function GuidedResults({
   onReset,
 }: {
   guidedOrgan: OrganProfile | null
+  freeTextSymptom: string
   selectedSymptoms: Set<string>
   location: LocationChoice
   palmFindings: Set<string>
@@ -891,16 +858,37 @@ function GuidedResults({
     return organs
   }, [palmFindings])
 
+  // Determine the primary organ (tissue takes precedence, then palm findings)
+  const primaryOrgan = guidedOrgan ??
+    (palmOrgans.size === 1 ? getOrganProfile(Array.from(palmOrgans)[0]) : null)
+
+  // Find matching points by symptom keyword
+  const matchingPoints = useMemo(() => {
+    if (!freeTextSymptom || freeTextSymptom.length < 2) return []
+    return points.filter(p =>
+      flattenIndications(p.indications).some(ind => ind.includes(freeTextSymptom))
+    )
+  }, [freeTextSymptom])
+
+  // Prioritize points that match BOTH symptom AND organ
+  const organMatchedPoints = useMemo(() => {
+    if (!primaryOrgan || matchingPoints.length === 0) return matchingPoints
+    const organPoints = getPointsByOrgan(primaryOrgan.hebrew)
+    const organPointIds = new Set(organPoints.map(op => op.point.id))
+
+    // Sort: organ-matched first (with badge), then rest
+    const matched = matchingPoints.filter(p => organPointIds.has(p.id))
+    const rest = matchingPoints.filter(p => !organPointIds.has(p.id))
+    return [...matched, ...rest]
+  }, [matchingPoints, primaryOrgan])
+
   // Build summary
   const summary: string[] = []
+  if (freeTextSymptom) summary.push(`🔍 "${freeTextSymptom}" — ${matchingPoints.length} נקודות`)
   if (guidedOrgan) summary.push(`רקמה → ${guidedOrgan.icon} ${guidedOrgan.hebrew}`)
   if (location.vertical) summary.push(location.vertical === 'upper' ? '↕️ מעל הטבור' : '↕️ מתחת לטבור')
   if (location.side) summary.push(location.side === 'bilateral' ? '↔️ דו-צדדי' : `↔️ ${location.side === 'right' ? 'ימין' : 'שמאל'}`)
   if (palmOrgans.size > 0) summary.push(`🖐️ ${palmOrgans.size} ממצאי כף יד`)
-
-  // Determine the primary organ (tissue takes precedence, then palm findings)
-  const primaryOrgan = guidedOrgan ??
-    (palmOrgans.size === 1 ? getOrganProfile(Array.from(palmOrgans)[0]) : null)
 
   // Needling zone recommendation
   const zoneRec = location.vertical === 'upper'
@@ -1012,6 +1000,60 @@ function GuidedResults({
               🔄 מעגל הזנה: {primaryOrgan.motherNote}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Matching points list */}
+      {organMatchedPoints.length > 0 && (
+        <div className="space-y-2">
+          <h3 className="text-sm font-bold text-gray-600 dark:text-dark-muted text-right">
+            📍 {organMatchedPoints.length} נקודות ל"{freeTextSymptom}"
+            {primaryOrgan ? ` (ממויינות לפי ${primaryOrgan.hebrew})` : ''}
+          </h3>
+          {organMatchedPoints.slice(0, 20).map((point) => {
+            const isOrganMatch = primaryOrgan
+              ? getPointsByOrgan(primaryOrgan.hebrew).some(op => op.point.id === point.id)
+              : false
+            return (
+              <Link
+                key={point.id}
+                to={`/point/${point.id}`}
+                className={`block rounded-xl border p-3 hover:border-teal-primary/30 transition-colors
+                  ${isOrganMatch
+                    ? 'bg-teal-50/50 dark:bg-teal-primary/10 border-teal-200 dark:border-teal-700'
+                    : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border'
+                  }`}
+              >
+                <div className="flex items-center gap-3 flex-row-reverse">
+                  <div className="flex-1 text-right min-w-0">
+                    <div className="flex items-center gap-2 justify-end flex-wrap">
+                      {isOrganMatch && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-teal-100 dark:bg-teal-800 text-teal-700 dark:text-teal-300 font-bold">
+                          {primaryOrgan!.icon} {primaryOrgan!.hebrew}
+                        </span>
+                      )}
+                      {point.absoluteNeedle === '72' && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300">🥇</span>
+                      )}
+                      {point.absoluteNeedle === '32' && (
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">🥈</span>
+                      )}
+                      <span className="font-bold text-sm text-gray-900 dark:text-dark-text">{point.hebrewName || point.pinyinName}</span>
+                      <span className="text-xs font-mono text-teal-primary bg-teal-50 dark:bg-teal-primary/20 px-1.5 py-0.5 rounded">{point.id}</span>
+                    </div>
+                    <div className="text-[11px] text-gray-500 dark:text-dark-muted mt-0.5">
+                      אזור {point.zone} · {point.pinyinName}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            )
+          })}
+          {organMatchedPoints.length > 20 && (
+            <div className="text-center text-xs text-gray-400 py-2">
+              + עוד {organMatchedPoints.length - 20} נקודות
+            </div>
+          )}
         </div>
       )}
 

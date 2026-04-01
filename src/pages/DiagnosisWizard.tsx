@@ -77,9 +77,15 @@ export default function DiagnosisWizard() {
     })
   }, [])
 
-  // Save state on every change
+  // Save state only when deep enough (results/rootCause) — not on categories/symptoms
   useEffect(() => {
-    saveState(step, activeCategory, selectedSymptoms, selectedRoot)
+    if (step === 'categories') {
+      sessionStorage.removeItem('diagnosis_wizard_state')
+      return
+    }
+    if (step === 'results' || step === 'rootCause') {
+      saveState(step, activeCategory, selectedSymptoms, selectedRoot)
+    }
   }, [step, activeCategory, selectedSymptoms, selectedRoot, saveState])
 
   useEffect(() => {
@@ -95,6 +101,7 @@ export default function DiagnosisWizard() {
           setActiveCategory(null)
           setSymptomSearch('')
           setGlobalSearch('')
+          sessionStorage.removeItem('diagnosis_wizard_state')
         }
       } else {
         // Clear saved state when leaving the wizard

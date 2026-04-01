@@ -15,12 +15,76 @@ type Path = 'choose' | 'direct' | 'guided'
 type DirectStep = 'organs' | 'results'
 
 // Guided path steps
-type GuidedStep = 'symptom' | 'tissue' | 'location' | 'palm' | 'results'
+type GuidedStep = 'symptom' | 'character' | 'triggers' | 'associated' | 'location' | 'palm' | 'results'
 
 interface LocationChoice {
   vertical: 'upper' | 'lower' | null
   side: 'right' | 'left' | 'bilateral' | null
 }
+
+// ── Diagnostic questions that help identify the organ ──
+// Each answer adds weight to specific organs
+
+interface DiagnosticOption {
+  id: string
+  text: string
+  description: string
+  icon: string
+  organWeights: Record<string, number> // organId → weight (1-3)
+}
+
+interface DiagnosticQuestion {
+  step: 'character' | 'triggers' | 'associated'
+  title: string
+  subtitle: string
+  multiSelect: boolean
+  options: DiagnosticOption[]
+}
+
+const diagnosticQuestions: DiagnosticQuestion[] = [
+  {
+    step: 'character',
+    title: 'מה אופי הבעיה?',
+    subtitle: 'איך הכאב/הסימפטום מרגיש?',
+    multiSelect: true,
+    options: [
+      { id: 'sharp-fixed', text: 'כאב דוקר / קבוע במקום', description: 'כאב חד שלא זז, מחמיר בלילה', icon: '📌', organWeights: { heart: 3 } },
+      { id: 'heavy-dull', text: 'כבדות / כאב עמום', description: 'תחושת כבדות, נפיחות, מלאות', icon: '🪨', organWeights: { spleen: 3 } },
+      { id: 'wandering', text: 'כאב נודד / משתנה', description: 'כאב שמשנה מקום, עוויתות, רעד', icon: '💨', organWeights: { liver: 3 } },
+      { id: 'burning', text: 'חום / צריבה / אדמומיות', description: 'תחושת חום באזור, דלקתיות', icon: '🔥', organWeights: { heart: 2, liver: 2 } },
+      { id: 'cold-stiff', text: 'קור / נוקשות / התכווצות', description: 'מחמיר בקור, נוקשות בבוקר', icon: '❄️', organWeights: { kidneys: 3 } },
+      { id: 'dry', text: 'יובש / צמאון / יובש בעור', description: 'עור יבש, פה יבש, שתייה מרובה', icon: '🏜️', organWeights: { lungs: 2, kidneys: 2 } },
+    ],
+  },
+  {
+    step: 'triggers',
+    title: 'מה מחמיר את הבעיה?',
+    subtitle: 'מתי או ממה זה מחמיר?',
+    multiSelect: true,
+    options: [
+      { id: 'stress-anger', text: 'מתח / כעס / תסכול', description: 'מחמיר בלחץ רגשי', icon: '😤', organWeights: { liver: 3 } },
+      { id: 'after-eating', text: 'אחרי אכילה / שתייה', description: 'נפיחות, עייפות אחרי אוכל', icon: '🍽️', organWeights: { spleen: 3 } },
+      { id: 'cold-weather', text: 'קור / מזג אוויר לח', description: 'מחמיר בחורף, בגשם', icon: '🌧️', organWeights: { kidneys: 2, spleen: 1 } },
+      { id: 'night', text: 'מחמיר בלילה', description: 'גרוע יותר בשעות הלילה', icon: '🌙', organWeights: { heart: 2, kidneys: 1 } },
+      { id: 'exertion', text: 'מאמץ פיזי / עייפות', description: 'מחמיר מתנועה או עבודה', icon: '🏃', organWeights: { spleen: 2, kidneys: 1 } },
+      { id: 'wind-season', text: 'רוח / שינוי עונה', description: 'מחמיר ברוח או בין עונות', icon: '🍂', organWeights: { lungs: 3, liver: 1 } },
+    ],
+  },
+  {
+    step: 'associated',
+    title: 'סימפטומים נלווים?',
+    subtitle: 'מה עוד קורה מלבד הבעיה העיקרית?',
+    multiSelect: true,
+    options: [
+      { id: 'eye-vision', text: 'בעיות עיניים / ראייה מטושטשת', description: 'עיניים אדומות, יבשות, ראייה מטושטשת', icon: '👁️', organWeights: { liver: 3 } },
+      { id: 'digestive', text: 'בעיות עיכול / נפיחות', description: 'בחילה, שלשול, נפיחות, תיאבון ירוד', icon: '🫃', organWeights: { spleen: 3 } },
+      { id: 'skin-breathing', text: 'בעיות עור / נשימה', description: 'אקזמה, גרד, קוצר נשימה, אלרגיות', icon: '🫁', organWeights: { lungs: 3 } },
+      { id: 'back-urinary', text: 'כאב גב תחתון / שתן תכוף', description: 'חולשת ברכיים, טינטון, עייפות כרונית', icon: '💧', organWeights: { kidneys: 3 } },
+      { id: 'anxiety-sleep', text: 'חרדה / נדודי שינה / דפיקות', description: 'קושי להירדם, דפיקות לב, חרדה', icon: '💓', organWeights: { heart: 3 } },
+      { id: 'irritability-pms', text: 'עצבנות / PMS / כאב צלעות', description: 'עצבנות, מתח רגשי, כאב בצלעות', icon: '😠', organWeights: { liver: 3 } },
+    ],
+  },
+]
 
 interface PointResult {
   point: Point
@@ -60,6 +124,7 @@ export default function SmartDiagnosis() {
   const [freeTextSymptom, setFreeTextSymptom] = useState(restored?.freeTextSymptom ?? '')
   const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(new Set(restored?.symptoms ?? []))
   const [selectedTissue, setSelectedTissue] = useState<string | null>(restored?.selectedTissue ?? null)
+  const [diagnosticAnswers, setDiagnosticAnswers] = useState<Set<string>>(new Set(restored?.diagnosticAnswers ?? []))
   const [location, setLocation] = useState<LocationChoice>(restored?.location ?? { vertical: null, side: null })
   const [palmFindings, setPalmFindings] = useState<Set<string>>(new Set(restored?.palmFindings ?? []))
   // symptomSearch removed — guided path now uses freeTextSymptom
@@ -126,10 +191,11 @@ export default function SmartDiagnosis() {
       sessionStorage.setItem('smart_diag_state', JSON.stringify({
         path, directStep, selectedOrganId: selectedOrgan?.id ?? null,
         conditionType, guidedStep, freeTextSymptom, symptoms: Array.from(selectedSymptoms),
-        selectedTissue, location, palmFindings: Array.from(palmFindings),
+        selectedTissue, diagnosticAnswers: Array.from(diagnosticAnswers),
+        location, palmFindings: Array.from(palmFindings),
       }))
     } catch {}
-  }, [path, directStep, selectedOrgan, conditionType, guidedStep, freeTextSymptom, selectedSymptoms, selectedTissue, location, palmFindings])
+  }, [path, directStep, selectedOrgan, conditionType, guidedStep, freeTextSymptom, selectedSymptoms, selectedTissue, diagnosticAnswers, location, palmFindings])
 
   // ── Compute results for direct path ──
   const directResults = useMemo((): PointResult[] => {
@@ -217,14 +283,45 @@ export default function SmartDiagnosis() {
     return results
   }, [selectedOrgan, showNourishing])
 
-  // ── Guided path: detect organ from tissue ──
-  const guidedOrgan = useMemo(() => {
+  // ── Guided path: detect organ from diagnostic answers ──
+  const guidedOrganScores = useMemo(() => {
+    const scores: Record<string, number> = {}
+    for (const answerId of diagnosticAnswers) {
+      // Find which option this answer belongs to
+      for (const q of diagnosticQuestions) {
+        const opt = q.options.find(o => o.id === answerId)
+        if (opt) {
+          for (const [organId, weight] of Object.entries(opt.organWeights)) {
+            scores[organId] = (scores[organId] ?? 0) + weight
+          }
+        }
+      }
+    }
+    // Also factor in tissue if selected
     if (selectedTissue) {
       const tissue = tissueOrganMap.find(t => t.id === selectedTissue)
-      if (tissue) return getOrganProfile(tissue.organId) ?? null
+      if (tissue) {
+        scores[tissue.organId] = (scores[tissue.organId] ?? 0) + 5 // tissue is strong signal
+      }
     }
-    return null
-  }, [selectedTissue])
+    return scores
+  }, [diagnosticAnswers, selectedTissue])
+
+  const guidedOrgan = useMemo(() => {
+    const entries = Object.entries(guidedOrganScores)
+    if (entries.length === 0) return null
+    entries.sort((a, b) => b[1] - a[1])
+    return getOrganProfile(entries[0][0]) ?? null
+  }, [guidedOrganScores])
+
+  // All organs with scores > 0, sorted
+  const guidedOrganRanking = useMemo(() => {
+    return Object.entries(guidedOrganScores)
+      .filter(([, score]) => score > 0)
+      .sort((a, b) => b[1] - a[1])
+      .map(([id, score]) => ({ organ: getOrganProfile(id)!, score }))
+      .filter(r => r.organ)
+  }, [guidedOrganScores])
 
   // (search results removed — guided path now uses free text)
 
@@ -240,21 +337,21 @@ export default function SmartDiagnosis() {
     pushHistory('direct-results')
   }
 
+  const guidedSteps: GuidedStep[] = ['symptom', 'character', 'triggers', 'associated', 'location', 'palm', 'results']
+
   function goGuidedNext(from: GuidedStep) {
-    const steps: GuidedStep[] = ['symptom', 'tissue', 'location', 'palm', 'results']
-    const idx = steps.indexOf(from)
-    if (idx < steps.length - 1) {
-      const next = steps[idx + 1]
+    const idx = guidedSteps.indexOf(from)
+    if (idx < guidedSteps.length - 1) {
+      const next = guidedSteps[idx + 1]
       setGuidedStep(next)
       pushHistory(`guided-${next}`)
     }
   }
 
   function goGuidedBack(from: GuidedStep) {
-    const steps: GuidedStep[] = ['symptom', 'tissue', 'location', 'palm', 'results']
-    const idx = steps.indexOf(from)
+    const idx = guidedSteps.indexOf(from)
     if (idx > 0) {
-      const prev = steps[idx - 1]
+      const prev = guidedSteps[idx - 1]
       setGuidedStep(prev)
     } else {
       setPath('choose')
@@ -270,6 +367,7 @@ export default function SmartDiagnosis() {
     setFreeTextSymptom('')
     setSelectedSymptoms(new Set())
     setSelectedTissue(null)
+    setDiagnosticAnswers(new Set())
     setLocation({ vertical: null, side: null })
     setPalmFindings(new Set())
     setShowNourishing(false)
@@ -292,7 +390,7 @@ export default function SmartDiagnosis() {
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <div className="text-left">
+          <div className="text-right flex-1">
             <h1 className="text-2xl font-bold">אבחון חכם</h1>
             <p className="text-teal-100 text-sm">
               {path === 'choose' && 'בחר מסלול אבחון'}
@@ -546,59 +644,90 @@ export default function SmartDiagnosis() {
         )}
 
         {/* ════════════════════════════════════════════════════════════ */}
-        {/* GUIDED PATH — Step 2: Tissue                                */}
+        {/* GUIDED PATH — Diagnostic Questions (character/triggers/associated) */}
         {/* ════════════════════════════════════════════════════════════ */}
-        {path === 'guided' && guidedStep === 'tissue' && (
-          <div className="space-y-3">
-            <div className="text-right">
-              <p className="text-sm font-bold text-gray-700 dark:text-dark-text">באיזו רקמה הבעיה?</p>
-              <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">חמשת הפאזות — כל רקמה קשורה לאיבר</p>
-            </div>
-            <div className="space-y-2">
-              {tissueOrganMap.map(t => {
-                const organ = getOrganProfile(t.organId)
-                const sel = selectedTissue === t.id
-                return (
-                  <button
-                    key={t.id}
-                    onClick={() => setSelectedTissue(sel ? null : t.id)}
-                    className={`w-full flex items-center gap-3 p-4 rounded-xl border text-right transition-colors
-                      ${sel
-                        ? `${organ?.color.bg} ${organ?.color.border} ${organ?.color.darkBg}`
-                        : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border hover:border-gray-200'
-                      }`}
-                  >
-                    <span className="text-2xl shrink-0">{t.icon}</span>
-                    <div className="flex-1">
-                      <div className={`font-bold text-sm ${sel ? organ?.color.text + ' ' + organ?.color.darkText : 'text-gray-900 dark:text-dark-text'}`}>
-                        {t.hebrew}
-                      </div>
-                      <div className="text-xs text-gray-500 dark:text-dark-muted mt-0.5">{t.description}</div>
-                    </div>
-                    {organ && (
-                      <div className="text-xs text-gray-400 dark:text-dark-muted shrink-0 text-left">
-                        → {organ.icon} {organ.hebrew}
-                      </div>
-                    )}
-                  </button>
-                )
-              })}
-            </div>
+        {path === 'guided' && (guidedStep === 'character' || guidedStep === 'triggers' || guidedStep === 'associated') && (() => {
+          const question = diagnosticQuestions.find(q => q.step === guidedStep)!
+          const stepIdx = guidedSteps.indexOf(guidedStep)
+          const totalDiagSteps = 3
+          const diagStepNum = stepIdx - guidedSteps.indexOf('character') + 1
+          return (
+            <div className="space-y-3">
+              {/* Progress indicator */}
+              <div className="flex items-center gap-2 justify-end">
+                <span className="text-xs text-gray-400 dark:text-dark-muted">שאלה {diagStepNum}/{totalDiagSteps}</span>
+                <div className="flex gap-1">
+                  {[1, 2, 3].map(n => (
+                    <div key={n} className={`w-8 h-1.5 rounded-full ${n <= diagStepNum ? 'bg-teal-primary' : 'bg-gray-200 dark:bg-gray-700'}`} />
+                  ))}
+                </div>
+              </div>
 
-            {/* Navigation */}
-            <div className="flex gap-2">
-              <button onClick={() => goGuidedBack('tissue')} className="flex-1 py-2.5 rounded-xl border border-gray-200 dark:border-dark-border text-gray-500 text-sm">
-                ← חזרה
-              </button>
-              <button
-                onClick={() => goGuidedNext('tissue')}
-                className="flex-1 py-2.5 rounded-xl bg-teal-primary text-white font-bold text-sm hover:bg-teal-dark transition-colors"
-              >
-                {selectedTissue ? 'המשך →' : 'דלג →'}
-              </button>
+              {/* Organ scores preview (after first answer) */}
+              {diagnosticAnswers.size > 0 && guidedOrganRanking.length > 0 && (
+                <div className="flex gap-1.5 justify-end flex-wrap">
+                  {guidedOrganRanking.slice(0, 3).map(({ organ, score }) => (
+                    <span key={organ.id} className={`text-[11px] px-2 py-1 rounded-full ${organ.color.bg} ${organ.color.text} ${organ.color.border} border font-medium`}>
+                      {organ.icon} {organ.hebrew} ({score})
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div className="text-right">
+                <p className="text-sm font-bold text-gray-700 dark:text-dark-text">{question.title}</p>
+                <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">{question.subtitle} (ניתן לבחור יותר מאחד)</p>
+              </div>
+
+              <div className="space-y-2">
+                {question.options.map(opt => {
+                  const sel = diagnosticAnswers.has(opt.id)
+                  return (
+                    <button
+                      key={opt.id}
+                      onClick={() => {
+                        setDiagnosticAnswers(prev => {
+                          const next = new Set(prev)
+                          if (next.has(opt.id)) next.delete(opt.id)
+                          else next.add(opt.id)
+                          return next
+                        })
+                      }}
+                      className={`w-full flex items-center gap-3 p-3.5 rounded-xl border text-right transition-colors
+                        ${sel
+                          ? 'bg-teal-50 dark:bg-teal-primary/20 border-teal-300 dark:border-teal-600'
+                          : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border hover:border-gray-200'
+                        }`}
+                    >
+                      <div className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0
+                        ${sel ? 'bg-teal-primary border-teal-primary' : 'border-gray-300 dark:border-dark-border'}`}>
+                        {sel && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                      </div>
+                      <span className="text-xl shrink-0">{opt.icon}</span>
+                      <div className="flex-1">
+                        <div className="font-medium text-sm text-gray-900 dark:text-dark-text">{opt.text}</div>
+                        <div className="text-[11px] text-gray-500 dark:text-dark-muted mt-0.5">{opt.description}</div>
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+
+              {/* Navigation */}
+              <div className="flex gap-2">
+                <button onClick={() => goGuidedBack(guidedStep)} className="flex-1 py-2.5 rounded-xl border border-gray-200 dark:border-dark-border text-gray-500 text-sm">
+                  ← חזרה
+                </button>
+                <button
+                  onClick={() => goGuidedNext(guidedStep)}
+                  className="flex-1 py-2.5 rounded-xl bg-teal-primary text-white font-bold text-sm"
+                >
+                  המשך →
+                </button>
+              </div>
             </div>
-          </div>
-        )}
+          )
+        })()}
 
         {/* ════════════════════════════════════════════════════════════ */}
         {/* GUIDED PATH — Step 3: Location                              */}
@@ -747,6 +876,7 @@ export default function SmartDiagnosis() {
         {path === 'guided' && guidedStep === 'results' && (
           <GuidedResults
             guidedOrgan={guidedOrgan}
+            guidedOrganRanking={guidedOrganRanking}
             freeTextSymptom={freeTextSymptom}
             selectedSymptoms={selectedSymptoms}
             location={location}
@@ -833,6 +963,7 @@ export default function SmartDiagnosis() {
 
 function GuidedResults({
   guidedOrgan,
+  guidedOrganRanking,
   freeTextSymptom,
   selectedSymptoms,
   location,
@@ -841,6 +972,7 @@ function GuidedResults({
   onReset,
 }: {
   guidedOrgan: OrganProfile | null
+  guidedOrganRanking: { organ: OrganProfile; score: number }[]
   freeTextSymptom: string
   selectedSymptoms: Set<string>
   location: LocationChoice
@@ -934,17 +1066,34 @@ function GuidedResults({
         </div>
       )}
 
-      {/* Organ recommendation */}
-      {primaryOrgan && (
-        <div className={`p-4 rounded-2xl border ${primaryOrgan.color.bg} ${primaryOrgan.color.border} ${primaryOrgan.color.darkBg} text-right`}>
-          <div className={`text-lg font-bold ${primaryOrgan.color.text} ${primaryOrgan.color.darkText}`}>
-            {primaryOrgan.icon} איבר מוביל: {primaryOrgan.hebrew} ({primaryOrgan.phaseHebrew})
-          </div>
-          <div className="text-xs text-gray-600 dark:text-dark-muted mt-1">{primaryOrgan.tissueDescription}</div>
-          <div className="mt-2 text-xs text-gray-700 dark:text-gray-300">
-            <span className="font-bold">📐 צד: </span>
-            {primaryOrgan.sideRule.note}
-          </div>
+      {/* Organ ranking */}
+      {guidedOrganRanking.length > 0 && (
+        <div className="space-y-2">
+          <div className="text-xs font-bold text-gray-600 dark:text-dark-muted text-right">🎯 איברים מעורבים (לפי ניקוד):</div>
+          {guidedOrganRanking.map(({ organ, score }, i) => (
+            <div key={organ.id} className={`p-3 rounded-xl border text-right ${i === 0
+              ? `${organ.color.bg} ${organ.color.border} ${organ.color.darkBg}`
+              : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border'
+            }`}>
+              <div className="flex items-center justify-between">
+                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${i === 0 ? 'bg-teal-primary text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-500'}`}>
+                  {score} נק׳
+                </span>
+                <div className={`font-bold ${i === 0 ? organ.color.text + ' ' + organ.color.darkText + ' text-base' : 'text-gray-700 dark:text-dark-text text-sm'}`}>
+                  {organ.icon} {organ.hebrew} ({organ.phaseHebrew})
+                </div>
+              </div>
+              {i === 0 && (
+                <>
+                  <div className="text-xs text-gray-600 dark:text-dark-muted mt-1">{organ.tissueDescription}</div>
+                  <div className="mt-1.5 text-xs text-gray-700 dark:text-gray-300">
+                    <span className="font-bold">📐 צד: </span>
+                    {organ.sideRule.note}
+                  </div>
+                </>
+              )}
+            </div>
+          ))}
         </div>
       )}
 

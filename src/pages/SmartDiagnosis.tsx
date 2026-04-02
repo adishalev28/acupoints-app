@@ -405,7 +405,7 @@ export default function SmartDiagnosis() {
   return (
     <div className="min-h-screen pb-24">
       {/* Header */}
-      <div className="bg-teal-primary text-white px-6 pt-12 pb-8">
+      <div className="bg-teal-primary text-white px-6 pt-12 pb-5">
         <div className="flex items-center justify-between">
           <Link to="/" className="text-white/80 hover:text-white">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -423,7 +423,7 @@ export default function SmartDiagnosis() {
         </div>
       </div>
 
-      <div className="px-4 -mt-4">
+      <div className="px-4 pt-4">
 
         {/* ════════════════════════════════════════════════════════════ */}
         {/* PATH SELECTION                                              */}
@@ -467,9 +467,7 @@ export default function SmartDiagnosis() {
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'direct' && directStep === 'organs' && (
           <div className="space-y-3">
-            <div className="bg-teal-primary/10 dark:bg-teal-primary/20 rounded-xl px-4 py-3 text-right">
-              <p className="text-base font-bold text-teal-800 dark:text-teal-200">🎯 בחר את האיבר הפגוע</p>
-            </div>
+            <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text text-right">🎯 בחר את האיבר הפגוע</h2>
             <div className="space-y-2.5">
               {organProfiles.map(organ => (
                 <button
@@ -593,9 +591,9 @@ export default function SmartDiagnosis() {
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'guided' && guidedStep === 'symptom' && (
           <div className="space-y-3">
-            <div className="bg-teal-primary/10 dark:bg-teal-primary/20 rounded-xl px-4 py-3 text-right">
-              <p className="text-base font-bold text-teal-800 dark:text-teal-200">🔍 מה הבעיה של המטופל?</p>
-              <p className="text-xs text-teal-600 dark:text-teal-400 mt-1">
+            <div className="text-right">
+              <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text">🔍 מה הבעיה של המטופל?</h2>
+              <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">
                 הקלד את הסימפטום — השאלון יעזור לך לזהות מאיפה הוא מגיע
               </p>
             </div>
@@ -698,9 +696,9 @@ export default function SmartDiagnosis() {
                 </div>
               )}
 
-              <div className="bg-teal-primary/10 dark:bg-teal-primary/20 rounded-xl px-4 py-3 text-right">
-                <p className="text-base font-bold text-teal-800 dark:text-teal-200">{question.title}</p>
-                <p className="text-xs text-teal-600 dark:text-teal-400 mt-1">{question.subtitle} (ניתן לבחור יותר מאחד)</p>
+              <div className="text-right">
+                <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text">{question.title}</h2>
+                <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">{question.subtitle} (ניתן לבחור יותר מאחד)</p>
               </div>
 
               <div className="space-y-2">
@@ -758,9 +756,9 @@ export default function SmartDiagnosis() {
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'guided' && guidedStep === 'location' && (
           <div className="space-y-3">
-            <div className="bg-teal-primary/10 dark:bg-teal-primary/20 rounded-xl px-4 py-3 text-right">
-              <p className="text-base font-bold text-teal-800 dark:text-teal-200">📍 איפה הכאב?</p>
-              <p className="text-xs text-teal-600 dark:text-teal-400 mt-1">לקביעת אזור דיקור והדמיה</p>
+            <div className="text-right">
+              <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text">📍 איפה הכאב?</h2>
+              <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">לקביעת אזור דיקור והדמיה</p>
             </div>
 
             {/* Vertical */}
@@ -832,9 +830,9 @@ export default function SmartDiagnosis() {
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'guided' && guidedStep === 'palm' && (
           <div className="space-y-3">
-            <div className="bg-amber-50 dark:bg-amber-900/20 rounded-xl px-4 py-3 text-right border border-amber-200 dark:border-amber-700">
-              <p className="text-base font-bold text-amber-800 dark:text-amber-200">🖐️ אבחון כף יד (אופציונלי)</p>
-              <p className="text-xs text-amber-600 dark:text-amber-400 mt-1">סמן ממצאים שאתה רואה — אם לא רואים כלום, דלג</p>
+            <div className="text-right">
+              <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text">🖐️ אבחון כף יד (אופציונלי)</h2>
+              <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">סמן ממצאים שאתה רואה — אם לא רואים כלום, דלג</p>
             </div>
 
             <div className="space-y-2">

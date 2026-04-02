@@ -1012,9 +1012,7 @@ function GuidedResults({
     return organs
   }, [palmFindings])
 
-  // Determine the primary organ (tissue takes precedence, then palm findings)
-  const primaryOrgan = guidedOrgan ??
-    (palmOrgans.size === 1 ? getOrganProfile(Array.from(palmOrgans)[0]) : null)
+  // (primaryOrgan logic moved into OrganCards)
 
   // Find matching points by symptom keyword
   const matchingPoints = useMemo(() => {
@@ -1024,17 +1022,7 @@ function GuidedResults({
     )
   }, [freeTextSymptom])
 
-  // Prioritize points that match BOTH symptom AND organ
-  const organMatchedPoints = useMemo(() => {
-    if (!primaryOrgan || matchingPoints.length === 0) return matchingPoints
-    const organPoints = getPointsByOrgan(primaryOrgan.hebrew)
-    const organPointIds = new Set(organPoints.map(op => op.point.id))
-
-    // Sort: organ-matched first (with badge), then rest
-    const matched = matchingPoints.filter(p => organPointIds.has(p.id))
-    const rest = matchingPoints.filter(p => !organPointIds.has(p.id))
-    return [...matched, ...rest]
-  }, [matchingPoints, primaryOrgan])
+  // (organMatchedPoints moved into OrganCards component)
 
   // Build summary
   const summary: string[] = []
@@ -1088,145 +1076,13 @@ function GuidedResults({
         </div>
       )}
 
-      {/* Organ ranking */}
-      {guidedOrganRanking.length > 0 && (
-        <div className="space-y-2">
-          <div className="text-xs font-bold text-gray-600 dark:text-dark-muted text-right">🎯 איברים מעורבים (לפי ניקוד):</div>
-          {guidedOrganRanking.map(({ organ, score }, i) => (
-            <div key={organ.id} className={`p-3 rounded-xl border text-right ${i === 0
-              ? `${organ.color.bg} ${organ.color.border} ${organ.color.darkBg}`
-              : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border'
-            }`}>
-              <div className="flex items-center justify-between">
-                <span className={`text-xs px-2 py-0.5 rounded-full font-bold ${i === 0 ? 'bg-teal-primary text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-500'}`}>
-                  {score} נק׳
-                </span>
-                <div className={`font-bold ${i === 0 ? organ.color.text + ' ' + organ.color.darkText + ' text-base' : 'text-gray-700 dark:text-dark-text text-sm'}`}>
-                  {organ.icon} {organ.hebrew} ({organ.phaseHebrew})
-                </div>
-              </div>
-              {i === 0 && (
-                <>
-                  <div className="text-xs text-gray-600 dark:text-dark-muted mt-1">{organ.tissueDescription}</div>
-                  <div className="mt-1.5 text-xs text-gray-700 dark:text-gray-300">
-                    <span className="font-bold">📐 צד: </span>
-                    {organ.sideRule.note}
-                  </div>
-                </>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
-
-      {/* Palm findings detail */}
-      {palmOrgans.size > 0 && (
-        <div className="p-3 rounded-xl bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-700 text-right">
-          <div className="text-xs font-bold text-amber-800 dark:text-amber-200 mb-1">🖐️ ממצאי כף יד</div>
-          {Array.from(palmFindings).map(f => {
-            const [organId, ...signParts] = f.split(':')
-            const organ = getOrganProfile(organId)
-            return (
-              <div key={f} className="text-[11px] text-amber-700 dark:text-amber-300 mb-0.5">
-                {organ?.icon} {organ?.hebrew}: {signParts.join(':')}
-              </div>
-            )
-          })}
-        </div>
-      )}
-
-      {/* Recommended Dao Ma groups */}
-      {primaryOrgan && (
-        <div className="p-3 rounded-xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border text-right">
-          <div className="text-xs font-bold text-gray-700 dark:text-dark-text mb-2">🐴 קומבינציות דאו-מא מומלצות</div>
-          {(organToDaoMa[primaryOrgan.id] ?? []).map(groupId => {
-            const group = daoMaClinicalGroups.find(g => g.id === groupId)
-            if (!group) return null
-            return (
-              <div key={groupId} className="mb-2 p-2.5 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="font-bold text-sm text-gray-800 dark:text-dark-text">
-                  {group.nameHebrew} ({group.namePinyin})
-                </div>
-                <div className="flex flex-wrap gap-1 mt-1">
-                  {group.pointIds.map(pid => (
-                    <Link
-                      key={pid}
-                      to={`/point/${pid}`}
-                      className="text-xs px-2 py-0.5 rounded-lg bg-teal-50 dark:bg-teal-primary/20 text-teal-700 dark:text-teal-300 font-mono font-bold hover:bg-teal-100 transition-colors"
-                    >
-                      {pid}
-                    </Link>
-                  ))}
-                </div>
-                {group.keyNotes && (
-                  <div className="text-[10px] text-gray-500 dark:text-dark-muted mt-1">{group.keyNotes.slice(0, 100)}...</div>
-                )}
-              </div>
-            )
-          })}
-
-          {/* Mother nourishing */}
-          <div className="mt-2 p-2.5 bg-purple-50 dark:bg-purple-900/20 rounded-lg border border-purple-100 dark:border-purple-800">
-            <div className="text-xs font-bold text-purple-700 dark:text-purple-300 mb-1">
-              🔄 מעגל הזנה: {primaryOrgan.motherNote}
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Matching points list */}
-      {organMatchedPoints.length > 0 && (
-        <div className="space-y-2">
-          <h3 className="text-sm font-bold text-gray-600 dark:text-dark-muted text-right">
-            📍 {organMatchedPoints.length} נקודות ל"{freeTextSymptom}"
-            {primaryOrgan ? ` (ממויינות לפי ${primaryOrgan.hebrew})` : ''}
-          </h3>
-          {organMatchedPoints.slice(0, 20).map((point) => {
-            const isOrganMatch = primaryOrgan
-              ? getPointsByOrgan(primaryOrgan.hebrew).some(op => op.point.id === point.id)
-              : false
-            return (
-              <Link
-                key={point.id}
-                to={`/point/${point.id}`}
-                className={`block rounded-xl border p-3 hover:border-teal-primary/30 transition-colors
-                  ${isOrganMatch
-                    ? 'bg-teal-50/50 dark:bg-teal-primary/10 border-teal-200 dark:border-teal-700'
-                    : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border'
-                  }`}
-              >
-                <div className="flex items-center gap-3 flex-row-reverse">
-                  <div className="flex-1 text-right min-w-0">
-                    <div className="flex items-center gap-2 justify-end flex-wrap">
-                      {isOrganMatch && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-teal-100 dark:bg-teal-800 text-teal-700 dark:text-teal-300 font-bold">
-                          {primaryOrgan!.icon} {primaryOrgan!.hebrew}
-                        </span>
-                      )}
-                      {point.absoluteNeedle === '72' && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300">🥇</span>
-                      )}
-                      {point.absoluteNeedle === '32' && (
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400">🥈</span>
-                      )}
-                      <span className="font-bold text-sm text-gray-900 dark:text-dark-text">{point.hebrewName || point.pinyinName}</span>
-                      <span className="text-xs font-mono text-teal-primary bg-teal-50 dark:bg-teal-primary/20 px-1.5 py-0.5 rounded">{point.id}</span>
-                    </div>
-                    <div className="text-[11px] text-gray-500 dark:text-dark-muted mt-0.5">
-                      אזור {point.zone} · {point.pinyinName}
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            )
-          })}
-          {organMatchedPoints.length > 20 && (
-            <div className="text-center text-xs text-gray-400 py-2">
-              + עוד {organMatchedPoints.length - 20} נקודות
-            </div>
-          )}
-        </div>
-      )}
+      {/* Expandable organ cards with points */}
+      <OrganCards
+        guidedOrganRanking={guidedOrganRanking}
+        matchingPoints={matchingPoints}
+        freeTextSymptom={freeTextSymptom}
+        palmFindings={palmFindings}
+      />
 
       {/* Navigation */}
       <div className="flex gap-2">
@@ -1237,6 +1093,141 @@ function GuidedResults({
           🔄 אבחון חדש
         </button>
       </div>
+    </div>
+  )
+}
+
+// ══════════════════════════════════════════════════════════════════════════
+// EXPANDABLE ORGAN CARDS
+// ══════════════════════════════════════════════════════════════════════════
+
+function OrganCards({
+  guidedOrganRanking,
+  matchingPoints,
+  freeTextSymptom,
+  palmFindings,
+}: {
+  guidedOrganRanking: { organ: OrganProfile; score: number }[]
+  matchingPoints: Point[]
+  freeTextSymptom: string
+  palmFindings: Set<string>
+}) {
+  const [expandedOrgan, setExpandedOrgan] = useState<string | null>(
+    guidedOrganRanking.length > 0 ? guidedOrganRanking[0].organ.id : null
+  )
+
+  if (guidedOrganRanking.length === 0) return null
+
+  return (
+    <div className="space-y-2">
+      <h2 className="text-base font-bold text-gray-800 dark:text-dark-text text-right">🎯 איברים מעורבים — לחץ לפירוט</h2>
+
+      {guidedOrganRanking.map(({ organ, score }, i) => {
+        const isExpanded = expandedOrgan === organ.id
+        const isFirst = i === 0
+
+        // Find matching points for this organ
+        const organPointSet = new Set(getPointsByOrgan(organ.hebrew).map(op => op.point.id))
+        const organMatchingPoints = matchingPoints.filter(p => organPointSet.has(p.id))
+
+        // Dao Ma groups for this organ
+        const daoMaIds = organToDaoMa[organ.id] ?? []
+        const daoMaGroups = daoMaIds
+          .map(id => daoMaClinicalGroups.find(g => g.id === id))
+          .filter(Boolean)
+
+        // Palm findings for this organ
+        const organPalmFindings = Array.from(palmFindings).filter(f => f.startsWith(organ.id + ':'))
+
+        return (
+          <div key={organ.id} className={`rounded-xl border overflow-hidden transition-all ${isFirst && !isExpanded ? organ.color.border : 'border-gray-200 dark:border-dark-border'} ${isExpanded ? `${organ.color.border} ${organ.color.darkBg}` : ''}`}>
+            {/* Clickable header */}
+            <button
+              onClick={() => setExpandedOrgan(isExpanded ? null : organ.id)}
+              className={`w-full flex items-center gap-3 p-4 text-right transition-colors
+                ${isExpanded ? `${organ.color.bg}` : isFirst ? `${organ.color.bg}` : 'bg-white dark:bg-dark-card hover:bg-gray-50 dark:hover:bg-gray-800'}`}
+            >
+              <span className={`text-xs px-2.5 py-1 rounded-full font-bold ${isFirst ? 'bg-teal-primary text-white' : 'bg-gray-100 dark:bg-gray-800 text-gray-500'}`}>
+                {score} נק׳
+              </span>
+              <div className="flex-1 text-right">
+                <span className={`font-bold ${isFirst ? 'text-base ' + organ.color.text + ' ' + organ.color.darkText : 'text-sm text-gray-700 dark:text-dark-text'}`}>
+                  {organ.icon} {organ.hebrew} ({organ.phaseHebrew})
+                </span>
+              </div>
+              <svg className={`w-4 h-4 text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+
+            {/* Expandable body */}
+            {isExpanded && (
+              <div className="px-4 pb-4 space-y-3">
+                {/* Organ info */}
+                <div className="text-xs text-gray-600 dark:text-dark-muted">{organ.tissueDescription}</div>
+                <div className="text-xs text-gray-700 dark:text-gray-300">
+                  <span className="font-bold">📐 צד: </span>{organ.sideRule.note}
+                </div>
+
+                {/* Palm findings for this organ */}
+                {organPalmFindings.length > 0 && (
+                  <div className="p-2 bg-amber-50 dark:bg-amber-900/20 rounded-lg text-xs text-amber-700 dark:text-amber-300">
+                    🖐️ {organPalmFindings.map(f => f.split(':').slice(1).join(':')).join(' · ')}
+                  </div>
+                )}
+
+                {/* Dao Ma groups */}
+                {daoMaGroups.length > 0 && (
+                  <div>
+                    <div className="text-xs font-bold text-gray-600 dark:text-dark-muted mb-1.5">🐴 דאו-מא:</div>
+                    {daoMaGroups.map(group => group && (
+                      <div key={group.id} className="mb-2 p-2.5 bg-white/60 dark:bg-gray-800 rounded-lg">
+                        <div className="font-bold text-sm text-gray-800 dark:text-dark-text">{group.nameHebrew}</div>
+                        <div className="flex flex-wrap gap-1.5 mt-1">
+                          {group.pointIds.map(pid => (
+                            <Link key={pid} to={`/point/${pid}`}
+                              className="text-xs px-2 py-1 rounded-lg bg-teal-50 dark:bg-teal-primary/20 text-teal-700 dark:text-teal-300 font-mono font-bold hover:bg-teal-100 transition-colors">
+                              {pid}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                {/* Nourishing cycle */}
+                <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg text-xs text-purple-700 dark:text-purple-300">
+                  🔄 {organ.motherNote}
+                </div>
+
+                {/* Matching points for this organ */}
+                {freeTextSymptom && organMatchingPoints.length > 0 && (
+                  <div>
+                    <div className="text-xs font-bold text-gray-600 dark:text-dark-muted mb-1.5">
+                      📍 {organMatchingPoints.length} נקודות ל"{freeTextSymptom}" דרך {organ.hebrew}:
+                    </div>
+                    {organMatchingPoints.slice(0, 8).map(point => (
+                      <Link key={point.id} to={`/point/${point.id}`}
+                        className="block mb-1 p-2 bg-white/60 dark:bg-gray-800 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors">
+                        <div className="flex items-center gap-2 justify-end">
+                          {point.absoluteNeedle === '72' && <span className="text-[10px] px-1 rounded bg-amber-100 text-amber-700">🥇</span>}
+                          {point.absoluteNeedle === '32' && <span className="text-[10px] px-1 rounded bg-gray-100 text-gray-600">🥈</span>}
+                          <span className="text-sm font-bold text-gray-900 dark:text-dark-text">{point.hebrewName || point.pinyinName}</span>
+                          <span className="text-xs font-mono text-teal-primary">{point.id}</span>
+                        </div>
+                      </Link>
+                    ))}
+                    {organMatchingPoints.length > 8 && (
+                      <div className="text-center text-[11px] text-gray-400 mt-1">+ עוד {organMatchingPoints.length - 8}</div>
+                    )}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )
+      })}
     </div>
   )
 }

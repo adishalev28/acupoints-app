@@ -94,7 +94,7 @@ export const zone88ExtraPoints: Point[] = [
     englishName: 'Three Efficacies',
     location: '3 נקודות: הראשונה 1 צון מעל BL-40 Wei Zhong. השנייה 1 צון מעל הראשונה. השלישית 1 צון מעל השנייה.',
     needling: 'הקזת דם.',
-    reactionAreas: ['עצב:לב', 'ענף:ריאה', 'עצב סיאטי'],
+    reactionAreas: ['עצב:לב', 'ענף:ריאה', 'עצב:סיאטי'],
     indications: [
       'כאב ראש עורפי',
       'כאב צוואר',

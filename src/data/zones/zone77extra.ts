@@ -12,7 +12,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Rectifying Brain',
     location: '3 נקודות: ZhengNao Yi (正腦一) — במרכז גיד אכילס, 4.5 צון מעל תחתית העקב, בין 77.01 ZhengJin ל-77.02 ZhengZong. ZhengNao Er (正腦二) — 2 צון מעל ZhengNao Yi, בין 77.02 ZhengZong ל-77.03 ZhengShi. ZhengNao San (正腦三) — 2 צון מעל ZhengNao Er.',
     needling: 'דיקור ניצב דרך הגיד, עומק 0.5-1 צון.',
-    reactionAreas: ['מוח'],
+    reactionAreas: ['ראשי:מוח'],
     indications: [
       'טינטון',
       'נוירלגיה של עצבים גולגולתיים',
@@ -216,7 +216,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Stomach Bloodletting Region',
     location: 'בצד הקדמי של השוק, בין אזור הלב לאזור המצחי של הראש באזור 66.',
     needling: 'הקזת דם.',
-    reactionAreas: ['קיבה'],
+    reactionAreas: ['עצב:קיבה'],
     indications: [
       'כאב קיבה, נפיחות קיבה, חומצת קיבה עודפת, כיב קיבה, כיב תריסריון',
       'ספזם ושט, אזופגיטיס, בקע סרעפתי',
@@ -261,7 +261,7 @@ export const zone77ExtraPoints: Point[] = [
     englishName: 'Kidneys and Bladder Bloodletting Region',
     location: 'בצד המדיאלי של הרגל, מקפל הברך עד המלאולוס המדיאלי.',
     needling: 'הקזת דם.',
-    reactionAreas: ['עצב:כליה', 'שלפוחית'],
+    reactionAreas: ['עצב:כליה', 'ענף:שלפוחית'],
     indications: [
       'כאב בטן תחתונה, לחץ בטן תחתונה',
       'הפרעות רבייה נשיות, הפרעות רבייה גבריות',

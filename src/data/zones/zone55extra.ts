@@ -12,7 +12,7 @@ export const zone55ExtraPoints: Point[] = [
     englishName: "Woman's Efficacy",
     location: 'בצד הפלנטרי של אצבע 2 ברגל, משני צדי הקפל הפרוקסימלי.',
     needling: 'הקזת דם, דיקור ניצב 0.3-0.5 צון. אסור בדיקור ומוקסה בהריון.',
-    reactionAreas: ['מסייע:כבד', 'רחם'],
+    reactionAreas: ['מסייע:כבד', 'ענף:רחם'],
     indications: [
       'דלקת רחם (מטריטיס)',
       'סרטן רחם',

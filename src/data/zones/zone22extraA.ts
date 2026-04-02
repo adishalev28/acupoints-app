@@ -94,7 +94,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Stiff Shoulder',
     location: 'על הצד הרדיאלי של המפרק המטקרפופלנגאלי השני.',
     needling: 'ניצב, 0.3-0.5 צון.',
-    reactionAreas: [],
+    reactionAreas: ['ענף:ריאה', 'תת-ענף:לב'],
     indications: [
       'כאב כתף / כתף קפואה / כאב כתף קדמי ולטרלי',
       'כאב עורפי (אוקסיפיטלי)',
@@ -112,7 +112,7 @@ export const zone22ExtraAPoints: Point[] = [
     englishName: 'Venus',
     location: 'Jin Xing Shang (金星上) — על הצד הרדיאלי של עצם המטקרפוס השנייה, בבסיס ראש העצם, או בקצה קו החיים של כף היד. Jin Xing Xia (金星下) — 0.3 צון אנטריורית ל-Jin Xing Shang.',
     needling: 'ניצב, 0.2-0.3 צון.',
-    reactionAreas: [],
+    reactionAreas: ['עצב:ריאה'],
     indications: [
       'שחפת / אמפיזמה',
       'אסתמה / ברונכיטיס',

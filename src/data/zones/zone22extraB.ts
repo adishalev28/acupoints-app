@@ -11,7 +11,7 @@ export const zone22ExtraBPoints: Point[] = [
     englishName: 'Three Seas',
     location: '3 נקודות על כף היד (פלמרית) על עצם המטקרפוס החמישית. הנקודה האמצעית במרכז עצם המטקרפוס החמישית, הדיסטלית 0.5 צון דיסטלית לאמצעית, והפרוקסימלית 0.5 צון פרוקסימלית לאמצעית.',
     needling: 'אלכסוני, 0.2-0.3 צון. הקזת דם.',
-    reactionAreas: ['עצב:כליה', 'שלפוחית', 'רחם'],
+    reactionAreas: ['עצב:כליה', 'ענף:שלפוחית', 'ענף:רחם'],
     indications: [
       'דלקת כליות חריפה וכרונית / דלקת דרכי שתן / דלקת שלפוחית',
       'גידול ברחם / גידול שחלתי / דלקת רחם / דלקת שחלות',
@@ -34,7 +34,7 @@ export const zone22ExtraBPoints: Point[] = [
     englishName: 'Three Rivers',
     location: '3 נקודות על כף היד (פלמרית), בין עצמות המטקרפוס הרביעית והחמישית. הנקודה הראשונה 0.25 צון פרוקסימלית לצומת שתי האצבעות, השנייה 0.25 צון פרוקסימלית לראשונה, והשלישית 0.25 צון פרוקסימלית לשנייה.',
     needling: 'ניצב, 0.2-0.5 צון.',
-    reactionAreas: ['שש-פו'],
+    reactionAreas: ['שש-פו'],  // special group — kept as-is
     indications: [
       'סיאטיקה',
       'כאבי רחם',
@@ -138,7 +138,7 @@ export const zone22ExtraBPoints: Point[] = [
     englishName: 'Upper and Lower Height',
     location: '2 נקודות: Shang Gao — על כף היד (פלמרית), בין עצמות המטקרפוס 4-5, 0.5 צון פרוקסימלית ל-Shou Jie Er. Xia Gao — 1 צון פרוקסימלית ל-Shang Gao.',
     needling: 'ניצב, 0.3-0.5 צון.',
-    reactionAreas: ['עצב:כליה', 'מוח'],
+    reactionAreas: ['עצב:כליה', 'ענף:מוח'],
     indications: [
       'דלקת צפק (פריטוניטיס) — יעיל מאוד',
       'דלקת ריאות',

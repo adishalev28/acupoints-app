@@ -1,5 +1,5 @@
 import { useMemo, useCallback, useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { points } from '../data/points'
 import { zones } from '../data/zones'
 import SearchBar from '../components/SearchBar'
@@ -11,6 +11,7 @@ import { scorePoint } from '../utils/searchScoring'
 
 export default function Explore() {
   const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate()
   const { history, addSearch, clearHistory } = useSearchHistory()
   const [visibleCount, setVisibleCount] = useState(10)
 
@@ -113,7 +114,7 @@ export default function Explore() {
           onChange={setSearch}
           placeholder={placeholder}
           suggestions={suggestions}
-          onSuggestionSelect={(id) => { addSearch(id); setSearch(id) }}
+          onSuggestionSelect={(id) => { addSearch(id); navigate(`/point/${id}`) }}
           searchHistory={history}
           onHistorySelect={(q) => { setSearch(q) }}
           onClearHistory={clearHistory}

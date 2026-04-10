@@ -15,7 +15,7 @@ type Path = 'choose' | 'direct' | 'guided'
 type DirectStep = 'organs' | 'results'
 
 // Guided path steps
-type GuidedStep = 'symptom' | 'character' | 'triggers' | 'associated' | 'location' | 'palm' | 'results'
+type GuidedStep = 'symptom' | 'character' | 'triggers' | 'associated' | 'systems' | 'location' | 'palm' | 'results'
 
 interface LocationChoice {
   vertical: 'upper' | 'lower' | null
@@ -90,6 +90,59 @@ const diagnosticQuestions: DiagnosticQuestion[] = [
   },
 ]
 
+// ── System-specific categories (אופציונלי — מערכות ספציפיות) ──
+// ממומש כרובריקות נפרדות להעמקת האבחון באזורים שנדרשת רגישות גבוהה
+
+interface SystemCategory {
+  id: string
+  label: string
+  icon: string
+  options: DiagnosticOption[]
+}
+
+const systemCategories: SystemCategory[] = [
+  {
+    id: 'hormonal',
+    label: 'מחזור / הורמונלי',
+    icon: '🌸',
+    options: [
+      { id: 'sys-pms', text: 'PMS / עצבנות לפני וסת', description: 'עצבנות, נפיחות, רגישות, כאב צלעות לפני הוסת', icon: '😤', organWeights: { liver: 3 } },
+      { id: 'sys-dysmenorrhea', text: 'כאבי וסת (דיסמנוראה)', description: 'כאב חזק במהלך הוסת, התכווצויות', icon: '💢', organWeights: { liver: 2, kidneys: 2 } },
+      { id: 'sys-irregular-cycle', text: 'מחזור לא סדיר / חסר', description: 'וסת שלא מגיעה, אי-סדירות, אמנוריאה', icon: '📅', organWeights: { kidneys: 3, spleen: 1 } },
+      { id: 'sys-heavy-bleeding', text: 'דימומים כבדים', description: 'וסת מרובה, מנורגיה, דימום ממושך', icon: '🩸', organWeights: { spleen: 3 } },
+      { id: 'sys-menopause', text: 'גיל המעבר / גלי חום', description: 'גלי חום, הזעות לילה, חוסר שינה', icon: '🔥', organWeights: { kidneys: 3, heart: 1 } },
+      { id: 'sys-hormonal-headache', text: 'כאב ראש לפני/בזמן וסת', description: 'מיגרנות קשורות למחזור, כאבי ראש הורמונליים', icon: '🤯', organWeights: { liver: 3 } },
+    ],
+  },
+  {
+    id: 'pregnancy',
+    label: 'הריון ופוריות',
+    icon: '🤰',
+    options: [
+      { id: 'sys-morning-sickness', text: 'בחילות הריון', description: 'בחילות בוקר, הקאות בשליש ראשון', icon: '🤢', organWeights: { spleen: 3, liver: 1 } },
+      { id: 'sys-infertility', text: 'קשיי כניסה להריון', description: 'ניסיונות ממושכים להיכנס להריון', icon: '🌱', organWeights: { kidneys: 3 } },
+      { id: 'sys-weak-uterus', text: 'חולשת רחם / הפלות חוזרות', description: 'חולשה, דימומים, היסטוריית הפלות', icon: '💗', organWeights: { spleen: 3, kidneys: 2 } },
+      { id: 'sys-breech', text: 'מצג עכוז / הכנה ללידה', description: 'היפוך עכוז, הכנה ללידה, פתיחת אגן', icon: '🎯', organWeights: { kidneys: 2 } },
+      { id: 'sys-labor-induction', text: 'זירוז לידה', description: 'עידוד לידה לאחר תאריך', icon: '⏰', organWeights: { spleen: 2, kidneys: 2 } },
+      { id: 'sys-heartburn-pregnancy', text: 'צרבת בהריון', description: 'רפלוקס, צרבת בהריון מתקדם', icon: '🔥', organWeights: { liver: 2, spleen: 1 } },
+    ],
+  },
+  {
+    id: 'digestion',
+    label: 'עיכול מתקדם',
+    icon: '🍽️',
+    options: [
+      { id: 'sys-constipation', text: 'עצירות כרונית', description: 'קושי ביציאות, יציאות נדירות', icon: '🧱', organWeights: { spleen: 2, liver: 2 } },
+      { id: 'sys-diarrhea', text: 'שלשולים כרוניים', description: 'יציאות רכות כרוניות', icon: '💧', organWeights: { spleen: 3 } },
+      { id: 'sys-reflux', text: 'רפלוקס / חזרת חומצה', description: 'חומציות, צרבת, חזרת אוכל', icon: '🌋', organWeights: { liver: 3, spleen: 1 } },
+      { id: 'sys-ibs', text: 'IBS / תסמונת מעי רגיז', description: 'לסירוגין עצירות ושלשול, גזים, כאבים', icon: '🌀', organWeights: { liver: 3, spleen: 2 } },
+      { id: 'sys-nausea-vomiting', text: 'בחילה והקאות', description: 'בחילה כרונית, הקאות לא-הריון', icon: '🤮', organWeights: { spleen: 2, liver: 1 } },
+      { id: 'sys-poor-appetite', text: 'תיאבון ירוד / חולשה אחרי אוכל', description: 'חוסר תיאבון, עייפות אחרי אכילה', icon: '😪', organWeights: { spleen: 3 } },
+      { id: 'sys-bloating', text: 'גזים ונפיחות', description: 'נפיחות בטן, גזים מרובים', icon: '💨', organWeights: { spleen: 2, liver: 1 } },
+    ],
+  },
+]
+
 interface PointResult {
   point: Point
   reasons: { icon: string; text: string; priority: number }[]
@@ -102,7 +155,7 @@ export default function SmartDiagnosis() {
   const navigate = useNavigate()
 
   // ── Restore state from sessionStorage on mount ──
-  const validGuidedSteps = ['symptom', 'character', 'triggers', 'associated', 'location', 'palm', 'results']
+  const validGuidedSteps = ['symptom', 'character', 'triggers', 'associated', 'systems', 'location', 'palm', 'results']
   const restored = useRef(() => {
     try {
       const raw = sessionStorage.getItem('smart_diag_state')
@@ -140,6 +193,9 @@ export default function SmartDiagnosis() {
   const [location, setLocation] = useState<LocationChoice>(restored?.location ?? { vertical: null, side: null })
   const [palmFindings, setPalmFindings] = useState<Set<string>>(new Set(restored?.palmFindings ?? []))
   // symptomSearch removed — guided path now uses freeTextSymptom
+
+  // Systems step: which category is expanded
+  const [activeSystemCategory, setActiveSystemCategory] = useState<string | null>(null)
 
   // Shared
   const [showNourishing, setShowNourishing] = useState(false)
@@ -308,9 +364,18 @@ export default function SmartDiagnosis() {
   const guidedOrganScores = useMemo(() => {
     const scores: Record<string, number> = {}
     for (const answerId of diagnosticAnswers) {
-      // Find which option this answer belongs to
+      // Find which option this answer belongs to (in core questions)
       for (const q of diagnosticQuestions) {
         const opt = q.options.find(o => o.id === answerId)
+        if (opt) {
+          for (const [organId, weight] of Object.entries(opt.organWeights)) {
+            scores[organId] = (scores[organId] ?? 0) + weight
+          }
+        }
+      }
+      // Also search in system categories (מערכות ספציפיות)
+      for (const cat of systemCategories) {
+        const opt = cat.options.find(o => o.id === answerId)
         if (opt) {
           for (const [organId, weight] of Object.entries(opt.organWeights)) {
             scores[organId] = (scores[organId] ?? 0) + weight
@@ -358,7 +423,7 @@ export default function SmartDiagnosis() {
     pushHistory('direct-results')
   }
 
-  const guidedSteps: GuidedStep[] = ['symptom', 'character', 'triggers', 'associated', 'location', 'palm', 'results']
+  const guidedSteps: GuidedStep[] = ['symptom', 'character', 'triggers', 'associated', 'systems', 'location', 'palm', 'results']
 
   function goGuidedNext(from: GuidedStep) {
     const idx = guidedSteps.indexOf(from)
@@ -750,6 +815,107 @@ export default function SmartDiagnosis() {
             </div>
           )
         })()}
+
+        {/* ════════════════════════════════════════════════════════════ */}
+        {/* GUIDED PATH — Step: Systems (מערכות ספציפיות — אופציונלי)    */}
+        {/* ════════════════════════════════════════════════════════════ */}
+        {path === 'guided' && guidedStep === 'systems' && (
+          <div className="space-y-3">
+            {/* Organ scores preview */}
+            {diagnosticAnswers.size > 0 && guidedOrganRanking.length > 0 && (
+              <div className="flex gap-1.5 justify-end flex-wrap">
+                {guidedOrganRanking.slice(0, 3).map(({ organ, score }) => (
+                  <span key={organ.id} className={`text-[11px] px-2 py-1 rounded-full ${organ.color.bg} ${organ.color.text} ${organ.color.border} border font-medium`}>
+                    {organ.icon} {organ.hebrew} ({score})
+                  </span>
+                ))}
+              </div>
+            )}
+
+            <div className="text-right">
+              <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text">🎯 מערכות ספציפיות</h2>
+              <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">
+                בחר קטגוריה אם רלוונטי למטופל (אופציונלי) — לדיוק האבחון
+              </p>
+            </div>
+
+            {/* Category buttons */}
+            <div className="space-y-2">
+              {systemCategories.map(cat => {
+                const isOpen = activeSystemCategory === cat.id
+                const selectedInCat = cat.options.filter(o => diagnosticAnswers.has(o.id)).length
+                return (
+                  <div key={cat.id} className="bg-white dark:bg-dark-card rounded-xl border border-gray-100 dark:border-dark-border overflow-hidden">
+                    <button
+                      onClick={() => setActiveSystemCategory(isOpen ? null : cat.id)}
+                      className="w-full flex items-center gap-3 p-3.5 text-right hover:bg-gray-50 dark:hover:bg-dark-bg/30 transition-colors"
+                    >
+                      <span className={`text-gray-400 text-sm transition-transform ${isOpen ? 'rotate-90' : ''}`}>◀</span>
+                      {selectedInCat > 0 && (
+                        <span className="text-[10px] bg-teal-primary text-white px-2 py-0.5 rounded-full font-bold">
+                          {selectedInCat}
+                        </span>
+                      )}
+                      <div className="flex-1 text-right">
+                        <span className="text-xl ml-2">{cat.icon}</span>
+                        <span className="font-medium text-sm text-gray-900 dark:text-dark-text">{cat.label}</span>
+                      </div>
+                    </button>
+
+                    {isOpen && (
+                      <div className="border-t border-gray-100 dark:border-dark-border p-2 space-y-1.5 bg-gray-50 dark:bg-dark-bg/30">
+                        {cat.options.map(opt => {
+                          const sel = diagnosticAnswers.has(opt.id)
+                          return (
+                            <button
+                              key={opt.id}
+                              onClick={() => {
+                                setDiagnosticAnswers(prev => {
+                                  const next = new Set(prev)
+                                  if (next.has(opt.id)) next.delete(opt.id)
+                                  else next.add(opt.id)
+                                  return next
+                                })
+                              }}
+                              className={`w-full flex items-center gap-3 p-3 rounded-lg border text-right transition-colors
+                                ${sel
+                                  ? 'bg-teal-50 dark:bg-teal-primary/20 border-teal-300 dark:border-teal-600'
+                                  : 'bg-white dark:bg-dark-card border-gray-100 dark:border-dark-border hover:border-gray-200'
+                                }`}
+                            >
+                              <div className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0
+                                ${sel ? 'bg-teal-primary border-teal-primary' : 'border-gray-300 dark:border-dark-border'}`}>
+                                {sel && <svg className="w-3 h-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                              </div>
+                              <span className="text-lg shrink-0">{opt.icon}</span>
+                              <div className="flex-1">
+                                <div className="font-medium text-sm text-gray-900 dark:text-dark-text">{opt.text}</div>
+                                <div className="text-[11px] text-gray-500 dark:text-dark-muted mt-0.5">{opt.description}</div>
+                              </div>
+                            </button>
+                          )
+                        })}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* Navigation */}
+            <div className="flex gap-2">
+              <button onClick={() => goGuidedBack('systems')} className="flex-1 py-2.5 rounded-xl border border-gray-200 dark:border-dark-border text-gray-500 text-sm">
+                ← חזרה
+              </button>
+              <button
+                onClick={() => goGuidedNext('systems')}
+                className="flex-1 py-2.5 rounded-xl bg-teal-primary text-white font-bold text-sm"
+              >
+                {Array.from(diagnosticAnswers).some(a => systemCategories.some(c => c.options.some(o => o.id === a))) ? 'המשך →' : 'דלג →'}
+              </button>
+            </div>
+          </div>
+        )}
 
         {/* ════════════════════════════════════════════════════════════ */}
         {/* GUIDED PATH — Step 3: Location                              */}

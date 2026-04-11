@@ -6,6 +6,7 @@ import { organProfiles, tissueOrganMap, getOrganProfile, type OrganProfile } fro
 import { daoMaClinicalGroups, organToDaoMa } from '../data/daoMaGroups'
 import { getPointsByOrgan } from '../utils/reactionAreaNormalization'
 import { getSideBadge } from '../utils/treatmentPrinciples'
+import { pathogenesisMaps } from '../data/pathogenesis'
 
 // ── Types ──
 
@@ -139,6 +140,85 @@ const systemCategories: SystemCategory[] = [
       { id: 'sys-nausea-vomiting', text: 'בחילה והקאות', description: 'בחילה כרונית, הקאות לא-הריון', icon: '🤮', organWeights: { spleen: 2, liver: 1 } },
       { id: 'sys-poor-appetite', text: 'תיאבון ירוד / חולשה אחרי אוכל', description: 'חוסר תיאבון, עייפות אחרי אכילה', icon: '😪', organWeights: { spleen: 3 } },
       { id: 'sys-bloating', text: 'גזים ונפיחות', description: 'נפיחות בטן, גזים מרובים', icon: '💨', organWeights: { spleen: 2, liver: 1 } },
+    ],
+  },
+  {
+    id: 'heart-sleep',
+    label: 'לב / שינה / רגשי',
+    icon: '💓',
+    options: [
+      { id: 'sys-insomnia', text: 'נדודי שינה / קושי להירדם', description: 'קושי להירדם, יקיצות לילה, שינה לא רציפה', icon: '🌙', organWeights: { heart: 3, kidneys: 1 } },
+      { id: 'sys-anxiety', text: 'חרדה / פחד / התקפי חרדה', description: 'חרדה כללית, פחד, פאניקה', icon: '😰', organWeights: { heart: 3, kidneys: 2 } },
+      { id: 'sys-palpitations', text: 'דפיקות לב / טכיקרדיה', description: 'תחושת דפיקות חזקות, לב מואץ', icon: '💓', organWeights: { heart: 3 } },
+      { id: 'sys-depression', text: 'דיכאון / עצב / חוסר שמחה', description: 'עצב כרוני, חוסר עניין, דיכאון', icon: '😢', organWeights: { lungs: 2, heart: 2 } },
+      { id: 'sys-chronic-stress', text: 'סטרס כרוני / עצבנות', description: 'לחץ מתמשך, עצבנות כללית, רגיזות', icon: '😤', organWeights: { liver: 3, heart: 1 } },
+      { id: 'sys-vivid-dreams', text: 'חלומות רבים / שינה לא טובה', description: 'חלומות רבים וחיים, שינה שטחית', icon: '💭', organWeights: { heart: 2, liver: 1 } },
+    ],
+  },
+  {
+    id: 'respiratory',
+    label: 'נשימה / ריאות',
+    icon: '🫁',
+    options: [
+      { id: 'sys-asthma', text: 'אסתמה / קוצר נשימה', description: 'התקפי אסתמה, קשיי נשימה', icon: '😮‍💨', organWeights: { lungs: 3, kidneys: 1 } },
+      { id: 'sys-chronic-cough', text: 'שיעול כרוני', description: 'שיעול ממושך, שיעול יבש או לח', icon: '🗣️', organWeights: { lungs: 3 } },
+      { id: 'sys-bronchitis', text: 'ברונכיטיס / כיח', description: 'דלקת סימפונות, ליחה, כיח', icon: '🤧', organWeights: { lungs: 3, spleen: 1 } },
+      { id: 'sys-allergies-resp', text: 'אלרגיות נשימתיות / גודש', description: 'נזלת, גודש, אלרגיות עונתיות', icon: '🌸', organWeights: { lungs: 3 } },
+      { id: 'sys-throat-voice', text: 'גרון / אפוניה / צרידות', description: 'כאב גרון, אובדן קול, צרידות', icon: '🗣️', organWeights: { lungs: 2 } },
+      { id: 'sys-sweating', text: 'הזעת יתר / פחד מקור', description: 'הזעה מוגזמת, רגישות לקור', icon: '💦', organWeights: { lungs: 2 } },
+    ],
+  },
+  {
+    id: 'skin',
+    label: 'עור',
+    icon: '🩹',
+    options: [
+      { id: 'sys-eczema', text: 'אקזמה / דרמטיטיס', description: 'גרד, אדמומיות, קשקשים, פצעים', icon: '🔴', organWeights: { lungs: 3, liver: 1 } },
+      { id: 'sys-psoriasis', text: 'פסוריאזיס', description: 'פלאקים קשקשיים, עור יבש', icon: '🧬', organWeights: { lungs: 2, liver: 2 } },
+      { id: 'sys-acne', text: 'אקנה / פצעונים', description: 'פצעונים, אקנה פנים וגב', icon: '🫧', organWeights: { lungs: 2, liver: 1 } },
+      { id: 'sys-urticaria', text: 'אורטיקריה / סרפדת', description: 'סרפדת, פריחה גירודית', icon: '⚠️', organWeights: { lungs: 3, liver: 2 } },
+      { id: 'sys-dry-skin', text: 'גרד / יובש עור', description: 'עור יבש, גירוד כללי', icon: '🌵', organWeights: { lungs: 2, kidneys: 1 } },
+      { id: 'sys-herpes', text: 'הרפס / זוסטר', description: 'הרפס פעיל, שלבקת חוגרת', icon: '🦠', organWeights: { liver: 3 } },
+    ],
+  },
+  {
+    id: 'kidneys-urinary',
+    label: 'כליות / שתן',
+    icon: '💧',
+    options: [
+      { id: 'sys-uti', text: 'UTI / דלקת שלפוחית', description: 'צריבה בשתן, דחיפות, דלקת דרכי שתן', icon: '🔥', organWeights: { kidneys: 3 } },
+      { id: 'sys-enuresis', text: 'הרטבה / אי-עצירה', description: 'הרטבת לילה, אי-שליטה בשתן', icon: '💧', organWeights: { kidneys: 3, spleen: 1 } },
+      { id: 'sys-nocturia', text: 'פיפי תכוף בלילה', description: 'השתנה תכופה בלילה, שתן רב', icon: '🌙', organWeights: { kidneys: 3 } },
+      { id: 'sys-chronic-back', text: 'כאב גב תחתון כרוני', description: 'כאב גב תחתון ממושך, חולשה', icon: '🦴', organWeights: { kidneys: 3 } },
+      { id: 'sys-weak-knees-fatigue', text: 'חולשת ברכיים / עייפות', description: 'חולשה בברכיים, עייפות כרונית', icon: '😮‍💨', organWeights: { kidneys: 3 } },
+      { id: 'sys-prostate', text: 'ערמונית / בעיות אורולוגיות', description: 'הגדלת ערמונית, זרימה חלשה', icon: '♂️', organWeights: { kidneys: 3 } },
+    ],
+  },
+  {
+    id: 'eyes-ears',
+    label: 'עיניים / אוזניים',
+    icon: '👁️',
+    options: [
+      { id: 'sys-tinnitus', text: 'טינטון / צלצולים באוזניים', description: 'צלצולים, זמזום, רעשים באוזן', icon: '🔔', organWeights: { kidneys: 3, liver: 1 } },
+      { id: 'sys-hearing-loss', text: 'חירשות / ירידה בשמיעה', description: 'ירידה בחדות שמיעה, אובדן שמיעה', icon: '🙉', organWeights: { kidneys: 3 } },
+      { id: 'sys-blurred-vision', text: 'ראייה מטושטשת', description: 'ראייה לא חדה, קשיי מיקוד', icon: '👓', organWeights: { liver: 3, kidneys: 1 } },
+      { id: 'sys-dry-eyes', text: 'יובש עיניים', description: 'תחושת יובש, צריבה בעיניים', icon: '💨', organWeights: { liver: 2, kidneys: 1 } },
+      { id: 'sys-vertigo', text: 'סחרחורת / ורטיגו', description: 'סחרחורת סיבובית, תחושת הסתחררות', icon: '🌀', organWeights: { liver: 2, kidneys: 2 } },
+      { id: 'sys-ear-pain', text: 'כאבי אוזניים / דלקת אוזן', description: 'כאב אוזן, דלקות חוזרות', icon: '👂', organWeights: { kidneys: 2 } },
+    ],
+  },
+  {
+    id: 'musculoskeletal',
+    label: 'שלד / שריר (כאב ממוקם)',
+    icon: '🦴',
+    options: [
+      { id: 'sys-shoulder-pain', text: 'כאב כתף / כתף קפואה', description: 'כאב כתף, הגבלת תנועה, כתף קפואה', icon: '💪', organWeights: { liver: 2, lungs: 1 } },
+      { id: 'sys-knee-pain', text: 'כאב ברכיים', description: 'כאבי ברכיים, נפיחות, גרגור', icon: '🦵', organWeights: { kidneys: 3 } },
+      { id: 'sys-elbow-pain', text: 'כאב מרפק / מרפק טניס', description: 'כאב מרפק, epicondylitis', icon: '💪', organWeights: { liver: 2 } },
+      { id: 'sys-wrist-cts', text: 'כאב שורש כף יד / CTS', description: 'תסמונת התעלה הקרפלית, נמל באצבעות', icon: '🤚', organWeights: { liver: 2 } },
+      { id: 'sys-neck-upper-back', text: 'כאב גב עליון / צוואר', description: 'כאב צוואר, מתח בכתפיים ובגב עליון', icon: '🧑‍💼', organWeights: { liver: 2, kidneys: 1 } },
+      { id: 'sys-heel-plantar', text: 'כאב עקב / פשיטיס', description: 'דורבן, plantar fasciitis, כאב עקב', icon: '🦶', organWeights: { kidneys: 3 } },
+      { id: 'sys-sciatica', text: 'סיאטיקה', description: 'כאב מקרין מהגב לרגל, סיאטיקה', icon: '⚡', organWeights: { kidneys: 2, liver: 2 } },
     ],
   },
 ]
@@ -1180,13 +1260,32 @@ function GuidedResults({
 
   // (primaryOrgan logic moved into OrganCards)
 
-  // Find matching points by symptom keyword
-  const matchingPoints = useMemo(() => {
-    if (!freeTextSymptom || freeTextSymptom.length < 2) return []
-    return points.filter(p =>
-      flattenIndications(p.indications).some(ind => ind.includes(freeTextSymptom))
-    )
+  // Expand primary symptom to keywords using pathogenesis maps
+  const primarySymptomKeywords = useMemo(() => {
+    const trimmed = (freeTextSymptom || '').trim()
+    if (trimmed.length < 2) return []
+    const keywords = new Set<string>([trimmed])
+    // Search all pathogenesis maps — if the primary symptom matches any, add all its matchKeywords
+    for (const map of pathogenesisMaps) {
+      const matched = map.matchKeywords?.some(
+        k => trimmed.includes(k) || k.includes(trimmed)
+      )
+      if (matched) {
+        map.matchKeywords?.forEach(k => keywords.add(k))
+      }
+    }
+    return Array.from(keywords)
   }, [freeTextSymptom])
+
+  // Find matching points by primary symptom — this is the MAIN filter
+  // All returned points MUST have at least one indication matching the primary complaint
+  const matchingPoints = useMemo(() => {
+    if (primarySymptomKeywords.length === 0) return []
+    return points.filter(p => {
+      const inds = flattenIndications(p.indications)
+      return primarySymptomKeywords.some(kw => inds.some(ind => ind.includes(kw)))
+    })
+  }, [primarySymptomKeywords])
 
   // (organMatchedPoints moved into OrganCards component)
 
@@ -1281,6 +1380,8 @@ function OrganCards({
   const [expandedOrgan, setExpandedOrgan] = useState<string | null>(
     guidedOrganRanking.length > 0 ? guidedOrganRanking[0].organ.id : null
   )
+  // Track which organs have their "supporting points" section expanded (closed by default)
+  const [expandedSupporting, setExpandedSupporting] = useState<Set<string>>(new Set())
 
   if (guidedOrganRanking.length === 0) return null
 
@@ -1291,12 +1392,13 @@ function OrganCards({
       {guidedOrganRanking.map(({ organ, score }, i) => {
         const isExpanded = expandedOrgan === organ.id
         const isFirst = i === 0
+        const showSupporting = expandedSupporting.has(organ.id)
 
-        // Find matching points for this organ
+        // Find primary-complaint-matching points for this organ (the MAIN focus)
         const organPointSet = new Set(getPointsByOrgan(organ.hebrew).map(op => op.point.id))
         const organMatchingPoints = matchingPoints.filter(p => organPointSet.has(p.id))
 
-        // Dao Ma groups for this organ
+        // Dao Ma groups for this organ (supporting points)
         const daoMaIds = organToDaoMa[organ.id] ?? []
         const daoMaGroups = daoMaIds
           .map(id => daoMaClinicalGroups.find(g => g.id === id))
@@ -1342,53 +1444,97 @@ function OrganCards({
                   </div>
                 )}
 
-                {/* Dao Ma groups */}
-                {daoMaGroups.length > 0 && (
-                  <div>
-                    <div className="text-xs font-bold text-gray-600 dark:text-dark-muted mb-1.5">🐴 דאו-מא:</div>
-                    {daoMaGroups.map(group => group && (
-                      <div key={group.id} className="mb-2 p-2.5 bg-white/60 dark:bg-gray-800 rounded-lg">
-                        <div className="font-bold text-sm text-gray-800 dark:text-dark-text">{group.nameHebrew}</div>
-                        <div className="flex flex-wrap gap-1.5 mt-1">
-                          {group.pointIds.map(pid => (
-                            <Link key={pid} to={`/point/${pid}`}
-                              className="text-xs px-2 py-1 rounded-lg bg-teal-50 dark:bg-teal-primary/20 text-teal-700 dark:text-teal-300 font-mono font-bold hover:bg-teal-100 transition-colors">
-                              {pid}
-                            </Link>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                {/* Nourishing cycle */}
-                <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg text-xs text-purple-700 dark:text-purple-300">
-                  🔄 {organ.motherNote}
-                </div>
-
-                {/* Matching points for this organ */}
-                {freeTextSymptom && organMatchingPoints.length > 0 && (
-                  <div>
-                    <div className="text-xs font-bold text-gray-600 dark:text-dark-muted mb-1.5">
-                      📍 {organMatchingPoints.length} נקודות ל"{freeTextSymptom}" דרך {organ.hebrew}:
+                {/* ══════════════════════════════════════════════════ */}
+                {/* SECTION A: 🎯 נקודות לתלונה המרכזית (הדגש העיקרי) */}
+                {/* ══════════════════════════════════════════════════ */}
+                {freeTextSymptom && (
+                  <div className="rounded-lg border-2 border-teal-400 dark:border-teal-600 bg-gradient-to-br from-teal-50 to-white dark:from-teal-900/20 dark:to-dark-card p-3">
+                    <div className="flex items-center gap-2 justify-end mb-2">
+                      <span className="text-sm font-bold text-teal-700 dark:text-teal-300">
+                        🎯 נקודות לתלונה "{freeTextSymptom}"
+                      </span>
                     </div>
-                    {organMatchingPoints.slice(0, 8).map(point => (
-                      <Link key={point.id} to={`/point/${point.id}`}
-                        className="block mb-1 p-2 bg-white/60 dark:bg-gray-800 rounded-lg hover:bg-white dark:hover:bg-gray-700 transition-colors">
-                        <div className="flex items-center gap-2 justify-end">
-                          {point.absoluteNeedle === '72' && <span className="text-[10px] px-1 rounded bg-amber-100 text-amber-700">🥇</span>}
-                          {point.absoluteNeedle === '32' && <span className="text-[10px] px-1 rounded bg-gray-100 text-gray-600">🥈</span>}
-                          <span className="text-sm font-bold text-gray-900 dark:text-dark-text">{point.hebrewName || point.pinyinName}</span>
-                          <span className="text-xs font-mono text-teal-primary">{point.id}</span>
+
+                    {organMatchingPoints.length > 0 ? (
+                      <>
+                        <div className="text-[11px] text-teal-600 dark:text-teal-400 mb-2 text-right">
+                          {organMatchingPoints.length} נקודות של {organ.hebrew} שמטפלות ישירות ב"{freeTextSymptom}"
                         </div>
-                      </Link>
-                    ))}
-                    {organMatchingPoints.length > 8 && (
-                      <div className="text-center text-[11px] text-gray-400 mt-1">+ עוד {organMatchingPoints.length - 8}</div>
+                        {organMatchingPoints.slice(0, 12).map(point => (
+                          <Link key={point.id} to={`/point/${point.id}`}
+                            className="block mb-1 p-2 bg-white dark:bg-dark-card rounded-lg hover:bg-teal-50 dark:hover:bg-teal-900/30 border border-teal-100 dark:border-teal-800 transition-colors">
+                            <div className="flex items-center gap-2 justify-end">
+                              {point.absoluteNeedle === '72' && <span className="text-[10px] px-1 rounded bg-amber-100 text-amber-700">🥇</span>}
+                              {point.absoluteNeedle === '32' && <span className="text-[10px] px-1 rounded bg-gray-100 text-gray-600">🥈</span>}
+                              <span className="text-sm font-bold text-gray-900 dark:text-dark-text">{point.hebrewName || point.pinyinName}</span>
+                              <span className="text-xs font-mono text-teal-primary">{point.id}</span>
+                            </div>
+                          </Link>
+                        ))}
+                        {organMatchingPoints.length > 12 && (
+                          <div className="text-center text-[11px] text-gray-400 mt-1">+ עוד {organMatchingPoints.length - 12}</div>
+                        )}
+                      </>
+                    ) : (
+                      <div className="text-[11px] text-gray-500 dark:text-dark-muted text-right italic">
+                        לא נמצאו נקודות ישירות ל"{freeTextSymptom}" דרך {organ.hebrew}. ראה נקודות תומכות למטה.
+                      </div>
                     )}
                   </div>
                 )}
+
+                {/* ══════════════════════════════════════════════════ */}
+                {/* SECTION B: 💡 נקודות תומכות (collapsed by default) */}
+                {/* ══════════════════════════════════════════════════ */}
+                <div className="rounded-lg border border-gray-200 dark:border-dark-border overflow-hidden">
+                  <button
+                    onClick={() => {
+                      setExpandedSupporting(prev => {
+                        const next = new Set(prev)
+                        if (next.has(organ.id)) next.delete(organ.id)
+                        else next.add(organ.id)
+                        return next
+                      })
+                    }}
+                    className="w-full flex items-center gap-2 p-2.5 text-right bg-gray-50 dark:bg-gray-800/30 hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors"
+                  >
+                    <svg className={`w-3.5 h-3.5 text-gray-400 transition-transform ${showSupporting ? 'rotate-90' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                    <span className="flex-1 text-right text-xs font-bold text-gray-700 dark:text-dark-text">
+                      💡 נקודות תומכות (לחיזוק הטיפול ב{organ.hebrew})
+                    </span>
+                  </button>
+
+                  {showSupporting && (
+                    <div className="p-3 space-y-3 bg-white dark:bg-dark-card">
+                      {/* Dao Ma groups */}
+                      {daoMaGroups.length > 0 && (
+                        <div>
+                          <div className="text-xs font-bold text-gray-600 dark:text-dark-muted mb-1.5">🐴 דאו-מא:</div>
+                          {daoMaGroups.map(group => group && (
+                            <div key={group.id} className="mb-2 p-2.5 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                              <div className="font-bold text-sm text-gray-800 dark:text-dark-text">{group.nameHebrew}</div>
+                              <div className="flex flex-wrap gap-1.5 mt-1">
+                                {group.pointIds.map(pid => (
+                                  <Link key={pid} to={`/point/${pid}`}
+                                    className="text-xs px-2 py-1 rounded-lg bg-teal-50 dark:bg-teal-primary/20 text-teal-700 dark:text-teal-300 font-mono font-bold hover:bg-teal-100 transition-colors">
+                                    {pid}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {/* Nourishing cycle */}
+                      <div className="p-2 bg-purple-50 dark:bg-purple-900/20 rounded-lg text-xs text-purple-700 dark:text-purple-300">
+                        🔄 {organ.motherNote}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
             )}
           </div>

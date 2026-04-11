@@ -597,6 +597,23 @@ export default function SmartDiagnosis() {
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'direct' && directStep === 'organs' && (
           <div className="space-y-3">
+            {/* Back button to path selection */}
+            <button
+              onClick={() => {
+                setPath('choose')
+                setSelectedOrgan(null)
+                setDirectStep('organs')
+                sessionStorage.removeItem('smart_diag_state')
+                window.history.replaceState({ smartDiag: 'choose' }, '')
+              }}
+              className="flex items-center gap-2 text-sm text-gray-500 dark:text-dark-muted hover:text-teal-primary transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <span>חזרה לבחירת מסלול</span>
+            </button>
+
             <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text text-right">🎯 בחר את האיבר הפגוע</h2>
             <div className="space-y-2.5">
               {organProfiles.map(organ => (
@@ -721,6 +738,24 @@ export default function SmartDiagnosis() {
         {/* ════════════════════════════════════════════════════════════ */}
         {path === 'guided' && guidedStep === 'symptom' && (
           <div className="space-y-3">
+            {/* Back button to path selection */}
+            <button
+              onClick={() => {
+                setPath('choose')
+                setFreeTextSymptom('')
+                setDiagnosticAnswers(new Set())
+                setGuidedStep('symptom')
+                sessionStorage.removeItem('smart_diag_state')
+                window.history.replaceState({ smartDiag: 'choose' }, '')
+              }}
+              className="flex items-center gap-2 text-sm text-gray-500 dark:text-dark-muted hover:text-teal-primary transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              <span>חזרה לבחירת מסלול</span>
+            </button>
+
             <div className="text-right">
               <h2 className="text-lg font-bold text-gray-800 dark:text-dark-text">🔍 מה הבעיה של המטופל?</h2>
               <p className="text-xs text-gray-500 dark:text-dark-muted mt-1">

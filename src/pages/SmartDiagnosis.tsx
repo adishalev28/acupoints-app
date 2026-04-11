@@ -16,7 +16,7 @@ type Path = 'choose' | 'direct' | 'guided'
 type DirectStep = 'organs' | 'results'
 
 // Guided path steps
-type GuidedStep = 'symptom' | 'character' | 'triggers' | 'associated' | 'systems' | 'location' | 'palm' | 'results'
+type GuidedStep = 'symptom' | 'systems' | 'character' | 'triggers' | 'location' | 'palm' | 'results'
 
 interface LocationChoice {
   vertical: 'upper' | 'lower' | null
@@ -35,7 +35,7 @@ interface DiagnosticOption {
 }
 
 interface DiagnosticQuestion {
-  step: 'character' | 'triggers' | 'associated'
+  step: 'character' | 'triggers'
   title: string
   subtitle: string
   multiSelect: boolean
@@ -72,21 +72,6 @@ const diagnosticQuestions: DiagnosticQuestion[] = [
       { id: 'night', text: 'מחמיר בלילה', description: 'גרוע יותר בשעות הלילה', icon: '🌙', organWeights: { heart: 2, kidneys: 1 } },
       { id: 'chronic-gradual', text: 'התפתח בהדרגה / כרוני', description: 'מחמיר לאט לאורך זמן, חולשה מתמשכת', icon: '📉', organWeights: { kidneys: 3, spleen: 1 } },
       { id: 'exertion', text: 'מאמץ פיזי / עייפות', description: 'מחמיר מתנועה או מעבודה', icon: '🏃', organWeights: { spleen: 2, kidneys: 1 } },
-    ],
-  },
-  {
-    step: 'associated',
-    title: 'סימפטומים נלווים?',
-    subtitle: 'מה עוד קורה מלבד הבעיה העיקרית?',
-    multiSelect: true,
-    options: [
-      { id: 'eye-vision', text: 'בעיות עיניים / ראייה מטושטשת', description: 'עין לא נסגרת, יובש, ראייה מטושטשת', icon: '👁️', organWeights: { liver: 3 } },
-      { id: 'dizziness', text: 'סחרחורת / טינטון / רעד', description: 'סחרחורת, צלצולים באוזניים, חוסר יציבות', icon: '🌀', organWeights: { liver: 2, kidneys: 2 } },
-      { id: 'digestive', text: 'בעיות עיכול / נפיחות', description: 'בחילה, שלשול, נפיחות, תיאבון ירוד', icon: '🫃', organWeights: { spleen: 3 } },
-      { id: 'skin-breathing', text: 'בעיות עור / נשימה', description: 'אקזמה, גרד, קוצר נשימה, הזעת יתר', icon: '🫁', organWeights: { lungs: 3 } },
-      { id: 'back-urinary', text: 'כאב גב תחתון / שתן תכוף', description: 'חולשת ברכיים, עייפות כרונית', icon: '💧', organWeights: { kidneys: 3 } },
-      { id: 'anxiety-sleep', text: 'חרדה / נדודי שינה / דפיקות', description: 'קושי להירדם, דפיקות לב, אי שקט', icon: '💓', organWeights: { heart: 3 } },
-      { id: 'irritability-pms', text: 'עצבנות / PMS / כאב צלעות', description: 'עצבנות, מתח רגשי, כאב בצלעות', icon: '😠', organWeights: { liver: 3 } },
     ],
   },
 ]
@@ -235,7 +220,7 @@ export default function SmartDiagnosis() {
   const navigate = useNavigate()
 
   // ── Restore state from sessionStorage on mount ──
-  const validGuidedSteps = ['symptom', 'character', 'triggers', 'associated', 'systems', 'location', 'palm', 'results']
+  const validGuidedSteps = ['symptom', 'systems', 'character', 'triggers', 'location', 'palm', 'results']
   const restored = useRef(() => {
     try {
       const raw = sessionStorage.getItem('smart_diag_state')
@@ -503,7 +488,7 @@ export default function SmartDiagnosis() {
     pushHistory('direct-results')
   }
 
-  const guidedSteps: GuidedStep[] = ['symptom', 'character', 'triggers', 'associated', 'systems', 'location', 'palm', 'results']
+  const guidedSteps: GuidedStep[] = ['symptom', 'systems', 'character', 'triggers', 'location', 'palm', 'results']
 
   function goGuidedNext(from: GuidedStep) {
     const idx = guidedSteps.indexOf(from)
@@ -811,20 +796,19 @@ export default function SmartDiagnosis() {
         )}
 
         {/* ════════════════════════════════════════════════════════════ */}
-        {/* GUIDED PATH — Diagnostic Questions (character/triggers/associated) */}
+        {/* GUIDED PATH — Diagnostic Questions (character/triggers)     */}
         {/* ════════════════════════════════════════════════════════════ */}
-        {path === 'guided' && (guidedStep === 'character' || guidedStep === 'triggers' || guidedStep === 'associated') && (() => {
+        {path === 'guided' && (guidedStep === 'character' || guidedStep === 'triggers') && (() => {
           const question = diagnosticQuestions.find(q => q.step === guidedStep)!
-          const stepIdx = guidedSteps.indexOf(guidedStep)
-          const totalDiagSteps = 3
-          const diagStepNum = stepIdx - guidedSteps.indexOf('character') + 1
+          const totalDiagSteps = 2
+          const diagStepNum = guidedStep === 'character' ? 1 : 2
           return (
             <div className="space-y-3">
               {/* Progress indicator */}
               <div className="flex items-center gap-2 justify-end">
                 <span className="text-xs text-gray-400 dark:text-dark-muted">שאלה {diagStepNum}/{totalDiagSteps}</span>
                 <div className="flex gap-1">
-                  {[1, 2, 3].map(n => (
+                  {[1, 2].map(n => (
                     <div key={n} className={`w-8 h-1.5 rounded-full ${n <= diagStepNum ? 'bg-teal-primary' : 'bg-gray-200 dark:bg-gray-700'}`} />
                   ))}
                 </div>

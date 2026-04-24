@@ -366,8 +366,17 @@ export function getOrganPointCount(organ: string): number {
   return uniqueIds.size
 }
 
+const pluralToSingular: Record<string, string> = {
+  'כליות': 'כליה',
+  'ריאות': 'ריאה',
+}
+
 export function getPointsByOrgan(organ: string): PointWithHierarchy[] {
-  return getCache().get(organ) ?? []
+  const result = getCache().get(organ) ?? []
+  if (result.length > 0) return result
+  const singular = pluralToSingular[organ]
+  if (singular) return getCache().get(singular) ?? []
+  return result
 }
 
 export function getPointsByOrgans(organs: string[]): PointWithHierarchy[] {

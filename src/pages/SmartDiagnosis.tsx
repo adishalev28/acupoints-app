@@ -797,8 +797,16 @@ export default function SmartDiagnosis() {
 
             {/* Preview: how many points match */}
             {freeTextSymptom.length >= 2 && (() => {
+              const trimmed = freeTextSymptom.trim()
+              const keywords = new Set([trimmed])
+              for (const map of pathogenesisMaps) {
+                if (map.matchKeywords?.some(k => trimmed.includes(k) || k.includes(trimmed))) {
+                  map.matchKeywords?.forEach(k => keywords.add(k))
+                }
+              }
+              const kArr = Array.from(keywords)
               const count = points.filter(p =>
-                flattenIndications(p.indications).some(ind => ind.includes(freeTextSymptom))
+                flattenIndications(p.indications).some(ind => kArr.some(kw => ind.includes(kw)))
               ).length
               return (
                 <div className="p-3 bg-teal-50 dark:bg-teal-primary/10 rounded-xl border border-teal-200 dark:border-teal-700 text-right">

@@ -463,6 +463,47 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
     ],
   },
+  {
+    symptom: 'פריון וגינקולוגיה',
+    symptomEn: 'Fertility & Gynecology',
+    icon: '🌸',
+    question: 'מה שורש הבעיה?',
+    matchKeywords: ['פריון', 'פוריות', 'אי-פוריות', 'הריון', 'רחם', 'שחלות', 'מחזור', 'גינקולוגי', 'חצוצרות', 'רבייה', 'ביוץ', 'PMS', 'POI', 'PCOS', 'דיסמנוריאה', 'אמנוריאה', 'לויקוריאה', 'מיומה'],
+    roots: [
+      {
+        rootId: 'kidney-deficiency',
+        pointIds: ['77.17', '77.19', '77.21', '88.04-06'],
+        daoMa: 'Xia San Huang + San Jie Mei',
+        protocol: 'אי-פוריות על רקע חולשת כליות: Xia San Huang 77.17/19/21 לחיזוק יאנג הכליות + San Jie Mei 88.04-06 לגינקולוגיה. הכליות שולטות על הרבייה.',
+        needleSide: 'bilateral',
+        priority: 1,
+      },
+      {
+        rootId: 'liver-stagnation',
+        pointIds: ['88.12-14', '11.06'],
+        daoMa: 'Shang San Huang + Fu Ke',
+        protocol: 'הפרעות מחזור/PMS מסטגנציית צ\'י כבד: Shang San Huang 88.12-14 לכבד + Fu Ke 11.06 — נקודת המפתח לגינקולוגיה.',
+        needleSide: 'bilateral',
+        priority: 1,
+      },
+      {
+        rootId: 'blood-stagnation',
+        pointIds: ['77.08', '77.09', '77.11', '66.02', '66.03'],
+        daoMa: 'Si Hua + Huo Ying/Zhu',
+        protocol: 'ציסטות/מיומות/אנדומטריוזיס מסטגנציית דם: הקזה ב-Si Hua 77.08/09/11 + Huo Ying 66.02-03 להמסת גושים.',
+        needleSide: 'bilateral',
+        priority: 1,
+      },
+      {
+        rootId: 'spleen-deficiency',
+        pointIds: ['88.04-06', '77.08', '77.09', '77.11'],
+        daoMa: 'San Jie Mei + Si Hua',
+        protocol: 'דימום מחזורי מרובה/לויקוריאה מחולשת טחול: San Jie Mei 88.04-06 + Si Hua 77.08/09/11 לחיזוק הטחול שמחזיק את הדם.',
+        needleSide: 'bilateral',
+        priority: 2,
+      },
+    ],
+  },
 ]
 
 // ── Helper Functions ──────────────────────────────────────────────────────────

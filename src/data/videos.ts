@@ -28,6 +28,26 @@ export interface TreatmentVideo {
   description?: string
 }
 
+export interface VideoCategory {
+  /** חייב להתאים בדיוק ל-category של הסרטונים */
+  name: string
+  emoji: string
+  description: string
+}
+
+/** רשימת הקטגוריות הקבועה - מקור האמת לתפריט הקטגוריות */
+export const videoCategories: VideoCategory[] = [
+  { name: 'לסת', emoji: '🦷', description: 'כאבי לסת, נקישות, מתח לסת-גרון' },
+  { name: 'צוואר', emoji: '🦴', description: 'כאבי צוואר, צוואר תפוס, תרגילי תנועה' },
+  { name: 'סחרחורות', emoji: '💫', description: 'סחרחורת וחוסר יציבות' },
+  { name: 'כתף וזרוע', emoji: '💪', description: 'כאב כתף וזרוע מוקרן' },
+  { name: 'כאבי ראש', emoji: '🤕', description: 'מיגרנות וכאבי ראש כרוניים' },
+  { name: 'שרירים וקשרים', emoji: '🔴', description: 'מתח שרירי וקשרים (trigger points)' },
+  { name: 'אוזן ודיגסטריק', emoji: '👂', description: 'כאב אוזן ושריר הדיגסטריק' },
+  { name: 'שריר SCM ויציבה', emoji: '🎯', description: 'שחרור SCM, יציבה ונשימה' },
+  { name: 'כאב כרוני ומערכת העצבים', emoji: '🧠', description: 'כאב מתמשך וויסות עצבי' },
+]
+
 export const treatmentVideos: TreatmentVideo[] = [
   {
     id: 'jaw-popping-release-muscle',

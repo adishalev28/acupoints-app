@@ -137,6 +137,18 @@ export default function Home() {
           </div>
         </Link>
 
+        <Link
+          to="/videos"
+          className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
+        >
+          <div className="w-12 h-12 rounded-full bg-rose-50 dark:bg-rose-500/20 flex items-center justify-center">
+            <span className="text-2xl">🎬</span>
+          </div>
+          <div>
+            <div className="font-bold text-gray-900 dark:text-dark-text">סרטוני טיפול</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">תרגילים וטכניקות לכאבי לסת, צוואר וראש</div>
+          </div>
+        </Link>
 
       </div>
     </div>

@@ -11,6 +11,7 @@ import MirrorMap from './pages/MirrorMap'
 import DiagnosisWizard from './pages/DiagnosisWizard'
 import DaoMa from './pages/DaoMa'
 import SmartDiagnosis from './pages/SmartDiagnosis'
+import Videos from './pages/Videos'
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
           <Route path="/diagnosis" element={<DiagnosisWizard />} />
           <Route path="/dao-ma" element={<DaoMa />} />
           <Route path="/smart-diagnosis" element={<SmartDiagnosis />} />
+          <Route path="/videos" element={<Videos />} />
           <Route path="/principle/:id" element={<PrincipleDetail />} />
         </Route>
       </Routes>

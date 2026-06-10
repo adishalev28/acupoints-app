@@ -19,12 +19,24 @@ function extractYouTubeId(url: string): string | null {
   return match ? match[1] : null
 }
 
+/** כתובת תמונת הכריכה השמורה (אם קיימת לסרטון הזה) */
+function thumbSrc(video: TreatmentVideo): string | null {
+  // הכריכות נשמרו לפי מזהה הריל המספרי בפייסבוק
+  if (video.platform === 'facebook' && /^\d+$/.test(video.id)) {
+    return `${import.meta.env.BASE_URL}reel-thumbs/${video.id}.jpg`
+  }
+  return null
+}
+
 interface VideoCardProps {
   video: TreatmentVideo
 }
 
 export default function VideoCard({ video }: VideoCardProps) {
   const [playing, setPlaying] = useState(false)
+  const [thumbFailed, setThumbFailed] = useState(false)
+  const thumb = thumbSrc(video)
+  const showThumb = thumb && !thumbFailed
 
   return (
     <div className="bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border overflow-hidden shadow-sm">
@@ -64,15 +76,36 @@ export default function VideoCard({ video }: VideoCardProps) {
       ) : (
         <button
           onClick={() => setPlaying(true)}
-          className="group relative w-full bg-gradient-to-br from-teal-50 to-gray-100 dark:from-teal-900/20 dark:to-dark-bg flex flex-col items-center justify-center gap-2 py-10 hover:from-teal-100 transition-colors"
+          className={`group relative w-full flex items-center justify-center overflow-hidden ${
+            showThumb
+              ? 'bg-black'
+              : 'bg-gradient-to-br from-teal-50 to-gray-100 dark:from-teal-900/20 dark:to-dark-bg py-10 flex-col gap-2 hover:from-teal-100 transition-colors'
+          }`}
+          style={showThumb ? { aspectRatio: '9 / 16', maxHeight: '70vh' } : undefined}
           aria-label={`נגן: ${video.title}`}
         >
-          <span className="w-16 h-16 rounded-full bg-teal-primary text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform">
+          {showThumb && (
+            <img
+              src={thumb}
+              alt={video.title}
+              onError={() => setThumbFailed(true)}
+              className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-300"
+              loading="lazy"
+            />
+          )}
+          {/* כפתור Play צף מעל הכריכה */}
+          <span
+            className={`relative z-10 w-16 h-16 rounded-full bg-teal-primary text-white flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform ${
+              showThumb ? 'ring-4 ring-white/30' : ''
+            }`}
+          >
             <svg className="w-7 h-7 mr-0.5" fill="currentColor" viewBox="0 0 24 24">
               <path d="M8 5v14l11-7z" />
             </svg>
           </span>
-          <span className="text-xs text-gray-500 dark:text-dark-muted">לחץ לצפייה</span>
+          {!showThumb && (
+            <span className="text-xs text-gray-500 dark:text-dark-muted">לחץ לצפייה</span>
+          )}
         </button>
       )}
 

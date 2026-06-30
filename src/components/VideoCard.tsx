@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { TreatmentVideo } from '../data/videos'
+import { videoCategoriesOf } from '../data/videos'
 
 /** בונה את כתובת ההטמעה (iframe) לפי הפלטפורמה */
 function buildEmbedSrc(video: TreatmentVideo): string {
@@ -43,8 +44,15 @@ export default function VideoCard({ video }: VideoCardProps) {
       {/* כותרת + מטא */}
       <div className="px-4 pt-3.5 pb-2">
         <div className="flex items-center justify-between gap-2 mb-1.5">
-          <span className="inline-block text-[11px] font-medium text-teal-primary bg-teal-50 dark:bg-teal-primary/15 rounded-full px-2.5 py-0.5">
-            {video.category}
+          <span className="flex flex-wrap gap-1">
+            {videoCategoriesOf(video).map(cat => (
+              <span
+                key={cat}
+                className="inline-block text-[11px] font-medium text-teal-primary bg-teal-50 dark:bg-teal-primary/15 rounded-full px-2.5 py-0.5"
+              >
+                {cat}
+              </span>
+            ))}
           </span>
           <span className="text-[11px] text-gray-400 dark:text-dark-muted truncate">
             {video.source}

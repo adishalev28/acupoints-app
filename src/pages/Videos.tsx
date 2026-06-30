@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { treatmentVideos, videoCategories } from '../data/videos'
+import { treatmentVideos, videoCategories, videoCategoriesOf } from '../data/videos'
 import VideoCard from '../components/VideoCard'
 
 export default function Videos() {
@@ -9,7 +9,9 @@ export default function Videos() {
   const countByCategory = useMemo(() => {
     const counts: Record<string, number> = {}
     for (const v of treatmentVideos) {
-      counts[v.category] = (counts[v.category] || 0) + 1
+      for (const cat of videoCategoriesOf(v)) {
+        counts[cat] = (counts[cat] || 0) + 1
+      }
     }
     return counts
   }, [])
@@ -84,7 +86,7 @@ function CategoryView({ category, onBack }: CategoryViewProps) {
   const videos = useMemo(() => {
     const q = query.trim().toLowerCase()
     return treatmentVideos
-      .filter(v => v.category === category)
+      .filter(v => videoCategoriesOf(v).includes(category))
       .filter(
         v =>
           !q ||
@@ -94,7 +96,7 @@ function CategoryView({ category, onBack }: CategoryViewProps) {
   }, [category, query])
 
   const total = useMemo(
-    () => treatmentVideos.filter(v => v.category === category).length,
+    () => treatmentVideos.filter(v => videoCategoriesOf(v).includes(category)).length,
     [category],
   )
 

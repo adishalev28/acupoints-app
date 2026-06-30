@@ -21,11 +21,19 @@ export type VideoPlatform = 'facebook' | 'youtube'
 export interface TreatmentVideo {
   id: string
   title: string
+  /** הקטגוריה הראשית (מוצגת ראשונה) */
   category: string
+  /** קטגוריות נוספות - סרטון יכול להופיע בכמה קטגוריות */
+  categories?: string[]
   platform: VideoPlatform
   url: string
   source: string
   description?: string
+}
+
+/** מחזיר את כל הקטגוריות של סרטון (ראשית + נוספות), ללא כפילויות */
+export function videoCategoriesOf(v: TreatmentVideo): string[] {
+  return Array.from(new Set([v.category, ...(v.categories ?? [])]))
 }
 
 export interface VideoCategory {
@@ -116,7 +124,8 @@ export const treatmentVideos: TreatmentVideo[] = [
   {
     id: '1644529426569949',
     title: 'כאבי צוואר וסחרחורת',
-    category: 'סחרחורות',
+    category: 'צוואר',
+    categories: ['צוואר', 'סחרחורות'],
     platform: 'facebook',
     url: 'https://www.facebook.com/reel/1644529426569949/',
     source: 'Dr. Joe Damiani',

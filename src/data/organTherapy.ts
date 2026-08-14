@@ -462,7 +462,7 @@ export const organProfiles: OrganProfile[] = [
 
     diagnosticPoints: [
       { id: '77.18', name: 'Shen Guan', what: 'רגישות = מעורבות כליות' },
-      { id: '22.08', name: 'area 22.08-09', what: 'שקיעה/חלל = חולשת כליות' },
+      { id: '22.08-09', name: 'area 22.08-09', what: 'שקיעה/חלל = חולשת כליות' },
     ],
 
     palmDiagnosis: {

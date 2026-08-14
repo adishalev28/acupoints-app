@@ -175,7 +175,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'cold-damp',
-        pointIds: ['88.01', '88.02', '88.03', '66.05', '66.06'],
+        pointIds: ['88.01-03', '66.05', '66.06'],
         daoMa: 'Tong Guan/Shan/Tian',
         protocol: 'חימום וייבוש. Tong Guan/Shan/Tian 88.01-03 + Mu 66.05-06. אפשר להוסיף מוקסה.',
         needleSide: 'contralateral',
@@ -192,7 +192,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'kidney-deficiency',
-        pointIds: ['77.18', '77.19', '77.21', '88.12', '88.13', '88.14'],
+        pointIds: ['77.18', '77.19', '77.21', '88.12-14'],
         daoMa: 'Xia San Huang + Shang San Huang',
         protocol: 'חיזוק כליות עם Xia San Huang 77.17/19/21. אפשר להוסיף Shang San Huang 88.12-14 לחיזוק הכבד (עץ מזין את המים).',
         needleSide: 'bilateral',
@@ -208,7 +208,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'cold-damp',
-        pointIds: ['88.01', '88.02', '88.03'],
+        pointIds: ['88.01-03'],
         daoMa: 'Tong Guan/Shan/Tian',
         protocol: 'מחמם ומייבש. 88.01-03 + מוקסה על הגב התחתון.',
         needleSide: 'bilateral',
@@ -239,7 +239,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'liver-stagnation',
-        pointIds: ['88.12', '88.13', '88.14'],
+        pointIds: ['88.12-14'],
         protocol: 'כאב כתף מסטגנציית כבד: Shang San Huang 88.12-14. הכבד שולט על הגידים.',
         needleSide: 'contralateral',
         priority: 2,
@@ -255,7 +255,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'liver-stagnation',
-        pointIds: ['66.05', '66.06', '88.12', '88.13', '88.14'],
+        pointIds: ['66.05', '66.06', '88.12-14'],
         daoMa: 'Mu + Shang San Huang',
         protocol: 'מיגרנה צדית (כבד-כיס מרה): Mu 66.05-06 ברגל הנגדית + Shang San Huang 88.12-14.',
         needleSide: 'contralateral',
@@ -279,7 +279,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'wind-invasion',
-        pointIds: ['33.01', '33.02', '33.03'],
+        pointIds: ['33.01-03'],
         protocol: 'מיגרנה חדה מחדירת רוח: נקודות אזור 33 לפיזור רוח.',
         needleSide: 'contralateral',
         priority: 2,
@@ -295,7 +295,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'wind-invasion',
-        pointIds: ['22.05', '22.04', '11.17', '33.01'],
+        pointIds: ['22.05', '22.04', '11.17', '33.01-03'],
         daoMa: 'Ling Gu + Da Bai',
         protocol: 'שיתוק פנים מחדירת רוח: Ling Gu 22.05 + Da Bai 22.04 ביד הנגדית לצד השיתוק + Mu 11.17.',
         needleSide: 'contralateral',
@@ -319,7 +319,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'spleen-deficiency',
-        pointIds: ['77.08', '77.09', '77.11', '88.01', '88.02', '88.03'],
+        pointIds: ['77.08', '77.09', '77.11', '88.01-03'],
         daoMa: 'Si Hua + Tong Guan',
         protocol: 'חולשת טחול עם עייפות ונפיחות: Si Hua 77.08/09/11 (אדמה) + Tong Guan 88.01-03 (אש מזינה אדמה).',
         needleSide: 'bilateral',
@@ -327,14 +327,14 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'liver-stagnation',
-        pointIds: ['33.11', '88.12', '88.13', '88.14'],
+        pointIds: ['33.11', '88.12-14'],
         protocol: 'כבד תוקף את הקיבה: Gan Men 33.11 + Shang San Huang 88.12-14 להחלקת הכבד.',
         needleSide: 'contralateral',
         priority: 1,
       },
       {
         rootId: 'damp-heat',
-        pointIds: ['77.05', '77.06', '77.07'],
+        pointIds: ['77.05-07'],
         daoMa: 'San Zhong',
         protocol: 'לחות-חום במעיים: San Zhong 77.05-07 לניקוי לחות וחום.',
         needleSide: 'bilateral',
@@ -351,7 +351,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'heart-fire',
-        pointIds: ['88.01', '88.02', '88.03', '22.10'],
+        pointIds: ['88.01-03', '22.10'],
         daoMa: 'Tong Guan/Shan/Tian',
         protocol: 'נדודי שינה מעודף חשיבה/חרדה: Tong Guan 88.01-03 (אש-לב) + Shou Jie 22.10 (מים בוקרים אש).',
         needleSide: 'bilateral',
@@ -359,7 +359,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'liver-stagnation',
-        pointIds: ['88.12', '88.13', '88.14', '66.05'],
+        pointIds: ['88.12-14', '66.05'],
         protocol: 'נדודי שינה ממתח/כעס: Shang San Huang 88.12-14 + Mu 66.05 להחלקת הכבד.',
         needleSide: 'bilateral',
         priority: 1,
@@ -447,7 +447,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'damp-heat',
-        pointIds: ['77.08', '77.09', '77.11', '77.05', '77.06', '77.07'],
+        pointIds: ['77.08', '77.09', '77.11', '77.05-07'],
         daoMa: 'Si Hua + San Zhong',
         protocol: 'אקנה/פסוריאזיס מלחות-חום: הקזה ב-Si Hua 77.08/09/11 + San Zhong 77.05-07.',
         needleSide: 'bilateral',

@@ -1,6 +1,13 @@
 /**
  * Pathogenesis (病機 Bing Ji) — Root Cause Diagnosis
- * Based on Master Tung / Sean Goodman's principles
+ *
+ * ⚠️ מצב ייחוס המקור (נבדק 14.8.2026):
+ *   - רשומות עם `sourceRef` — אומתו מול ספרו של שון גודמן. חילוץ מלא ב-`sources/rootdx.md`
+ *   - רשומות בלי `sourceRef` — נכתבו במרץ 2026 בלי אימות מול המקור. חלקן תיאוריית
+ *     רפואה סינית כללית ולא חומר של מאסטר דונג. לאמת לפני הסתמכות קלינית.
+ *
+ * הבסיס התיאורטי: Su Wen פרק 74 (Unschuld & Tessenow, 2011) — מנגנון המחלה לפי
+ * חמשת האיברים המלאים. שון גודמן עמ' 60-66.
  *
  * When a patient presents with symptoms, the root cause determines
  * which points to use. Same symptom, different root = different points.
@@ -32,6 +39,7 @@ export interface PathogenesisMap {
     protocol?: string          // Clinical protocol description
     needleSide?: 'contralateral' | 'ipsilateral' | 'bilateral'
     priority: number           // 1=first choice, 2=second choice
+    sourceRef?: string         // הפניה לעמוד בספר. חסר = לא מגובה במקור
   }[]
 }
 
@@ -149,37 +157,66 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     question: 'מה שורש הבעיה?',
     matchKeywords: ['סיאטיקה', 'ישיאס'],
     roots: [
+      // חמשת סוגי הסיאטיקה — שון גודמן עמ' 62:
+      // "למעשה יש חמישה סוגי סכיאטיקה: של הלב, הטחול, הריאות, הכליות והכבד.
+      //  כל סוג כזה קשור לחולשה של אחד מחמשת האיברים המלאים."
+      // סיאטיקה-ספציפי (22.05/04, 22.06) עמ' 62 | נקודות שורש לפי איבר עמ' 64.
       {
         rootId: 'lung-deficiency',
         pointIds: ['22.05', '22.04'],
         daoMa: 'Ling Gu + Da Bai',
-        protocol: 'דיקור ב-Ling Gu 22.05 + Da Bai 22.04 ביד הנגדית. הנקודות על מרידיאן המעי הגס (מתכת) מטפלות בשורש הריאות.',
+        protocol: 'סיאטיקה של הריאות. דונג: Ling Gu 22.05 + Da Bai 22.04 ביד הנגדית.',
         needleSide: 'contralateral',
         priority: 1,
+        sourceRef: 'שון גודמן עמ׳ 62',
       },
       {
         rootId: 'kidney-deficiency',
-        pointIds: ['22.06', '77.18', '77.19', '77.21'],
-        daoMa: 'Zhong Bai + Xia San Huang',
-        protocol: 'דיקור ב-Zhong Bai 22.06 ביד הנגדית + Xia San Huang 77.17/19/21 ברגל. חיזוק הכליות והגב התחתון.',
+        pointIds: ['22.06', '77.18', '77.17', '77.19', '77.21'],
+        daoMa: 'Zhong Bai + Shen Guan + Xia San Huang',
+        protocol:
+          'סיאטיקה של הכליות. דונג: Zhong Bai 22.06 ביד הנגדית. נקודות שורש הכליות: Shen Guan 77.18, Xia San Huang 77.17/19/21.',
         needleSide: 'contralateral',
         priority: 1,
+        sourceRef: 'שון גודמן עמ׳ 62, 64',
+      },
+      {
+        rootId: 'heart-fire',
+        pointIds: ['88.01-03'],
+        daoMa: 'Zu San Tong (Tong Guan/Shan/Tian)',
+        protocol: 'סיאטיקה של הלב. נקודות שורש הלב-אש: Zu San Tong 88.01-03.',
+        needleSide: 'contralateral',
+        priority: 1,
+        sourceRef: 'שון גודמן עמ׳ 62, 64',
+      },
+      {
+        rootId: 'spleen-deficiency',
+        pointIds: ['77.05-07', '77.08', '77.09', '77.11'],
+        daoMa: 'San Zhong + Si Hua',
+        protocol:
+          'סיאטיקה של הטחול. נקודות שורש הטחול-אדמה: San Zhong 77.05-07, Si Hua 77.08/09/11.',
+        needleSide: 'contralateral',
+        priority: 1,
+        sourceRef: 'שון גודמן עמ׳ 62, 64',
+      },
+      {
+        rootId: 'liver-stagnation',
+        pointIds: ['88.12-14'],
+        daoMa: 'Shang San Huang',
+        protocol: 'סיאטיקה של הכבד. נקודות שורש הכבד-עץ: Shang San Huang 88.12-14.',
+        needleSide: 'contralateral',
+        priority: 1,
+        sourceRef: 'שון גודמן עמ׳ 62, 64',
       },
       {
         rootId: 'blood-stagnation',
         pointIds: ['77.08', '77.09', '77.11'],
         daoMa: 'Si Hua',
-        protocol: 'הקזה באזור Si Hua 77.08/09/11 לפיזור סטגנציית דם. לחפש ורידים כהים.',
+        protocol:
+          'סטגנציית דם. הקזה באזור Si Hua 77.08/09/11 — "אזור הקזה חשוב באקופונקטורה של מאסטר דונג לטיפול בסטגנציה של דם". לחפש כלי דם.',
         needleSide: 'ipsilateral',
         priority: 2,
-      },
-      {
-        rootId: 'cold-damp',
-        pointIds: ['88.01-03', '66.05', '66.06'],
-        daoMa: 'Tong Guan/Shan/Tian',
-        protocol: 'חימום וייבוש. Tong Guan/Shan/Tian 88.01-03 + Mu 66.05-06. אפשר להוסיף מוקסה.',
-        needleSide: 'contralateral',
-        priority: 1,
+        sourceRef: 'שון גודמן עמ׳ 65',
       },
     ],
   },
@@ -523,4 +560,59 @@ export function getPathogenesisForSymptom(symptom: string): PathogenesisMap | un
 
 export function getAllMappedSymptoms(): string[] {
   return pathogenesisMaps.map(p => p.symptom)
+}
+
+// ── מיפוי פתוגן → איבר ────────────────────────────────────────────────────────
+// שון גודמן עמ' 66: "באקופונקטורה של מאסטר דונג משתמשים בנקודות הראשיות של
+// האיברים המלאים לטיפול בפתוגנים השונים באופן הבא."
+// ⚠️ כל פתוגן ממופה לאיבר אחד. אין בספר פתוגן משולב מסוג "קור ולחות".
+
+export interface PathogenOrganMap {
+  pathogen: string
+  organ: string
+  phase: string
+  rootPointIds: string[]   // נקודות שורש האיבר, עמ' 64
+  daoMa: string
+}
+
+export const pathogenOrganMap: PathogenOrganMap[] = [
+  {
+    pathogen: 'רוח חיצונית',
+    organ: 'ריאות',
+    phase: 'מתכת',
+    rootPointIds: ['88.17', '88.18', '88.19'],
+    daoMa: 'Sima 88.17-19',
+  },
+  {
+    pathogen: 'לחות',
+    organ: 'טחול',
+    phase: 'אדמה',
+    rootPointIds: ['77.05-07', '77.08', '77.09', '77.11'],
+    daoMa: 'San Zhong 77.05-07 + Si Hua 77.08/09/11 + Tu Chang',
+  },
+  {
+    pathogen: 'קור',
+    organ: 'כליות',
+    phase: 'מים',
+    rootPointIds: ['77.17', '77.18', '77.19', '77.21', '88.09-11'],
+    daoMa: 'Xia San Huang 77.17/19/21 + Shen Guan 77.18 + Tong Shen 88.09-11',
+  },
+  {
+    pathogen: 'רוח פנימית',
+    organ: 'כבד',
+    phase: 'עץ',
+    rootPointIds: ['88.12-14'],
+    daoMa: 'Shang San Huang 88.12-14',
+  },
+  {
+    pathogen: 'חום ואש',
+    organ: 'לב',
+    phase: 'אש',
+    rootPointIds: ['88.01-03'],
+    daoMa: 'Zu San Tong 88.01-03',
+  },
+]
+
+export function getOrganForPathogen(pathogen: string): PathogenOrganMap | undefined {
+  return pathogenOrganMap.find(p => pathogen.includes(p.pathogen) || p.pathogen.includes(pathogen))
 }

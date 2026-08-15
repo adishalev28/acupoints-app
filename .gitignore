@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 
 .vercel
+
+# עמודי PDF מרונדרים - נוצרים מקומית ע"י scripts/render-sources.py
+sources/pages/

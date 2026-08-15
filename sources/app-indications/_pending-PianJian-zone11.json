@@ -1,0 +1,20 @@
+{
+  "_comment": "לכידת OCR של PianJian מאזור 11 (Dislocated Shoulder). לא נקלטה כי המזהה PianJian כפול — קיים גם ב-zone44extra (Side of Shoulder). ברגע שיוכרע מזהה חדש אפשר לקלוט מכאן בלי לכידה חוזרת.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "_blockedBy": "מזהה כפול מול src/data/zones/zone44extra.ts — הוצע PianJian11",
+  "PianJian_zone11": {
+    "header": "Piän Jiän | Dislocated shoulder",
+    "zone": "11",
+    "cardCount": 3,
+    "dongIndications": [
+      "Upper back and neck pain",
+      "neck pain",
+      "upper back pain"
+    ],
+    "indications": [
+      "Dislocated shoulder, shoulder pain, frozen shoulder (50 year old shoulder), shoulder pain (lateral).",
+      "Arm pain (lateral)."
+    ],
+    "additionalInfo": "The point does not appear in Master Tung's original book. Hu Wen Zhi first introduced it. Pian Jian, like Mu Hua (II), innervates the spleen and liver. Both points are located on the second segment, representing the middle burner where the spleen and liver are situated. Mu Hua treats calf cramps, while Pian Jian affects the upper limbs. Point Name Piän [1B] — To deviate, to lean to the opposite side. Jiän [B] - Shoulder. The name of the point suggests its ability to treat shoulder disorders."
+  }
+}

@@ -374,5 +374,308 @@
       "Diarrhea chronic ."
     ],
     "additionalInfo": "Some sources call the point A.05 and Shao Jie [ l. The points can treat ankle sprains. Huai Ling treats the lateral side of the ankle, while Nei Huai Ling treats the medial side. The points can also treat neck, back, shoulder, and chest pain. Palm Diagnosis The points are located in the area that represents the neck. Point Name Point name Huåi [N] - Ankle Ling [A] — Spirit, Soul, Magical, Effective. Néi — Inside. The name of the points suggests their practical impact on the ankle. Nei in the point's name indicates that it treats the medial side of the ankle."
+  },
+  "JianNing": {
+    "dongIndications": [
+      "Shoulder pain",
+      "frozen shoulder (50 year old shoulder)",
+      "shoulder pain (anterior)",
+      "shoulder pain (lateral)"
+    ],
+    "indications": [
+      "Occipital pain."
+    ],
+    "additionalInfo": "Claude O ts around the second metacarpophalangeal joint, needle obliquely in the same area of the point. Zi, San Feng, San Cha Yi, 22.03 Shang Bai, Zhong Kui. The point treats the shoulder joint. You can add points around the second metacarpophalangeal joint, needle obliquely in the same area of the point. To affect the entire shoulder joint, add 22.01 Chong Zi, San Feng, San Cha Yi, 22.03 Shang Bai, Zhong Kui. Point Name Jiän [B] — shoulder. Ning — congeal, coagulate, curdle, condense. The name of the point indicates its ability to treat shoulder stiffness."
+  },
+  "JinXing": {
+    "dongIndications": [
+      "Tuberculosis",
+      "emphysema"
+    ],
+    "indications": [
+      "Asthma, bronchitis.",
+      "Pneumonia."
+    ],
+    "additionalInfo": "The points can treat acute and chronic lung diseases combined with 22.05 Ling Gu. Severe flu can be combined with: 22.05 Ling Gu and 22.04 Da Bai for high fever 22.01-02 Chong Zi/Xian for chest pain, upper back pain and cough 11.01-02 Da/Xiao/Ce Jian and 11.05 Zhong Jian for yellow phlegm 77.05-07 San Zhong, 77.08 Si Hua Shang, 88.17-19 Sima for recovery Palm diagnosis The Lungs are diagnosed in the points area. Point Name Jin - Metal Xing [æ] - star Jin Xing - Venus Venus is the star associated with metal. The name of the points indicates their ability to influence the Lungs."
+  },
+  "MuGuan": {
+    "dongIndications": [
+      "Lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Chest oppression (chest tightness).",
+      "Costal pain (rib pain) on both sides.",
+      "Jaundice.",
+      "Sciatica.",
+      "Leg pain.",
+      "Peritonitis.",
+      "Joint pain in the whole body (highly effective).",
+      "Food poisoning, drug poisoning.",
+      "Spine degenerative changes.",
+      "Rheumatic arthritis, osteoarthritis, gout, deformity of bones, pain characterized by swelling and redness.",
+      "Heel pain, heel spur, morton's neuroma, plantar fasciitis.",
+      "Ankle sprain, ankle pain, achilles tendonitis.",
+      "Gynecological disorders, pelvic inflammatory disease (PID), oophoritis (ovarian inflammation).",
+      "Sexually transmitted diseases, syphilis.",
+      "Urinary tract infection (UTI), cystitis (urinary bladder inflammation).",
+      "Acute appendicitis.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis."
+    ],
+    "additionalInfo": "The point does not appear in Master Tung's original book. Mu Guan is usually needled together with Gu Guan in the Dao Ma technique. Gu Guan and Mu Guan have Kidney innervation, so they can treat bone disorders. Gu Guan has Lung innervation, so it treats toxicity from the exterior, while Mu Guan has Liver innervation, so it treats internal toxicity from the Liver and Gallbladder. The two points treat blood toxicity originating from the kidneys, lungs, liver, and gallbladder. Palm Diagnosis In the points area, the female reproductive system can be diagnosed. Hu Wen Zhi Gu Guan and Mu Guan are part of the 72 Absolute Needles of Tung and the 32 Solution Needles of Tung for conditions of hyperuricemia leading to arthritis. The points can treat all bone disorders, such as bone swelling and pain, and can be combined with 11.27 Wu Hu. The points can treat sciatica in combination with San Cha San, for example, in cases related to spinal disorders. San Zheng Ji can be added for spinal disorders, and for sciatica, the points can be combined with 22.05 Ling Gu and 22.04 Da Bai. Imaging Upper and lower limb imaging: The point area images the heel; therefore, the point can treat heel disorders. Point Name Mu [X] - Wood, numbness. Guän [NM] - Mountain pass, to close, customs, joint. Wood in the point name indicates its ability to treat Liver diseases, including those related to toxicity, tendons, and ligaments. Mu also means numbness, and when adding the radical Ma [ l, we get the word Mamu [ J, which means numbness and tingling. The points can treat numbness and loss of sensation caused by bone protrusions, such as spinal stenosis. Guan Jie means joint, so the points' names can indicate their ability to treat joint disorders due to toxicity, such as gout. Guan, the \"barrier\" in the points' name, represents the joints and the use of points in joint disorders."
+  },
+  "NeiBai": {
+    "dongIndications": [
+      "Measles",
+      "vitiligo",
+      "purpura",
+      "urticaria (hives)"
+    ],
+    "indications": [
+      "Splenomegaly (enlarged spleen).",
+      "Pancreatitis.",
+      "Abdominal masses.",
+      "Toothache, gingivitis.",
+      "Lumbago (lower back pain), sciatica.",
+      "Calf cramps, calf pain.",
+      "Shoulder pain (lateral)."
+    ],
+    "additionalInfo": "The point does not appear in Master Tung's original book. Hu Wen Zhi introduced it first. The point innervates the Spleen. Therefore, it treats skin diseases caused by the Spleen's lack of control over Blood, such as measles and purpura or skin problems involving Phlegm. It can be combined with 88.17-19 Sima when treating skin diseases. Point Name Néi - Inner. Båi - White. Nei Bai and Wai Bai are needled together to treat skin diseases. The names of the points together describe their ability to treat skin diseases. External in the point name Nei Bai and Wai Bai are needled together to treat skin diseases. The names of the points together describe their ability to treat skin diseases. External in the point name indicates the point's effect on the skin, and internal (internal factors) indicates the background of the skin disorder. In this case, internal imbalance means the Spleen's inability to govern Blood or accumulation of Phlegm. For additional information, 22.03 Shang Bai."
+  },
+  "SanChaEr": {
+    "dongIndications": [
+      "Splenomegaly (enlarged spleen)",
+      "pancreatitis"
+    ],
+    "indications": [
+      "Hemiplegia (one-sided paralysis)",
+      "Sciatica.",
+      "Hands paresthesia, feet paresthesia.",
+      "Liver deficiency.",
+      "Morton's neuroma.",
+      "Trigger Finger - middle finger.",
+      "Numbness of the hand and fingers originate from the cervical spine, paresthesia of the hand and fingers originate from the cervical spine.",
+      "Numbness of the feet and toes, paresthesia of the feet and toes."
+    ],
+    "additionalInfo": "Some sources number this point as A.03. For additional information, see San Cha San. Young Wei Chieh The point can treat knee joint pain, calf pain, acute lower back pain, and diseases of the sensory organs (four facial orifices). It can also strengthen the Heart. Susan Johnson Uses the point for muscle pain along the spine, with the addition of cupping along both sides of the spine. Point Name Sän [E] - Three. Chä [R] - Fork, intersection, trident, to straddle. Er [ZI - Two. The point name indicates its location at the intersection of the fingers. The intersection in the point name also indicates its ability to influence many points as it passes between the metacarpal bones and intersects with all points along its pathway Er [z] - Two. (Nei Bai, wai Bai, san Chi). There are three points with the same name. The number two in the point name indicates this is the second point."
+  },
+  "SanChaSan": {
+    "dongIndications": [
+      "Common cold (severe)"
+    ],
+    "indications": [
+      "Headache, blurred vision.",
+      "Lumbago (lower back pain) (very effective), sciatica (very effective).",
+      "Bones spurs (very effective).",
+      "Kidney diseases with edema, pyelonephritis (kidney infection).",
+      "Morton's neuroma.",
+      "Dizziness, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Meniere's disease.",
+      "Hemiplegia (one-sided paralysis)",
+      "Numbness of the hand and fingers originate from the cervical spine, paresthesia of the hand and fingers originate from the cervical spine.",
+      "Numbness of the feet and toes, paresthesia of the feet and toes."
+    ],
+    "additionalInfo": "Some sources number this point as A.04. The location of San Cha points is identical to Ba Xie extra points' location, but San Cha points are needled deeper, between I to 1.5 cun. The best results can be achieved when needling to the carpometacarpal joint. The three points San Cha Yi/Er/San are collectively called San Cha. All three points strengthen and regulate Qi. Therefore, they are considered strengthening and regulating points. San Cha Yi affects the Upper Jiao, San Cha Er affects the Middle Jiao, and San Cha San affects the Lower Jiao. These points are excellent for treating sciatica, but each affects a different organ. They are needled according to the weakened organ. Hu wen Zhi San Cha San is one of the 72 Absolute Needles. The three San Cha points enormously strengthen and regulate Qi and Blood. San Cha San can be used for cold symptoms due to Kidney Yang deficiency. Chuan Min Wang The point innervates the Spleen and can strengthen the Spleen. Young Wei Chieh When needling the point, it affects eight points: 22.08-09 wan Shun Yi/Er, Si-3 Houxi, Ht-8 Shao Fu, 22.06 Zhong Bai, 22.07 Xia Bai, Tw-2 Yemen, san Cha san. Due to its effect on Ht-8, it can treat itching. He states that the point can treat all facial orifices: headache, sore throat, tinnitus, otitis media, ptosis, common cold, eye redness, and swelling. It also treats shoulder pain (needle on the affected side), fatigue, itching, urticaria, palpitations, and myasthenia gravis. Susan Johnson A central point for treating immune system deficiency, including autoimmune diseases. Sometimes combined with 88.17-19 Sima. The point can strengthen the Spleen and treat muscle weakness. Point Name Sän E] - Three. Chä [R] - Fork, intersection, trident, to straddle. The point name indicates its location at the intersection of the fingers. The intersection in the point name also indicates its ability to influence many points, as it passes between the metacarpal bones and intersects with all points located along its pathway (22.06 Zhong Bai, 22.07 Xia Bai, San Hai, 22.10 Shou Jie, 22.08-09 Wan Shun). There are three points with the same name. The number three in the point name indicates this is the third point."
+  },
+  "SanChaYi": {
+    "dongIndications": [
+      "Keratitis",
+      "eye pain (very effective)",
+      "optic atrophy",
+      "retinal degeneration",
+      "macular degeneration (AMD)",
+      "retinitis"
+    ],
+    "indications": [
+      "Lumbago (lower back pain), sciatica (very effective).",
+      "Eye pain above the eyebrow area (very effective), eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Hemiplegia - highly effective (one-sided paralysis).",
+      "Atrophy syndrome (Wei Zheng BCFE).",
+      "Lung weakness, cough (dry).",
+      "Cervicalgia (neck pain), upper thoracalgia (upper back pain), uper back and neck pain, shoulder pain, numbness of the hand and fingers originate from the cervical spine, paresthesia of the hand and fingers originate from the cervical spine.",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Aallergic rhinitis (hay fever), seasonal allergic conjunctivitis (itching, redness, watering of the eyes).",
+      "Meniere's disease.",
+      "Trigger Finger - middle finger, trigger Finger - index finger.",
+      "Epstein Barr Virus.",
+      "Numbness of the feet and toes, paresthesia of the feet and toes.",
+      "San Cha Yi [El—ft] Three Itersections - First",
+      "Q. Needling . perpendic reading technique, 1-1.5 cun.",
+      "• Thread the point between the second and third metacarpal bones.",
+      "32"
+    ],
+    "additionalInfo": "Some sources number this point as A.02. For additional information, see San Cha San. Hu Wen Zhi San Cha Yi is one of the 72 Absolute Needles. Young Wei Chieh States that the point can treat hypochondriac pain, irregular menstruation, and uterine bleeding. It strengthens Lung Qi and regulates Qi. Point Name Sän E] - Three. Chä [R] - Fork, intersection, trident, to straddle. Yi - One. - one. The point name indicates its location at the intersection of the fingers. The intersection in the point name also indicates its ability to influence many points as it passes between the metacarpal bones and intersects with all points located along its pathway (22.03 Shang Bai, Fen Bai, san Feng, Zhong Kui, 22.04 Da Bai). There are three points with the same name. The number one in the point name indicates this is the first point."
+  },
+  "SanFeng": {
+    "dongIndications": [
+      "Wind-type headache (Tou Feng Tong)"
+    ],
+    "indications": [
+      "Migraine.",
+      "Neck pain.",
+      "Shoulder pain, shoulder and arm pain."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. The point treats Wind symptoms attacking the neck and shoulder area, such as \"Wind-head pain\" [ ] Tou Feng Tong. This condition is characterized by severe and persistent headaches caused by the invasion of wind, cold, or heat. Wind, cold, or heat block the channels and cause dampness, stagnation, and blood flow deficiency. The invasion of Wind and Heat may be accompanied by eye pain, vision loss, rhinitis, nausea, dizziness, and stiff neck. For additional information, Jian Ning. Point Name Sän [E] - Three Féng [N] - Wind The name of the points indicates their ability to treat Wind disorders. Feng - Wind"
+  },
+  "SanHai": {
+    "dongIndications": [
+      "Acute and chronic pyelonephritis",
+      "urinary tract infection (UT I)",
+      "cystitis (urinary bladder inflammation)"
+    ],
+    "indications": [
+      "Uterine tumor, ovarian tumor, metritis (uterus inflammation), oophoritis (ovarian inflammation).",
+      "Erectile dysfunction (impotence), premature ejaculation.",
+      "Intestinal fistula.",
+      "Growth promotion (works best in children under 12 YOA).",
+      "Neck pain.",
+      "Lower back pain, sciatica, ankylosing spondylitis, bone spurs.",
+      "Cholestasis (reduced bile flow/secretion)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung•s original book. Hu Wen Zhi introduced them first. Palm diagnosis The Kidneys and Bladder are diagnosed in the points area. Point Name Sän [E] — Three. Xing [R] - Star."
+  },
+  "SanHe": {
+    "dongIndications": [
+      "Sciatica"
+    ],
+    "indications": [
+      "Uterine pain.",
+      "Lower abdomen pain.",
+      "Pain in both legs.",
+      "Spine osteophytes (bone spurs).",
+      "Gallbladder disease."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book; Hu Wen Zhi first introduced them. These points have a special effect on sciatica. palm diagnosis In palm diagnosis, the Gallbladder is assessed in the points area. Point Name Sän [E] — Three. Hé [FJ] - River, Milky way. The name of the points indicates their ability to treat Wind disorders. Hé - River, Milky way."
+  },
+  "SanHuo": {
+    "dongIndications": [
+      "Arrhythmia (irregular heartbeat)",
+      "rheumatic heart disease"
+    ],
+    "indications": [
+      "Hypertension.",
+      "Chest pain (Pleurodynia), back pain.",
+      "Tinnitus.",
+      "Migraine, frontal headache.",
+      "Dizziness.",
+      "Cold hands."
+    ],
+    "additionalInfo": "The points innervate the Heart. They can treat Heart Fire conditions, which can cause heart diseases and disorders in the upper body, such as tinnitus, dizziness, and migraine. Hu wen Zhi The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. Palm diagnosis The points are located in continuation of the third finger, representing the Heart. The Heart is diagnosed in the points area. Point Name Sän [E] - Three Huö - Fire The name of the points indicates that the points treat conditions of Fire originating from the Heart."
+  },
+  "SanJian": {
+    "dongIndications": [
+      "Frozen shoulder (50 year old shoulder)",
+      "difficulty raising the arm"
+    ],
+    "indications": [
+      "Cervicalgia (neck pain), occipital pain, whiplash injury.",
+      "Scapula Pain.",
+      "Upper thoracalgia (upper back pain).",
+      "Occipital headache.",
+      "Shoulder and arm pain, shoulder pain (posterior), shoulder pain (anterior)."
+    ],
+    "additionalInfo": "In Chinese medicine, a 50-year-old shoulder is a shoulder disorder, such as a frozen shoulder, typically occurring around age 50 or later. The point's innervation (Lungs and Kidneys) describes the mechanism of action: in the past, the patient was exposed to Wind-Cold lodged in the scapular area (latency at the Source Qi level). At an older age, when Source Qi weakens and can no longer keep the pathogen in latency, the pathogen emerges from latency and affects the shoulder. Point Name Sän [z] ¯ - Three Sän [E] - Three Jiän [B] - Shoulder. The name of the points indicates their ability to treat shoulder disorders."
+  },
+  "SanMao": {
+    "dongIndications": [
+      "Gastric ulcers (stomach ulcer)",
+      "duodenal ulcers",
+      "gastric adenocarcinoma (stomach cancer)"
+    ],
+    "indications": [
+      "Tuberculosis, lung cancer, bronchitis, asthma, tonsillitis, lung diseases.",
+      "Nasal cancer."
+    ],
+    "additionalInfo": "The point treats Stomach Fire affecting the Lungs (the Son). This is a condition caused by stomach diseases, such as gastric ulcers, which can lead to lung and throat disorders. Hu Wen Zhi The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. It can be needled bilaterally. Choose the side where the blue-green color is seen. The effect can be exceptional. Palm diagnosis The points are located in continuation of the second finger, representing the Lungs. The stomach and duodenum are diagnosed in the point area. Point Name Sän [E] - Three Måo - Hair"
+  },
+  "SanXing": {
+    "dongIndications": [
+      "Hypochondrium pain",
+      "jaundice",
+      "hepatitis",
+      "bitter taste in mouth"
+    ],
+    "indications": [
+      "Abdominal distension, splenomegaly (enlarged spleen), gastrectasia (enlarged stomach).",
+      "Pleuritis (inflammation of the pleura).",
+      "Deafness.",
+      "Leg pain - medial, side of the body pain.",
+      "Diaphragm tightness."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. Palm diagnosis The Liver and Spleen are diagnosed in the points area. Point Name Sän [E] — Three. Xing æ] - Star."
+  },
+  "ShangXiaGao": {
+    "dongIndications": [
+      "Peritonitis (very effective)"
+    ],
+    "indications": [
+      "Pneumonia.",
+      "Appendicitis.",
+      "Oophoritis (ovarian inflammation), metritis.",
+      "Acute inflammation of the small intestine.",
+      "Growth promotion (works best in children under 12 YOA)."
+    ],
+    "additionalInfo": "If the growth plates have not closed, the points can stimulate the neuroendocrine system to promote growth. They can be combined with Xia San Huang. He Wen Zhi: These points do not appear in Master Tung's original book; He Wen Zhi introduced them. They are two of Dong's 72 absolute needles, which provide a solution in cases of peritonitis. When using these points to promote growth, good results can mainly be achieved in ages 16—20. Point Name Shång [ -El — Upper. Xiå [F] — Lower. Gäo [Z] — Height. The names of the points suggest their ability to promote growth (height)."
+  },
+  "WaiBai": {
+    "dongIndications": [
+      "Measles",
+      "vitiligo",
+      "purpura",
+      "urticaria (hives)"
+    ],
+    "indications": [
+      "Splenomegaly (enlarged spleen).",
+      "Pancreatitis.",
+      "Abdominal masses.",
+      "Toothache, gingivitis.",
+      "Lumbago (lower back pain), sciatica.",
+      "Calf pain, Calf cramps.",
+      "Trigeminal neuralgia.",
+      "Intercostal neuralgia, costal pain (rib pain).",
+      "Ankle sprain (dorsal), ankle pain (dorsal).",
+      "Glossodynia (burning mouth syndrome).",
+      "Shoulder pain (lateral)."
+    ],
+    "additionalInfo": "Hu wen Zhi The point does not appear in Master Tung's original book. Hu Wen Zhi introduced it first. The point treats trigeminal neuralgia and intercostal neuralgia. Wai Bai can be combined with 22.06 Zhong Bai for pain relief in any neuralgia. For additional information, see 22 Nei Bai. Point Name Wåi [5b] - outer. Båi - White. For additional information, 22.03 Shang Bai and Nei Bai."
+  },
+  "ZhiHan": {
+    "dongIndications": [
+      "Sweating disorders",
+      "hyperhidrosis (excessive sweating)",
+      "night sweats"
+    ],
+    "indications": [
+      "Hypertension."
+    ],
+    "additionalInfo": "A point of Hu Bing Quan. The point innervates the Heart and Lungs and, therefore, can treat sweating. Point Name Zhl [LEJ - To stop Zhi [LEI - To stop Hän [F] - Sweating. The point name indicates its ability to stop sweating."
+  },
+  "ZhongKui": {
+    "dongIndications": [
+      "Reduces fever",
+      "common cold",
+      "cough",
+      "wheezing"
+    ],
+    "indications": [
+      "Headache, migraine, frontal headache.",
+      "Facial paralysis (bell's palsy), trigeminal neuralgia.",
+      "Hordeolum (Stye).",
+      "Hypertension.",
+      "Allergic rhinitis (hay fever).",
+      "Anosmia (loss of smell).",
+      "Tigger Finger - index finger.",
+      "Shoulder pain, shoulder pain (anterior).",
+      "CVA - coma.",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema.",
+      "Toothach, anesthesia during tooth extraction.",
+      "Zhong Kui Heavy Head",
+      "Zhong Kui [ *NYX] Heavy Head",
+      "Needling • Needle wh e hand is in a fist.",
+      "Zhong Rui [ßft] Heavy Head",
+      "• Perpendicular, 0.5-1 cun. • Bloodletting in children.",
+      "• • • • Caution: Needling this point is contraindicated during pregnancy.",
+      "28"
+    ],
+    "additionalInfo": "The point's primary effect is on the head. It is highly effective in reducing fever in children. Hu Wen Zhi An essential point for cold and fever. Highly effective for lowering high blood pressure (reduces blood pressure readings by 2 to 5 units with each needling application For dental anesthesia, insert the needle at Zhong Kui, then angle it and penetrate toward the 22.04 Da Bai point. Point Name Zhöng [m] — heavy, serious. Kui [M] — chief, head, exceptional, steadfast. The point's name suggests its ability to treat head disorders, such as headaches or migraines, facial paralysis, and more."
   }
 }

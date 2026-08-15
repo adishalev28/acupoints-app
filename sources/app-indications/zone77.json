@@ -713,5 +713,233 @@
       "Herpes zoster eye."
     ],
     "additionalInfo": "77.28 Guan Ming is an essential point for treating eye diseases. When treating an ankle sprain, needle on the affected side. Chuan Min Wang The point can be needled for eye diseases with 77.18 Shen Guan and 77.21 Ren Huang. Point Name Guäng [h] - to illuminate, bright, ray. Ming [BA] — bright, understand. The name of the point suggests that it treats eye diseases."
+  },
+  "ErduoFangxieQu": {
+    "dongIndications": [
+      "Ear pain"
+    ],
+    "indications": [
+      "Otitis externa (ear infection-externa ear), otitis media (ear infection-middle ear), labyrinthitis (ear infection-inner ear).",
+      "Deafness.",
+      "Meniere's disease."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "FeiFangxieQu": {
+    "dongIndications": [
+      "Chest pain (Pleurodynia)",
+      "pneumonia",
+      "asthma",
+      "bronchitis",
+      "emphysema",
+      "lung cirrhosis"
+    ],
+    "indications": [
+      "Chest pain (Pleurodynia), pneumonia, asthma, bronchitis, emphysema, lung cirrhosis. Thoracalgia (middle back pain), shoulder pain.",
+      "Endocarditis, pericarditis, arrhythmia (irregular heartbeat).",
+      "Anosmia (loss of smell)"
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "GanzangFangxieQu": {
+    "dongIndications": [
+      "Pain above the eye"
+    ],
+    "indications": [
+      "Hypochondrium pain due to liver qi stagnation, rib pain due to liver qi stagnation.",
+      "Diaphragm tightness."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "KouqiangHeYachiFangxieQu": {
+    "dongIndications": [
+      "Oral cavity diseases",
+      "lips diseases",
+      "teeth diseases",
+      "gums diseases"
+    ],
+    "indications": [
+      "Cheilalgia (lip pain), labial vitiligo (lips vitiligo).",
+      "Labial ulceration (lip ulcers), Herpes labialis (cold sores) on the mouth and genitalia.",
+      "Oral candidiasis (oral thrush), aphthous ulcers (mouth ulcers), recurrent aphthous stomatitis (RAS).",
+      "Oral tumors.",
+      "Toothache.",
+      "Glossodynia (burning mouth syndrome)."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "LiuShui": {
+    "dongIndications": [
+      "Headache",
+      "migraine (special effect)"
+    ],
+    "indications": [
+      "Neck tension and pain.",
+      "Dorsalgia (back pain).",
+      "Chest pain (Pleurodynia), heart pressure.",
+      "Hemorrhoids (remarkable effect), hemorrhoidal bleeding.",
+      "Tinnitus, deafness.",
+      "Peritonitis.",
+      "Urinary tract infection (UTI), bladder painful syndrome (Interstitial cystitis), urinary retention, cystitis (urinary bladder inflammation).",
+      "Menopause, hot flashes, night sweats, restlessness, depression.",
+      "Oligospermia (sperm count low), teratozoospermia (sperm morphology abnormal).",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Vaginal Pruritus (Vaginal itching), vaginal dryness."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. The points have a remarkable effect on treating hemorrhoids. It is not necessary to needle all points. For treating Menopause and hot flashes, use Sp-9 Ying Ling Quan, 77.19 Di Huang, Shui Ming (one of the 6 points of Liu Shui), 77.21 Ren Huang, 11.24 Fu Ke, 33.04 Huo Chuan, 66.09 Shui Qu. If there is sweating, add 22.08 Wan Shun Yi with Ht-5 Tong Li. Point Name The points affect the Kidneys (Water). In the Yellow River diagram, the number six represents Water. Water in the points' names also refers to the Kidneys"
+  },
+  "ShangYuXiaYu": {
+    "dongIndications": [
+      "Myocardial infarction",
+      "angina pectoris",
+      "cardiomegaly"
+    ],
+    "indications": [
+      "Headache.",
+      "Chest pain (Pleurodynia).",
+      "Lumbago (lower back pain).",
+      "Sciatica."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. Point Name Shång - Upper. Xiå [T] - Lower. Shång [ -El - Upper. Xiå [F] - Lower. Yü [G] - To transport."
+  },
+  "ShuangLong": {
+    "dongIndications": [
+      "Breast cancer",
+      "breast tumor"
+    ],
+    "indications": [
+      "Mastitis.",
+      "Nipple inflammation, nipple adenoma.",
+      "Hypogalactia (Lactation Iow), breast swelling.",
+      "Cubital Tunnel Syndrome."
+    ],
+    "additionalInfo": "Double Dragon points are systemic points for treating chest tumors due to their ability to release Qi and Blood stagnation in the chest. In men, the breast is related to the Kidneys and the nipple to the Liver, while in women, the breast is associated with the Stomach and the nipple to the Liver. Due to the point's effect on the nipple, Li Guo Zheng adds Liver branch innervation. In Master Tung's acupuncture, points related to the Lungs affect breast tumors, mainly because the Lungs influence smooth Qi flow in the chest. When Qi stagnation occurs in the chest, and the Lungs' ability to descend Qi is impaired, the phlegm may form over time, leading to masses and tumors in the chest. Chest tumors can also form due to Blood stagnation. The point's name indicates its ability to treat Blood stagnation in the chest. Combine Qi stagnation conditions with 88.17-19 Sima (Lung innervation and Liver sub-branch) and 77.27 Wai San Guan (Lung innervation). Since Sima also has liver innervation, it affects the nipple. For Qi and Blood stagnation conditions, combine with 44 Jian Feng (Lung and Heart sub-branch innervation) and 77.05-07 San Zhong (Spleen, Lung and Heart sub-branch innervation). Hu Wen Zhi The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. These are essential for treating chest diseases and are two of the 72 Absolute Needles of Tung. For chest diseases, combine with 44 Jian Feng. To improve the effect, bleeding can be applied to the Lung and Heart areas on the back and the Lung and Heart areas on the leg. Point Name Shuäng [g] - Double, two, pair, even number. Löng [N] - Dragon. In the Yellow River diagram, the number two represents Fire. The character \"double\" in the point name indicates the points' connection to the Heart and their ability to treat L6ng [R] - Dragon. In the Yellow River diagram, the number two represents Fire. The character \"double\" in the point name indicates the points' connection to the Heart and their ability to treat Blood stagnation in the chest. In the Chinese zodiac, the Dragon is associated with the Stomach. In Chinese medicine, the breast is also related to the Stomach. Thus, the points' name indicates their ability to treat Blood stagnation in the chest."
+  },
+  "ShenHePangguangFangxieQu": {
+    "dongIndications": [
+      "Lower abdomen pain",
+      "lower abdomen pressure"
+    ],
+    "indications": [
+      "Female reproductive disorders, male reproductive disorders.",
+      "Tumors in the uterus (improvement in symptoms), metritis (uterus inflammation), menstrual",
+      "Irregular menstrael cycles, genital itching.",
+      "Obstruction in the fallopian tubes, oophoritis (ovarian inflammation).",
+      "Amenorrhea, dysmenorrhea (Menstrual pain).",
+      "Vaginitis, vaginal Pruritus (Vaginal itching).",
+      "Urinary tract infection (UTI), cystitis (urinary bladder inflammation), bladder painful syndrome (Interstitial cystitis), urinary retention., urinary tract obstruction.",
+      "Premature ejaculation, erectile dysfunction (impotence).",
+      "Oligospermia (sperm count low), teratozoospermia (sperm morphology abnormal)."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "SP9_YinLingQuan": {
+    "dongIndications": [
+      "Menopause",
+      "hot flashes",
+      "night sweats",
+      "restlessness",
+      "depression"
+    ],
+    "indications": [
+      "Insomnia.",
+      "Palpitations.",
+      "Abdominal bloating.",
+      "Fatigue due to kidney deficiency.",
+      "Renal insufficiency (kidney dysfunction).",
+      "Spermatorrhea.",
+      "Priapism (persistent penile erection), erectile dysfunction (impotence).",
+      "Erectile dysfunction (impotence).",
+      "Leukorrhea (vaginal discharge-white and red).",
+      "Uterine prolapse.",
+      "Lumbalgia (lower back pain).",
+      "Dysmenorrhea (Menstrual pain), Irregular menstrual.",
+      "Strangury, painful urination, dysuria (urinating difficulty).",
+      "Leg pain.",
+      "Retained placenta (placenta retained), labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Bladder painful syndrome (Interstitial cystitis), cystitis (urinary bladder inflammation)."
+    ],
+    "additionalInfo": "Combine Sp-9 Yin Ling Quan and Sp-8 Di Ji together with Sp-6 San Yin Jiao in Dao Ma technique to achieve better results. For treating Menopause and hot flashes, use Sp-9 Ying Ling Quan, 77.19 Di Huang, Shui Ming (one of the 6 points of Liu Shui), 77.21 Ren Huang, 11.24 Fu Ke, 33.04 Huo Chuan, 66.09 Shui Qu. If there is sweating, add 22.08 Wan Shun Yi with Ht-5 Tong Li. Point Name Yin [1*] - The complement of Yang. Ling [Z] - Mound, hill, tomb. Quan [R] - Spring. White water [7k] bursting from the earth. Location: Yin indicates the point's location on the inner thigh to distinguish it from Gb-34 Yang Mound Spring. The knee resembles a mound or hill, Sp-9 is located near the knee and is the Water point of the Leg Tai Yin channel, therefore Sp-9 is like a spring near a mound. The name of the point suggests its nature as a Water point that can regulate dampness."
+  },
+  "WeiZangFangxieQu": {
+    "dongIndications": [
+      "Stomach pain",
+      "stomach distention",
+      "gastric hyperacidity (stomach acid excess)",
+      "gastric ulcers (stomach ulcer)",
+      "duodenal ulcer"
+    ],
+    "indications": [
+      "Esophageal spasm, esophagitis, Hiatal hernia.",
+      "Digestive disorders.",
+      "Pharyngeal neoplasms (throat tumors), Globus hystericus, plum pit qi.",
+      "Gastric masses.",
+      "Wheezing."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "XinzangFangxieQu": {
+    "dongIndications": [
+      "Heart deficiency",
+      "heart failure",
+      "chest oppression (chest tightness)",
+      "palpitations",
+      "arrhythmia (irregular heartbeat)",
+      "dyspnea (shortness of breath)"
+    ],
+    "indications": [
+      "Hypercholesterolemia (high cholesterol), hyperlipidemia (high lipids).",
+      "Blood stagnation.",
+      "Lung diseases, pneumonia, asthma.",
+      "Eye diseases."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "XiongFangxieQu": {
+    "dongIndications": [
+      "Shoulder pain",
+      "clavicle pain",
+      "clavicle swelling"
+    ],
+    "indications": [
+      "Rib pain.",
+      "Ankle sprain."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "ZhengNao": {
+    "dongIndications": [
+      "Tinnitus"
+    ],
+    "indications": [
+      "Cranial nerve neuralgia.",
+      "Encephalopathy (any disease affecting brain function associated with brain tissue destruction or degeneration).",
+      "Cough persistent (immediate improvement).",
+      "Occipital headache.",
+      "Dementia.",
+      "Epilepsy."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. When needling Zheng Nao Yi/Er/San together in the Dao Mao technique, they are called San Zheng Nao [ Three Brain Rectification. These are essential points for treating Brain diseases. They open the orifices and stimulate the Brain. Point Name Zhéng - Straight, correct, and rectify exact tendons and ligaments. Nåo [E] - Brain. Näo [Aiå] - Brain. The name of the points indicates their effect on the Brain."
+  },
+  "ZhenguQuFangxieQu": {
+    "dongIndications": [
+      "Occipital headache",
+      "stiff neck"
+    ],
+    "indications": [
+      "Lower back pain, sciatica, coccydynia (tailbone pain).",
+      "Spondylosis (degenerative changes in the spine), herniated disc.",
+      "Intestinal inflammation.",
+      "Enteritis (intestinal inflammation).",
+      "Hydrocephalus.",
+      "Hypertension.",
+      "CVA (Stroke), cerebral thrombosis (CVA), hemiplegia (one-sided paralysis)",
+      "Hemorrhoids, fissura ani (anal fissure).",
+      "Rheumatism of the lower limbs.",
+      "Dysuria (urinating difficulty)/ nephrolithiasis (kidney stones).",
+      "Epilepsy.",
+      "Chemotherapy treatment (Side effects)."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
   }
 }

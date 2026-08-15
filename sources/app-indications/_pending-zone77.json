@@ -1,0 +1,38 @@
+{
+  "_comment": "לכידות OCR של נקודות שקיימות באפליקציה של שון ואינן קיימות ב-src/data/zones. ממתינות להחלטת עדי אם להוסיף כנקודות מלאות. נלכדו 15.8.2026 עם אקסטרה של אזור 77.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "ZhengYang": {
+    "header": "Zhéng Yång",
+    "zone": "77",
+    "cardCount": 11,
+    "dongIndications": [
+      "Cardiomegaly"
+    ],
+    "indications": [
+      "Chest pressure and pain.",
+      "Pain in BI-43 Gao Huang area.",
+      "Stiff neck.",
+      "Hemorrhoids, hemorrhoidal bleeding, fissura ani (anal fissure).",
+      "Gastric hyperacidity.",
+      "Headache.",
+      "Migraine.",
+      "Numbness of the hands and feet, paresthesia of the hands and feet",
+      "Palpitations.",
+      "Shoulder pain."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. Point Name Zhéng [ÆJ - Straight, correct, exact, to rectify, main, principle. Yång [W] - Positive, sun, male principle, opposite of Yin."
+  },
+  "ZhongXi_NeiXiYan": {
+    "header": "ZhöngXi Néi XiYän | Centre Knne Inner Knee Eye",
+    "zone": "77",
+    "cardCount": 2,
+    "dongIndications": [
+      "Elbow pain",
+      "tennis elbow (lateral epicondylitis)"
+    ],
+    "indications": [
+      "Knee Pain, knee osteoarthritis."
+    ],
+    "additionalInfo": "In the acute phase, first bloodlet the affected elbow, and then needle Zhong Xi, Nei Xi Yan, St-35 Du Bi. Point Name Zhöng [4] — centre, middle. XT - knee Néi - the inner part of the body. eyes - knee Yän [EN]- eyes The name of the point indicates that it is located on the knee."
+  }
+}

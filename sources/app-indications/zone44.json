@@ -1,0 +1,451 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "44.03": {
+    "dongIndications": [
+      "Dislocated vertebra",
+      "nephritis",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Bronchitis.",
+      "Night cough.",
+      "Xerostomia (dry mouth).",
+      "Spinal pain, herniated disc, coccydynia (tailbone pain).",
+      "Hamstring muscle pain.",
+      "Claude O"
+    ],
+    "additionalInfo": "44.02 Hou Zhui and 44.03 Shou Ying are often needled together in a Dao Ma Technique. Master Tung: Needling 44.02 Shou ying and 44.03 Hou Zhui together with the Hui Ma [[älWo] technique produces a fast and good effect. The point has special effect when treting bronchitis and night cough. Hu wen Zhi The point has a special effect on night coughing in older people, especially in combination with 44.03 Hou Zhui and 44.02 Yu Ying (44). Point Name Shöu [E] — Head, leader. Shöu [å] — Head, leader. Ying — Flower, petals, hero, exceptional person."
+  },
+  "44.04": {
+    "dongIndications": [
+      "Fatigue",
+      "liver deficiency",
+      "hypertension",
+      "dizziness",
+      "headache"
+    ],
+    "indications": [
+      "Lumbago (lower back pain)."
+    ],
+    "additionalInfo": "For additional information, see 44.04 Huo Zhi. Point Name Fü fi] — rich, abundant, healthy. Ding [Jk] — top of the head. The point's name suggests its ability to treat disorders of the upper part of the body, such as headaches and neck pain."
+  },
+  "44.05": {
+    "dongIndications": [
+      "Hypertension",
+      "dizziness",
+      "headache",
+      "sterilization",
+      "skin diseases",
+      "arteriosclerosis"
+    ],
+    "indications": [
+      "Cervicalgia (neck pain), occipital pain, torticollis (wry neck).",
+      "Facial paralysis (bell's palsy).",
+      "Liver deficiency.",
+      "Fatigue."
+    ],
+    "additionalInfo": "Using the Dao Ma needling technique, 44.04 Fu Ding is often needled together with 44.05 Hou Zhi. Both points primarily affect the liver and can treat liver deficiency conditions, leading to fatigue, dizziness, headaches, skin diseases, and non-healing wounds. Additionally, these points influence the heart and liver. They can regulate blood flow and treat hypertension and arteriosclerosis. Master Tung 44.04 Fu Ding can be used with 44.05 Hou Zhi to treat neck and nape pain and torticollis. Chuan Min Wang 44.05 Hou Zhi can treat infection in the body. Point Name Höu [f*] — back, behind. Zhi [E] — branch."
+  },
+  "44.06": {
+    "dongIndications": [
+      "Knee pain (special effect)",
+      "skin neck diseases (special effect)",
+      "polio",
+      "hemiplegia - highly effective (one-sided paralysis)",
+      "palpitations",
+      "atherosclerosis",
+      "epistaxis",
+      "shoulder pain"
+    ],
+    "indications": [
+      "Knee osteoarthritis.",
+      "Frozen shoulder (50 year old shoulder), shoulder pain, shoulder pain (lateral).",
+      "Scrofula (highly effective).",
+      "Hypertension.",
+      "Hyperhidrosis (excessive sweating).",
+      "Cerebral thrombosis (CVA), paraplegia (paralysis of legs), drop foot, arm paralysis, aphasia.",
+      "Post-polio syndrome.",
+      "Breast disorders, mastitis, breast carcinoma (improves symptoms), nipple adenoma, fibrocystic breast, breast swelling.",
+      "Nasal obstruction (blocked nose).",
+      "Skin diseases in the buttock area, urticaria (hives).",
+      "Inflammation of the lymph nodes in the neck, scrofula.",
+      "Tuberculosis.",
+      "Leg pain, hip pain.",
+      "Lumbago (lower back pain).",
+      "Temporal headache.",
+      "Urinary retention.",
+      "Hypogalactia (Lactation low).",
+      "Alopecia (hair loss).",
+      "Ankle sprain (dorsal), ankle pain (dorsal).",
+      "Hip joint pain, hip bursitis (Trochanteric Bursitis of the Hip).",
+      "Acromion pain.",
+      "Numbness of the upper limb, paresthesia of the upper limb.",
+      "Premenstrual Breast Distention.",
+      "Dysarthria.",
+      "Erysipelas."
+    ],
+    "additionalInfo": "You can combine with Jian Feng (44) and Jian Zhong2 (44) using the Dao Ma needling technique to improve results. One of Master Tung's 72 absolute needles for treating knee disorders. Hu Wen Zhi To treat gout and migratory arthritis, you can use 44.06 Jian Zhong, Jian Zhong2 (44), 77.18 Shen Guan, 88.01 Tong Guan, and 88.03 Tong Tian. Knee 44.06 Jian Zhong is important for treating knee disorders for two reasons. The first reason is that in Master Tung's acupuncture, many points that affect the heart also affect the knee, primarily because the heart channel in the thigh passes through the center of the knee. Therefore, since this point innervates the heart, it is important for treating knee disorders. The second reason is that in Master Tung's acupuncture, the shoulder is used to treat knee disorders. 44.06 Jian Zhong treats the center of the knee (the heart channel passes through the center of the knee), pain inside the knee, and pain above and below the patella, and it can be combined with Zhong Jian2 (44) and Jian Feng (44). The lateral side of the shoulder treats the medial aspect of the knee because the liver channel passes through the medial aspect of the knee, while in the arm, it passes through the lateral side. You can combine 44.06 Jian Zhong with 44.15 Xia Qu and 44.16 Shang Qu (liver channel) to treat medial knee pain. Likewise, the medial side of the shoulder treats the lateral aspect of the knee because the lung channel in Master Tung's acupuncture passes through the lateral side of the knee, while in the arm, it passes through the medial side. You can combine 44.06 Jian Zhong with 44.11 Yun Bai and 44.12 Li Bai (lung channel) to treat lateral knee pain. Six Shoulder Points - Liu Jian A combination of six points located in the shoulder can treat a wide range of disorders. The six points are: 44.06 Jian Zhong, Jian Zhong2 (44) (heart channel). 44.11 Yun Bai, 44.12 Li Bai (lung channel). 44.15 Xia Qu, 44.16 Shang Xu (liver channel). The indications for the six shoulder points can be divided into three categories: Head, face, and sensory organ disorders: Occipital and frontal headache, itchy, red, swollen eyes, trigeminal neuralgia, toothache, and facial paralysis. Neck, shoulder, upper and lower back, lower limb disorders: Neck pain, cervical vertebrae disorders, back pain, stroke, knee pain, hip joint pain, ankle sprain, leg pain, shoulder pain, polio. Lower abdominal symptoms: All gynecological diseases, uterine inflammation, vaginal inflammation, urinary disorders, bladder inflammation, sciatica, sacrum pain, inflammation. groin pain, hernia, rectal and anal All gynecological diseases, uterine inflammation, vaginal inflammation, urinary disorders, bladder inflammation, sciatica, sacrum pain, groin pain, hernia, rectal and anal Additional Indications: hyperhidrosis (excessive sweating). Of the six shoulder points, 44.12 Li Bai is the best to treat excessive sweating. Point Name Jiän [B] - shoulder. Zhöng [$1 — center. The point's name suggests its location in the center of the deltoid muscle and its importance as a central point for treating shoulder issues. The word \"center\" also implies the point's influence on the heart, located in the center of the chest."
+  },
+  "44.07": {
+    "dongIndications": [
+      "Swollen abdomen",
+      "weak voice"
+    ],
+    "indications": [
+      "General weakness.",
+      "Painful legs.",
+      "Cholera.",
+      "Vomiting (emesis), enteritis (intestinal inflammation)-acute.",
+      "Asthma.",
+      "Common cold.",
+      "Splenomegaly (enlarged spleen)."
+    ],
+    "additionalInfo": "Dry cholera is characterized by a desire to vomit or defecate without success. Wei Chieh Young It is not necessary to bloodlet at the exact location of the point. Bloodletting can be performed around the point within a distance of I cun. The point can treat asthma, the common cold, and the splenomegaly. Point Name Béi - back. Béi [15] - back. Miån — face."
+  },
+  "44.08": {
+    "dongIndications": [
+      "Legs pain",
+      "hand pain",
+      "elbow pain",
+      "elbow swelling",
+      "swollen limbs",
+      "enlarged spleen (splenomegaly)",
+      "common cold",
+      "asthma"
+    ],
+    "indications": [
+      "Jaundice.",
+      "Gastritis (stomach lining inflammation), duodenitis (duodenum inflammation).",
+      "Splenomegaly (enlarged spleen).",
+      "Arm pain.",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Edema.",
+      "Claude O",
+      "CVA (Stroke), aphasia, cerebral thrombosis (cva).",
+      "Psoas syndrome."
+    ],
+    "additionalInfo": "The point is used to treat spleen, liver, and gallbladder diseases. For additional information, see 44.10 Tian Zong. Point Name Rén [Al — Zöng [m] person. —sect, clan, ancestor, family. Rén [Al — person. Zöng [N — sect, clan, ancestor, family. To further appreciate the significance of these points, it's helpful to consider traditional Chinese culture, where the concept of the Ancestor (Zong - ) is deeply rooted in the philosophy of filial piety (Xiao - ). This tradition is not about religious worship, but rather about paying deep respect (Bai - ) to the absolute root and foundation of one's lineage. It acknowledges that an unbroken river flows continuously from a single foundational spring, and a system can only survive and maintain its flow if its roots are honored and protected. Expanding on this cultural perspective, Master Tung deliberately chose the name Zong to hint at the hidden mechanism of action of these points. By mapping the philosophy of the \"Ancestor\" onto human anatomy, the chest is seen as the body's primary source. The character Zong ( ) points directly to Zong Qi ( — Gathering/AncestraI Qi), the foundational energy in the chest controlled by the lungs and heart. This Qi is the main driver of Qi and Blood movement in the body. As a family depends on its roots, the body relies on Zong Qi to keep blood and energy moving. By using this chest energy, these points strongly affect the heart and lungs. In emergencies, needling these points helps restore the flow of Qi and Blood, bringing vital life rhythms back. The characters Tian (Heaven — Di (Earth — itt and Ren (Human — ) represent the vertical hierarchy of the points along the bicipital groove of the upper arm, with each corresponding to a distinct level of Zong Qi distribution: Ren Zong (Human Ancestor — The Bottom Point): Situated lowest on the arm. Di Zong (Earth Ancestor — The Middle Point): Situated in the center of the arm. Tian Zong (Heaven Ancestor — The Top Point): Situated highest on the arm near the shoulder."
+  },
+  "44.09": {
+    "dongIndications": [
+      "Rescues yang in situations of yang collapse (loss of consciousness)",
+      "heart diseases",
+      "atherosclerosis"
+    ],
+    "indications": [
+      "CVA (Stroke), CVA (Stroke) - first aid point for ischemic and hemorrhagic stroke, cerebral thrombosis (cva), Paraplegia (paralysis of legs), paralysis of arms.",
+      "Angina pectoris and myocardial infarction first aid.",
+      "Cardiac asthma.",
+      "Hepatic encephalopathy.",
+      "Respiratory system diseases.",
+      "Aphonia (loss of voice), aphasia.",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Edema.",
+      "Meniere's disease.",
+      "Anxiety disorder.",
+      "Psoas syndrome.",
+      "Dysarthria."
+    ],
+    "additionalInfo": "Among the three Zong points, this is the primary point for treating heart diseases. It is also an important point for restoring Yang. Hu wen Zi This is an essential emergency point. Its effectiveness is on par with that of Du-26 Renzhong, Gv-20, Baihui, and St-36 Zusanli. For first aid, combining this point with 22.10 Shou Jie yields miraculous effects. It is one of Tung's 72 absolute needles. It has a special effect in emergency situations and is one of Tung's 32 relieving needles. Imaging Imaging of the limbs to the trunk (including neck and head): the point mirrors the middle of the chest, the area of Cv-17 San Zhong, and therefore impacts the heart and chest. Point Name Di [it] — earth. Zöng — sect, clan, ancestor, family. To further appreciate the significance of these points, it's helpful to consider traditional Chinese culture, where the concept of the Ancestor (Zong - ) is deeply rooted in the philosophy of filial piety (Xiao - ). This tradition is not about religious worship, but rather about paying deep respect (Bai - ) to the absolute root and foundation of one's lineage. It acknowledges that an unbroken river flows continuously from a single foundational spring, and a system can only survive and maintain its flow if its roots are honored and protected. Expanding on this cultural perspective, Master Tung deliberately chose the name Zong to hint at the hidden mechanism of action of these points. By mapping the philosophy of the \"Ancestor\" onto human anatomy, the chest is seen as the body's primary source. The character Zong ( ) points directly to Zong Qi ( — Gathering/Ancestral Qi), the foundational energy in the chest controlled by the lungs and heart. This Qi is the main driver of Qi and Blood movement in the body. As a family depends on its roots, the body relies on Zong Qi to keep blood and energy moving. By using this chest energy, these points strongly affect the heart and lungs. In emergencies, needling these points helps restore the flow of Qi and Blood, bringing vital life rhythms back. The characters Tian (Heaven — ), Di (Earth — ), and Ren (Human — A ) represent the vertical hierarchy of the points along the bicipital groove of the upper arm, with each corresponding to a distinct level of Zong Qi distribution: Ren Zong (Human Ancestor — The Bottom Point): Situated lowest on the arm. Di Zong (Earth Ancestor — The Middle Point): Situated in the center of the arm. Tian Zong (Heaven Ancestor — The Top Point): Situated highest on the arm near the shoulder."
+  },
+  "44.10": {
+    "dongIndications": [
+      "Vaginal itching",
+      "vaginodynia (vaginal pain)",
+      "leukorrhea (vaginal discharge-white and red) (quick effect)",
+      "pain in the genital area",
+      "calf pain",
+      "polio",
+      "body odor",
+      "diabetes mellitus"
+    ],
+    "indications": [
+      "Dyspareunia (painful intercourse).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Inguinal hernia (shan qi).",
+      "Vaginal Pruritus (Vaginal itching), vaginal dryness.",
+      "Edema.",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "CVA (Stroke), aphasia, cerebral thrombosis (cva).",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB).",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Psoas syndrome.",
+      "Undescended testicle (cryptorchidism)."
+    ],
+    "additionalInfo": "This is an important point for treating female genital disorders; it can be combined with 44.11 Yun Bai and 44.12 Li Bai. Sometimes, 44.08 Ren Zong, 44.09 Di Zong, and 44.10 Tian Zong are combined using the Dao Ma technique, and they are called the Three Ancestors, San Zong Point Name Tiän Zöng — Heaven. — sect, clan, ancestor, family. Tiän [k] — Heaven. To further appreciate the significance of these points, it's helpful to consider traditional Chinese culture, where the concept of the Ancestor (Zong - ) is deeply rooted in the philosophy of filial piety (Xiao - ). This tradition is not about religious worship, but rather about paying deep respect (Bai - ) to the absolute root and foundation of one's lineage. It acknowledges that an unbroken river flows continuously from a single foundational spring, and a system can only survive and maintain its flow if its roots are honored Zöng [N — sect, clan, ancestor, family. and protected. Expanding on this cultural perspective, Master Tung deliberately chose the name Zong to hint at the hidden mechanism of action of these points. By mapping the philosophy of the \"Ancestor\" onto human anatomy, the chest is seen as the body's primary source. The character Zong ( ) points directly to Zong Qi ( — Gathering/AncestraI Qi), the foundational energy in the chest controlled by the lungs and heart. This Qi is the main driver of Qi and Blood movement in the body. As a family depends on its roots, the body relies on Zong Qi to keep blood and energy moving. By using this chest energy, these points strongly affect the heart and lungs. In emergencies, needling these points helps restore the flow of Qi and Blood, bringing vital life rhythms back. The characters Tian (Heaven — ), Di (Earth — ), and Ren (Human — A ) represent the vertical hierarchy of the points along the bicipital groove of the upper arm, with each corresponding to a distinct level of Zong Qi distribution: Ren Zong (Human Ancestor — The Bottom Point): Situated lowest on the arm. Di Zong (Earth Ancestor — The Middle Point): Situated in the center of the arm. Tian Zong (Heaven Ancestor — The Top Point): Situated highest on the arm near the shoulder."
+  },
+  "44.11": {
+    "dongIndications": [
+      "Vaginal itching",
+      "vaginitis",
+      "vulvodynia (vulvar pain)",
+      "leukorrhea (vaginal discharge-white and red)",
+      "polio"
+    ],
+    "indications": [
+      "Metritis (uterus inflammation), oophoritis (ovarian inflammation).",
+      "Abdominal pain.",
+      "Sprained ankle (special effect).",
+      "Hemiplegia (one-sided paralysis)",
+      "Dyspareunia (painful intercourse).",
+      "Symphysi01ysis (separation/loosening of the pubic symphysis joint).",
+      "Inguinal hernia (shan qi).",
+      "Knee pain (lateral), Knee osteoarthritis (lateral).",
+      "Urinary retention, Prostatic Hyperplasia (enlarged prostate).",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Alopecia (hair loss).",
+      "Ankle sprain (lateral), ankle pain (lateral).",
+      "Frozen shoulder (50 year old shoulder), shoulder pain.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB).",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Numbness of the feet, paresthesia of the feet.",
+      "Vaginal dryness.",
+      "Groin Pain.",
+      "Psoas syndrome.",
+      "Undescended testicle (cryptorchidism)."
+    ],
+    "additionalInfo": "44.11 Yun Bai, 44.12 Li Bai, and 44.10 Tian Zong are on the same vertical line (lung channel). The three points together can treat vaginal discharge. Jian Feng (44), Shen Jian (44), and 44.11 Yun Bai are often needled together using the Dao Ma technique. This combination is called the Three Oblique Anterior Needles of the Shoulder. The medial side of the shoulder treats the lateral aspect of the knee. You can combine 44.06 Jian Zhong with 44.11 Yun Bai and 44.12 Li Bai to treat lateral knee pain. Point Name Yün [2] — cloud. Yün - Cloud. Båi [É] — white. The point's name suggests its mechanism of action. White is the color associated with metal. To treat reproductive system disorders, the point descends the Qi of the lungs to the middle burner, like a cloud bringing down rain."
+  },
+  "44.12": {
+    "dongIndications": [
+      "Bromhidrosis (smelling sweat)",
+      "hyperhidrosis (excessive sweating)",
+      "ankle sprain",
+      "leg and calf pain",
+      "polio"
+    ],
+    "indications": [
+      "Hemiplegia (one-sided paralysis)",
+      "Dyspareunia (painful intercourse).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Inguinal hernia (shan qi).",
+      "Knee pain (lateral), Knee osteoarthritis (lateral).",
+      "Urinary retention, pprostatic Hyperplasia (enlarged prostate).",
+      "Alopecia (hair loss).",
+      "Ankle sprain (lateral), ankle pain (lateral).",
+      "Frozen shoulder (50 year old shoulder), shoulder pain.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AUB).",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Numbness of the feet, paresthesia of the feet.",
+      "Vaginal dryness.",
+      "Groin Pain.",
+      "Psoas syndrome.",
+      "Undescended testicle (cryptorchidism)."
+    ],
+    "additionalInfo": "For more information, see 44.11 Yun Bai. San Jin (44), 44.08 Ren Zong, 44.09 Di Zong, 44.10 Tian Zong, 44.12 Li Bai, 44.11 Yun Bail and Shang Yun Bai (44) are all located on the same vertical line, which represents the lung channel in Master Tung's acupuncture. Among the six shoulder points (Liu Jian), 44.12 Li Bai is the best for treating hyperhidrosis. 44.06 Jian Zhong, 44.11 Yun Bai, and 44.12 Li Bai treat pain in the lateral part of the knee. Hu Wen Zi Li Bai with 44.01 Yun Bai creates a special effect for treating foot sprains. Point Name Li [$1 — Plum. Båi [ä] — white. Li — Plum. Bai ( - White): In the Five Phases, White corresponds to Metal and the Lungs. The Lungs govern the Qi, the skin, the exterior, and the opening/closing of the pores. This perfectly explains why the point is so effective for treating hyperhidrosis (excessive sweating) and body odor. \"White\" also clinically hints at the white discharge (leukorrhea) that this point group treats in gynecology. Li ( - Plum): In Chinese Medicine, the plum is associated with a sour flavor. The sour flavor corresponds to the Wood element and the Liver. What does the Liver govern in the body? The tendons and sinews. The Synergy (Metal controlling Wood): When you put \"Plum\" (Wood/ Tendons) and \"White\" (Metal/Qi) together, it represents the energetic dynamic of Metal controlling Wood. By needling Li Bai, you are using strong Lung Qi to regulate the Liver and relax the tendons. This is the exact physiological reason why Li Bai is a \"special effect\" for severe foot — white. sprains, lower-leg pain, and polio."
+  },
+  "44.13": {
+    "dongIndications": [
+      "Hypertension",
+      "arteriosclerosis",
+      "dizziness",
+      "fatigue",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Hamstring muscle pain."
+    ],
+    "additionalInfo": "Claude O For additional information, see 44.14 Luo Tong. Point Name ZhT — branch. Töng [5M] — to pass through, know well, communicate, connect, open, clear."
+  },
+  "44.14": {
+    "dongIndications": [
+      "Hypertension",
+      "arteriosclerosis",
+      "dizziness",
+      "fatigue",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [],
+    "additionalInfo": "44.13 Zhi Tong and 44.14 Luo Tong can treat hypertension due to their influence on the kidneys and liver. Point Name Luo [Z] — falling. Töng [iMI — to connect, to pass through."
+  },
+  "44.15": {
+    "dongIndications": [
+      "Hypertension",
+      "sciatica on the background of lung and liver def",
+      "hemiplegia (one-sided paralysis)",
+      "polio",
+      "neurological disorders"
+    ],
+    "indications": [
+      "Knee osteoarthritis (medial), Knee pain (medial).",
+      "Urinary retention.",
+      "Alopecia (hair loss).",
+      "Ankle sprain (medial), ankle pain (medial).",
+      "Frozen shoulder (50 year old shoulder), shoulder pain.",
+      "Herpes zoster sciatic nerve.",
+      "Hamstring muscle pain.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Dysarthria."
+    ],
+    "additionalInfo": "Hypertension, sciatica on the background of lung and liver def, hemiplegia (one-sided paralysis), polio, neurological disorders. Point Name For additional information, see 44.16 Shang Qu."
+  },
+  "44.16": {
+    "dongIndications": [
+      "Polio",
+      "sciatica",
+      "arm pain",
+      "hypertension",
+      "calf pain"
+    ],
+    "indications": [
+      "Knee osteoarthritis (medial), Knee pain (medial).",
+      "Hemiplegia (one-sided paralysis)",
+      "Urinary retention.",
+      "Alopecia (hair loss).",
+      "Ankle sprain (medial), ankle pain (medial).",
+      "Frozen shoulder (50 year old shoulder), shoulder pain.",
+      "Herpes zoster sciatic nerve.",
+      "Hamstring muscle pain.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Dysarthria."
+    ],
+    "additionalInfo": "Jian Feng (44), Pian Jian (44), and 44.16 Shang Qu are sometimes needled together using the Dao Ma needling technique. This combination is called the Three Oblique Posterior Needles of the Shoulder. For more information, see Pian Jian (44). 44.06 Jian Zhong, 44.15 Xia Qu, and 44.16 Shang Qu treat pain in the medial aspect of the knee. 44.02 Hou Zhui, 44.03 Shou Ying, Yu Ying (44), 44.04 Fu Ding, 44.05 Hou Zhi, 44.15 Xia Qu, 44.16 Shang Qu, and Shang Qu Shang (44) are all located on the same vertical line, representing the liver channel in Master Tung's acupuncture. Hu wen Zhi The points have a special effect in treating sciatica and hemiplegia. Point Name Shång [El — upper, higher. Qü E] - bend, curve."
+  },
+  "44.17": {
+    "dongIndications": [
+      "Nephritis",
+      "nephrolithiasis (kidney stones)",
+      "proteinuria (protein in urine)",
+      "lumbago (lower back pain)",
+      "leg pain",
+      "general weakness",
+      "arm pain",
+      "wrist pain",
+      "hand dorsal pain"
+    ],
+    "indications": [
+      "Hip joint pain.",
+      "Sacroiliac pain syndrome (SI joint pain), sacroiliitis (sacroiliac joint inflammation).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Herpes zoster sciatic nerve.",
+      "Edema.",
+      "Hamstring muscle pain."
+    ],
+    "additionalInfo": "Shaun Goodman 44.17 Shui Yu Er/San: This treatment treats lower back pain adjacent to the spine, pain in the posterior buttocks, and hip joint pain. The 12 Shoulder Needles A combination of 12 points located on the lung, heart, liver, and kidney channels in Master Tung's acupuncture. Lung Channel: Shang Yun Bai (44), 44.11 Yun Bair 44.12 Li Bai. Heart Channel: Jian Feng (44), 44.06 Jian Zhong, Jian Zhong2 (44). Liver Channel: Shang Qu Shang (44), 44.16 Shang Qu, 44.15 Xia Qu. Kidney Channel: 44.17 Shui Yu, Shui Yu Er (44), Shui Yu san (44) The 12 Shoulder points affect the pelvic area, lower back, and lower abdomen. These points can be used for disorders in these areas, such as lower back pain, urinary system disorders, and gynecological disorders causing pain in the area. It is not necessary to needle all 12 points; the needle is according to the location of the pain. The points on the kidney channel affect the area near the spine and sacrum. The points on the liver channel affect the posterior aspect, which is the back side of the lower back and pelvis (buttocks). The points on the heart channel affect the lateral aspect: the side of the lower back and hip area. The points on the lung channel affect the anterior aspect: the lower abdomen and anterior pelvis. San Jian Liao (DT) can be added to affect the sacrum. Point Name Shui [7k] — Water. Yü — Heal. The point's name suggests its ability to treat kidney-related issues and lower back pain. Yü [Ell — Heal."
+  },
+  "DingKe": {
+    "dongIndications": [
+      "Cough",
+      "cough (chronic)",
+      "cough (with yellow phlegm)"
+    ],
+    "indications": [
+      "Knee pain.",
+      "Claude O"
+    ],
+    "additionalInfo": "To treat cough needle Li-II Qu Chi, 33.07Huo Fu Hai and Ding Ke."
+  },
+  "JianZhong2": {
+    "dongIndications": [
+      "Knee pain",
+      "Knee osteoarthritis"
+    ],
+    "indications": [
+      "Atherosclerosis, blood cleansing.",
+      "Shoulder pain, frozen shoulder (50 year old shoulder).",
+      "Hemiplegia (one-sided paralysis), paraplegia (paralysis of legs), Cerebral thrombosis (cva).",
+      "Temporal headache.",
+      "Hypogalactia (Lactation Iow), nipple adenoma, breast swelling.",
+      "Alopecia (hair loss).",
+      "Ankle sprain (dorsal), ankle pain (dorsal).",
+      "Hip joint pain, hip bursitis (Trochanteric Bursitis of the Hip).",
+      "Shoulder pain (lateral).",
+      "Numbness of the upper limb, paresthesia of the upper limb.",
+      "Dysarthria.",
+      "Erysipelas."
+    ],
+    "additionalInfo": "For additional information, see 44.06 Jian Zhong. The point does not appear in the original book of Master Tung. Hu wen Zhi 44.06 Jian Zhong, together with Jian Zhong2 (44), has a special effect on patellar arthritis, shoulder pain, frozen shoulder, and arteriosclerosis. Point Name Jiän [E] - to establish, to found, to build. Zhöng — center."
+  },
+  "PianJian": {
+    "dongIndications": [
+      "Sciatica"
+    ],
+    "indications": [
+      "Lumbago (lower back pain).",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Buttock area pain.",
+      "Hemiplegia (one-sided paralysis)",
+      "Ankle sprain (lateral), ankle pain (lateral)."
+    ],
+    "additionalInfo": "The point does not appear in Master Tung's original book; Hu Wen Zhi introduced it. Three Oblique Posterior Needles of the Shoulder: Jian Feng, Pian Jian, and 44.16 Shang Qu are sometimes needled together using the Dao Ma technique. This combination is called the Three Oblique Posterior Needles of the Shoulder. It is used to treat lower back pain, buttock pain, polio, sciatica, arm pain, hypertension, cirrhosis of the liver, and pain and pressure in the calf area. Point Name Piän [IP] —to deviate, to lean to the opposite side. Jiän [B] - shoulder."
+  },
+  "SanLing": {
+    "dongIndications": [
+      "Chest pain (pleurodynia) (special effect)",
+      "chest pain (Pleurodynia) radiating to back (special effect)"
+    ],
+    "indications": [
+      "Myocardial infarction (special effect).",
+      "Chest oppression (chest tightness) (special effect).",
+      "Dyspnea (Breathing difficulties due to cardiac hypoxia)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. They are three of the 72 Absolute Needles of Tung for treating heart and chest diseases. Point Name Sän E] - Three. Ling [A - Spirit, quick, alert, efficient, magical."
+  },
+  "SanShen": {
+    "dongIndications": [
+      "Pyelonephritis (kidney infection)"
+    ],
+    "indications": [
+      "Proteinuria (protein in urine).",
+      "Nephrolithiasis (kidney stones).",
+      "Erectile dysfunction (impotence), premature ejaculation, spermatorrhea.",
+      "Lumbago (lower back pain).",
+      "Xerostomia (dry mouth).",
+      "Kidney deficiency.",
+      "Pharyngitis (throat inflammation), throat cancer.",
+      "Bronchitis, cough (at night in adults), cough (dry), cough (chronic), cough (with yellow phlegm), emphysema.",
+      "Pharyngitis (throat inflammation), throat",
+      "Knee pain (medial), Knee osteoarthritis (medial).",
+      "Nocturnal enuresis (bedwetting)."
+    ],
+    "additionalInfo": "44.13 Shui Zhi Tong, 44.14 Luo Tong, and 44.17 Shui Yu are on the same vertical line as San Shen (44). This line represents the kidney channel in Master Tung's acupuncture. The points on this channel affect the kidneys and can treat pain radiating to the posterior part of the leg. In Master Tung's acupuncture, the elbow area can treat the knee area, making San Shen (44) points effective for treating medial knee pain. Hu Wen Zi first introduced these points and is among the 72 absolute needles of Tung for treating kidney diseases. Point Name Sän [E] — Three. Shén — Spirit or soul."
+  },
+  "SanZhengJi": {
+    "dongIndications": [
+      "Spine osteoporosis"
+    ],
+    "indications": [
+      "Spinal spondylophytes.",
+      "Herniated disc.",
+      "Spondylosis (degenerative changes in the spine).",
+      "Scoliosis, kyphosis.",
+      "Neck sprain.",
+      "Pyelonephritis chronic.",
+      "Ankle sprain (dorsal), ankle pain (dorsal)."
+    ],
+    "additionalInfo": "San Zheng Ji (44) is located on the same vertical line as Jian Zhong2 (44), 44.06 Jian Zhong, and Jian Feng (44) on the heart channel in the acupuncture system of Master Tung. The heart channel influences the center of the body and the organs in the center, such as the stomach, heart, and, in the case of San Zheng Ji — the spine. Additionally, the channel passes through the lateral part of the arm, so the points on the channel can treat pain in the lateral part of the thigh. Pain along the lateral side of the thigh can be combined with Jian Zhong (44.06), Jian Feng (44), and Jian Zhong2 (44). They are three of the 72 Absolute Needles of DongTung, which are used to treat spinal disorders, especially those of the lower spine. He Wen Zhi These points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. The effectiveness of these points increases when combined with Mu/Gu Guan (22). Point Name Sän [—] = — three. Zhéng [iEl — straight, accurate, to correct, principal, principle. Ji — ridge, spine, back, vertebra. Sän [z] These points' names hint at their ability to correct and straighten the spine."
+  },
+  "ShenJian": {
+    "dongIndications": [
+      "Polio (special effect)"
+    ],
+    "indications": [
+      "CVA (Stroke), paralysis of hand, paralysis of foot, hemiplegia (one-sided paralysis), paralysis (special effect).",
+      "Thigh Pain (inner thigh pain) .",
+      "Insomnia",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Inguinal hernia (shan qi), groin Pain.",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Ankle sprain (medial), ankle pain (medial).",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis."
+    ],
+    "additionalInfo": "Hu Wen Zhi The point does not appear in Master Tung's original book; Hu Wen Zhi introduced it for the first time. It is one of Dong's 72 absolute needles. This point effectively treats difficulties in raising the arm and moving the fingers after a stroke. Three Oblique Anterior Needles of the Shoulder Jian Feng (44), Shen Jian (44), and 44.11 Yun Bai are often needled together using the Dao Ma technique. This combination is called the Three Oblique Anterior Needles of the Shoulder. It is used to treat polio, cerebral hemorrhage, arm paralysis, ankle sprain, pain in the medial part of the thigh, vaginal inflammation, uterine inflammation, ovarian inflammation, and vaginal discharge. Point Name Shén — spirit, soul, mysterious, extraordinary. Jiän [R] — shoulder. The character Shén, in the name of the point, may suggest its ability to treat insomnia."
+  },
+  "YuYing": {
+    "dongIndications": [
+      "Vertebra dislocated",
+      "nephritis",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Bronchitis.",
+      "Night cough.",
+      "Xerostomia (dry mouth)."
+    ],
+    "additionalInfo": "The point has special effect when treting bronchitis and night cough."
+  }
+}

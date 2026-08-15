@@ -1,0 +1,35 @@
+{
+  "_comment": "לכידת OCR של נקודה שקיימת באפליקציה של שון ואינה קיימת ב-src/data/zones. ממתינה להחלטת עדי אם להוסיף כנקודה מלאה. נלכדה 15.8.2026 יחד עם אזור 44.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "_referencedBy": [
+    "src/data/zones/zone11.ts (11.14 - שילוב לסרטן שד)",
+    "src/data/zones/zone77extra.ts (שילוב לסטגנציית צי ודם)"
+  ],
+  "JianFeng": {
+    "header": "Jiän Féng | Shoulder Peak",
+    "zone": "44",
+    "cardCount": 12,
+    "dongIndications": [
+      "Breast cancer (highly effective)",
+      "breast tumor",
+      "mastitis (highly effective)",
+      "nipple Inflammation (highly effective)",
+      "nipple adenoma"
+    ],
+    "indications": [
+      "Hypertension.",
+      "Hyperhidrosis (excessive sweating).",
+      "Cerebral thrombosis (cva), aphasia, paraplegia (paralysis of legs), hemiplegia - highly effective (one-sided paralysis).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Inguinal hernia (shan qi).",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Hypogalactia (Lactation Iow), breast swelling.",
+      "Ankle sprain (medial), ankle pain (medial), ankle sprain (lateral), ankle pain (lateral), ankle sprain (dorsal), ankle pain (dorsal).",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Premenstrual Breast Distention.",
+      "Groin Pain."
+    ],
+    "additionalInfo": "An important point for treating breast disorders. Hu Wen Zhi Combine with Shaung Long to treat breast diseases. To enhance the effect, bleed the area of the lungs and heart on the back. Point Name Jiän [B] — shoulder. Féng [if] — peak, highest point. Jian Feng - acromion. The name of the point suggests its location beneath the acromion.",
+    "needling": "Perpendicular 0.5-1 cun"
+  }
+}

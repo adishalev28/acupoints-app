@@ -31,6 +31,11 @@ powershell -NoProfile -File $SP/ocr.ps1 -Path "$D/probe.png" -Crop "0,195,1920,1
 # 1. לכידה — פותח Indications, גולל עד התחתית, עובר לנקודה הבאה
 powershell -NoProfile -File $SP/capture-batch.ps1 -Ids "p01,p02,p03" -OutDir "$D/shots"
 
+# 1ב. שכבת אימות (רשות) — מוסיף צילום אחד לכל נקודה עם
+#     Needling + Reaction Area + סטטוס הסרטון. לא נוגע בפרסר הכרטיסים.
+powershell -NoProfile -File $SP/capture-batch.ps1 -Ids "p01" -OutDir "$D/shots" -Fields
+powershell -NoProfile -File $SP/ocr.ps1 -Path "$D/shots/p01_fields.png" -Crop "0,195,1920,700"
+
 # 2. קריאה — OCR + זיהוי מלבני הכרטיסים לפי צבע הרקע
 powershell -NoProfile -File $SP/cards.ps1 -Path "$D/shots" -Out "$D/shots.json"
 
@@ -104,6 +109,11 @@ powershell -NoProfile -File $SP/input.ps1 -Action scroll -X 960 -Y 700 -Amount -
 13. **`capture-batch.ps1` לוחץ "נקודה הבאה" גם אחרי המזהה האחרון** — בסוף ריצה
     האפליקציה עומדת נקודה אחת קדימה. חובה להריץ את הבדיקה המקדימה (שלב 0)
     לפני כל לכידה, אחרת סורקים את הנקודה הלא נכונה ומגלים את זה רק ב-OCR
-14. **צילום עם `-NoFocus` תופס את החלון שבחזית, לא את הטלפון** — לבדיקה
+14. **ארבעת הטאבים הם עוגני גלילה בדף אחד, לא דפים נפרדים.** לכן אסור
+    להתחיל את הסריקה מראש הדף כדי "לתפוס הכל" — `cards.ps1` מזהה כרטיסים
+    לפי צבע רקע בלבד, וסעיפי Location/Needling היו נקלטים ככרטיסים
+    ומזהמים את `dongIndications` (שהוא הכרטיס הראשון). לכן `-Fields`
+    הוא מעבר נפרד
+15. **צילום עם `-NoFocus` תופס את החלון שבחזית, לא את הטלפון** — לבדיקה
     מקדימה חובה `-Max`. ה-`-NoFocus` בתוך `capture-batch.ps1` תקין רק כי
     הלחיצות שלפניו כבר הביאו את חלון הטלפון לחזית

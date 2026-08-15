@@ -9,6 +9,7 @@ param(
   [Parameter(Mandatory)][string]$Ids,      # רשימת מזהים מופרדת בפסיקים, לפי סדר הניווט באפליקציה
   [Parameter(Mandatory)][string]$OutDir,
   [int]$MaxScrolls = 45,      # נקודות עם Additional Information ארוך עוברות 22
+  [switch]$Fields,            # מעבר נוסף: צילום אחד של Needling + Reaction Area
   [int]$ScrollAmount = -12,
   [int]$SettleMs = 900        # אנימציית הגלילה חייבת להסתיים לפני הצילום,
 )                             # אחרת התמונה מטושטשת וה-OCR ממציא מילים
@@ -22,6 +23,7 @@ if (-not (Test-Path $OutDir)) { New-Item -ItemType Directory -Path $OutDir -Forc
 
 # קואורדינטות במסך מלא 1920x988 — ראה README
 $TAB_INDICATIONS = @{ X = 1830; Y = 167 }
+$TAB_NEEDLING    = @{ X = 633;  Y = 167 }
 $NEXT_POINT      = @{ X = 1868; Y = 953 }
 $SCROLL_AT       = @{ X = 960;  Y = 650 }
 
@@ -40,6 +42,16 @@ $list = $Ids -split ',' | ForEach-Object { $_.Trim() } | Where-Object { $_ }
 
 foreach ($id in $list) {
   Write-Output "=== $id ==="
+
+  # מעבר שדות: עוגן Needling נוחת על Needling + Reaction Area + סטטוס הסרטון
+  # בצילום אחד. נעשה לפני מעבר ההתוויות כדי לא לגעת בפרסר הכרטיסים.
+  if ($Fields) {
+    Click $TAB_NEEDLING.X $TAB_NEEDLING.Y
+    Start-Sleep -Milliseconds 400
+    Click $TAB_NEEDLING.X $TAB_NEEDLING.Y
+    Start-Sleep -Milliseconds 900
+    Shot (Join-Path $OutDir ("{0}_fields.png" -f $id)) | Out-Null
+  }
 
   # הלחיצה הראשונה אחרי ניווט נבלעת (מפעילה את החלון) — לכן פעמיים
   Click $TAB_INDICATIONS.X $TAB_INDICATIONS.Y

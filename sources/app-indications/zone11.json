@@ -1,0 +1,959 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "11.01": {
+    "dongIndications": [
+      "Heart diseases",
+      "knee pain",
+      "stomach distention",
+      "inguinal hernia (shan qi)",
+      "eye pain (corner of the eye)"
+    ],
+    "indications": [
+      "Palpitations, endocarditis.",
+      "Tonsillitis.",
+      "Trigeminal neuralgia.",
+      "Asthma (childhood), cough, cough (with yellow phlegm).",
+      "Gan disease - food accumulation, enteritis (intestinal inflammation)-(special effect).",
+      "Chest pain (Pleurodynia), Chenst stiffness, bronchitis, yellow phlegm, pneumonia.",
+      "Claude O",
+      "Prostatitis.",
+      "Whiplash injury.",
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "11.01-05 Qi Jian [-tHiR] Seven space",
+      "11.01-05 Qi Jian Seven Space",
+      "11"
+    ],
+    "additionalInfo": "For Additional Information, see 11.02 Xiao Jian. Point Name Då [k] - Big. Då [ft] - Big. Jiän [M] - Small space, interstitial space. see 11.02 Xiao Jian. Då [X] - Big."
+  },
+  "11.02": {
+    "dongIndications": [
+      "Throat dryness",
+      "tonsillitis",
+      "tonsillolith (tonsil stone)"
+    ],
+    "indications": [
+      "Gan disease - Food accumulation.",
+      "Enteritis (intestinal inflammation)-(special effect).",
+      "Asthma (childhood), cough, cough (with yellow phlegm).",
+      "Pneumonia.",
+      "Endocarditis.",
+      "Conjunctivitis, eye disorders, eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Prostatitis.",
+      "11.01-05 Qi Jian [-tMR] Seven Space",
+      "11"
+    ],
+    "additionalInfo": "There are seven Jian points, each with a reaction area of the six hollow organs. The five Zang organs store, while the six Fu organs deal with excess and accumulation. Therefore, the Jian points treat conditions of excess in the lungs and intestines, as well as hernias (Shan Qi). 11.01 Da Jian, 11.02 Xiao Jian, and Ce Jian (II) are important points for treating yellow phlegm. Palm Diagnosis The points are located on the second finger, Which represents the lungs, and thus they can treat lung diseases. The three points, 11.01 Da Jian, 11.02 Xiao Jian, and Ce Jian, are located in the area representing the trachea, so they can diagnose and treat disorders of the trachea and throat accompanied by yellow phlegm. the area of the points can also indicate condition of allergic asthma. Shan Qi All seven Jian points treat Shan Qi [fiZ] (hernia). In Chinese medicine, the term Shan Qi has a broader meaning than a hernia. It is related to the leg's Jue Yin and Ren Mai channels. Shan Qi describes a condition of Qi stagnation with pain and swelling, affecting the lower abdomen, groin, and genital organs. These disorders appear more in men due to their anatomical structure. Thus, Shan Qi is especially related to the testicles and scrotum, areas reached by the channels, and disorders such as varicocele, testicular edema, testicular tumors, and undescended testicles. Additionally, symphysiolysis, ureter stones, uterine cysts, and intestinal diseases may fall under this category. Clinical Application & Combinations 1. Treating Urogenital & Lower Jiao Issues (Hernia, Cystitis, Urethritis) The Hernia Protocol: Da Jian, Xiao Jian, Ce Jian, Zhong Jian, and Xia Jian are considered the primary special effect points for treating all types of hernias. Urinary Tract Infections: For cystitis and urethritis, Fu Jian and Wai Jian are usually needled together for optimal results. To double the efficacy, combine them with the leg points Li Bai and Yun Bai. 2. Treating Respiratory & Childhood Illnesses The points on the first segment containing the Lung branch nerve (Xiao Jian, Ce Jian) excel at clearing phlegm (spitting yellow phlegm), opening the chest, and treating pediatric conditions like childhood asthma and pneumonia. Ce Jian is particularly renowned as a special point for laryngitis. 3. Bleeding Techniques & \"Miraculous\" Effects While needling (0.2 to 0.4 cun) is standard, many of these points respond exceptionally well to bleeding with a three-edged needle. Crucial Diagnostic/ Treatment Sign: When bleeding Fu Jian and Wai Jian, if yellow fluid is pricked out, the clinical effect is considered miraculous ('#12\"). Point Name Xiäo ['Js] — Small. Xiäo — Small. Jiän [M] - Small space, interstitial space. Let's examine the names of the seven Jian points together. All seven Jian points have a Reaction area of the six hollow organs. The term 'space' in the point names indicates that these points influence the hollow organs. Unlike the five solid organs, hollow organs have a cavity (space). The names of 11.01 Da Jian and 11.02 Xiao Jian suggest these Jian points influence the intestines. The intestines are composed of two parts: the large intestine, which is the large cavity, and the small intestine, which is the small cavity. 'Da' (big) in the point name 11.01 Da Jian may indicate its influence on the large intestine, called Da Chang. 'Xiao' (small) in the point name 11.02 Xiao Jian may indicate an influence on the small intestine, which is called Xiao Chang. Ce Jian (11), 11.03 Fu Jian, and 11.04 Wai Jian suggest the influence of the Jian points on hernias (Shan Qi). 'Side' in the point name Ce Jian (11) may hint at its ability to treat a hernia that bulges to the side. 'Floating' in the point name 11.03 Fu Jian may hint at the point's ability to treat a hernia that floats outwards to the body's surface, and 'external' in the point name 11.04 Wai Jian also hints at the point's ability to treat a hernia that bulges outwards. 11.05 Zhong Jian, the central cavity, hints at the point's ability to treat the central cavity, Which is the heart cavity. The names of the Jian points describe all their areas of influence."
+  },
+  "11.03": {
+    "dongIndications": [
+      "Inguinal hernia (shan qi)",
+      "pyelonephritis (kidney infection)",
+      "flatulence (gas)",
+      "toothache",
+      "abdominal pain"
+    ],
+    "indications": [
+      "Urinary tract infection (UTI).",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "11.01-05 Qi Jian [EM] Seven space",
+      "11"
+    ],
+    "additionalInfo": "For Additional Information, see 11.01 Da Jian and 11.04 Wai Jian. Point Name Fü — Float. Jiän [M] - Small space, interstitial space. see 11.02 Xiao Jian Fü [24] — Float."
+  },
+  "11.04": {
+    "dongIndications": [
+      "Inguinal hernia (shan qi)",
+      "pyelonephritis (kidney infection)",
+      "flatulence (gas)",
+      "toothache",
+      "abdominal pain"
+    ],
+    "indications": [
+      "Urinary tract infection (UTI).",
+      "Prostatic Hyperplasia (enlarged prostate)",
+      "Oligospermia (sperm count low), teratozoospermia (sperm morphology abnormal).",
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "11.01-05 Qi Jian [-tfiiR] Seven Space",
+      "11.01-05 Qi Jian [EM] Seven space",
+      "11"
+    ],
+    "additionalInfo": "Usually, 11.03 Fu Jian is needled together with 11.04 Wai Jian. Both points can also treat an enlarged prostate (Prostatic Hyperplasia) Hu wen Zhi You can add 44.11 Yun Bai and 44.12 Li Bai for urinary tract infections. The results will be better if a yellowish fluid is released when the point is pricked. For Additional Information, see 11.01 Da Jian Point Name Wåi [5b] - external. Jiän [M] - small gap, interstitial space. See 11.02 Xiao Jian."
+  },
+  "11.05": {
+    "dongIndications": [
+      "Palpitations",
+      "chest oppression (chest tightness)",
+      "knee pain",
+      "tremors",
+      "blurred vision",
+      "inguinal hernia (shan qi)"
+    ],
+    "indications": [
+      "Dorsalgia (back pain).",
+      "Cough.",
+      "11.01-05 Qi Jian [EM] Seven space",
+      "11"
+    ],
+    "additionalInfo": "11.05 Zhong Jian has the same indications as the Jian points located on the first section of the first finger, with the addition of blurred vision, eye itching, dizziness, and back pain. There are seven Jian points in total, which can be divided into three groups: The first group includes 11.01 Da Jian, 11.02 Xiao Jian, and Ce Jian (II). The second group includes 11.05 Zhong Jian and Xiao Jian. The third group includes 11.03 Fu Jian and 11.04 Wai Jian. 11.05 Zhong Jian is the most suitable among all the Jian points for emergency treatment during a heart attack. For Additional Information, see 11.01 Da Jian. Point Name Zhöng [h] — central Jiän [M] — small gap, interstitial space. For Additional Information, see 11.02 Xiao Jian. Zhöng [5b] — central"
+  },
+  "11.06": {
+    "dongIndications": [
+      "Uterine pain",
+      "metritis (uterine inflammation)",
+      "Irregular menstrual",
+      "leukorrhea (vaginal discharge-white and red)",
+      "fallopian tube blockage (salpingeal occlusion)",
+      "uterine retroversion (tilted or tipped uterus)",
+      "frequent urination",
+      "vaginal swelling",
+      "vaginodynia (vaginal pain)",
+      "miscarriage prevention"
+    ],
+    "indications": [
+      "Ovarian cancer, oophoritis (ovarian inflammation), ovarian cyst.",
+      "Pyelonephritis (kidney infection).",
+      "Menorrhagia (Irregular Uterine Bleeding).",
+      "Dysmenorrhea (Menstrual pain), premenstrual syndrome (PMS).",
+      "Polycystic ovary syndrome (PCOS).",
+      "Menopause, hot flashes, night sweats.",
+      "Prostatitis.",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Cervical Dysplasia.",
+      "Vaginal dryness.",
+      "Infertility, premature ovarian insufficiency (POI)."
+    ],
+    "additionalInfo": "The point's reaction area encompasses the liver and kidneys, which are linked to two crucial aspects of the reproductive system: the liver stores blood while the kidneys preserve essence. 11.06 Huan Chao provides both essence and blood to support the reproductive system. 11.06 Huan Chao plays a vital role in addressing gynecological disorders, but it is also applicable for issues related to the male reproductive system. Frequently, it is combined with 11.24 Fu Kej known for its effectiveness in treating 100 gynecological diseases. In Master Tung's acupuncture, white and red vaginal discharges indicate either vaginal discharges or abnormal uterine bleeding. Palm diagnosis Palm diagnosis reveals that the fourth finger symbolizes the liver and spleen, which supports the point's application in gynecological disorders. Liao Li 11.06 Huan Chao is effective for treating prostatitis stemming from cold invasion, as it helps to enhance the Yang Qi of the triple burner. Point Name Huån [Fl — return. Chåo — nest. The name of the acupuncture point suggests its influence on the uterus and fertility. The \"nest\" represents the uterus, and what returns to it are the essences of the kidneys and Huån [Y] - return. the blood of the liver. Essences and blood are two important aspects of the reproductive system's proper functioning."
+  },
+  "11.07": {
+    "dongIndications": [
+      "Pleuritis (inflammation of the pleura)",
+      "chest pain (pleurodynia)",
+      "skin diseases",
+      "face dark spots",
+      "rhinitis",
+      "otitis media (ear infection-middle ear)",
+      "tinnitus"
+    ],
+    "indications": [
+      "Hypogalactia (low milk supply).",
+      "Otitis externa (ear infection-externa ear).",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema.",
+      "Functioning Adenoma (Pituitary Growth)."
+    ],
+    "additionalInfo": "The points 11.07 Zhi Sima and 88.17-19 Sima have similar functions; however, 11.07 Zhi Sima is considered less powerful and more suitable for acute conditions than 88.17-19 Sima, which is better for chronic conditions. Palm Diagnosis The second finger represents the lungs. Hence, these points have an effect on the lungs. Yang Wei Chieh These points are very effective for treating shoulder pain. The points can help stop milk production in the breasts when the baby is weaned from nursing. Point Name Zhi [iä] — Finger. Simå [Z] - A group of four horses. Zhi [9%] — Finger. Zhl — Finger. The points' names include the character \"finger\", distinguishing them from Sima on the thigh. In the Yellow River Diagram, the number four represents metal. The points influence the lungs (metal). A carriage with four horses is a fast carriage. The points' names suggest their ability to regulate and strengthen Qi. The points affect the lungs, which control Qi."
+  },
+  "11.08": {
+    "dongIndications": [
+      "Enteritis (intestinal inflammation)",
+      "abdominal bloating"
+    ],
+    "indications": [
+      "Fish bone stuck in the throat, plum pit qi.",
+      "Neurasthenia (anxiety disorder).",
+      "Cough."
+    ],
+    "additionalInfo": "These points correspond to 77.24 Zu Qian Jin and 77.25 Zu Wu Jin, and they can be used together. Hu wen Zhi The points can treat both acute and chronic enteritis. Point Name Zhi frä] — Finger. Zhi - Finger. Jin [f] — Metal. Wü [E] - Five. Qiän [+] - Thousand. Wü - Five. There are three groups of points with the name five/thousand metal: 11.08 Zhi Wu Qian jin (finger five and finger thousand metal), 33.08-09 Shou Qian/Wu Jin (hand thousand/ five metal), 77.24-25 Zu Qian/Wu Jin (foot thousand/five metal). \"Finger\" in the name of the points indicates that the points are located on the finger. The \"metal\" character in the name of the points suggests their ability to treat diseases of the lungs and large intestines, such as acute enteritis, throat disorders, and shoulder and back pain. back pain."
+  },
+  "11.09": {
+    "dongIndications": [
+      "Knee Pain",
+      "scapula pain"
+    ],
+    "indications": [
+      "Knee osteoarthritis.",
+      "Cervicalgia (neck pain).",
+      "Calf pain, calf swelling."
+    ],
+    "additionalInfo": "A primary point in Master Tung's acupuncture for treating knee disorders. In Master Tung's acupuncture, many points that affect the heart also influence the knee. The reason for this is that the primary points affecting the heart, such as Tong xin/ling (88) and 88.01-03 Tong guan/shan/tian, pass through the center of the thigh, and if a line is drawn through these points, it will pass through the center of the knee. This reflects an important principle in Master Tung's acupuncture: mutual influence between areas with the same reaction area. In other words, points with the same reaction area can affect areas where points with the same reaction area are located. Lai Jing Xiong Clinical experience: 11.09 Xin xi for pain in the vertebrae, knee weakness, pain in the patella, and around Liv-8 Qu quan area. Point Name Xin [lb] — Heart. Xin — Heart. [ho - Knee. In Master Tung's acupuncture, many points that affect the heart also affect the knee. The name of the points suggests their ability to influence the knee. - Knee."
+  },
+  "11.10": {
+    "dongIndications": [
+      "Hemiplegia (one-sided paralysis)"
+    ],
+    "indications": [
+      "Leg pain.",
+      "CVA (Stroke).",
+      "Legs weakness.",
+      "Cold feet.",
+      "Gout.",
+      "Dementia."
+    ],
+    "additionalInfo": "The points can cause an increase in blood pressure and sometimes dizziness, so the needles should not be left in for too long. Master Tung discovered the points in 1971 when treating Cambodian Prime Minister Lon Nol after he had a stroke. He suffered from hemiplegia, and his legs were cold. Master Tung looked at the back of the hand and saw a blue vein at the tip of the middle finger. He needled a point in the vein area, and immediately afterward, Lon Nol felt a warm sensation from the knee to below the foot. The points increase blood flow to the legs and the brain. The point's name suggests its mechanism according to the Five Phases (Nourishing Cycle): Wood nourishes Fire (Heart) to increase blood flow to the brain and legs. Hu Wen Zhii The points belong to Tung's 72 Absolute Needles and have a unique effect on treating hemiplegia, especially when combined with Ba Guan (11). They can also be used for leg weakness, cold legs, and gout. Li Gou Zheng Vaccaria (Wang Bu Liu Xing) seeds or magnets can be placed on the points and left for a longer time. The traditional extra points Shi Xuan are better for the time of the stroke, while these four points are better after the stroke. The points stimulate the brain, which can be used in diseases caused by brain degeneration, such as dementia. Imaging Imagine the middle finger with the whole body: the first segment represents the lower back, the second segment is the neck and upper back, and the third is the head. The area of the point represents the brain; hence, the point treats stroke. Point Name Mü — Wood. Huö — Fire. Mü [X] — Wood. The points are called Wood and Fire due to their ability to affect the liver and heart, especially in stroke and blood flow to the brain."
+  },
+  "11.11": {
+    "dongIndications": [
+      "Spine pain",
+      "Cervicalgia (neck pain)",
+      "calf pain",
+      "calf swelling"
+    ],
+    "indications": [
+      "Spinal spondylolisthesis.",
+      "Occipital pain, neck sprain, torticollis (wry neck), cervical spine disorders, herniated disc - cervical, spondylolysis.",
+      "Occipital headache.",
+      "Intercostal neuralgia.",
+      "Dorsalgia (back pain), sciatica.",
+      "Thumb pain.",
+      "Chest pain (Pleurodynia).",
+      "Leg pain due to varicose veins.",
+      "Coccydynia (tailbone pain).",
+      "Occipital headache.",
+      "Achilles tendonitis."
+    ],
+    "additionalInfo": "The reaction area of the points are related to the heart and lungs, so the point affects the chest, upper back, and the flow of Qi and blood. 11.12 Er Jiao Ming represents the front of the head, while Fei Xin 11.11, in the next segment, represents the back of the head and thus treats occipital headache. Yang Wei Chieh The points strengthen the heart, making them suitable for treating swelling and pain in the legs. Miriam Lee Varicose veins in the legs result from insufficient Qi and blood flow. The points affect the lungs and heart, so they can enhance the flow of Qi and blood to the legs. Imaging The points are located in the middle segment of the middle finger, corresponding to the Du Mai channel and the spine, which are located in the center of the body. The first segment represents the lumbar spine, the second segment is the neck and thoracic spine, and the third is the head. The points are located in the middle segment, so they can treat disorders of the cervical and thoracic spine. Point Name Féi [Hi] - Lungs. Xin — Heart. The name of the points suggests their ability to influence the chest area and enhance the flow of Qi and blood. Féi F] — Lungs."
+  },
+  "11.12": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "renal pain",
+      "pain above the eye",
+      "nasal bone area pain"
+    ],
+    "indications": [
+      "Eye disorders, eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Frontal headache, headache above the eye.",
+      "Allergic rhinitis (hay fever), rhinitis, sinusitis - frontal, anosmia (loss of smell).",
+      "Erectile dysfunction (impotence), phallodynia (penile pain).",
+      "Herniated disc - lumbar.",
+      "Nasolacrimal duct obstruction (tear duct blockage)."
+    ],
+    "additionalInfo": "Primary points for treating lower back pain, especially when the pain is located on the spine and the sides of the spine. Important points for treating eye diseases and frontal headaches in the area of the nasal bone and above it, such as in cases of sinusitis. Lai Jing Xiong Excellent points for treating lower back pain at the level of L4 and 3.5 cun from the spine, in the area of the extra points M-BW-24 Yao Yan. The points can treat pain above the eyes in the area of the nasal bridge (especially in women). Imaging The points are located in the middle segment of the middle finger, corresponding to the Du Mai channel and the spine, which are located in the center of the body. The first segment represents the lumbar spine, the second segment is the neck and thoracic spine, and the third is the head. The points are located in the first segment so they can treat disorders of the lumbar spine. The first segment of the second finger represents the testes, and the third finger represents the penis, so the points can treat impotence and pain in the penis. Point Name Ér [z] - Two. Jiåo — Corner, Horn. Ming [Bfi] — Bright, Vision, Justice. The points' names, \"Ming\" in the lower back, suggest their influence on the area where the Ming Men are located. \"Ming\" in the name can also link the points to the eyes. In the Yellow River Diagram, the number two represents fire (heart). The points are located on the third finger, which represents the heart. Since the heart and spine are located Ér [zl - Two. in the center, many points that affect the spine have innervation from the heart."
+  },
+  "11.13": {
+    "dongIndications": [
+      "Fear",
+      "night crying in babies"
+    ],
+    "indications": [
+      "Stomach distention.",
+      "Calf pain.",
+      "Dizziness, headache, hordeolum (stye).",
+      "Palpitations, irregular heart rate, tachycardia, bradycardia.",
+      "Jaundice.",
+      "Ankle pain (lateral), ankle sprain (lateral).",
+      "Neurasthenia (anxiety disorder)."
+    ],
+    "additionalInfo": "'s reaction area is the gallbladder. Hence, they influence the connection between the gallbladder and the heart, particularly in he point can treat night crying in infants, but its function can be extended to treat nightmares in adults. I found that the point The third finger represents the heart, and the point's reaction area is the gallbladder. Hence, they influence the connection between the gallbladder and the heart, particularly in the context of fears, anxiety, and rapid heartbeat. The point can treat night crying in infants, but its function can be extended to treat nightmares in adults. I found that the point can be effective in treating post-trauma. Hu Wen Zhi The point can treat leg pain and cramps. It works on the connection between the gallbladder and the heart. Yang Wei Chieh Uses the point for knee pain. Point Name Dån [AEI — Gallbladder. The points are located on the third finger, which represents the heart. Their name suggests their ability to treat disorders of the heart and gallbladder, primarily in the context of arrhythmias and also in the emotional aspect, such as anxiety and fears. Dån — Gallbladder."
+  },
+  "11.14": {
+    "dongIndications": [
+      "Expels wind",
+      "facial paralysis (bell's palsy)",
+      "breast swelling",
+      "muscle atrophy"
+    ],
+    "indications": [
+      "Breast tumors, nipple swelling, breast cancer, mastitis, breast abscesses, nipple adenoma.",
+      "Migraine, temporal headache."
+    ],
+    "additionalInfo": "11.14 Zhi San Zhong functions similarly to San Zhong 77.05-07. The San Zhong 77.05-77.07 points are considered stronger and have an effect on the entire body, while 11.14 Zhi San Zhong affects the face and breasts and is more suitable for acute conditions. Hu Wen Zhi The points are effective for treating tumors and breast cancer, especially when combined with Jian Feng (44). Point Name Zhi — Finger. Sän [E] — Three. Zhöng [m] — Heavy, Weight, Important. \"Finger\" in the name of the points distinguishes these points from San Zhong 77.05-07. If you add the flesh character Rou [ ] to the character Zhong [ J, you get the character Zhong [ l, which means swelling, and therefore, the name of the points suggests their ability to treat swellings in the body, such as breast abscess or breast cancer."
+  },
+  "11.15": {
+    "dongIndications": [
+      "Xerostomia (dry mouth)",
+      "kidney deficiency",
+      "heart deficiency",
+      "dorsalgia (back pain)"
+    ],
+    "indications": [
+      "Cardiac asthma.",
+      "Chest pain (Pleurodynia).",
+      "Interscapular pain.",
+      "Premature ejaculation.",
+      "Vaginal dryness.",
+      "Functioning Adenoma (Pituitary Growth)."
+    ],
+    "additionalInfo": "The kidneys regulate the secretion of saliva. Dryness and thirst can be indicators of kidney yin deficiency. These points have a Reaction area of the kidneys, and they can treat dry mouth. They can be combined with 88.09 Tong Shen and 1010.19-20 Shui Tong/Jin to treat thirst. The points are located on the fourth finger, representing the liver (wood). The liver blood can nourish the kidney essence and generate heart qi. Therefore, many points related to the liver can affect the heart and the kidneys. In this mechanism, where the liver blood nourishes the kidney essence, a condition of kidney yin deficiency with rising heat is created. The points also somewhat affect the heart and can treat cardiac asthma. Lee Kuo Cheng The points treat kidney and heart diseases and are more effective in cases of kidney weakness causing heart diseases. Yang Wei Chieh Sometimes, Master Tung used the points to treat disorders of the Latissimus Dorsi muscle (pain in the BI-43 area). The points have a similar effect to 88.09 Tong Shen but with a less strong influence. Point Name Zhi fifi] — Finger. Zhi [$ä] — Finger. Shén [MI - Kidneys The points' names suggest their ability to treat kidney disorders, such as dry mouth and lower back pain caused by kidney deficiency."
+  },
+  "11.16": {
+    "dongIndications": [
+      "Knee pain",
+      "Knee osteoarthritis",
+      "rheumatic heart disease",
+      "phlegm misting the heart orifices"
+    ],
+    "indications": [
+      "Knee pain (medial).",
+      "Eye pain",
+      "Bipolar disorder (manic depression), psychosis."
+    ],
+    "additionalInfo": "The point treats pain in the medial aspect of the knee and is very effective for treating rheumatoid arthritis of the knee. The point addresses mental disorders caused by phlegm obstructing the Shen, as well as anger, anxiety, and depression. Lai Jing-Xiong Adds an oral indication passed down from Master Tung: the point can treat phlegm obstructing the heart's orifices due to Qi stagnation following anger. Case of Master Tung: A patient with schizophrenia who collapsed after an argument with her husband. Master Tung needled 11.16 Huo Xi on both sides. Afterward, the patient expectorated phlegm and was cured. Hu wen Zhi The point is suitable for knee disorders due to kidney deficiency and cold (the point's name is Knee Fire). The point treats eye pain due to kidney deficiency. The pain can also be caused by hypertension. Yang Wei Chieh Master Tung used 11.16 Huo Xi to treat psychosis due to phlegm obstructing the heart, especially when the cause is anger. The point can also treat difficulty in raising the arm and frozen shoulder. Point Name XT [YO — Knee. - Knee. Huö - Fire. The name of the point suggests its ability to treat knee disorders. The point's name, \"Fire,\" indicates its ability to treat knee disorders caused by cold, as it is located on the finger, representing the kidneys. XT - Knee. Huö ['A'] — Fire."
+  },
+  "11.17": {
+    "dongIndications": [
+      "Restlessness",
+      "hyperactivity of liver fire"
+    ],
+    "indications": [
+      "Shoulder pain.",
+      "Neck sprain.",
+      "Hypochondrium Pain, diaphragm tightness.",
+      "Hypercholesterolemia (high cholesterol), Hyperlipidemia (high lipids).",
+      "Stomach pain.",
+      "Common cold, runny nose, rhinitis, sinusitis.",
+      "Hand eczema, urticaria (hives), itching.",
+      "Hyperhidrosis (excessive sweating), night sweats.",
+      "Dry eyes, tearing, Retinal degeneration, macular degeneration (AMD), retinitis.",
+      "Headache, migraine.",
+      "Tinnitus.",
+      "Insomnia.",
+      "Xerostomia (dry mouth).",
+      "Temporomandibular joint syndrome (TMJ).",
+      "Aallergic rhinitis (hay fever), seasonal allergic conjunctivitis (itching, redness, watering of the eyes).",
+      "Nasolacrimal duct obstruction (tear duct blockage).",
+      "Herpes zoster eye.",
+      "Menopause, hot flashes, restlessness.",
+      "Vaginal dryness.",
+      "Bipolar disorder (manic depression).",
+      "Groin Pain."
+    ],
+    "additionalInfo": "The points' reaction area is the liver and can, therefore, treat all liver symptoms, especially those arising from excess and fire. The points are located on the second finger, Which represents the lungs. Therefore, the points treat liver fire hyperactivity by controlling metal (lungs) over wood (liver). Due to the connection between the points and the lungs and liver, they can treat skin disorders. The liver and lungs are responsible for regulating Qi, so the points can treat Qi stagnation conditions accompanied by restlessness, irritability, and anger. Because the points are connected to the lungs, they can regulate sweating and treat conditions such as no sweating, excessive sweating in the palms, and night sweats—for example, during menopause, especially when accompanied by irritability and anger. He Wen Zhi Adds indications for conditions arising from hyperactivity of liver fire or wood invading earth: pain in the right hypochondrium, high cholesterol, stomach pain, and stiffness in the shoulder and neck. The points effectively treat pain and swelling in the stomach and intestines. Lai Jing Xiong Adds indications: cracked skin or fungal infections on the hands, cold, and runny nose. Yang Wei Chieh Says the points can treat excessive nasal discharge from any cause. In cases of sinusitis due to gallbladder fire, the points can clear the fire of the gallbladder and liver. Chuan Min Wang Recounts a case of Master Tung: used 11.17 Mu to treat night sweats. Miriam Lee Recommends using the points to treat bladder inflammation in women due to liver fire transferring to the bladder and for pain in the groin and thigh along the Leg Jue Yin channel. Point Name Mü [X] — Wood. The points' names suggest their influence on the liver, which belongs to the wood phase."
+  },
+  "11.18": {
+    "dongIndications": [
+      "Enlarged spleen (Splenomegaly)",
+      "splenitis",
+      "spleen necrosis"
+    ],
+    "indications": [
+      "Stomach distention.",
+      "Toe pain.",
+      "Chest pain (Pleurodynia).",
+      "Pneumonia.",
+      "Heart diseases.",
+      "Dorsalgia (back pain).",
+      "Epstein Barr Virus."
+    ],
+    "additionalInfo": "An enlarged spleen can be caused by infections, liver diseases, and liver cancer. Usually, spleen enlargement does not cause symptoms and is discovered during a physical examination. 11.18 Pi Zhong can be used in cases of spleen and heart deficiency when the patient suffers from anemia, bleeding, poor appetite, and fatigue. Using the Dao Ma technique, the points can be combined with Huo Xing Xia (11). Palm Diagnosis The middle finger represents the middle burner. Heart and spleen-stomach diseases can be diagnosed on the middle line of the third finger. Lee Kuo Cheng 11.18 Pi Zhong and Huo Xing (II) have the same indications. They can treat enlarged liver and spleen, hepatitis, pneumonia, heart diseases, multiple sclerosis, and flatulence. Point Name - Spleen. Zhöng [4] — Swollen. The name of the points suggests their ability to treat an enlarged spleen (Splenomegaly)."
+  },
+  "11.19": {
+    "dongIndications": [
+      "Palpitations",
+      "heart diseases",
+      "rheumatic heart diseases"
+    ],
+    "indications": [
+      "Myocardial infarction.",
+      "Arrhythmia (irregular heartbeat), bradycardia, tachycardia.",
+      "Lung cancer, tuberculosis.",
+      "Chest pain (Pleurodynia).",
+      "Hyperthyroidism, graves disease."
+    ],
+    "additionalInfo": "These points can be considered in any acute or chronic heart disease, including chest stiffness. 11.19 Xin Chang is considered a key point in treating acute heart diseases and can regulate the pulse. Palm Diagnosis The third finger represents the heart; therefore, the points affect the heart. The second and third fingers are related to the upper burner; therefore, the points affect the lungs. Hu Wen Zhi The combination of 11.19 Xin Chang with 22.05 Ling Gu is effective in treating lung cancer and emphysema. Yang Wei Chieh The points can also be used for an enlarged heart, arrhythmias, palpitations, tachycardia, and, to some extent, bradycardia. For an enlarged heart, it is advisable to bleed DT.07 San Jin, and then needle 11.19 Xin Chang. Point Name Xin - Heart. Chång [R] — Normal. The points' names suggest their ability to restore the heart to normal function."
+  },
+  "11.20": {
+    "dongIndications": [
+      "Hepatitis",
+      "liver cirrhosis",
+      "enlarged liver"
+    ],
+    "indications": [
+      "Ascites.",
+      "Liver cancer (symptom relief).",
+      "Bitter taste.",
+      "Hypochondrium pain, diaphragm tightness.",
+      "Asthma.",
+      "Insomnia.",
+      "Leg pain, leg cramps."
+    ],
+    "additionalInfo": "11.20 Mu Yan treats liver diseases such as hepatitis, cirrhosis, enlarged liver, and cancer, as well as liver hyperactivity and fire. 11.17 Mu also treats liver hyperactivity and fire, but it cannot treat liver organ disorders, and its mechanism of action is different (see 11.17 Mu). Palm Diagnosis According to the palm diagnosis, the fourth finger represents the liver. in cases of liver disease, If there are veins in the area of the points, it is advisable to bleed the veins and then needle 88.12-14 Shang San Huang. Lai Jing Xiong The points can treat rising liver fire, bitter taste, and insomnia. Yang Wei Chieh The inflammation or blazing fire in the point's name hints at its ability to treat liver fire, characterized by a bitter taste and restlessness. The point clears liver heat and calms liver fire. It is effective for hypochondriac pain and insomnia. Point Name Mü — Wood. Yån [A] - Inflammation, Blazing Fire. The name of the points suggests their ability to treat liver inflammation and hyperactivity of liver fire. Mü [X] — Wood."
+  },
+  "11.21": {
+    "dongIndications": [
+      "Tonifying points (They have the same indications as St-36 Zu San Li)"
+    ],
+    "indications": [
+      "Digestive disorders, stomach diseases, diarrhea, vomiting (emesis), nausea and vomiting.",
+      "Pancreatitis.",
+      "Insomnia.",
+      "Epstein Barr Virus.",
+      "Fatigue."
+    ],
+    "additionalInfo": "The points on the fourth finger represent the spleen and liver. 11.21 San Yan has a special effect in cases of exhaustion. The points affect the spleen and liver's ability to produce and store Qi and blood. The points resemble the action of St-36 Zu San Li and can help with digestion, prevent diseases, and tonify. The area of the points can be massaged in cases of great fatigue. Hu Wen Zhi Nei Jing mentions that stomach disorders can cause restlessness and insomnia. These points are used for digestive disorders accompanied by insomnia, together with 1010.08 Zhen Jing. Point Name Sän [E] — Three. Yän [ER] — Eyes. Yän [EN] — Eyes."
+  },
+  "11.22": {
+    "dongIndications": [
+      "Osteoarthritis (swollen bones)"
+    ],
+    "indications": [
+      "Periostitis, osteomyelitis, connective tissue inflammation, arthritis.",
+      "Tendon pain.",
+      "Spine osteophytes (bone spurs).",
+      "Sciatica, lumbago (lower back pain)..",
+      "Steaming bone syndrome"
+    ],
+    "additionalInfo": "The points are located on the fourth finger, which represents the liver, while the fifth finger represents the kidneys; hence, the reaction area is of the kidneys and liver. The kidneys govern the bones and the liver governs the tendons and ligaments, so the points can treat tendon and bone disorders, especially when accompanied by pain. The points in areas II and 22 are suitable for treating acute conditions. When treating bone, tendon, and ligament disorders, combining points from areas II and 22 with tonifying points that treat chronic conditions from areas 77 and 88 is recommended. For bone, tendon, and ligament disorders, we use 77.17,19, 21 Xia San Huang, which tonify the kidneys that govern the bones, and 88.12-14 Shang San Huang, which tonifies the liver that governs the tendons and ligaments. To treat arthritis, combine with 11.27 Wu Hu, and to treat spinal disorders, combine with San Zheng Ji (44), 22.08-09 Wan Shun Yi/Er, and Mu/Gu Guan (22). Point Name Fü Yuån [iülh] — To recover from illness. The points' names suggest their ability to help the body recover, especially from skeletal injury."
+  },
+  "11.23": {
+    "dongIndications": [
+      "Yellow discoloration of the sclera (Icteric sclera)"
+    ],
+    "indications": [
+      "Temporal headache, migraine, headache above the eye.",
+      "Trigeminal neuralgia.",
+      "Dizziness, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Finger pain.",
+      "Meniere's disease."
+    ],
+    "additionalInfo": "The points are located on the fifth finger, which represents the kidneys (water). The reaction area of the point is the gallbladder (wood). The points treat excess wood in the head area due to water deficiency. Hu wen Zhi Tai Yang refers to the temple area. The point can treat pain in the temple area, pain above the eye, dizziness, and eye diseases due to heat and dampness in the liver and gallbladder. In this condition, the extra point Tai Yang (MH-N-9) located at the temple can be bled. The point can also treat high diastolic blood pressure above 90. Point Name Yån [EN] - Eyes. Huång — Yellow. Tåiyång [X*] - Sun, temple. The name of the points suggests their ability to treat jaundice. Another name is Tåiyång Hu Wen Zhii calls the points Tai Yang because they influence the temple area."
+  },
+  "11.24": {
+    "dongIndications": [
+      "Uteritis",
+      "uterine pain (acute and chronic)",
+      "uterine tumors",
+      "lower abdomen pain",
+      "hypogastric pressure (lower abdominal pressure)",
+      "infertility",
+      "irregular menstruation",
+      "dysmenorrhea (Menstrual pain)",
+      "menstruation with heavy or light bleeding"
+    ],
+    "indications": [
+      "Oophoritis (ovarian inflammation), myoma, endometriosis, amenorrhoea.",
+      "Leukorrhea (vaginal discharge-white and red), vulvodynia (vulvar pain), vulvar swelling.",
+      "Menopause, hot flashes, night sweats, restlessness, depression.",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Pruritus gravidarum (itching related pregnancy), vaginal pruritus (Vaginal itching).",
+      "Hyperthyroidism, graves disease.",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Retained placenta (placenta retained), breech presentation.",
+      "Morning sickness.",
+      "Hypogalactia (Lactation Iow), lactation suppression (stopping milk production).",
+      "Oligospermia (sperm count Iow), teratozoospermia (sperm morphology abnormal).",
+      "Night sweats.",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB).",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Cervical Dysplasia.",
+      "Vaginal dryness.",
+      "Premature ovarian insufficiency (POI).",
+      "Premenstrual Breast Distention, premenstrual syndrome (PMS)."
+    ],
+    "additionalInfo": "These are the primary points for treating the female reproductive system. Despite the name of the points, 11.24 Fu Ke can also be used to treat disorders of the male reproductive system. When intending to treat reproductive system disorders, 11.24 Fu Ke is combined with Feng Chao (11) or Huan Chao (11). The points can also be used to treat general hormonal system disorders, such as thyroid disorders. In the Yellow River Diagram, the number five represents the earth (spleen). In palm diagnosis, the thumb also represents the spleen. There are three groups of points on the thumb: 11.24 Fu Ke, 11.25 Zhi Xian, and 11.27 Wu Hu, each consisting of five points symbolizing the connection of the points to the spleen. Palm Diagnosis It is not certain why points located on the thumb are primary points for treating the female reproductive system. It may be explained through the points' connection to the spleen. In palm diagnosis, the thumb represents the spleen, which governs the blood, and blood in Chinese medicine is closely related to the female reproductive system. It is interesting to see that the thumb has three groups of points, each consisting of five points. For treating Menopause and hot flashes, use Sp-9 Ying Ling Quan, 77.19 Di Huang, Shui Ming (one of the 6 points of Liu Shui), 77.21 Ren Huang, 11.24 Fu Ke, 33.04 Huo Chuan, 66.09 Shui Qu. If there is sweating, add 22.08 Wan Shun Yi with Ht-5 Tong Li. Master Tung For vaginal discharge, he needled 11.24 Fu Ke and an additional point between 22.05 Ling Gu and 22.04 Da Bai. Hu Wen Zhi The points belong to Tung's 72 Absolute Needles. Only two of the five points can be used. Yang Wei Chieh The points can be used to treat a retroverted uterus. Point Name Fü [N] — Woman. Ké [#1] — Branch of medicine, field, specialty. The name of the points suggests their ability to treat gynecological disorders."
+  },
+  "11.25": {
+    "dongIndications": [
+      "Drooling in children"
+    ],
+    "indications": [
+      "Drooling after a stroke.",
+      "Stomach pain, cold in the stomach, diarrhea.",
+      "Conjunctivitis, keratitis, optic neuritis, optic atrophy, cataract.",
+      "Tearing when exposed to the wind.",
+      "Toothache.",
+      "Intestinal hernia.",
+      "Facial paralysis (bell's palsy)."
+    ],
+    "additionalInfo": "These points are important for treating drooling. Additionally, they can treat discharges from sensory organs. They can also be considered for conditions of insufficient secretion, such as dry eyes. The points can also treat discharges and bleeding from the uterus. When using the points for discharges, combine them with 11.26 Zhi Wu to achieve a stronger effect. Hu Wen Zhi The points treat diarrhea caused by weakness in the spleen and kidneys and cold in the stomach. They warm the yang and strengthen the qi. The points can be used for all eye diseases. Yang Wei Chiehi These two points are effective for treating drooling in children. For treating drooling in adults, usually due to kidney yang deficiency, combine with 1010.19-20 Shui Tong/Jin. Palm Diagnosis The thumb represents the head, so the points can be used for mouth and eye disorders. The area of the points on the thumb represents the mouth, so 11.25 Zhi Xian can be used for drooling. Point Name Zhl [IL-I - stop. Zhi [LEI — Stop. Xiån - saliva, Drool. The name of the points suggests their ability to stop drooling."
+  },
+  "11.26": {
+    "dongIndications": [
+      "Furuncles",
+      "abscesses",
+      "wounds that do not heal",
+      "bleeding with pus from wounds after surgery"
+    ],
+    "indications": [
+      "Bedsores, internal abscesses.",
+      "Tumors.",
+      "Necrosis.",
+      "Otitis media (ear infection-middle ear).",
+      "Herpes zoster (Shingles).",
+      "Aphthous ulcers (mouth ulcers), recurrent aphthous stomatitis (RAS).",
+      "Anus abscesses, fissura ani (anal fissure).",
+      "Nasal obstruction (blocked nose), nasal thick discharge, sinusitis, allergic rhinitis (hay fever), nasal polyp.",
+      "Facial paralysis (bell's palsy)",
+      "Skin diseases.",
+      "Hordeolum (stye).",
+      "Inguinal hernia (shan qi).",
+      "Nipple adenoma, mastitis.",
+      "Nasolacrimal duct obstruction (tear duct blockage).",
+      "Otitis externa (ear infection-externa ear).",
+      "11.26 Control Dirt thumb, in the middle of the proximal segment. To find t ts, divide the segment into",
+      "Zhi wu",
+      "Location Three points, on the dorsal aspect of the",
+      "four eq I Reaction rea: Spleen. 11.25 ZhiXian 11.24 u Ke 11.26",
+      "four eq Xian Reaction flea: Spleen.",
+      "\".25"
+    ],
+    "additionalInfo": "When to Choose Bloodletting Severe Post-Oncology / Post-Surgical Complications: Choose bloodletting when treating non-healing incisions following major tumor or cancer operations where the wound completely refuses to scab and continuously discharges dirty fluid or foul \"dirty water.\" Urgent Need for Immediate Results: Pricking with a three-edged needle to express dark, stagnant blood yields immediate, same-day therapeutic effects. Visible/Palpable Signs of Dark Stagnation: Use this technique when you visually identify dark, distended micro-vessels or palpate hard, stagnant nodules along the dorsal thumb midline, indicating congealed toxic blood that is blocking local tissue regeneration. When to Choose Regular Needling Regular shallow acupuncture is utilized for more superficial, generalized, or non-malignant skin barrier breakdowns. General Chronic Ulcers and Sores: For ordinary sores, benign chronic ulcers, or standard open wounds that have failed to close over an extended period and continuously weep clear or standard fluids, regular needling can be especially effective. Boiling Water Burns and Scalds: For skin scalds caused by boiling water where the skin continuously oozes and weeps fluid without stopping, regular needling is explicitly indicated and yields a special effect. Technique and Depth: When needling normally without drawing blood, use a shallow oblique insertion method, threading the needle from bottom to top (proximal to distal) at a depth of 0.1 to 0.2 cun (1 to 2 fen). When treating abnormal menstrual bleeding, needle the points to enhance the effect; combine with 11.25 Zhi Xian. Hu Wen Zhi The point reaction area is the spleen and kidneys. They warm the yang and are good for disorders caused by yang deficiency in the kidneys and spleen, with yin accumulation. Lai Jin Xiong Clinical Experience The daughter of a fellow apprentice had a tumor on her buttock. She underwent surgery at the Veterans General Hospital, and the incision failed to close for a long time, continuously discharging fluid. Master Tung performed bloodletting at this point for her, and she was cured after just one treatment. For general sores and ulcers that do not heal and continuously discharge fluid, needling is especially effective. For scalds/burns caused by boiling water that continuously ooze fluid without stopping, needling this point also has a special effect. Yang Wei Chieh Recommends using one point corresponding to the burner where the problem is located. Use the distal point for the upper burner, the middle point for the middle burner, and the proximal point for the lower burner. Recommends using the point for internal abscesses. Lee Kuo Cheng Uses the points to treat cancerous tumors. If combined with liver points, the points will treat liver cancer. If combined with lung points, the points will treat lung cancer. If combined with stomach points, the points will treat stomach cancer. Palm Diagnosis The thumb represents the head, so the points can treat disorders of the mouth, ear, and eye. The points are located in the center of the thumb, an area that represents the nose, so they can treat a stuffy nose or thick nasal discharge. Point Name Zhi — Control. Wü [S] — Dirt. The name of the points suggests their ability to treat purulent wounds that do not heal."
+  },
+  "11.27": {
+    "dongIndications": [
+      "Joints (osteoarthritis) throughout the body",
+      "bone swelling throughout the body"
+    ],
+    "indications": [
+      "Pneumonia, bronchitis.",
+      "Lymph nodes swelling in the neck, tonsillitis.",
+      "Hepatomegaly, cirrhosis.",
+      "Foot pain on the medial aspect.",
+      "Arthritis, osteoarthritis, osteoporosis.",
+      "Toe Pain, finger pain, halluces pain (first toe pain), hand pain.",
+      "Heel pain, achilles tendonitis.",
+      "Trigger Finger.",
+      "Numbness of the feet and toes, paresthesia of the feet and toes.",
+      "Hyperthyroidism, graves disease."
+    ],
+    "additionalInfo": "Chapter 43 of Su Wen writes: \"If pathogens of wind, dampness, and cold invade the body together, this will lead to blockage of the channels, and obstruction syndrome (Bi ) may occur.\" 11.27 Wu Hu are the main points in Master Tung's acupuncture for treating joint disorders due to wind, cold, and dampness. The mechanism of action of these points can be understood through their reaction area, and the name of the points: \"Tiger,\" in the name suggests their influence on the lungs and their ability to treat external wind invasion. The point's reaction area is the spleen, so they can also treat external damp invasion. Hu Wen Zhi added the kidney reaction area so the points can also treat external cold invasion. 11.27 Wu Hu are systemic points for treating swelling in bones and joints, such as ankle sprains, knee arthritis, heel pain, rheumatoid arthritis, gout, joint deformities, and hip joint cartilage erosion. Lai Jing Xiong Specifies a specific area where the points treat: the fingers and toes. Hu Wen Zhi Indicates that the points can also treat an enlarged liver, bronchitis, pneumonia, swollen lymph nodes in the neck, and tonsillitis. Yang Wei Chieh Note that the point's reaction area is the spleen, which is associated with the four limbs. Thus, the points can treat swelling in the bones of the four limbs. He makes a differential distinction between the five points: • 11.27-1 treats pain in the fingers and hand. • 11.27-3 treats pain in the toes. • 11.27-2 is a Dao Ma point for 11.27-1 or 11.27-3. • 11.27 • 11.27 • 11.27 -I treats pain in the fingers and hand. -3 treats pain in the toes. -2 is a Dao Ma point for 11.27-1 or 11.27-3. -4 for pain in the ankle and the dorsal part of the foot. -5 for heel pain. • 11.27-5 for heel pain. Lee Kuo Cheng The points are located on the side of the thumb, so they represent the side of the head and neck. They can treat neck stiffness, enlarged lymph nodes, hyperthyroidism, pharyngitis, pneumonia, bronchitis, and mumps. Trigger Finger (Treatment Guide): In the treatment of trigger finger, it is essential to provide the patient with a moxa stick for home use and instruct them to apply it directly over the nodule area, followed by gentle massage. This should be done twice daily to support the healing process. To further improve therapeutic outcomes, local bloodletting around the nodule may also be performed. In addition to point 11.27 Wu Hut consider adding organ-related points based on the affected finger: First finger — Spleen, Second finger — Lungs, Third finger — Heart, Fourth finger — Liver, Fifth finger — Kidneys. Additional points worth considering include 22.05 Ling Gu, 22.04 Da Bai, and 77.05—77.07 San Zhong. Point Name Wu [h] - Five. Hu [ft] - Tiger. wu [E] - Five. The tiger is an animal associated with the lungs. The name of the points suggests their ability to treat obstruction syndrome due to external wind invasion, pneumonia, cough, and tonsillitis. The tiger also indicates the rapid and strong effect of the points. In the Yellow River Diagram, the number five represents earth (spleen), so \"five\" in the name of the points suggests their influence on the spleen and their ability to treat obstruction syndrome due to external damp invasion."
+  },
+  "BaGuan": {
+    "dongIndications": [
+      "CVA (stroke)",
+      "hemiplegia (one-sided paralysis)",
+      "cerebral ischemia (CVA)"
+    ],
+    "indications": [
+      "Arm - difficulty lifting (special effect),",
+      "Deafness, tinnitus.",
+      "Shoulder pain, arm pain, hand arthritis, foot arthritis, frozen shoulder (50 year old shoulder).",
+      "Impotence",
+      "Finger numbness, finger pain.",
+      "Claude O"
+    ],
+    "additionalInfo": "Needling is performed on the affected finger when using the points for finger pain. Ba Guan Yi/Er: CVA (stroke), hemiplegia (one-sided paralysis), cerebral ischemia, tinnitus.Ba Guan San/Si: CVA (stroke), hemiplegia (one- Ba Guan San/Si: CVA (stroke), hemiplegia (one-sided paralysis), arm - difficulty lifting (special effect), tinnitus, impotence, frozen shoulder (50 year old shoulder). Ba Guan Wu/Liu/Qi/Ba: CVA (stroke), hemiplegia (one-sided paralysis), Cerebral ischemia, tinnitus, deafness, erectile dysfunction (impotence), shoulder pain, arm pain, hand arthritis, foot arthritis. Hu wen Zhi The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Ba Guan San and Ba Guan Si are the most important points among the Ba Guan points and are part of Tung's 72 absolute points. There is no need to needle all eight points, only Ba Guan San (11) and Ba Guan Si (11) on the middle finger. In treating stroke and ischemia, they can be combined with 1010.01 Zheng Hui. Point Combination: Ba Guan (points 1—8) with Zheng Hui point, a special and effective treatment for stroke and hemiplegia. Frequently used by Master Tung as a rapid-effect method. For frozen shoulder, arm immobility, leg pain, and leg weakness, often, needling Ba Guan 3 and 4 is sufficient. Lee Kuo Cheng These points can be used to treat numbness and pain in the fingers. Needle on the opposite side. Point Name Bä [A] — Eight. Guän [NM] — A pass between two mountains, a gate outside the city, and a customs checkpoint."
+  },
+  "ChenYinNeiYin": {
+    "dongIndications": [
+      "Testes Inflammation (orchitis)",
+      "testicular tumor",
+      "scrotal edema"
+    ],
+    "indications": [
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Penis pain.",
+      "Inguinal hernia (shan qi).",
+      "Undescended testicle (cryptorchidism)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wu Zhi introduced them. These points are important for treating andrological diseases and have an impact on the penis, testes, and prostate. The reaction area of these points is associated with the six Fu organs. In Chapter 11 of Su Wen, the Bao is connected with the extraordinary Fu organs. Bao is a membrane that surrounds the place where life can be created — referring to the uterus in women and the prostate in men, or generally, it is a membrane that protects the precious essences that enable reproduction (the reproductive system in both men and women). The point reaction area is the liver. The liver channel has the greatest influence on the male reproductive system. The penis is related to the liver. In Chapter IO of the Ling Shu, the Jue Yin (liver) channel wraps around the male reproductive system and treats pathologies of the Jue Yin channel of the leg. The seven types of Shan Qi — a pathology primarily associated with the male reproductive system. Chen Yin, the sinking Yin, also has a reaction area of the heart. The heart is connected to the Bao with the Bao Mai connecting channel, which links the heart to the reproductive system. In this case, the point will treat blood stagnation in the male reproductive system. The points are located on the second finger, which, in Master Tung's acupuncture, represents metal (lungs). Many points related to the reproductive system are connected to metal. Metal descends yang (in this case to the reproductive organs), and metal controls wood, which is associated with the liver. The points are in the same area as the 7 Jian points and have similar indications. The points San Yang, Nei Yin, and Chen Yin are more suitable for treating disorders of the testicles and penis. Palm Diagnosis In palm diagnosis, the area of the points can be used to diagnose the male reproductive system. the Jue Yin (liver) channel wraps around the male reproductive system and treats pathologies of the Jue Yin channel of the leg. The seven types of Shan Qi — a pathology Point Name Néi [FS] — Internal. Néi - Internal. Chén - Sinking, Yin - Yin. Néi - Internal. Chén [it] — Sinking, Heavy. Yin [F*] - Yin. \"Yang\" in the name of the points suggests their influence on the male reproductive system and their ability to treat conditions where yang does not flow freely in the male reproductive system. Internal Yin and Heavy Yin, in the names of the other two points, describe the blockage of yin (for additional information, see San Yang). Néi [58] - Internal. — Yim"
+  },
+  "CeJian": {
+    "dongIndications": [
+      "Bronchitis",
+      "yellow phlegm",
+      "chest oppression (chest tightness)",
+      "palpitations",
+      "knee pain",
+      "stomach distention",
+      "eye pain (corner of the eye)",
+      "inguinal hernia",
+      "bronchiectasis"
+    ],
+    "indications": [
+      "Throat dryness, tonsillitis, tonsillolith (tonsil stone).",
+      "Gan disease - food accumulation, enteritis (intestinal inflammation)-(special effect).",
+      "Aasthma (Childhood), pneumonia, cough.",
+      "Endocarditis.",
+      "Conjunctivitis, eye disorders.",
+      "Prostatitis.",
+      "11.01-05 Qi Jian [-tHiR] Seven Space",
+      "11.01-05 Qi Jian Seven Space",
+      "11"
+    ],
+    "additionalInfo": "Ce Jian does not appear in Master Tung's book. Hu Wen Zhi first introduced this point. For Additional Information, see 11.02 Xiao Jian. Point Name For Additional Information, see 11.02 Xiao Jian."
+  },
+  "DingChuan": {
+    "dongIndications": [
+      "Wheezing",
+      "asthma"
+    ],
+    "indications": [
+      "Congestive heart failure (heart failure)."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. The points treat asthma with phlegm due to lung and spleen disorders. Point Name Ding Chuän [E*] - Stop Panting."
+  },
+  "FeiLing": {
+    "dongIndications": [
+      "Asthma",
+      "bronchitis",
+      "pneumonia"
+    ],
+    "indications": [
+      "High fever."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book; Hu Wen Zhij first introduced them. They are located on a joint related to the kidneys; therefore, the points can treat severe lung diseases when the Yuan Qi is damaged. Palm Diagnosis: The area of the points is an important region for diagnosing lung conditions. Point Name Féi [Ft] — Lung. Féi [Fl] — Lung. Ling [A] - Spirit, quick, alert, effective, coffin. The name of the points suggests their effectiveness in treating lung diseases. Féi F] - Lung."
+  },
+  "FenShui": {
+    "dongIndications": [
+      "Nephritis",
+      "edema"
+    ],
+    "indications": [
+      "Tinnitus, deafness due to kidney diseases.",
+      "Sciatica, lumbago (lower back pain), herniated disc - lumbar.",
+      "Hallux (big toe) pain."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Imaging The fifth finger mirrors the big toe from the right hand to the left foot; therefore, the points can treat disturbances in the big hallux (big toe) pain. Point Name Fén - Tto separate. Fén [ft] - Tto separate. Shui [7k] — Water."
+  },
+  "FengChao": {
+    "dongIndications": [
+      "Uterine cancer",
+      "uterine tumor",
+      "metritis (uterus inflammation)"
+    ],
+    "indications": [
+      "Irregular menstruation, premenstrual syndrome (PMS).",
+      "Leukorrhea (vaginal discharge-white and red).",
+      "Fallopian tube blockage (salpingeal), oophoritis (ovarian inflammation), ovarian cyst, uterine retroversion (tilted or tipped uterus).",
+      "Endometriosis, myoma.",
+      "Infertility.",
+      "Vagina swelling, vaginodynia (vagina pain), vaginal dryness.",
+      "Frozen shoulder (50 year old shoulder).",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB).",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Menopause, hot flashes, night sweats.",
+      "Premature ovarian insufficiency (POI)."
+    ],
+    "additionalInfo": "These are Important points for treating disorders of the female reproductive system. The point's reaction area is the liver and kidneys. The liver and kidneys are related to two important aspects of the reproductive system. The liver stores the blood, and the kidneys store the essence. Like Huan Chao 11.06, they bring essences and blood to the reproductive system, but the name of the points also suggests their ability to bring fire (blood flow) to the reproductive system, which differentiates them. One indication for using these points is the presence of blood vessels in the area of the points. Hu wen Zhi The points do not appear in Master Tung's original book; Hu Wen Zhi introduced them. They can treat various gynecological diseases and belong to Tung's 72 absolute needles. Palm Diagnosis In palm diagnosis, the area of the points is used to diagnose the female reproductive system. If blood vessels are found in the area, it indicates the use of the points. It can also indicate the presence of blood stagnation in the female reproductive organs. Point Name Féng [R] — Phoenix, the firebird. Chåo u] — Nest. Chåo - Nest. The names of the points suggest their impact on the uterus and fertility. The nest represents the uterus, and the phoenix is associated with fire. The names of the points suggest their ability to bring fire to the reproductive system."
+  },
+  "HuoLong": {
+    "dongIndications": [
+      "Cardiomegaly (heart enlarged)"
+    ],
+    "indications": [
+      "Cardialgia (Heart pain).",
+      "Chest oppression (chest tightness), chest pain (Pleurodynia).",
+      "Dorsalgia (back pain)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Point Name Huo — Fire. Long [R] — Dragon. In the name of the points, fire suggests their connection to the heart."
+  },
+  "HuoXing": {
+    "dongIndications": [
+      "Palpitations",
+      "heart diseases",
+      "rheumatic heart diseases"
+    ],
+    "indications": [
+      "Lung cancer.",
+      "Scapula pain, frozen shoulder (50 year old shoulder).",
+      "Leg pain.",
+      "Singultus (hiccups).",
+      "Gastric ulcers (stomach ulcer), duodenal ulcer, peptic ulcer disease (PUD), gastric hyperacidity (stomach acid excess), nausea."
+    ],
+    "additionalInfo": "Hu Wen Zhi The points do not appear in Master Tung's original book; Hu Wen Zhi first introduced them. They treat frozen shoulder and leg pain caused by upper-burner disorders like heart disease and blood stasis. They can also effectively treat hiccups. Palm Diagnosis: The third finger represents the heart, so these points impact the heart. The second and third fingers are related to the upper burner, so the points affect the lungs. Point Name Huö - Fire. Xing — Star. The Fire Star refers to Mars, the planet associated with the heart. The name of the points suggests their influence on the heart. Huö ['k] — Fire."
+  },
+  "JianPi": {
+    "dongIndications": [
+      "Facial swelling"
+    ],
+    "indications": [
+      "Facial itching.",
+      "Acne.",
+      "Dyspnea (shortness of breath).",
+      "Enlarged spleen (Splenomegaly).",
+      "Pancreatitis."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Jian Pi is used in cosmetic treatments. Point Name Jiån [E] - To build, establish, and set up. - Spleen. The name of the points suggests their ability to strengthen the spleen."
+  },
+  "KaiPi": {
+    "dongIndications": [
+      "Anorexia (appetite poor)",
+      "appetite poor in children",
+      "anorexia Nervosa"
+    ],
+    "indications": [
+      "Vomiting.",
+      "Chest oppression (chest tightness).",
+      "Dizziness.",
+      "Nausea and vomiting."
+    ],
+    "additionalInfo": "The point does not appear in Master Tung's original book. It was introduced by Hu Wen Zhi. Point Name Käi — Open. [Bm - Spleen. Käi [Nd] — Open. - spleen. The name of the point suggests its ability to stimulate appetite."
+  },
+  "MuHua": {
+    "dongIndications": [
+      "Pain and swelling in the stomach and intestines due to liver diseases"
+    ],
+    "indications": [
+      "Splenomegaly (enlarged spleen).",
+      "Calf cramps ."
+    ],
+    "additionalInfo": "The points treat the imbalance between wood and earth. The points in areas II and 22 primarily address yang and acute conditions. 11.17 Mu and Mu Hua (II) are very similar. Both treat excess conditions: Mu 11.17 is suitable for liver fire, while Mu Hua is more appropriate for Qi stagnation due to an imbalance between wood and earth. Hu Wen Zhi The points do not appear in Master Tung's original book; Hu Wen Zhi first introduced them. They are very effective for treating cramps, swelling, and pain in the calf. Palm Diagnosis The middle finger represents the heart and the hypochondriac region (liver, stomach, and spleen). A vein (blue-purple-black) in the area of the point can indicate an imbalance between the liver and the spleen. Point Name Mü [X] — Wood. Huå - To blossom, to shine. The name of the points suggests their effect on the liver."
+  },
+  "MuLing": {
+    "dongIndications": [
+      "Liver cirrhosis",
+      "hepatitis",
+      "liver cancer (symptom relief)",
+      "hypochondrium pain"
+    ],
+    "indications": [
+      "Cholecystitis (gallbladder inflammation), cholelithiasis (gallstones).",
+      "Erectile dysfunction (impotence).",
+      "Hemiplegia (one-sided paralysis)",
+      "Oophoritis (ovarian inflammation), metritis (uterine inflammation).",
+      "Diaphragm tightness."
+    ],
+    "additionalInfo": "The points are located on a joint. Joints are related to the kidneys so that these points can treat severe liver and gallbladder diseases. Hu wen Zhi The point does not appear in Master Tung's original book; Hu Wen Zhi introduced it. It is part of Tung's 72 Absolute Needles and is very effective for treating gallbladder inflammation. Point Name Mü [X] — Wood. Ling - Spirit, quick, alert, effective, coffin. The name of the point suggests its effectiveness in treating liver diseases."
+  },
+  "QiHua": {
+    "dongIndications": [
+      "Headache"
+    ],
+    "indications": [
+      "Trigeminal neuralgia.",
+      "Tinnitus cerebral.",
+      "Dizziness.",
+      "Encephalitis (brain inflammation), brain tumor.",
+      "Restlessness of the five Zang organs.",
+      "Frontal headache, temporal headache, occipital headache.",
+      "Herpes zoster face."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. The points treat dizziness caused by insomnia and mental overwork. They also have a unique effect on brain tumors. Qi Hua (II) points are used together with Shao Bai (II) for the same indications. Differential diagnosis between the points: Qi Hua Yi for a frontal headache. Qi Hua Qi for an occipital headache. Qi Hua San for a vertex headache. Qi Hua Wu for a lateral headache. Point Name QT [E] — Seven. Huå - To blossom, splendid, magnificent, prosperity."
+  },
+  "SanXian": {
+    "dongIndications": [
+      "Skin sensitivity"
+    ],
+    "indications": [
+      "Skin diseases, scabies, eczema.",
+      "Skin swelling due to injury.",
+      "Otitis externa (ear infection-externa ear)."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Palm diagnosis The second finger represents the lungs, which govern the skin. Therefore, several groups of points that can treat skin diseases are found on the second finger, such as San Xian (11), Zhi Fei (11), Zhi wei (11), and 11.07 Zhi Sima. Point Name Sän [E] — Three. Xiän [fill] — Immortal. Xiän [fib] — Immortal. Points with the character \"Immortal\" (Xiän [ (III J) are related to the kidneys (water) and the lungs (metal), the two organs representing manifestation. Metal is associated with Po, the desire of the Shen to reincarnate. The kidneys are related to the continuity of the physical body that enables manifestation. One way to cheat death is by having children."
+  },
+  "SanYang": {
+    "dongIndications": [
+      "Inflammation of the testes (orchitis)",
+      "testicular tumor",
+      "scrotal edema"
+    ],
+    "indications": [
+      "Prostatic Hyperplasia (enlarged prostate)",
+      "Penis pain.",
+      "Inguinal hernia (shan qi).",
+      "Undescended testicle (cryptorchidism).",
+      "Oligospermia (sperm count Iow), teratozoospermia (sperm morphology abnormal)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wu Zhi introduced them. These points are important for treating andrological diseases and have an impact on the penis, testes, and prostate. The reaction area of these points is associated with the six Fu organs. In Chapter II of Su Wen, the Bao is connected with the extraordinary Fu organs. Bao is a membrane that surrounds the place where life can be created — referring to the uterus in women and the prostate in men, or generally, it is a membrane that protects the precious essences that enable reproduction (the reproductive system in both men and women). The point reaction area is the liver. The liver channel has the greatest influence on the male reproductive system. The penis is related to the liver. In Chapter 10 of the Ling Shu, the Jue Yin (liver) channel wraps around the male reproductive system and treats pathologies of the Jue Yin channel of the leg. The seven types of Shan Qi — a pathology primarily associated with the male reproductive system. The points are located on the second finger, which, in Master Tung's acupuncture, represents metal (lungs). Many points related to the reproductive system are connected to metal. Metal descends yang (in this case to the reproductive organs), and metal controls wood, which is associated with the liver. The points are in the same area as the 7 Jian points and have similar indications. The points San Yang, Nei Yin, and Chen Yin are more suitable for treating disorders of the testicles and penis. Palm Diagnosis In palm diagnosis, the area of the points can be used to diagnose the male reproductive system. Point Name Sän [E] — Three. Yång [ßß] — Yang. Yång [N] — Yang. \"Yang\" in the name of the reproductive system. points suggests their influence on the male reproductive system and their ability to treat conditions where yang does not flow freely in the male Yång [X] — Yang. \"Yang\" in the name of the points suggests their influence on the male reproductive system and their ability to treat conditions where yang does not flow freely in the male Internal Yin and Heavy Yin, in the names of the other two points, describe the blockage of yin (for additional information see Chen Yin and Nei Yin)."
+  },
+  "ShaoBai": {
+    "dongIndications": [
+      "Spine osteophytes (bone spurs)"
+    ],
+    "indications": [
+      "Lower back pain, sciatica.",
+      "Hemorrhoids, fissura ani (anal fissure)."
+    ],
+    "additionalInfo": "The point did not appear in Master Tung's original book. Hu Wen Zhi first introduced it. Point Name Shåo — Small. Båi - White."
+  },
+  "ShiZhen": {
+    "dongIndications": [
+      "Neck sprain",
+      "torticollis (wry neck)"
+    ],
+    "indications": [
+      "A feeling of congestion in the head, dizziness due to excessive mental work, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Point Name Shi [k] - Loss. Zhén [if] - Pillow. The name of the point suggests its ability to treat a stiff neck. stiff neck. Claude O"
+  },
+  "ShuangLing": {
+    "dongIndications": [
+      "Severe and life-threatening diseases"
+    ],
+    "indications": [
+      "Cancer: lung cancer (symptom relief), bone cancer (symptom relief), liver cancer (symptom relief), blood cancer (leukemia), throat cancer (symptom relief), stomach cancer (symptom relief).",
+      "Liver cirrhosis.",
+      "Pericarditis (inflammation of the pericardium), cardiomegaly (heart enlarged), arrhythmia (irregular heartbeat).",
+      "Glomerulonephritis with edema.",
+      "Mouth infections, aphthous ulcers (mouth ulcers), recurrent aphthous stomatitis (RAS).",
+      "Vitiligo.",
+      "Malnutrition in children, weak digestion in children, gastritis (stomach lining inflammation).",
+      "First aid point.",
+      "Cold handes."
+    ],
+    "additionalInfo": "The points are located on a joint. Joints are related to the kidneys so that these points can treat severe diseases. Hu Wen Zhi The points do not appear in Master Tung's original book. Hu Wen Zhi first introduced them. They are part of Tung's 72 Absolute Needles. Point Name Shuäng [g] — Double, pair, even number. Ling E] — Spirit, quick, alert, effective, coffin. The name of the points suggests their efficiency, In the Yellow River Chart, the number two represents fire. The character \"double\" in the points' names hints at their impact on the heart. Shuang Ling is one of the seven Hun (the ethereal soul). In death, the Hun leaves the body. The name of the points indicates their use in severe and life-threatening diseases."
+  },
+  "ShuiHai": {
+    "dongIndications": [
+      "Neck pain",
+      "neck sprain"
+    ],
+    "indications": [
+      "Dorsalgia (back pain), lumbago (lower back pain).",
+      "Sciatica."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Point Name Shui — Water. Håi [E] - sea. Shui [7k] — Water."
+  },
+  "ShuiQing": {
+    "dongIndications": [
+      "Migraine"
+    ],
+    "indications": [
+      "Lumbago (lower back pain).",
+      "Leg pain.",
+      "Orchitis (testicular inflammation).",
+      "Nephritis, edema, urinary tract infection (UTI), cystitis (urinary bladder inflammation).",
+      "Hallux (big toe) pain."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. When using Shui Qing to treat orchitis, nephritis, edema, urinary tract infection (UTI), and cystitis, add 22.06 Zhong Bai 22.06. Imaging Contralateral imaging between the right hand and the left leg: the fifth finger represents the big toe, Therefore, these points can treat disorders of the hallux (big toe). Point Name Shui [7K] — Water. Qing — Clear, pure, quiet, clean. The name of the points suggests their ability to treat kidney diseases."
+  },
+  "ShuiYao": {
+    "dongIndications": [
+      "Migraine"
+    ],
+    "indications": [
+      "Dizziness.",
+      "Lower back pain, sciatica.",
+      "Keratitis, conjunctivitis, glaucoma, eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.), ocular edema (eye swelling).",
+      "Herpes zoster eye."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book; Hu Wen Zhi first introduced them. They are especially effective in treating lower back pain. Point Name Shui - water. Yäo [Am - Waist. Shui [7k] — Water. ¯ Waist. The name of the points suggests their ability to treat lower back pain."
+  },
+  "ShuiYuan": {
+    "dongIndications": [
+      "Ankylosing spondylitis in the cervical spine"
+    ],
+    "indications": [
+      "Hand numbness.",
+      "lower abdomen pain."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. The points treat lower abdominal pain related to the kidneys. Imaging Imaging opposing the right hand to the left foot: the fifth finger mirrors the big toe; therefore, the points can treat hallux (big toe) pain disturbances. Point Name Shui [7k) — Water. Yuån - Source."
+  },
+  "TongGu": {
+    "dongIndications": [
+      "Lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Sciatica.",
+      "Ankylosing spondylitis, lumbar intervertebral disc protrusion."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. The points treat lower abdominal pain related to the kidneys. Point Name Töng [M] - To pass through, connect, know well, communicate, open, and clear. Gü [ft] - Bone. The name of the points suggests their ability to treat bone disorders."
+  },
+  "TuHang": {
+    "dongIndications": [
+      "Tu Huang Er: Vomiting",
+      "gastritis (stomach lining inflammation) with abdominal pressure and bloating",
+      "dizziness",
+      "asthma"
+    ],
+    "indications": [
+      "Tu Haung Er: Leg numbness, leg pain - lateral."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Point Name Tü - Earth. Hång [Aft] — Navigation, ship, sail, and fly."
+  },
+  "TuXing": {
+    "dongIndications": [
+      "Gastritis (stomach lining inflammation)",
+      "enteritis (intestinal inflammation)-acute"
+    ],
+    "indications": [
+      "Splenomegaly (enlarged spleen), splenitis (spleen inflammation).",
+      "Hypochondrium pain, diaphragm tightness.",
+      "Toothache, gingivitis (gum inflammation).",
+      "Headache frontal."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Both points can be needled together with Huo Xing Shang using the Dao Ma technique or bled if veins are visible in the area. The points treat toothache due to stomach fire. The points treat frontal headaches (like 11.12 Er Jiao Ming ), which are parallel points on the dorsal side of the middle finger. Palm Diagnosis The middle finger represents the heart and the hypochondriac region (liver, stomach, and spleen), so the points can diagnose and treat stomach, spleen, heart, and hypochondrium diseases. Point Name Tü - Earth. Xing - To flourish, to bloom. The name of the points suggests their effect on the spleen and stomach."
+  },
+  "XiLing": {
+    "dongIndications": [
+      "Knee pain"
+    ],
+    "indications": [
+      "Rheumatic heart disease.",
+      "Toe neuralgia.",
+      "Knee osteoarthritis."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book; Hu Wen Zhi first introduced them. They are essential for treating arthritis of the knee joint. Point Name - Knee. XT [ho — Knee. Ling E] - Spirit, quick, alert, effective, coffin."
+  },
+  "XiaJian": {
+    "dongIndications": [
+      "Palpitations",
+      "chest oppression (chest tightness)",
+      "knee pain",
+      "tremors",
+      "blurred vision",
+      "Inguinal hernia"
+    ],
+    "indications": [
+      "Eye itching.",
+      "Dizziness",
+      "Dorsalgia (back pain).",
+      "11.01-05 Qi Jian [-tMR] Seven Space",
+      "11.01-05 Qi Jian [-åfift] Seven Space",
+      "11"
+    ],
+    "additionalInfo": "Xia Jian does not appear in Master Tung's book; Hu Wen Zhi introduced it. For Additional Information, see 11.05 Zhong Jian. Point Name Xiå [F] — Lower. Jiän [M] - small gap, interstitial space. See 11.02 Xiao Jian."
+  },
+  "ZhengShui": {
+    "dongIndications": [
+      "Lower back pain",
+      "back pain"
+    ],
+    "indications": [
+      "Lower limbs pain.",
+      "cystitis (urinary bladder inflammation), urinary tract infection (UTI), urethritis."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book; Hu Wen Zhi first introduced them. They have a unique effect on treating lower back pain. Point Name Zhéng - Straight, correct. Shui [7k] — Water. The points' names suggest that they can treat spinal disorders, and the character \"water\" implies that they treat the lumbar spine."
+  },
+  "ZhengTu": {
+    "dongIndications": [
+      "Abdominal pain"
+    ],
+    "indications": [
+      "Rectal cancer.",
+      "Gastritis (stomach lining inflammation), duodenitis.",
+      "Nausea, vomiting, nausea and vomiting.",
+      "Pancreatitis.",
+      "Skin allergies, allergic Dermatitis, atopic Dermatitis, eczema.",
+      "Asthma.",
+      "Migraine."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Points 77.27 Wai San, 33.01-02 San Qi, and 77.05-07 San Zhong and Guan are essential for treating rectal cancer. Point Name Zhéng Straight, precise, correct, primary, principal. Tü Earth. The names of the points suggest their ability to correct the earth (digestive system)."
+  },
+  "ZhiFei": {
+    "dongIndications": [
+      "Pharyngitis (throat inflammation)"
+    ],
+    "indications": [
+      "Bronchitis.",
+      "Lower back pain, sciatica.",
+      "Calf Pain.",
+      "Skin diseases.",
+      "Otitis externa (ear infection-externa ear)."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Point Name Zhl - Finger. Féi [fib] — Lungs. The name of the points suggests their ability to affect the lungs. Féi [Yi] — Lungs,"
+  },
+  "ZhiSanHuang": {
+    "dongIndications": [
+      "Hepatitis",
+      "liver cirrhosis",
+      "liver cancer (symptom relief)"
+    ],
+    "indications": [
+      "Hypochondrium pain, diaphragm tightness.",
+      "Dysmenorrhea (menstrual pain), oophoritis (ovarian inflammation), metritis (uterine inflammation).",
+      "Lower abdomen pain.",
+      "Fatigue due to liver deficiency.",
+      "Dizziness.",
+      "Dyspepsia (digestive difficulties).",
+      "Spine osteophytes (bone spurs), spinal periostitis.",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book; they were first introduced by Hu Wen Zhi. The points have the same indications as 88.12-14 Shang San Huang, but Shang San Huang is stronger. The points are opposite 11.24 Fu Ke, and although they have gynecological indications, it is preferable to use 11.24 Fu Ke unless there is liver involvement in the background. Point Name Zhi - Finger. Sän [E] — Three. Huång — Yellow. The points' names suggest their ability to treat jaundice and their connection to the liver. The character \"finger\" in the name indicates that the points are located on the finger, unlike points 88.12-14 Shang San Huang, which are located on the thigh."
+  },
+  "ZhiWei": {
+    "dongIndications": [
+      "Gastritis (stomach lining inflammation)",
+      "gastric ulcers (stomach ulcer)"
+    ],
+    "indications": [
+      "Lung deficiency, cough (due to heat in the lungs).",
+      "Skin diseases."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Point Name Zhi — Finger. Wéi [A] - Stomach. The name of the points suggests their ability to affect the stomach."
+  },
+  "ZhuYuan": {
+    "dongIndications": [
+      "Glaucoma"
+    ],
+    "indications": [
+      "Cataract.",
+      "Keratitis.",
+      "Amblyopia (Lazy eye).",
+      "Herpes zoster eye.",
+      "Retinal degeneration, macular degeneration (AMD), retinitis."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. Primary points for treating eye diseases. The earliest documentation of these points appears in the \"Bian Que Shen Ying Zhenjiu Yulong Jing\" [ J, written in the Yuan Dynasty by Bian Que. According to this book, the points are called Ming Yuan and Feng Yuan, Bright Eyes, and Phoenix Eyes, with the same indications as Zhu Yuan. Point Name Zhü — Bead. Zhü [R] - Bead. Yuån [El] - Round. The eyeball resembles a round bead. The name of the points suggests their ability to treat eye diseases. ⚠️ GAP Monthly accountant report Google ads negative keywords Github actions quota check claude-workspace 44 Ylb•n VT Ylb'n Website audit (fork) Website audit (fork) Daily site deals scan (fork) runnun nn•bub n'ODlOlN FDIVD Relaunch to update .119LJDn nN DIPDD Claude Ibn nN oon DILyyn Listed windows and re-probe phone > LJU nilNbO LJ'nnD . donglndications nnN I'NU 35 ,nnon 46 — jinn Nin 11 .11.01 Captured zone 11 points 01-12 > nunnn nn15rn ya•n 'JN .yn NIIOU.J nv1LJ . README -D 15 nil)LJD — nN Claude Ibn nN oon IIUJNnn :nnmpn bv nnvn .nnnLJ Dipm IODITPD np'D nnnD,n nN nDND pil ,Max- DV m nnpb nblD' .nnN nriN PUN .nllNN 11 Checked batch result and ran integrity check > .nmnw nmpn LD linn,xæn nonnn — nnmv niD5un np'n in the"
+  }
+}

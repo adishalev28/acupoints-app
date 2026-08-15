@@ -1,0 +1,28 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "22.01": {
+    "dongIndications": [
+      "Back pain",
+      "pneumonia (special effect)",
+      "common cold",
+      "cough",
+      "asthma (most effective for children)"
+    ],
+    "indications": [
+      "Chest pain (Pleurodynia), chest oppression (chest tightness).",
+      "Lung cancer, emphysema, cough, cough (with yellow phlegm), asthma.",
+      "Palpitations.",
+      "Pharyngitis (throat inflammation).",
+      "Cervicalgia (neck pain), herniated disc - cervical.",
+      "Upper thoracalgia (upper back pain), neck pain, whiplash injury.",
+      "Shoulder pain (posterior).",
+      "Psoas syndrome.",
+      "22.01 Chong Zi Double Child Location below the \"tiger's mouth\" (the web between the thumb and index finger) on the palm, between the first metacarpal bone (thumb) and the second metacarpal bone (in er). Reaction",
+      "• With the palm facing upward. • The point is located on the thenar eminence, 1.0 cun",
+      "bone (ind Lung-sub-branch, Heart-sub-branch. Needling",
+      "• Perpendicular, 1-1.5 cun • Bloodletting for treating pediatric diseases."
+    ],
+    "additionalInfo": "For Additional Information, see 22.02 Chong Xian. Point Name Chöng [m] — Heavy, to repeat, layer. Zi [+] - Child. The name of the point suggests its effectiveness in children. In the name of the point, the' double' character implies that its effect is greater when Chång [ ] — Heavy, to repeat, layer. The character Zi [ ] refers to Shui Xing [ I Mercury, and Xian [ fill ] in the name of 22.02 Chong Xian refers to Jin Xing [ ± ] Venus. According to Chapter 5 of the Su wen, Mercury is associated with water (kidneys), while Venus is associated with metal (lungs). Thus, the names of the points suggest their ability to treat wind-cold. The point supports the kidney's Yang ability to assist the lungs in expelling the external."
+  }
+}

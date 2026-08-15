@@ -1,0 +1,467 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "66.01": {
+    "dongIndications": [
+      "Eye pain",
+      "Keratitis",
+      "Inguinal hernia",
+      "thumb pain",
+      "index finger pain",
+      "vaginitis",
+      "leukorrhea (vaginal discharge-white and red)",
+      "digitalgia"
+    ],
+    "indications": [
+      "Coccydynia (tailbone pain).",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB).",
+      "Common cold, rhinitis.",
+      "Retained placenta (placenta retained).",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Trigger Finger - Thumb, trigger Finger - index finger.",
+      "Nasal obstruction (blocked nose).",
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Trigger Finger - Thumb, trigger Finger - index"
+    ],
+    "additionalInfo": "In Master Tung's book, translated into English, the point is numbered 66.01. For more information, see the numbering of the points. Master Tung used the point for pain in the thumb and the second finger, but Hu Wen Zhi uses the point for pain in all the fingers, similar to 11.27 Wu Hu, which is located on the thumb. Yang Wei Chieh The point innervates the heart. According to the Five Wheels of Eye Diagnosis, the corners of the eye are related to the heart, so the point can treat inflammation in the corner of the eye, which can spread from the edges to the entire eye, depending on the severity of the condition. The point is close to the Jing-Well point. Jing-Well points treat openings so that the point can be effective in treating vaginal discharge and conjunctivitis. Lee Kuo Cheng The point is close to Sp-l Yin Bair so like Sp-l, it can stop uterine bleeding. Originally, 100 small moxa cones were applied. Imaging Imaging between the upper and lower limbs: the toes represent the fingers, so the point can treat pain in the thumb. Point Name Häi Båo — to seal, to close. The name of the point suggests its ability to treat vaginal and uterine discharges."
+  },
+  "66.02": {
+    "dongIndications": [
+      "Leukorrhea (vaginal discharge-white and red)",
+      "Irregular menstruation",
+      "dysmenorrhea (Menstrual pain)",
+      "metritis (uterine inflammation)",
+      "fallopian tube blockage"
+    ],
+    "indications": [
+      "Oophoritis.",
+      "Infertility.",
+      "Vestibulitis.",
+      "Urinary tract infection (UTI), cystitis (urinary bladder inflammation), urinary urgency, bladder painful syndrome (Interstitial cystitis).",
+      "Cervical Dysplasia.",
+      "Prostatic Hyperplasia (enlarged prostate)."
+    ],
+    "additionalInfo": "In Master Tung's book, which has been translated into English, the point is numbered 66.02. For more information, see the point numbering. This point innervates the heart and is called Mu (wood/liver). The heart governs the blood, and the liver stores the blood. 66.02 Mu fu treats gynecological disorders related to blood stagnation. Both 55.01 Huo bao and 66.02 Mu fu affect the heart and liver. The difference is that 66.02 Mu fu is located on the yang side of the second toe and innervates the six Fu organs (treating excess conditions) according to Hu Wen Zhi. Therefore, its ability to treat blood stagnation is stronger than 55.01 Huo bao, located on the yin side of the second toe. Thus, it has a stronger ability to treat liver and heart diseases. Susan Johnson Uses 66.02 Mu fu (55) to treat Interstitial Cystitis, especially in cases associated with anger and a burning sensation during urination. Point Name Mü [X] - wood, tree. Fü I\"] — woman, married woman. The character \"woman\" in the name of the point suggests its ability to treat disorders in the female reproductive system. The character \"wood\" in the name of the point suggests its ability to treat disorders involving the liver."
+  },
+  "66.03": {
+    "dongIndications": [
+      "Palpitations",
+      "vertigo",
+      "retained placenta (placenta retained)",
+      "swollen joints (osteoarthritis)",
+      "frontal headache",
+      "pain in the mandible",
+      "difficulty opening the mouth",
+      "strengthening the heart (during syncope)",
+      "uterine inflammation",
+      "uterine neoplasm"
+    ],
+    "indications": [
+      "Induction of abortion.",
+      "Hypertension.",
+      "Heel pain, Calcaneal spur.",
+      "Genital disorders, impotence, vaginodynia (vaginal pain), vulvodynia (vulvar pain), vestibulitis.",
+      "Amenorrhea, dysmenorrhea (Menstrual pain), menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AUB), myoma, leucorrhea.",
+      "Spermatorrhea, oligospermia (low sperm count), erectile dysfunction (impotence).",
+      "Urinary tract infection (UTI), cystitis (urinary bladder inflammation), glomerulonephritis, nephrolithiasis (kidney stones).",
+      "Hordeolum (stye).",
+      "Acne, urticaria (hives)",
+      "Chin pain.",
+      "Jaw pain.",
+      "Temporomandibular Joint Syndrome (TMJ), bruxism (teeth grinding).",
+      "Jaw locking.",
+      "Headache, temporal headache.",
+      "Nosebleed, nasal obstruction (blocked nose).",
+      "Knee pain, Knee osteoarthritis.",
+      "Numbness of the fingers, paresthesia of the fingers.",
+      "Pain in the dorsal aspect of the foot.",
+      "Otitis media (ear infection-middle ear).",
+      "Dyspareunia (painful intercourse).",
+      "Retained placenta (placenta retained), labor induction, labor augmentation, dystocia (Difficult Childbirth), breech presentation",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Oligospermia (sperm count Iow), teratozoospermia (sperm morphology abnormal).",
+      "Herpes zoster face.",
+      "Meniere's disease.",
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure, sixth nerve palsy (abducens nerve palsy), esotropia (Inward eye deviation).",
+      "Cold feet.",
+      "Cervical Dysplasia.",
+      "Bipolar disorder (manic depression).",
+      "Undescended testicle (cryptorchidism)."
+    ],
+    "additionalInfo": "For additional information, see 66.04 Huo Zhu. Sometimes, 66.03 Huo Ying is combined with 66.04 Huo Zhu in the Dao ma technique. Chuan Min Wang In cases of knee swelling, eye pain, and urinary retention — locate the vein and perform bloodletting. Point Name - fire. Huö ['k] - fire. Ying - rigid, solid, or strong. The character \"fire\" in the name of the point suggests its ability to treat heart diseases. The character \"rigid\" in the name of the point suggests its ability to treat stiffness in the jaw joint. \"Rigid\" in the name of the point can also imply its ability to treat conditions where fire leads to the drying of fluids, causing them to harden, such as in the case of a sty in the eye or an abscess."
+  },
+  "66.04": {
+    "dongIndications": [
+      "Difficult labor (Dystocia)",
+      "Swollen joints (Osteoarthritis)",
+      "headache caused by heart disease",
+      "liver diseases",
+      "gastric disorders",
+      "neurasthenia (anxiety disorder)",
+      "heart diseases",
+      "disorders of the hands and feet",
+      "uterine inflammation",
+      "uterine neoplasm"
+    ],
+    "indications": [
+      "Dizziness.",
+      "Myocardial infarction.",
+      "Facial paralysis (bell's palsy).",
+      "Arrhythmia (irregular heartbeat), myocarditis, chest pain (Pleurodynia).",
+      "Hypertension.",
+      "Heel pain, Calcaneal spur.",
+      "Genital disorders, azoospermia, vaginodynia (vaginal pain), vulvodynia (vulvar pain), vestibulitis.",
+      "Erectile dysfunction (impotence)",
+      "Amenorrhea, dysmenorrhea (Menstrual pain), menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AUB), leucorrhea.",
+      "Claude O r inflammation), enuresis, glomerulonephritis, nephritis, nephrolithiasis (kidney stones).",
+      "Urinary tract infection (UTI), cystitis (urinary bladder inflammation), enuresis, glomerulonephritis, nephritis, nephrolithiasis (kidney stones).",
+      "Anxiety, restlessness, anger.",
+      "Chin pain (Pleurodynia), temporomandibular Joint Syndrome (TMJ), Trismus, bruxism (teeth grinding).",
+      "Numbness of the fingers, paresthesia of the fingers.",
+      "Pain in the dorsal region of the foot.",
+      "Knee pain, knee osteoarthritis.",
+      "Dyspareunia (painful intercourse).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Inguinal hernia (shan qi), groin Pain.",
+      "Vaginal Pruritus (Vaginal itching).",
+      "Alopecia (hair loss).",
+      "Oligospermia (sperm count Iow), teratozoospermia (sperm morphology abnormal).",
+      "Herpes zoster face.",
+      "Trigger Finger - middle finger.",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Retained placenta (placenta retained), labor induction, labor augmentation, dystocia (Difficult Childbirth), breech presentation.",
+      "Cervical Dysplasia.",
+      "Undescended testicle (cryptorchidism).",
+      "Sixth nerve palsy (abducens nerve palsy), esotropia (Inward eye deviation)."
+    ],
+    "additionalInfo": "Sometimes, 66.03 Huo ying is combined with 66.04 Huo Zhu in the Dao ma technique. 66.03 Huo Ying and 66.04 Huo Zhu are points that innervate the heart. They can invigorate the blood, reduce swelling and heat, and break up stagnation, such as ovarian cysts and uterine fibroids. For these conditions, they can be combined with 77.05-07 San Zhong. Point Name Huö ['k] - fire. Zhü — lord, master. Huö - fire. The character \"fire\" in the point's name suggests its connection with the heart and the upper burner due to the upward movement of fire. Therefore, the point can treat heart diseases and head disorders. The character \"master\" in the name of the point hints at its influence on the heart (the emperor)."
+  },
+  "66.05": {
+    "dongIndications": [
+      "Enteritis (intestinal inflammation)",
+      "gastritis (stomach lining inflammation)",
+      "abdominal distension",
+      "abdominal pain",
+      "appendicitis"
+    ],
+    "indications": [
+      "Dysmenorrhea (Menstrual pain) premenstrually and during menstruation (special effect), premenstrual syndrome (PMS).",
+      "Irritable Bowel Syndrome (IBS), Crohn's disease, diarrhea, constipation, duodenal ulcer, and appendicitis.",
+      "Headache, migraine, tension headache, frontal headache, vertex headache, temporal headache.",
+      "Trigeminal neuralgia.",
+      "Rectal prolapse.",
+      "Difficult labor,",
+      "Nasal obstruction (blocked nose).",
+      "Temporomandibular Joint Syndrome (TMJ).",
+      "Toothache.",
+      "Morton's neuroma.",
+      "Neurasthenia (anxiety disorder).",
+      "Alopecia (hair loss).",
+      "Anorexia (appetite poor).",
+      "Fissura ani (anal fissure).",
+      "Retained placenta (placenta retained), labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Nausea and vomiting."
+    ],
+    "additionalInfo": "66.05 Men Jin is sometimes needled together with Men Jin Xia using the Dao Ma technique. 66.05 Men Jin affects the middle and lower burner and is an essential point for treating stomach, intestines, and reproductive disorders. The point also affects the head and can treat a wide range of headaches and migraines, temporomandibular joint syndrome (TMJ), nasal congestion, and trigeminal neuralgia. According to Li Jing-Xiong, needling the point toward Ki-1 Yong Quan treats vertex headaches. For pain and numbness in the middle finger, 66.05 Men Jin is combined with 66.06 Mu Liu. According to Chuan Min Wang, the point can treat temporal headaches. Point Name Mén [P f] — Gate. Jin [ft] — Metal. The character \"metal\" in the name of the point suggests its effect on the large intestine (metal). Mén [FY] — Gate. Jin — Metal. Points with the character \"gate\" in their name open and release stagnation and excess. In the case of 66.05 Men Jin, it refers to stagnation in the middle and lower burner."
+  },
+  "66.06": {
+    "dongIndications": [
+      "Leukemia",
+      "enlarged spleen (Splenomegaly)",
+      "liver disorders",
+      "indigestion",
+      "fatigue",
+      "gallbladder disease",
+      "polio (not a primary indication)"
+    ],
+    "indications": [
+      "Hypochondrium pain, diaphragm tightness.",
+      "Blood cells diseases, white blood cell diseases, platelet diseases, leukopenia (Iow white blood cell count), leukocytosis (elevated white blood cell count), thrombocytosis (elevated platelet count), thrombocytopenia (Iow platelet count).",
+      "Hemiplegia (one-sided paralysis)",
+      "Migraine, headache, facial paralysis (bell's palsy), trigeminal neuralgia.",
+      "Morton's neuroma.",
+      "Stiffness, pain, and numbness in the second and third toes.",
+      "Stiff neck.",
+      "Epstein Barr Virus."
+    ],
+    "additionalInfo": "For additional information, see 66.07 Mu Dou. Point Name Mü — Wood. Lid [NJ - Remain. Lid — Remain. The character \"wood\" in the name of the point suggests its effect on the liver. The character \"remain\" in the name of the point implies something that is supposed to move within the liver or spleen (innervation of the point) but remains and accumulates. If something accumulates in the spleen, the liver, which regulates the spleen, releases the stagnation. Mü [X] — Wood."
+  },
+  "66.07": {
+    "dongIndications": [
+      "Enlarged spleen (Splenomegaly)",
+      "Liver disorders",
+      "indigestion",
+      "fatigue",
+      "gallbladder disease",
+      "polio (not a primary indication)"
+    ],
+    "indications": [
+      "Hypochondrium pain, diaphragm tightness.",
+      "Blood cells diseases, white blood cell diseases, platelet diseases, leukopenia (Iow white blood cell count), leukocytosis (elevated white blood cell count), thrombocytosis (elevated platelet count), thrombocytopenia (Iow platelet count).",
+      "Hemiplegia (one-sided paralysis)",
+      "Migraine, headache, headache above the eye.",
+      "Facial paralysis (bell's palsy), trigeminal neuralgia.",
+      "Morton's neuroma.",
+      "Stiffness, pain, and numbness in the second and third toes..",
+      "Stiff neck.",
+      "Epstein Barr Virus."
+    ],
+    "additionalInfo": "66.06 Mu Liu is sometimes used together with 66.07 Mu Dou using the Dao Ma technique. These points innervate the spleen and liver and can, therefore, address imbalances between the spleen and liver, manifested in the following ways: Digestive disorders due to an imbalance between wood (liver) and earth (spleen). Due to their connection with the liver and spleen, they also treat blood disorders. In such cases, they can be combined with Tu Chang (88) and 88.12-14 Shang San Huang. Numbness throughout the body due to blood blockage and stagnation (the liver stores the blood, and the spleen governs the blood). It is interesting to compare with 22.10 Shou Jie, which treats numbness, but in this case, the cause is the heart, which controls the blood. The points treat chronic fatigue syndrome due to over-control of wood over the earth. Stiffness of the tongue after a stroke. These points can be used for liver wind disorders characterized by mild or severe involuntary tremors affecting the hands, legs, face, and tongue. The points can also treat pain and stiffness in the third and fourth fingers due to the correlation between the fingers of the hands and the toes. When treating Morton's neuroma, needle on the affected side. Chuan Min Wang A case of Master Tung: Rhinitis, needling of 66.06-07 Mu Liu/Dou to treat nasal blockage. Master Tung thought, \"Strengthen the earth (spleen) to produce metal (lungs).\" A case of Master Tung: Pain on the lateral side of both arms. Master Tung believed that the root of the problem was the spleen, which governs the four limbs, so he needled 66.06 Mu Liu. Lai Jing Xiong Used 66.06-07 Mu Liu/Dou for clavicle swelling. After one visit, the swelling decreased, and after eight visits, the swelling completely disappeared. Point Name Mü Wood. Döu Ladle, bucket, measuring instrument. The character \"wood\" suggests that the point affects the liver, while the character \"bucket\" implies something that has accumulated and the point's ability to treat an enlarged spleen. If the hand radical is added to \"Dou\", it becomes the character \"Dou\" [94], which means \"tremor.\" This suggests the point's ability to treat liver-related wind disorders. The Big Dipper is called \"Bei Dou Xing\" [ l. The character \"Dou\" [ 1 in the point's name suggests its connection to the Big Dipper. In Chinese cosmology, the Big Dipper is located at the center of the Sky. The center is associated with the Earth, so the point's name hints at its connection with the Earth. In summary, the point's name suggests something stuck in the spleen and liver. In the case of the spleen, the wood that controls the earth releases the stagnation."
+  },
+  "66.08": {
+    "dongIndications": [
+      "Stop bleeding (including bleeding due to injury)",
+      "migraine"
+    ],
+    "indications": [
+      "Hemorrhoidal bleeding.",
+      "Menorrhagia (Irregular Uterine Bleeding).",
+      "Temporal headache.",
+      "Lactation suppression (stopping milk production).",
+      "Vertigo.",
+      "shoulder pain (posterior)."
+    ],
+    "additionalInfo": "The point is innervated by the lungs (metal) and the kidneys (water). Metal (the mother) strengthens water (the son) to strengthen the kidneys. The kidneys store (contract), so the point can be used to stop bleeding. However, due to the contracting nature of the point, it should not be needled in patients with asthma and phlegm. For additional information, see 66.09 Shui Qu. Point Name Liü Six. Wån [a - Completion, finished. According to the Yellow River chart, six and one belong to the Water phase. One generates Water, and six completes it. The number six in the point's name suggests its connection to the Water phase. Liü [hl- Six."
+  },
+  "66.09": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "limb edema",
+      "abdominal distension",
+      "cervical neuralgia"
+    ],
+    "indications": [
+      "Gynecological disorders.",
+      "Sciatica.",
+      "Urinary system disorders, hematuria, strangury, anuria, Irritable Bladder Syndrome, urethritis.",
+      "Neck pain, shoulder, and hip.",
+      "Bone pain throughout the body.",
+      "Neuralgia.",
+      "Hand bone pain.",
+      "Muscular atrophy.",
+      "Numbness.",
+      "Menopause, hot flashes, night sweats, restlessness, depression.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Cold feet.",
+      "Cervical Dysplasia."
+    ],
+    "additionalInfo": "66.09 Shui Qu is sometimes needled together with 66.08 Liu Wan using the Dao Ma technique. These points innervate the lungs and kidneys, which regulate water pathways and can thus treat fluid accumulation in the body. Lai Jing Xiong The point can be used to treat pain in the bones throughout the body, neuralgia, bone pain in the hands, muscle atrophy, and numbness. Chuan Min Wang The indications for the point include all conditions of excess dampness or fluid accumulation due to kidney deficiency. The point can help with weight loss in cases of fluid retention. Together with 88.25 Zhong Jiu Li, the point can alleviate pain in the early stages of cancer. Imaging: Upper to Lower Limb Correspondence: The area of these points represents the hand, so they can be used to treat disorders of the hand and fingers. Point Name Shui [7k] — Water. Qü [ft] - Bend. The point's name suggests its connection to the Water phase. Therefore, it can regulate water and the kidneys and treat edema, lower back pain, abdominal bloating, and uterine disorders."
+  },
+  "66.10": {
+    "dongIndications": [
+      "Hypertension causes dizziness and blurred vision",
+      "palpitations",
+      "and heart failure"
+    ],
+    "indications": [
+      "Brain tumor, meningitis.",
+      "Insomnia.",
+      "Facial paralysis (bell's palsy).",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Alopecia (hair loss).",
+      "Herpes zoster face.",
+      "Vertigo.",
+      "Meniere's disease.",
+      "Cold feet."
+    ],
+    "additionalInfo": "Some sources place 66.10 Huo Lian at the same location as Sp-3 Tai Bai. Chuan Min Wang A case from Master Tung: Insomnia with daytime fatigue, treated with 66.10 Huo Lian. For additional information, see 66.12 Huo San. Point Name Huö ['A'] — Fire. Liån — Connect. The point's name suggests its ability to treat disorders characterized by fire (Yang) in the upper part of the body. The point can connect with the fire and direct it downward. Huö - Fire. Liån [ig] — Connect. Yang Wei Chieh The point's name, \"Lian,\" hints at its connection to the herb Huang Lian Like the herb, the point can clear fire from the heart, treating insomnia and irritability."
+  },
+  "66.11": {
+    "dongIndications": [
+      "Numbness of the hands",
+      "paresthesia of the hands",
+      "palpitations",
+      "dizziness",
+      "leg pain",
+      "hypertension",
+      "a sensation of pressure and light-headedness in the head and brain",
+      "eyelid pain (blepharalgia)",
+      "and restricted neck movement"
+    ],
+    "indications": [
+      "Brain tumor, meningitis.",
+      "Frontal headache, headache above the eye.",
+      "Pain above the eye, eyelid disorders, heavy eyelids, hordeolum (stye).",
+      "Eye disorders, photophobia, blurred vision, focusing difficulties, floaters in the visual field, eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Foot pain.",
+      "Insomnia.",
+      "Facial paralysis (bell's palsy).",
+      "Alopecia (hair loss).",
+      "Herpes zoster face.",
+      "Meniere's disease.",
+      "Cubital Tunnel Syndrome.",
+      "Cold feet."
+    ],
+    "additionalInfo": "Some sources place 66.11 Huo Ju at the same location as Sp-4 Gong Sun. This point is particularly useful for treating frontal headaches, mainly when the pain is above the eye. Yang Wei Chieh To accelerate weight loss, it is recommended to needle Si-4 Wan Gu, 66.11 Huo Ju, 77.14 Si Hua Wait St-34 Liang Qiu, and Cv-4 Guan Yuan. For additional information, see 66.12 Huo San. Point Name Huö — Fire. Jü [5] — Chrysanthemum. Huö ['k] — Fire. The character \"Fire\" in the point's name suggests its connection to the heart and its ability to clear fire. Chuan Min Wang Since the chrysanthemum is an autumn herb, and autumn is the season of harvest in Chinese medicine, Chuan Min Wang believes that the point's name can be interpreted as \"Gathering Fire.\" This name more accurately describes the point's function alongside the other two points in this group: 66.10 \"Connecting Fire\" and 66.12 \"Dispersing Fire.\" The inclusion of \"Chrysanthemum\" in the point's name reflects its similarity to the herb Ju Hua. The point and the herb have similar properties; they treat excess heat and wind in the head region."
+  },
+  "66.12": {
+    "dongIndications": [
+      "Headache",
+      "cerebral edema",
+      "blurred vision",
+      "kidney deficiency",
+      "dizziness",
+      "lumbago (lower back pain)",
+      "upper thoracalgia (upper back pain)"
+    ],
+    "indications": [
+      "Keratitis.",
+      "Brain tumor, meningitis.",
+      "Insomnia.",
+      "Facial paralysis (bell's palsy).",
+      "Hypertension.",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Alopecia (hair loss).",
+      "Herpes zoster face.",
+      "Vertigo.",
+      "Meniere's disease.",
+      "Cold feet."
+    ],
+    "additionalInfo": "Some sources place 66.12 Huo San at the exact location as Kid-2 Ran Gu. It is common to use the Dao Ma technique to needle 66.10 Huo Lian, 66.11 Huo Ju, and 66.12 Huo San together. When needled together, they are called Zu San Huo [ Z 'k J, the \"Three Fires of the Leg.\" Combining these three points can treat excess fire (Yang) in the upper body, such as hypertension, dizziness, palpitations, insomnia, and meningitis. The points are innervated by the heart and kidney channels and address the lack of communication between the heart and kidneys, which leads to excess fire in the upper body (water controlling fire). Master Tung wrote in his book that the three points can be used to treat brain tumors and meningitis (needling on one side only). This combination can also treat a fire deficiency (circulation) in the upper body, such as hair loss, scalp itching, and deficiency-induced dizziness. Among the Three Fires of the Leg, 66.12 Huo San can also strengthen the kidneys and treat lower back pain caused by kidney deficiency. Lee Kuo Cheng The Three Fires of the Leg (Zu San Huo) are highly effective for cardiovascular diseases and brain conditions, such as hydrocephalus, brain tumors, concussions, Parkinson's, stroke, heart attack, palpitations, dizziness, vertigo, tension headaches related to hypertension, and tinnitus. Yang Wei Chieh The Three Fires of the Leg help restore the connection between the kidneys and the heart. These points can strengthen the kidneys and alleviate lower back pain. According to Master Tung, Zu San Huo is contraindicated in pregnancy. However, Yang Wei Chieh suggests that only 66.12 Huo San is contraindicated. At the same time, 66.10 Huo Lian and 66.11 Huo Ju are permissible since they are located in the same positions as Sp-3 Tai Bai, Sp-4 Gong Sun, and Kid-2 Ran Guj which are considered safe for needling during pregnancy according to TCM texts. Chuan Min Wang A Case of Master Tung: Urticaria with underlying kidney fire excess, treated with bloodletting at DT.04 Wu Ling and needling 66.12 Huo San. The rash resolved after two treatments. Miriam Lee 66.12 Huo San can be used in elderly patients with one cold leg and one warm leg. Strengthen the cold side with 66.12 Huo San, remove the needle, and then disperse the warm side using 66.12 Huo San. Point Name Huö ['k] — Fire. Sån — Disperse. The point's name suggests its ability to treat disorders characterized by fire (Yang) in the upper part of the body."
+  },
+  "66.13": {
+    "dongIndications": [
+      "Uterine inflammation",
+      "pressure sensation in the uterus",
+      "uterine tumors",
+      "a sensation of pressure and stiffness in the abdomen"
+    ],
+    "indications": [
+      "Retained placenta (placenta retained), labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Breech presentation.",
+      "Pelvic inflammation.",
+      "Heel pain, heel spur, plantar fasciitis.",
+      "Epilepsy - nocturnal, nocturnal Seizures."
+    ],
+    "additionalInfo": "This point is essential for treating uterine disorders. When treating heel pain, heel spur, plantar fasciitis, needle on the affected side. Lee Kuo Cheng In female reproductive system diseases, blood vessels or swelling may be observed in the area of the point. Point Name Shui [7k] — Water. Jing [d] — Crystal. Jing [HI — Crystal. The \"Water Crystal\" refers to the uterus. The name of the point suggests its ability to treat uterine disorders."
+  },
+  "66.14": {
+    "dongIndications": [
+      "Nephritis",
+      "limb edema",
+      "lumbago (lower back pain) due to kidney deficiency",
+      "spinal pain",
+      "postpartum fever",
+      "cataract"
+    ],
+    "indications": [
+      "Glomerulonephritis, urinary frequency.",
+      "Endometriosis.",
+      "Pregnancy toxemia.",
+      "Tinnitus, deafness.",
+      "Achilles tendon pain.",
+      "Headache, frontal headache.",
+      "Cervicalgia (neck pain).",
+      "Toothache.",
+      "Occipital headache.",
+      "Ankle sprain (medial), ankle pain (medial)."
+    ],
+    "additionalInfo": "66.14 Shui Xiang and 66.15 Shui Xian are often needled together using the Dao Ma technique. 66.13 Shui Jing, San Shui (66), and 66.14-15 Shui Xiang/Xian are located in an area that, in Master Tung's acupuncture, affects the kidneys, uterus, and brain. When treating an ankle sprain, needle on the affected side. Lee Kuo Cheng In diseases of the female reproductive system, Blood vessels may appear in the area of the point. Point Name Shui [7k] — Water. Xiäng [E] — Minister. The name of the point suggests its connection to water."
+  },
+  "66.15": {
+    "dongIndications": [
+      "Nephritis",
+      "limb edema",
+      "lumbago (lower back pain) due to kidney deficiency",
+      "spinal pain",
+      "postpartum fever",
+      "cataract"
+    ],
+    "indications": [
+      "Glomerulonephritis, urinary frequency.",
+      "Endometriosis.",
+      "Pregnancy toxemia.",
+      "Tinnitus, deafness.",
+      "Achilles tendon pain.",
+      "Headache, frontal headache.",
+      "Cervicalgia (neck pain).",
+      "Toothache.",
+      "Occipital headache."
+    ],
+    "additionalInfo": "For additional information, see 66.14 Shui Xiang. Point Name Shui — Water. Shui - water. Xiän [fill] — Immortal. The name of the point suggests its water connection. For more information about the point's name, see San Xian (11). Shui [7k] - water. Xiän [fib] — Immortal."
+  },
+  "LiuXi": {
+    "dongIndications": [
+      "Headache",
+      "head pressure",
+      "migraine"
+    ],
+    "indications": [
+      "Neck pain.",
+      "Concussion.",
+      "Dizziness.",
+      "Stomach disorders, duodenitis.",
+      "Heart diseases, cardiac rigidity, chest pain (pleurodynia).",
+      "Neurasthenia (anxiety disorder).",
+      "Sore throat, throat cancer.",
+      "Finger numbness, toes numbness.",
+      "CVA (Stroke), hemiplegia (one-sided paralysis)",
+      "Nasal bone area pain.",
+      "Anosmia (loss of smell).",
+      "Rhinitis, allergic rhinitis (hay fever), nasal polyp.",
+      "Functioning Adenoma (Pituitary Growth).",
+      "Sixth nerve palsy (abducens nerve palsy), esotropia (Inward eye deviation)."
+    ],
+    "additionalInfo": "In Tung's acupuncture, the dorsal area of the foot is used to treat disorders in the frontal area of the head, stomach disorders, and brain disorders. The points treat headaches or migraines in this area. Point Name XT [G] - Ravine, valley Shång [ -El - Upper Xiå [F] - Lower Wai [5M - Qiån [fifi] Side - Front, anterior Shång - IJpper Xiå [T] - Lower Wai [5b] - Side Qiån [fifi] - Front, anterior Néi - Inner Shui [7k] - Water Xi (ravine, valley) in the point name indicates the location of the points in the grooves between tendons and bones. Shång [Y] - Upper Qiån [Mj] - Front, anterior Néi [PS] - Inner"
+  },
+  "MenJinXia": {
+    "dongIndications": [
+      "Enteritis (intestinal inflammation)",
+      "gastritis (stomach lining inflammation)",
+      "abdominal distension",
+      "abdominal pain",
+      "appendicitis"
+    ],
+    "indications": [
+      "Dysmenorrhea (Menstrual pain) premenstrually and during menstruation (special effect).",
+      "Irritable Bowel Syndrome (IBS), crohn's disease, diarrhea, constipation, duodenal ulcer, and appendicitis.",
+      "Migraine, tension headache, frontal headache, vertex headache, temporal headache.",
+      "Trigeminal neuralgia.",
+      "Rectal prolapse.",
+      "Difficult labor, premenstrual syndrome (PMS).",
+      "Nasal obstruction (blocked nose).",
+      "Temporomandibular joint syndrome (TMJ).",
+      "Toothache.",
+      "Morton's neuroma.",
+      "Anorexia (appetite poor)."
+    ],
+    "additionalInfo": "For additional information, see 66.05 Men Jin. Point Name Mén — Gate. Jin - Metal. Xiå [T] - lower. Mén [P B] — Gate."
+  },
+  "TuBuEYeQu": {
+    "dongIndications": [
+      "Frontal headache",
+      "vertex headache",
+      "headache of any kind"
+    ],
+    "indications": [
+      "Dizziness, vertigo, light-headedness, hypotension (low blood pressure).",
+      "Neurasthenia (anxiety disorder).",
+      "Gastric ulcers (stomach ulcer), duodenal ulcer.",
+      "Forgetfulness, dementia.",
+      "Anosmia (loss of smell).",
+      "Functioning Adenoma (Pituitary Growth)."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "TuBuNieQu": {
+    "dongIndications": [
+      "Migraine",
+      "temple headache",
+      "tension headache"
+    ],
+    "indications": [
+      "Temporomandibular joint syndrome (TMJ).",
+      "Dizziness, hypertension (lower blood presure)."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  },
+  "WanTong": {
+    "dongIndications": [
+      "Wrist pain"
+    ],
+    "indications": [],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Chuan Min Wang published them first. The points treat wrist pain. Point Name Wån E] - Wrist. Töng [ - To pass through, know well, communicate, connect, open, and clean. The name of the point indicates its ability to treat wrist pain. The name of the points indicates their relationship to Water."
+  }
+}

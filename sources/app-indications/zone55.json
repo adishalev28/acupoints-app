@@ -1,0 +1,142 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "55.01": {
+    "dongIndications": [
+      "Liver diseases",
+      "difficult childbirth",
+      "retained placenta (placenta retained)",
+      "Induction of abortion",
+      "angina pectoris"
+    ],
+    "indications": [
+      "leukorrhea (vaginal discharge-white and red).",
+      "Retained placenta (placenta retained), labor induction, labor augmentation, dystocia (Difficult Childbirth), postpartum hemorrhage.",
+      "Irregular menstruation.",
+      "Uterine cancer, ovarian cancer.",
+      "Endometritis.",
+      "Oophoritis (ovarian inflammation).",
+      "Irritable bowel syndrome (IBS).",
+      "Menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB).",
+      "Premenstrual syndrome (PMS)."
+    ],
+    "additionalInfo": "55.01 Huo Bao and Fu Ling (55) are located in the same area. The difference between them: Fu Ling (55) only treats gynecological disorders related to liver diseases, whereas 55.01 Huo Bao can treat both liver and heart diseases. Because it also innervates the heart, it is more effective for blood stagnation and can expedite labor. The point's influence on the uterus is similar to the indications of the extra points Du Yin EX-LE-II. Due to the point's connection with the liver and stomach, Dr. Su recommends applying grain-sized moxa on 55.01 Huo Bao in combination with Pc-5 Jian Shi for nausea and vomiting during pregnancy. Lai Jing-Xiong In chest pressure with excessive sweating, one can press the point with a fingernail for 15 minutes. Susan Johnson Suggests using 55.01 Huo Bao for massive postpartum hemorrhage. Point Name Huö ['k] — Fire. Huö — Fire. Bäo — Womb, sack, wrap. The character \"Fire\" in the point's name suggests its ability to influence the heart. \"Bao,\" which means \"wrap\" or \"womb\" in the name of the point, implies its ability to affect the pericardium (the heart's protector Xin Bao) and the womb."
+  },
+  "55.02": {
+    "dongIndications": [
+      "Trachoma",
+      "red eyes",
+      "blepharitis",
+      "tearing when exposed to the wind",
+      "photophobia",
+      "pain above the eye",
+      "nasal bone area pain",
+      "toothache",
+      "tinnitus",
+      "deafness"
+    ],
+    "indications": [
+      "Keratitis, conjunctivitis, glaucoma.",
+      "Macular degeneration.",
+      "Night blindness.",
+      "Sixth nerve palsy (abducens nerve palsy), esotropia (Inward eye deviation).",
+      "Headache above the eye.",
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Cold feet."
+    ],
+    "additionalInfo": "In Master Tung's book, which has been translated into English, the point is numbered 55.02, even though it is located in area 66. Refer to the point numbering system (About The App) for more information. Essential points for treating eye and eyelid diseases are that they can also affect the ears. For eye diseases, one can needle from 66.03 Huo Ying to 55.02 Hua Gu Yi (66). Point Name Huä [7E] - Flower. Gü [f] - Bone. Huä - Flower. Gü [B] - Bone. Yi [—] - one. At the bottom of the character \"Hua\" [ is the character \"Hua\" [ l, which means transformation. In Chinese medicine, the spleen transforms and transports, so in Master Tung's acupuncture, points with the character \"Hua\" in their name affect the spleen. YT - one. There are several points on the foot where the character \"Hua\" appears in their name: 55.02 Hua Gu Yi (66), 55.03 Hua Gu Er (66), 55.04 Hua Gu San (66), 55.05 Hua Gu Si (66), Wu Hua (66). All these points are located in areas of the foot that touch the ground. The character \"Hua\" does not appear in the names of points in the arch of the foot, an area that does not touch the ground, such as 55.06 Shang Liu (66) and San Sheng (66)."
+  },
+  "55.03": {
+    "dongIndications": [
+      "Weakness in the fingers and arm pain"
+    ],
+    "indications": [
+      "Hand paraesthesia.",
+      "Shoulder pain."
+    ],
+    "additionalInfo": "In Master Tung's book, which has been translated into English, the point is numbered 55.03, even though it is located in area 66. For more information, refer to the point numbering system. This point can be used for conditions where the arm does not raise. Point Name Huä - Flower. Gü [ft] - Bone. Er [z] - Two. Huä [it] - Flower. Gü [f] - Bone. For additional information, 55.02 Hua Gu Yi."
+  },
+  "55.04": {
+    "dongIndications": [
+      "Spinal pain",
+      "lumbago (lower back pain)",
+      "sciatica"
+    ],
+    "indications": [
+      "Coccydynia (tailbone pain)"
+    ],
+    "additionalInfo": "In Master Tung's book, which has been translated into English, the point is numbered 55.04, even though it is located in area 66. Refer to the point numbering system (About The App) for more information. Sometimes, 55.04 Hua Gu San (66) is needled together with 55.05 Hua Gu Si (66) using the Dao Ma technique. For additional information, see 55.05 Hua Gu Si (66). Point Name Huä [7E] - Flower. Gü [ft] - Bone. Sän [E] — Three. Huä [it] - Flower. Gü [f] - Bone. Sän [Z] — Three. For additional information see 55.02 Hua Gu Yi (66)."
+  },
+  "55.05": {
+    "dongIndications": [
+      "Spinal pain",
+      "sciatica",
+      "abdominal pain",
+      "stomach ache",
+      "stop bleeding"
+    ],
+    "indications": [
+      "Constipation.",
+      "Coccydynia (tailbone pain)."
+    ],
+    "additionalInfo": "In Master Tung's book, which has been translated into English, the point is numbered 55.05, even though it is located in area 66. Refer to the point numbering system (About The App) for more information. Chuan Min Wang Master Tung's Case: A patient underwent surgery for retinal detachment in the left eye. The surgery led to hydrophthalmos (a type of glaucoma that causes swelling and stretching of the fibers surrounding the eyeball). He suffered from double vision and tearing, which caused pain on the left side of the occiput, radiating to the neck. He had two more unsuccessful surgeries to treat the hydrophthalmos. Treatment: on the opposite side, 22.01-02 Chong bilateral needling of 77.18 Shen Guan and 77.28 Guang Ming. For occipital pain and tearing on the opposite side, 55.04 Hua Gu San (66) and 55.05 Hua Gu Si (66) were needled. Master Tung said, \"55.04 Hua Gu San (66) has a channel to the spleen, which can open blood stagnation to treat occipital pain. 55.05 Hua Gu Si (66) has a channel to the lungs, which can open the blockage of qi to clear the water in the eye Additionally, 11.17 Mu was needled to treat tearing. Susan Johnson Needling 55.04-05 Hua Gu San/Si (66) can treat coccyx pain. Needle bilaterally and then apply cupping in the coccyx area. For herniated disc or disc protrusion treatment, needle 1010.25 while sitting, followed by needling 55.04-05 Hua Gu San/Si (66) while lying down. Point Name Huä [7Z] - Flower. Gü [t] - Bone. Si - Four. Huä [it] - Flower. Gü [f] — Bone. For aditional information See 55.02 Hua Gu Yi (66)."
+  },
+  "55.06": {
+    "dongIndications": [
+      "Brain tumor",
+      "hydrocephalus",
+      "cranial nerve pain",
+      "cranial nerve weakness",
+      "brain cancer"
+    ],
+    "indications": [
+      "Pain in the cerebellum.",
+      "Meningitis, epilepsy.",
+      "Concussion, coma.",
+      "Migraine, headache.",
+      "Pain in the palm.",
+      "Epistaxis (nosebleed), nasal obstruction (blocked nose).",
+      "Occipital headache.",
+      "Functioning Adenoma (Pituitary Growth).",
+      "Dysarthria."
+    ],
+    "additionalInfo": "In Master Tung's book, which has been translated into English, the point is numbered 55.06, even though it is located in area 66. For more information, refer to the point numbering system (About The App). In Master Tung's acupuncture, the brain is treated through points located in the heel area, such as 55.06 Shang Liu (66), 66.10-12 Zu San Huo, San Shui (66), 66.14-15 Shui Xiang/Xian, San Sheng (66), 77.01-02 Zheng Jin/Zong, Zheng Nao (77), 77.05-07 San Zhong, and Liu Xi (66). San Sheng (66), 77.01-02 Zheng Jin/Zong, Zheng Nao (77), 77.05-07 San Zhong, and Liu Xi (66). Point Name Shång — Upper. Shång [ -El — Upper. Lid [R] - Tumor. The name of the point suggests its ability to treat brain tumors."
+  },
+  "FuLing": {
+    "dongIndications": [
+      "Metritis (uterine inflammation)",
+      "uterine cancer"
+    ],
+    "indications": [
+      "Oophoritis (ovarian inflammation).",
+      "Menstrual regulation.",
+      "Leukorrhea (vaginal discharge-white and red).",
+      "For all gynecological disorders (very good effect)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. For more information, refer to 55.01 Huo Bao. Hu Wen Zhi When combined with 11.24 Fu Ke, this point can treat all gynecological diseases with good results. Point Name Fü [ÉÆ] - Woman, married woman Ling - Spirit, quick, alert, efficient The point's name indicates its ability to influence the female reproductive system."
+  },
+  "SanSheng": {
+    "dongIndications": [
+      "Hypertension (special effect)"
+    ],
+    "indications": [
+      "Hypotension (low blood pressure), orthostatic hypotension.",
+      "Cerebral thrombosis (CVA), cerebral embolism (CVA).",
+      "Cerebral hemorrhage, .",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Meniere's disease.",
+      "Delirium."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book; Hu Wen Zhi first introduced them. They are primary points for treating hypertension, and three of them are among Tung's 72 absolute points for treating hypertension. Point Name Sän [E] — Three. Shéng [Å2] — Sage, Emperor, Great Teacher, or a particular skill. The name of the point suggests its influence on the brain."
+  },
+  "WuHua": {
+    "dongIndications": [
+      "Heel pain and swelling"
+    ],
+    "indications": [
+      "Cranial nerve neuralgia.",
+      "Insomnia (special effect)."
+    ],
+    "additionalInfo": "The points did not appear in Master Tung's original book. Hu Wen Zhi first introduced them. When treating insomnia, better results are achieved by needling the points on both sides. It is not necessary to needle all five points bilaterally. You can needle three on each side: on one side, the three vertical points, and on the other side, the three horizontal points. In Master Tung's acupuncture, the heel area is used to treat brain disorders; these points affect the cranial nerves and insomnia. For heel spurs, palpate the heel area and bleed the painful point. Point Name Wü [E] - Five. Huä [7E] - Flower. Wü - Five. Huä — Flower. According to the Yellow River Diagram, the number five belongs to the Earth phase. The points are located on the heel, which connects us to the earth. see 55.02 Hua Gu Yi (66). Huä [it] — Flower."
+  }
+}

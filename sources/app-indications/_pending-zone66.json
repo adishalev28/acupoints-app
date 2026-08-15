@@ -1,0 +1,57 @@
+{
+  "_comment": "לכידות OCR של נקודות שקיימות באפליקציה של שון ואינן קיימות ב-src/data/zones. ממתינות להחלטת עדי אם להוסיף כנקודות מלאות. נלכדו 15.8.2026 עם אקסטרה של אזור 66.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "_note": "SanShui היא קבוצה שה-additionalInfo שלה מונה את חבריה: Shui Fen, Shui Men, Shui Xiang. אצלנו ShuiMen ו-ShuiFen קיימות כנקודות נפרדות, אך התוכן העברי שלהן (רחם, שליה, עקב) אינו תואם את כרטיס דונג כאן (כאב עצבים גולגולתיים, נוירלגיה טריגמינלית) — לא פער תרגום אלא מקור אחר.",
+  "GB40_QiuXu": {
+    "header": "Gb-40 Qiü | Mound of Ruins",
+    "zone": "66",
+    "cardCount": 5,
+    "dongIndications": [
+      "Dysarthria",
+      "aphasia"
+    ],
+    "indications": [
+      "Wrist Joint Pain.",
+      "Carpal tunnel syndrome (CTS).",
+      "Neck pain (around Gb-20 Feng Chi)",
+      "Claude O"
+    ],
+    "additionalInfo": "James Mahar GB-40 Qiu Xu is indicated for wrist joint pain that is induced or aggravated by circumduction (circular movement of the wrist). GB-40 Qiu Xu is selected and needled on the contralateral (opposite) side of the affected wrist. This point is typically used as part of a comprehensive protocol, often combined with points such as ST-41 Jie Xi, BL-62 Shen Mai, 77.17 Tian Huang, and 77.22 Ce san, 77.23 Li Ce San Li. While the needles are in situ, the practitioner instructs the patient to actively move the affected wrist. This technique effectively guides Qi through the injured area, accelerating healing and restoring mobility. Point Name Qiu [fil — Hill, mound, or knoll. Xu [it] — Ancient burial ground, ruins, ghost town, or wilderness. Qiu [E] — Hill, mound, or knoll. The character Qiu [ E ] depicts two people standing back-to-back on a hill, with an unobstructed view in all four directions. The character Xu [ ] depicts those same two people standing on a flat, desolate plain; though they look in all directions, they see nothing, signifying an abandoned area. Anatomically, the point is located near the ankle, which resembles a mound. The name of the point conveys the idea of climbing a mountain when one is lost in the wilderness; from the summit, we can regain perspective on where we have been and where we are going. The name describes the point's ability to help a person return to their life's path when they feel they have lost their way."
+  },
+  "SanShui": {
+    "header": "Sän Shui | Three Waters",
+    "zone": "66",
+    "cardCount": 9,
+    "dongIndications": [
+      "Cranial nerve pain",
+      "trigeminal neuralgia"
+    ],
+    "indications": [
+      "Brain tumors.",
+      "Migraine.",
+      "Lower back pain.",
+      "Metritis (uterine inflammation), oophoritis (ovarian inflammation), dysmenorrhea (Menstrual pain).",
+      "Testicular swelling.",
+      "Shoulder pain.",
+      "Neck sprain, neck pain.",
+      "Sixth nerve palsy (abducens nerve palsy), esotropia (Inward eye deviation)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. Point Name Sän [Z] — - Three Shui [7k] - Water Fén - To separate, divide, allocate Sän [E] - Three Shui [7k] - Water Mén - Door Xiäng [6] - Fragrant, sweet smell, aromatic The name of the points indicates their relationship to Water. Mén [B] - Door"
+  },
+  "TuBuNieQu_2": {
+    "header": "Töu Bü Nié Qü Fångxié Qü Ér | Temporal Region of the Head Bloodletting Region 2",
+    "zone": "66",
+    "cardCount": 4,
+    "dongIndications": [
+      "Migraine",
+      "temple headache",
+      "tension headache"
+    ],
+    "indications": [
+      "Temporomandibular joint syndrome (TMJ).",
+      "Dizziness.",
+      "Hypertension."
+    ],
+    "additionalInfo": "When treating these areas, first scan the region for a Luo channel. Next, palpate the area to detect any changes in the tissue, and perform bloodletting in the identified regions."
+  }
+}

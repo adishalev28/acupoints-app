@@ -46,7 +46,16 @@ export interface Point {
   location: string
   needling: string
   reactionAreas: string[]
+  /** כל ההתוויות — של דונג ושל מטפלים מאוחרים יחד. מזין את החיפוש והרובריקה. */
   indications: string[] | IndicationGroup[]
+  /**
+   * ההתוויות של מאסטר דונג עצמו.
+   * בספרו של שון גודמן הן **מודגשות** ומופיעות ראשונות;
+   * באפליקציה של שון הן הכרטיס הראשון ברשימת ההתוויות.
+   * קודמות בעדיפות קלינית על התוויות של מטפלים מאוחרים.
+   * היעדר השדה = טרם אומת מול המקור. אין משמעותו "לדונג אין התוויות לנקודה".
+   */
+  dongIndications?: string[]
   additionalInfo: string
   imageId?: string
   sources: SourceInfo[]

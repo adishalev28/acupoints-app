@@ -383,7 +383,7 @@ export const organProfiles: OrganProfile[] = [
     childNote: 'בן של מתכת = מים. Tong Shen מפזר עודף ריאות דרך הכליות',
 
     namedPoints: [
-      { id: '88.17', name: 'Si Ma (駟馬) — ארבעה סוסים', reason: 'המספר 4 קשור למתכת/ריאות בחמש הפאזות' },
+      { id: '88.17-19', name: 'Si Ma (駟馬) — ארבעה סוסים', reason: 'המספר 4 קשור למתכת/ריאות בחמש הפאזות' },
       { id: '22.01', name: 'Chong Zi (重子)', reason: 'אזור תגובה ריאות — על ערוץ מתכת' },
     ],
 

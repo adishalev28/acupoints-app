@@ -24,6 +24,10 @@
 SP=scripts/phone-capture
 D=/path/to/scratch
 
+# 0. בדיקה מקדימה — על איזו נקודה האפליקציה עומדת עכשיו
+powershell -NoProfile -File $SP/phone.ps1 -Max -Out "$D/probe.png"
+powershell -NoProfile -File $SP/ocr.ps1 -Path "$D/probe.png" -Crop "0,195,1920,120"
+
 # 1. לכידה — פותח Indications, גולל עד התחתית, עובר לנקודה הבאה
 powershell -NoProfile -File $SP/capture-batch.ps1 -Ids "p01,p02,p03" -OutDir "$D/shots"
 
@@ -97,3 +101,9 @@ powershell -NoProfile -File $SP/input.ps1 -Action scroll -X 960 -Y 700 -Amount -
     התפירה לא מזהה חפיפה ומשכפלת משפטים שלמים — `ClipMargin = 28` ב-`cards.ps1`
 12. **`Additional Information` ארוך עובר את תקרת הגלילה** — `MaxScrolls = 45`.
     הסקריפט מדפיס "MAX" כשלא הגיע לתחתית; נקודה כזו חייבת לכידה חוזרת
+13. **`capture-batch.ps1` לוחץ "נקודה הבאה" גם אחרי המזהה האחרון** — בסוף ריצה
+    האפליקציה עומדת נקודה אחת קדימה. חובה להריץ את הבדיקה המקדימה (שלב 0)
+    לפני כל לכידה, אחרת סורקים את הנקודה הלא נכונה ומגלים את זה רק ב-OCR
+14. **צילום עם `-NoFocus` תופס את החלון שבחזית, לא את הטלפון** — לבדיקה
+    מקדימה חובה `-Max`. ה-`-NoFocus` בתוך `capture-batch.ps1` תקין רק כי
+    הלחיצות שלפניו כבר הביאו את חלון הטלפון לחזית

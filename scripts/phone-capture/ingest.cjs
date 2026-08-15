@@ -41,7 +41,8 @@ for (const f of fs.readdirSync(ZONES)) {
     const ind = b.match(/\r?\n {4}indications: \[((?:.|\n|\r)*?)\r?\n {4}\],/);
     const items = ind ? [...ind[1].matchAll(/'((?:[^'\\]|\\.)*)'/g)].map((m) => m[1]) : [];
     const info = (b.match(/\r?\n {4}additionalInfo: '((?:[^'\\]|\\.)*)'/) || [])[1] || '';
-    hebrew.set(id, { file: f, items, info, hasDong: /dongIndications:/.test(b) });
+    const zone = (b.match(/\r?\n {4}zone: '([^']+)'/) || [])[1] || '';
+    hebrew.set(id, { file: f, zone, items, info, hasDong: /dongIndications:/.test(b) });
   }
 }
 
@@ -88,7 +89,8 @@ if (!WRITE) {
 fs.mkdirSync(SRCDIR, { recursive: true });
 const byZone = new Map();
 for (const [id, rec] of Object.entries(points)) {
-  const zone = id.split('.')[0];
+  // נקודות נקובות-שם (TongChang) לא נושאות את האזור במזהה — נלקח משדה zone שבנתונים
+  const zone = hebrew.get(id)?.zone || id.split('.')[0];
   if (!byZone.has(zone)) byZone.set(zone, {});
   byZone.get(zone)[id] = {
     dongIndications: rec.dongIndications,

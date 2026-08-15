@@ -403,7 +403,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'kidney-deficiency',
-        pointIds: ['77.18', '77.19', '77.21', '88.17', '88.18', '88.19'],
+        pointIds: ['77.18', '77.19', '77.21', '88.17-19'],
         daoMa: 'Xia San Huang + Si Ma',
         protocol: 'נדודי שינה מחולשת כליות: Xia San Huang 77.17/19/21 + Si Ma 88.17-19.',
         needleSide: 'bilateral',
@@ -420,7 +420,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'lung-deficiency',
-        pointIds: ['77.08', '77.09', '77.11', '88.17', '88.18', '88.19'],
+        pointIds: ['77.08', '77.09', '77.11', '88.17-19'],
         daoMa: 'Si Hua + Si Ma',
         protocol: 'אסתמה מחולשת ריאות: Si Hua 77.08/09/11 (אדמה מזינה מתכת) + Si Ma 88.17-19 (חיזוק ריאות וכליות).',
         needleSide: 'bilateral',
@@ -428,7 +428,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
       },
       {
         rootId: 'kidney-deficiency',
-        pointIds: ['88.17', '88.18', '88.19', '77.18', '77.19', '77.21'],
+        pointIds: ['88.17-19', '77.18', '77.19', '77.21'],
         daoMa: 'Si Ma + Xia San Huang',
         protocol: 'אסתמה מחולשת כליות (קושי בשאיפה): Si Ma 88.17-19 + Xia San Huang.',
         needleSide: 'bilateral',
@@ -476,7 +476,7 @@ export const pathogenesisMaps: PathogenesisMap[] = [
     roots: [
       {
         rootId: 'lung-deficiency',
-        pointIds: ['22.01', '22.02', '88.17', '88.18', '88.19'],
+        pointIds: ['22.01', '22.02', '88.17-19'],
         daoMa: 'Chong Zi/Xian + Si Ma',
         protocol: 'עור יבש/אקזמה מחולשת ריאות: Chong Zi/Xian 22.01-02 + Si Ma 88.17-19. הריאות שולטות על העור.',
         needleSide: 'bilateral',
@@ -580,7 +580,7 @@ export const pathogenOrganMap: PathogenOrganMap[] = [
     pathogen: 'רוח חיצונית',
     organ: 'ריאות',
     phase: 'מתכת',
-    rootPointIds: ['88.17', '88.18', '88.19'],
+    rootPointIds: ['88.17-19'],
     daoMa: 'Sima 88.17-19',
   },
   {

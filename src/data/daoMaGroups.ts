@@ -129,7 +129,7 @@ export const daoMaClinicalGroups: DaoMaClinicalGroup[] = [
     nameHebrew: 'ארבעה סוסים',
     namePinyin: 'Sì Mǎ',
     nameChinese: '駟馬',
-    pointIds: ['88.17', '88.18', '88.19'],
+    pointIds: ['88.17-19'],
     organ: 'lungs',
     phase: 'metal',
     phaseHebrew: 'מתכת',

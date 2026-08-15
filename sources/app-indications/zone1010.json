@@ -1,0 +1,441 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "1010.01": {
+    "dongIndications": [
+      "Aphasia",
+      "hemiplegia (one-sided paralysis)",
+      "seizures in children",
+      "facial paralysis (bell's palsy)",
+      "tremors of limbs",
+      "fatigue"
+    ],
+    "indications": [
+      "Wind disorders (All types of wind disorders).",
+      "CVA (Stroke), cerebral thrombosis (CVA), CVA - coma.",
+      "Legs weak.",
+      "Wei syndrome (atrophy).",
+      "Autonomic nervous system disorders.",
+      "Nosebleeds (special effect).",
+      "Neurasthenia (anxiety disorder).",
+      "Vertex headache.",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Vertigo.",
+      "Meniere's disease.",
+      "Premenstrual syndrome (PMS).",
+      "Dysarthria."
+    ],
+    "additionalInfo": "There are three meetings (Hui) on the head: 1010.01 Zheng hui, 1010.05 Qian hui, and 1010.06 Hou hui. Together, they are called the three meetings of the head, Tou San Hui [ EN. These three points affect the brain and treat wind disorders but have different innervations and indications. They can be needled together using the Dao ma technique. The three meetings are important points for treating wind disorders, such as stroke, tics, epilepsy, tremors, and Parkinson's disease. They can be needled together or selected through palpation along the entire line. In Tung acupuncture, the points on the head (area 1010) are exceptional because Tung acupuncture treats the problem remotely rather than directly addressing it. This is a wise way to avoid direct interference. However, it is different in the case of the brain. Point Name Zhéng — upright, fair, straight, vertical, to correct. Hui [9] — meeting. One of the meanings of Zheng is to correct. The name of the point implies its ability to correct the Qi. This is the same character as Zheng qi (the correct Qi). Therefore, the name of the point suggests its ability to correct the meeting of Heaven (the head represents Heaven). It can reconnect us to Heaven. Heaven is also related to Yang Qi. The point can correct the Yang Qi. In extreme cases, an imbalance of Yang Qi generates wind. The point can also correct upright posture. The Yang Qi pulls the vertex upward."
+  },
+  "1010.02": {
+    "dongIndications": [
+      "Asthma",
+      "sciatica",
+      "lumbago (lower back pain)",
+      "hemiplegia (one-sided paralysis)",
+      "weakness of the limbs"
+    ],
+    "indications": [
+      "Four limbs pain.",
+      "Spine pain.",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction."
+    ],
+    "additionalInfo": "1010.02 Zhou Yuan, 1010.03 Zhou Kun, and 1010.04 Zhou Lun innovate the lungs and have similar indications. For more additional information, see 1010.04 Zhou Lun. Point Name Zhöu [9+11 — prefecture, (old) province, administrative division, state, oblast, canton. Yuån [E] - circle, round, rotation, full (moon)."
+  },
+  "1010.03": {
+    "dongIndications": [
+      "Asthma",
+      "lumbago (lower back pain)",
+      "sciatica",
+      "hemiplegia (one-sided paralysis)",
+      "limbs weakness"
+    ],
+    "indications": [
+      "Spine pain.",
+      "Four limbs pain.",
+      "Cranial nerve pain.",
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction."
+    ],
+    "additionalInfo": "Yuan with the addition of cranial nerve pain. Claude O The point has the same indications as 1010.02 Zhou Yuan with the addition of cranial nerve pain. Point Name Claude division, state, oblast, canton. Zhöu [1+1] — prefecture, (old) province, administrative division, state, oblast, canton. Kün [N] — elder brother, offspring, is used in the names of places, such as the Kun Lun Mountains in eastern China. For more additional information, see 1010.04 Zhou Lun."
+  },
+  "1010.04": {
+    "dongIndications": [
+      "Asthma",
+      "lumbago (lower back pain)",
+      "sciatica",
+      "hemiplegia (one-sided paralysis)",
+      "brain tumor",
+      "limbs weakness"
+    ],
+    "indications": [
+      "Four limbs pain.",
+      "Headache.",
+      "Dizziness."
+    ],
+    "additionalInfo": "The point has the same indications as 1010.02 Zhou Yuan, with the addition of a brain tumor, headache, and dizziness. When using the point for a brain tumor: prick the point on the right side for a brain tumor on the left side, and vice versa. The three points, 1010.02 Zhou Yuan, 1010.03 Zhou Kun, and 1010.04 Zhou Lun, have similar indications and innvert the lungs. These are important points for treating limb weakness - in Chinese medicine, Wei syndrome is based on lung weakness. Chapter 44 of the Su Wen on Wei syndrome states: \"When the lungs are hot and the lobes are burning, the skin and hair are thinned and exhausted. The skin is taut and the hair is thin. When the heat is stuck, it causes laxity with inability to walk.\" The heat that sometimes originates from the heart (excess passion) harms the lungs, and the weak lungs do not circulate qi and blood into the limbs. As a result, atrophy of the limbs (Wei syndrome) was created. The Zhou points affect the brain and represent the metal (lung nerve), water (kidney nerve), and fire (heart nerve) phases. There are ten Zhou points: five are the kidneys, four are the lungs, and one is the heart. Strangely, there are no points related to wood (liver) because what usually causes damage to the brain is wind that rises up and can also turn into fire. In terms of Tung acupuncture, the wind of the wood is treated through the metal that controls the wood and brings down the excess of the wood. Therefore, in Tung acupuncture, the kidneys, heart, and lungs control the brain. Point Name Zhöu [1+11 - prefecture, (old) province, administrative division, state, oblast, canton. Lün [W] — Kun Lün mountain. Zhou is also a province. Each of the Zhou points is associated with a different Zang, a different province, and therefore affects the brain differently depending on the innervation of the associated organ. For example, 1010.25 Zhou Shui is associated with the kidneys (water), while 1010.23 Zhou Huo is associated with the heart (fire). Kun Lun If you connect the name 1010.03 Zhou Kun with 10101.04 Zhou Lun, you get the name Kun Lun, a mountain range originating in the Pamirs Plateau province, the westernmost region of China. The west is associated with metal (lungs), so the point's name suggests its effect on the lungs (lung innervation). In Chinese mythology, Mount Kun Lun is considered sacred. The Kun Lun Mountains appear in the Neijing Tu [ J, a Daoist diagram describing the internal channels of the circulation of qi in Neidan practice, first mentioned in the Qing Dynasty. The diagram depicts a side view of the body. In the head area, we find the Kun Lun mountains, like the Kun Lun points on the head."
+  },
+  "1010.05": {
+    "dongIndications": [
+      "Vertigo",
+      "dizziness",
+      "neurasthenia (anxiety disorder)",
+      "floaters in the visual field"
+    ],
+    "indications": [
+      "Cerebral edema.",
+      "CVA (Stroke), CVA - coma, hemiplegia (one-sided paralysis)",
+      "Insomnia (special effect).",
+      "Epilepsy.",
+      "Dysarthria.",
+      "Meniere's disease."
+    ],
+    "additionalInfo": "The point has an immediate effect on a person who has lost consciousness. The point is used to wake up a patient from a coma. 1010.01 Zheng Hui, 1010.05 Qian Hui, and 1010.06 Hou Hui are often combined together in the Dao ma technique to affect the brain. For additonal information, see 1010.01 Zheng Hui. Hu Wen Zhi One of Tung's 32 relieving points that can treat a condition of brain toxicity, such as brain swelling, infections, or severe insomnia. Sleep is very important for brain health. A great lack of sleep can be seen as a state of brain toxicity, where the brain fails to rest and clean itself. Point Name Qiån [fifi] — front. Hui [f] — meeting. The front in the point's name implies that it is the most anterior of the three meeting points in the head and affects the brain's frontal region (the frontal lobe)."
+  },
+  "1010.06": {
+    "dongIndications": [
+      "Aphasia",
+      "vertigo",
+      "hemiplegia (one-sided paralysis)",
+      "headache (mild)",
+      "cerebrovascular disease",
+      "spine pain",
+      "dizziness",
+      "bone tuberculosis",
+      "stroke (CVA)",
+      "nerve paralysis"
+    ],
+    "indications": [
+      "Coccydynia (tailbone pain).",
+      "Meniere's disease.",
+      "CVA (Stroke), cerebral thrombosis (CVA), CVA - coma.",
+      "Epilepsy.",
+      "Dysarthria."
+    ],
+    "additionalInfo": "1010.01 Zheng Hui, 1010.05 Qian Hui, and 1010.06 Hou Hui are often combined in a Dao Ma technique to affect the brain. For additional information, see 1010.01 Zheng Hui. Point Name Höu [if] — rear. Hui [9] — meeting. Posterior in the name of the point implies that it is the posterior of the three meeting points in the head and affects the spine located in the back of the body. Höu [f*] — rear."
+  },
+  "1010.07": {
+    "dongIndications": [
+      "Aphasia",
+      "cholera",
+      "vomiting (emesis) and diarrhea at the same time (Sudden turmoil disease, Huo luan)",
+      "vomiting",
+      "neck pain",
+      "pressure in the heart",
+      "weakness of the heart",
+      "headache",
+      "and disturbance in the six Fu organs"
+    ],
+    "indications": [
+      "Anosmia (loss of smell).",
+      "Dysarthria."
+    ],
+    "additionalInfo": "The point's primary use is vomiting, and it is also a main point for treating vomiting. The point treats wind affecting the brain, which can cause vomiting. Chapter 42 of the Su Wen states that when the brain is damaged, it can affect the stomach and intestines. In the Indications, Mater Tung mentions disorder in the six Fu organs, which means disorders in the stomach and intestines. Huo Luan Gill—Sudden turmoil disease is simultaneously characterized by diarrhea and vomiting, accompanied by abdominal cramps. Sometimes, it translates as cholera. Bleeding the point treats Sudden turmoil disease of the liver because the point can treat wind. The point innovates the Dan tian. There are three Dan tian in the body: the lower (kidneys), the middle (heart), and the upper (brain). The back region of the head is associated with water, so the point belongs to the lower Dan tian. The point is a pivot that brings the wind back down to the lower Dan Tian. Point Name Zöng [4] — to gather, collect, assemble. Shü — axis, pivot. The point's name suggests its location between the neck and the brain. This point is a pivot where wind can enter the brain. The wind entering the head causes a turmoil of Yang in the head, which can manifest as vomiting."
+  },
+  "1010.08": {
+    "dongIndications": [
+      "Insomnia",
+      "numbness of the limbs",
+      "tremors of the limbs",
+      "night crying in infants"
+    ],
+    "indications": [
+      "Mental disorders, anxiety disorder.",
+      "Four limbs pain and weakness.",
+      "Sinusitis - frontal.",
+      "Heart disease causing forehead pain.",
+      "Dizziness.",
+      "Nausea, vomiting, morning sickness.",
+      "Frontal headache.",
+      "Anosmia (loss of smell).",
+      "Anorexia (appetite poor).",
+      "Delirium.",
+      "CVA - coma, epilepsy.",
+      "Premenstrual syndrome (PMS)."
+    ],
+    "additionalInfo": "Due to the point's influence on the brain and heart, it establishes the connection between the kidneys and the heart. In Tung's acupuncture, the kidneys and heart influence the brain: the kidneys affect the brain tissue and nerves, while the heart influences consciousness and blood vessels. This is an important point that may calm the patient. I like to needle together in the Dao ma technique 1010.08 Zhen Jing with 1010.01 Zheng Hui and GV-22 Xin Hui to calm the patient. Point Name Zhén [SA] - Post, garrison, town, village. Jing [5+1 — Calm, quiet, stillness. The name of the point suggests its ability to calm."
+  },
+  "1010.09": {
+    "dongIndications": [
+      "Headache",
+      "vertigo"
+    ],
+    "indications": [
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Facial paralysis (bell's palsy).",
+      "Deviation of the mouth.",
+      "Vomiting, singultus (hiccups).",
+      "Abdominal bloating and pressure.",
+      "Mental disorders.",
+      "Sinusitis - frontal, allergic rhinitis (hay fever), nasal polyp.",
+      "Frontal headache, headache above the eye.",
+      "Anosmia (loss of smell).",
+      "Irritable bowel syndrome (IBS).",
+      "1010.09",
+      "Li 1010.10 SiFuEr 1010.08 Jin",
+      "Sharw Li Sifu Ef 1010.11 Sifu Yi Zhen Jin",
+      "Sharg Li",
+      "SiFuY1",
+      "Shane '010.08 Siro n"
+    ],
+    "additionalInfo": "Bloodletting is performed at Shang Li 1010.09 and Si Fu Er/Yi 1010.10-11 when treating frontal headache, sinusitis, facial paralysis, trigeminal neuralgia, and stroke. Point Name Shång — Upper. Li — Mile, Interior. The term \"mile\" in the point's name suggests a similarity in indications to point 88.26 Shang Jiu li, which also treats abdominal bloating."
+  },
+  "1010.10": {
+    "dongIndications": [
+      "Headache",
+      "vertigo",
+      "bloating"
+    ],
+    "indications": [
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Bone pain, muscles, tendons, and ligaments.",
+      "Facial paralysis (bell's palsy), deviation of the mouth.",
+      "Vomiting (emesis), nausea.",
+      "Mental disorders.",
+      "Sinusitis - frontal.",
+      "Frontal headache, headache above the eye.",
+      "Macular Degeneration (AMD).",
+      "1010.09 Li",
+      "1010.10 1010.08 Jin",
+      "Shal* U 1010.11 SiFuY1",
+      "SivuY1 Zhen Jin",
+      "Sifu Et",
+      "ton 10 Sifu Er 101@11 Sifun",
+      "Sifu Yi"
+    ],
+    "additionalInfo": "Bloodletting is performed at Shang Ii 1010.09 and 1010.10-11 Si Fu Er/Yi when treating frontal headache, sinusitis, facial paralysis, trigeminal neuralgia, and stroke. Point Name Si Four. Fü The hollow organs. Ér [z] — Two In the Yellow River diagram, the number four represents metal. The points influence the large intestine, which belongs to the metal phase. Si [PAI— Four. Ér [ZI — Two The mention of intestines in the names of the points hints at their ability to treat intestinal diseases."
+  },
+  "1010.11": {
+    "dongIndications": [
+      "Headache",
+      "vertigo",
+      "bloating"
+    ],
+    "indications": [
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Bone pain, muscles, tendons, and ligaments.",
+      "Facial paralysis (bell's palsy), deviation of the mouth.",
+      "Nausea, vomiting.",
+      "Mental disorders.",
+      "Sinusitis - frontal.",
+      "Frontal headache, headache above the eye.",
+      "Irritable bowel syndrome (IBS).",
+      "1010.09 Li",
+      "1010.10 1010.08 Jin",
+      "Shal* U 1010.11 SiFuY1",
+      "SivuY1 Zhen Jin",
+      "Sifu Et",
+      "ton 10 Sifu Er 101@11 Sifun",
+      "Sifu Yi"
+    ],
+    "additionalInfo": "Bloodletting is performed at Shang Ii 1010.09 and 1010.10-11 Si Fu Er/Yi when treating frontal headache, sinusitis, facial paralysis, trigeminal neuralgia, and stroke. Point Name Si Four. Fü The hollow organs. — one In the Yellow River diagram, the number four represents metal. The points influence the large intestine, which belongs to the metal phase. Si [PAI— Four. Yi — One The mention of intestines in the names of the points hints at their ability to treat intestinal diseases."
+  },
+  "1010.12": {
+    "dongIndications": [
+      "Allergic rhinitis (hay fever)",
+      "psychosis",
+      "nasal obstruction (blocked nose)"
+    ],
+    "indications": [
+      "Anosmia (loss of smell)."
+    ],
+    "additionalInfo": "Bleeding the point treats rosacea, nasal mucosa congestion, stuffy nose, and psychosis. The point stimulates the brain and improves memory in elderly people who remember the past but forget the present. Chuan Min Wang adhesion of Bu Liu Xing (Semen Vaccaria) seeds on the point helps with snoring and treats nasal congestion that interferes with sleep. Point Name Zhéng — positive, correct, primary. Bén [$1 — original, basic."
+  },
+  "1010.13": {
+    "dongIndications": [
+      "Nephrolithiasis (kidney stones)",
+      "nephritis",
+      "rhinitis",
+      "lumbago (lower back pain)",
+      "chest pain (Pleurodynia) during breathing",
+      "sciatica"
+    ],
+    "indications": [
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Urinary retention."
+    ],
+    "additionalInfo": "The point can treat urinary system disorders caused by deficiencies in the kidneys and lungs. Nephrolithiasis (kidney stones) While acupuncture does not physically crush kidney stones, it is a highly effective treatment for facilitating their natural passage, provided the stones are smaller than 6 millimeters. Rather than breaking the stone, the treatment focuses on creating the optimal physiological conditions for its expulsion. It works by relaxing and dilating the smooth muscle of the ureters (spasmolysis), allowing the stone to pass without getting stuck. Additionally, acupuncture promotes diuresis, creating a natural hydraulic pressure that helps flush the system, while simultaneously reducing the local inflammation and tissue swelling that can narrow the urinary tract. Ultimately, this approach significantly relieves the severe pain of renal colic and supports the smooth, natural exit of the stone. Point Name — Horse. Jin — Gold, Metal. Mä — Horse. Jin — Gold, Metal. Shui [7k] — Water. Metal-water points strengthen the kidneys and lungs. The point's name hints at this ability. The term \"fast horse\" describes the point's quick and strong effect. Mä [X] — Horse."
+  },
+  "1010.14": {
+    "dongIndications": [
+      "Urinary stones",
+      "urinary tract infection (UTI)",
+      "cystitis (urinary bladder inflammation)",
+      "urinary urgency",
+      "rhinitis",
+      "and upper and lower spine pain"
+    ],
+    "indications": [
+      "Prostatitis.",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Nephrolithiasis (kidney stones).",
+      "Edema.",
+      "Urinary retention."
+    ],
+    "additionalInfo": "1010.13 Ma Jin Shui and 1010.14 Ma Kuai Shui can be needled together using the Dao Ma technique to treat kidney and bladder disorders. Nephrolithiasis (kidney stones) While acupuncture does not physically crush kidney stones, it is a highly effective treatment for facilitating their natural passage, provided the stones are smaller than 6 millimeters. Rather than breaking the stone, the treatment focuses on creating the optimal physiological conditions for its expulsion. It works by relaxing and dilating the smooth muscle of the ureters (spasmolysis), allowing the stone to pass without getting stuck. Additionally, acupuncture promotes diuresis, creating a natural hydraulic pressure that helps flush the system, while simultaneously reducing the local inflammation and tissue swelling that can narrow the urinary tract. Ultimately, this approach significantly relieves the severe pain of renal colic and supports the smooth, natural exit of the stone. Point Name — Horse. Kuåi [t*] — Fast. Shui [7k] — Water. The word \"water\" in the point's name hints at its effect on the bladder. \"fast horse\" in the point's name describes the quick and precise effect of the point. The term"
+  },
+  "1010.15": {
+    "dongIndications": [
+      "Bloating",
+      "abdominal pain",
+      "inguinal hernia (shan qi)"
+    ],
+    "indications": [
+      "Stomach pain.",
+      "Nasal obstruction (blocked nose), allergic rhinitis (hay fever), nasal polyp, anosmia (loss of smell)."
+    ],
+    "additionalInfo": ""
+  },
+  "1010.16": {
+    "dongIndications": [
+      "Urethritis",
+      "ureter stone"
+    ],
+    "indications": [
+      "Facial paralysis (bell's palsy).",
+      "Nephrolithiasis (kidney stones).",
+      "Anosmia (loss of smell).",
+      "Urinary retention."
+    ],
+    "additionalInfo": "For facial paralysis, bloodletting is performed at the point on the side opposite to the paralysis. 1010.16 Liu Kuai can be used for penile pain. Hu wen Zi: For ureter stones: A combination of 1010.16 Liu Kuai and 1010.14 Ma Kui Shui is very effective. Nephrolithiasis (kidney stones) While acupuncture does not physically crush kidney stones, it is a highly effective treatment for facilitating their natural passage, provided the stones are smaller than 6 millimeters. Rather than breaking the stone, the treatment focuses on creating the optimal physiological conditions for its expulsion. It works by relaxing and dilating the smooth muscle of the ureters (spasmolysis), allowing the stone to pass without getting stuck. Additionally, acupuncture promotes diuresis, creating a natural hydraulic pressure that helps flush the system, While simultaneously reducing the local inflammation and tissue swelling that can narrow the urinary tract. Ultimately, this approach significantly relieves the severe pain of renal colic and supports the smooth, natural exit of the stone. Point Name Liü [HI — Six. Kuåi [t*] — Fast. Liü — Six. According to the Yellow River diagram, the numbers one and six belong to the water phase. One generates water, and six complete it. The number six in the point's name suggests its connection to the water phase, and in this case, it pertains to the bladder. The term \"fast\" in the point's name indicates its rapid effect."
+  },
+  "1010.17": {
+    "dongIndications": [
+      "Facial paralysis (bell's palsy)",
+      "ureter stone",
+      "lung deficiency"
+    ],
+    "indications": [
+      "Trigeminal neuralgia.",
+      "Nephrolithiasis (kidney stones).",
+      "Urinary retention."
+    ],
+    "additionalInfo": "For facial paralysis, bloodletting is performed at the point on the side opposite to the paralysis. Nephrolithiasis (kidney stones) While acupuncture does not physically crush kidney stones, it is a highly effective treatment for facilitating their natural passage, provided the stones are smaller than 6 millimeters. Rather than breaking the stone, the treatment focuses on creating the optimal physiological conditions for its expulsion. It works by relaxing and dilating the smooth muscle of the ureters (spasmolysis), allowing the stone to pass without getting stuck. Additionally, acupuncture promotes diuresis, creating a natural hydraulic pressure that helps flush the system, while simultaneously reducing the local inflammation and tissue swelling that can narrow the urinary tract. Ultimately, this approach significantly relieves the severe pain of renal colic and supports the smooth, natural exit of the stone. Point Name QT [t] — Seven. Kuåi [t*] — Fast. According to the Yellow River diagram, the numbers seven and two belong to the fire phase. Two generates fire, and seven completes it. The number seven in the point's name suggests at its connection to the fire phase and its ability to treat trigeminal neuralgia. The term \"fast\" in the point's name indicates the rapid effect of the point."
+  },
+  "1010.18": {
+    "dongIndications": [
+      "Cholelithiasis (gallstones)",
+      "weakness of the liver and gallbladder",
+      "night crying in infants due to gallbladder deficiency"
+    ],
+    "indications": [
+      "Cholestasis (reduced bile flow/secretion)."
+    ],
+    "additionalInfo": "Combine 1010.18 Mu Zhi with 88.15-16 Huo Zhi/Quan for gallbladder stones. Point Name Mü — Wood. Mü [X] — Wood. Zhi [E] — Branch. The branch of the wood is the gallbladder. The point's name suggests at its ability to treat gallbladder disorders."
+  },
+  "1010.19": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "fatigue due to kidney deficiency",
+      "vertigo and dizziness",
+      "chest pain (Pleurodynia) during breathing",
+      "rheumatism due to kidney deficiency"
+    ],
+    "indications": [
+      "Renal insufficiency (kidney dysfunction), nocturnal enuresis (bedwetting).",
+      "Xerostomia (dry mouth).",
+      "Hiatal hernia.",
+      "Blurred vision.",
+      "Breathing difficulties, bronchitis, cough, cough (chronic), asthma, emphysema.",
+      "Bloating, nausea, vomiting.",
+      "Premature ejaculation, erectile dysfunction (impotence).",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Edema in the lower limbs.",
+      "Shoulder and arm pain.",
+      "Nausea and vomiting.",
+      "Nephrolithiasis (kidney stones)."
+    ],
+    "additionalInfo": "1010.19-20 Shui Tong/Jin are needled together using the Dao Ma technique, often bilaterally. For lower back pain, needle on the opposite side of the pain. These points treat kidney deficiency, which is one of their main indications. Another indication for using the points is the presence of green-blue hues, dark skin, wrinkles, or Luo channels in the point area. The two points together Harmonizing the kidneys and lungs enhances the descending of lung Qi and the anchoring of Qi by the kidneys. Hence, some sources use these points for breathing difficulties, bronchitis, asthma, and emphysema due to kidney deficiency. The points can be used for joint diseases due to kidney deficiency. They can also be used for kidney stones and an enlarged prostate. Master Tung's Cases For finger swelling, use 77.09 Si Hua Zhong first, and if the condition does not improve, add 1010.19-20 Tong Shui/Jin. Severe hiccups: 1010.20 Tong Jin bilaterally. Neck pain: 1010.20 Tong Jin bilaterally (root: kidney deficiency). Asthma due to the kidneys: 1010.19-20 Tong Shui/Jin. Asthma due to lungs: 88.17-19 Sima. Asthma due to heart: 33.13-15 san Shi. Nephrolithiasis (kidney stones) While acupuncture does not physically crush kidney stones, it is a highly effective treatment for facilitating their natural passage, provided the stones are smaller than 6 millimeters. Rather than breaking the stone, the treatment focuses on creating the optimal physiological conditions for its expulsion. It works by relaxing and dilating the smooth muscle of the ureters (spasmolysis), allowing the stone to pass without getting stuck. Additionally, acupuncture promotes diuresis, creating a natural hydraulic pressure that helps flush the system, while simultaneously reducing the local inflammation and tissue swelling that can narrow the urinary tract. Ultimately, this approach significantly relieves the severe pain of renal colic and supports the smooth, natural exit of the stone. Point Name Shui [7K] - Water. Töng - To connect, communicate, and pass through. The name of the point suggests its ability to treat kidney pathology."
+  },
+  "1010.20": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "fatigue due to kidney deficiency",
+      "vertigo and dizziness",
+      "chest pain (Pleurodynia) during breathing",
+      "rheumatism due to kidney deficiency"
+    ],
+    "indications": [
+      "Renal insufficiency (kidney dysfunction), nocturnal enuresis (bedwetting).",
+      "Xerostomia (dry mouth).",
+      "Hiatal hernia.",
+      "Blurred vision.",
+      "Breathing difficulties, bronchitis, cough, cough (chronic), asthma, emphysema.",
+      "Bloating, nausea, vomiting.",
+      "Premature ejaculation, erectile dysfunction (impotence).",
+      "Prostatic hyperplasia (enlarged prostate).",
+      "Symphysiolysis (separation/loosening of the pubic symphysis joint).",
+      "Nephrolithiasis (kidney stones).",
+      "Edema in the lower limbs.",
+      "Nausea and vomiting."
+    ],
+    "additionalInfo": "1010.19-20 Shui Tong/Jin are needled together using the Dao Ma technique, often bilaterally. For lower back pain, needle on the opposite side of the pain. These points treat kidney deficiency, which is one of their main indications. Another indication for using the points is the presence of green-blue hues, dark skin, wrinkles, or connecting channels in the point area. The two points together harmonize? the kidneys and lungs. They enhance the descending of lung Qi and the anchoring of Qi by the kidneys. Hence, some sources use these points for breathing difficulties, bronchitis, asthma, and emphysema due to kidney weakness. The points can be used for joint diseases due to kidney deficiency. They can also be used for kidney stones and an enlarged prostate. Master Tung's Cases For finger swelling, use 77.09 Si Hua Zhong first, and if there is no improvement, add 1010.19-20 Tong Shui/Jin. Severe hiccups: 1010.20 Tong Jin bilaterally. Neck pain: 1010.20 Tong Jin bilaterally (root: kidney deficiency). Asthma due to kidney deficiency: 1010.19-20 Tong Shui/Jin. Asthma due to lung deficiency: 88.17-19 Sima. Asthma due to heart deficiency: 33.13-15 San Shi. Nephrolithiasis (kidney stones) While acupuncture does not physically crush kidney stones, it is a highly effective treatment for facilitating their natural passage, provided the stones are smaller than 6 millimeters. Rather than breaking the stone, the treatment focuses on creating the optimal physiological conditions for its expulsion. It works by relaxing and dilating the smooth muscle of the ureters (spasmolysis), allowing the stone to pass without getting stuck. Additionally, acupuncture promotes diuresis, creating a natural hydraulic pressure that helps flush the system, while simultaneously reducing the local inflammation and tissue swelling that can narrow the urinary tract. Ultimately, this approach significantly relieves the severe pain of renal colic and supports the smooth, natural exit of the stone. Point Name 1010.19-20 Shui Tong/Jin are needled together using the Dao Ma technique, often bilaterally. For lower back pain, needle on the opposite side of the pain. These points treat kidney deficiency, which is one of their main indications. Another indication for using the points is the presence of green-blue hues, dark skin, wrinkles, or connecting channels in the point area. The two points together harmonize? the kidneys and lungs. They enhance the descending of lung Qi and the anchoring of Qi by the kidneys. Hence, some sources use these points for breathing difficulties, bronchitis, asthma, and emphysema due to kidney weakness. The points can be used for joint diseases due to kidney deficiency. They can also be used for kidney stones and an enlarged prostate. Master Tung's Cases For finger swelling, use 77.09 Si Hua Zhong first, and if there is no improvement, add 1010.19-20 Tong Shui/Jin. Severe hiccups: 1010.20 Tong Jin bilaterally. Neck pain: 1010.20 Tong Jin bilaterally (root: kidney deficiency). Asthma due to kidney deficiency: 1010.19-20 Tong Shui/Jin. Asthma due to lung deficiency: 88.17-19 Sima. Asthma due to heart deficiency: 33.13-15 San Shi."
+  },
+  "1010.21": {
+    "dongIndications": [
+      "Sciatica",
+      "knee pain",
+      "shoulder pain",
+      "maxilla pain (cheek pain)",
+      "limb pain"
+    ],
+    "indications": [
+      "Dorsalgia (back pain) (highly effective).",
+      "Sinusitis - maxillary.",
+      "Facial paralysis (bell's palsy).",
+      "Shoulder and arm pain."
+    ],
+    "additionalInfo": "Bloodletting is performed when treating sinusitis, facial paralysis, trigeminal neuralgia, and stroke. Yang Wei Chieh The point regulates the function of the heart and liver, thus regulating the blood and treating blood deficiency and stagnation. Therefore, the point can be used for pain conditions due to blood stagnation. Point Name — Jade. Yi — Jade. Huö ['k] — Fire."
+  },
+  "1010.22": {
+    "dongIndications": [
+      "glossodynia (burning mouth syndrome)"
+    ],
+    "indications": [
+      "Diplopia (blurred vision).",
+      "Neuralgia due to Kidney deficiency.",
+      "Sore throat (pharyngalgia).",
+      "Headache above the eye.",
+      "Allergic rhinitis (hay fever), nasal polyp.",
+      "Epstein Barr Virus.",
+      "Fatigue."
+    ],
+    "additionalInfo": "The point innervates the lungs, spleen, and kidneys. These three organs are related to Qi, and thus the point can treat fatigue due to Qi deficiency and pain due to Qi weakness and stagnation. Yang Wei Chieh 1010.21 Bi Yi and 1010.22 Yu Huo are important points for treating pain. 1010.21 Bi Yi is effective for pain caused by blood deficiency and stagnation. 1010.22 Yu Huo is effective for pain caused by Qi deficiency and stagnation. Point Name Bi [4] — Nose. Yi [W] — Wing. Bi [A] — Nose. The point's name suggests its location at the wing of the nose."
+  },
+  "1010.23": {
+    "dongIndications": [
+      "Palpitations",
+      "rheumatic heart disease",
+      "weakness of the four limbs",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Migraine (highly effective).",
+      "Intracranial pressure."
+    ],
+    "additionalInfo": ""
+  },
+  "1010.24": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "sciatica",
+      "rheumatic diseases"
+    ],
+    "indications": [
+      "Migraine."
+    ],
+    "additionalInfo": ""
+  },
+  "1010.25": {
+    "dongIndications": [
+      "Spain pain - lumbar spine",
+      "neurasthenia (anxiety disorder)"
+    ],
+    "indications": [
+      "Cervicalgia (neck pain).",
+      "Dizziness.",
+      "Vomiting (emesis)."
+    ],
+    "additionalInfo": ""
+  }
+}

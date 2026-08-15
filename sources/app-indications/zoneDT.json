@@ -1,0 +1,386 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "DT.01": {
+    "dongIndications": [
+      "Drug poisoning",
+      "snake bite or scorpion sting",
+      "bromhidrosis (smelling sweat)",
+      "bad breath",
+      "diabetes",
+      "rabies",
+      "painful urination",
+      "dysuria (urinating difficulty)",
+      "and bleeding",
+      "sexually transmitted diseases",
+      "syphilis",
+      "food poisoning",
+      "suicide attempt through drug overdose",
+      "pruritus (Itching)",
+      "exposure to toxic (chemical) gases"
+    ],
+    "indications": [
+      "Gonorrhea with discharge.",
+      "Chemotherapy, radiation.",
+      "Herpes zoster (Shingles).",
+      "Psoriasis, acne, urticaria (hives).",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema.",
+      "Pruritus (Itching), pruritus gravidarum (itching related pregnancy).",
+      "Strangury.",
+      "Nipple adenoma, mastitis.",
+      "Bee Sting.",
+      "Functioning Adenoma (Pituitary Growth).",
+      "Erysipelas."
+    ],
+    "additionalInfo": "The reaction area of these points is related to secretion. These are important points in Master Tung's acupuncture for treating conditions involving toxicity in the body. The points can help secrete and expel toxins from the body. The points are treated with bloodletting. Some practitioners, who are not direct students of Master Tung, apply cupping to the area after bloodletting to help release more blood. However, Master Tung did not use cupping when bloodletting the back, chest, and abdomen. In these areas, the bloodletting is superficial. Master Tung preferred bloodletting over acupuncture to avoid damaging internal organs, so there is no need for a large amount of blood to be released after the procedure. The technique involves pinching the point with the thumb and index finger, followed by bloodletting. When we look at points DT.OI and DT.02, known as the Branch Separators, we are looking at something much bigger than just local points. They belong to a very special, almost secretive category in Master Tung's system called the '32 Relieving Points', or Jie Zhen. The Chinese character 'Jie' [ % is profound. It means to untie a knot, to melt, to release, or to eliminate. These points act as the body's emergency release valves. Master Tung actually kept this specific system quite hidden, revealing only about 18 of the 32 points. You might already know point 22.10, Shou Jie, which we use to instantly release needle shock or sharp pain. But DT.OI and DT.02 are your heavy hitters for toxicity. Look at the indications: snakebites, drug overdoses, food poisoning, toxic gas. These points are literal antidotes; they expel severe poisons from the blood. But you don't have to wait for a snakebite to use them. In the modern clinic, we use them for severe dermatological toxicity—like weeping eczema, intense allergic dermatitis, and pruritus. We also use them when internal toxic heat is trying to escape the body, manifesting as foul body odor or bad breath. By bleeding these points, you activate the 'Jie' function—you untie the pathology, release the trapped heat, and completely eliminate the toxicity from the bloodstream. These points can be used for patients who have undergone chemotherapy or radiation treatments to help the body expel the toxins accumulated from these therapies. DT.02 Fen Zhi Xia innervates the breast and can be used for mastitis. The points can also be applied for skin issues such as acne and psoriasis. Point Name Fén [ft] - to separate. Zhi [E] — branch. Fén [h] — to separate. Shång [ -El — upper. Xiå [T] — lower. Zhöng — center. Shång — upper. Fen mi [ ] — Meaning of the characters: to secrete. The character \"Fen\" in the name of points suggests their ability to secrete or expel toxins from the body. The points in Tung's system that contain the character Fen (separate) or Zhi (branch), such as 44.05 Hou Zhi, 1010.18 Mu Zhi, 88.15 Huo Zhi, have the ability to secrete or expel toxins from the body. Xiå [F] — lower."
+  },
+  "DT.03": {
+    "dongIndications": [
+      "Vomiting (emesis) due to restlessness of the Zang organs",
+      "common Cold",
+      "headache",
+      "high fever and seizures in children"
+    ],
+    "indications": [
+      "Vertigo, dizziness.",
+      "CVA (Stroke), hemiplegia (one-sided paralysis)",
+      "Cervical vertebra disorders.",
+      "Shoulder pain.",
+      "Singultus (hiccups).",
+      "Headache above the eye.",
+      "Whiplash injury.",
+      "Hyperemesis gravidarum (morning sickness - severe)",
+      "Meniere's disease, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Epilepsy.",
+      "Dysarthria."
+    ],
+    "additionalInfo": "Typically, the three central points are used. In severe cases, all seven points can be used. These are very important and effective points for treating dizziness, vertigo, vomiting, and nausea. Point Name Claude O QT — Seven. Xing [R] — Star. The number 7 in the name of the points indicates that there are seven points. esents fire. The number seven in the name of the points hints at their ability to treat excess Yang. The character \"star\" in the Claude 0 n the head. Stars are in the sky, and the head is connected to the sky. QT [E] — Seven. In the Yellow River Diagram, the number seven represents fire. The number seven in the name of the points hints at their ability to treat excess Yang. The character \"star\" in the name of the points hints at their ability to treat fire in the head. Stars are in the sky, and the head is connected to the sky."
+  },
+  "DT.04": {
+    "dongIndications": [
+      "Hypertension",
+      "severe cold",
+      "high fever",
+      "chills",
+      "dizziness",
+      "headache",
+      "hemiplegia (one-sided paralysis)",
+      "cholera - Yang type and Yin type",
+      "lumbago (lower back pain) due to arteriosclerosis",
+      "acute stomach pain"
+    ],
+    "indications": [
+      "Dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Nasal obstruction (blocked nose).",
+      "Meniere's disease.",
+      "CVA (Stroke).",
+      "Nausea and vomiting.",
+      "Cold and painful lower limbs.",
+      "Neurasthenia (anxiety disorder), bipolar disorder (manic depression).",
+      "Erysipelas."
+    ],
+    "additionalInfo": ""
+  },
+  "DT.05": {
+    "dongIndications": [
+      "Arm pain",
+      "leg pain",
+      "numbness of the arms and legs",
+      "paresthesia of the arms and legs",
+      "arteriosclerosis in the arms and legs",
+      "postpartum infection"
+    ],
+    "indications": [
+      "Foot pain, cold and painful lower limbs.",
+      "Neuropathy of the arms and legs due to chemotherapy."
+    ],
+    "additionalInfo": "The points innervate the heart. The points can increase blood flow to the limbs. Point Name Shuäng [E] — Two, twins, pair. Féng [N] — Phoenix. In the Yellow River diagram, the number two represents fire. The heart belongs to the fire element. The name of the points suggests their ability to enhance blood flow."
+  },
+  "DT.06": {
+    "dongIndications": [
+      "Huo Sha Syndrome"
+    ],
+    "indications": [],
+    "additionalInfo": "Huo Sha [fifi] is an external disease characterized by pain and itchy sores, like scarlet fever (scarlatina). Yang Wei Chieh The points release the lungs and clear fire. Point Name Jiü (h] — Nine. Jiü [ft] — Nine. Höu [G] — Monkey. In the Yellow River diagram, the number nine represents metal. The lungs belong to the metal element. The name of the points suggests their ability to treat skin diseases caused by external invasion. The character \"Monkey\" in the name of the points implies their ability to treat a condition where the patient scratches like a monkey."
+  },
+  "DT.07": {
+    "dongIndications": [
+      "Knee pain"
+    ],
+    "indications": [],
+    "additionalInfo": "Susan Johnson The points are effective for treating pain below the kneecap. Bloodletting is applied to the sensitive points on the painful side. Point Name Sän [E] — three. Jin — gold, metal."
+  },
+  "DT.08": {
+    "dongIndications": [
+      "Swelling and pain in the lower limbs"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "DT.09": {
+    "dongIndications": [
+      "Sciatica caused by atherosclerosis"
+    ],
+    "indications": [],
+    "additionalInfo": "Sciatica resulting from atherosclerosis caused by damage to the blood vessels of the lumbar vertebrae. Point Name Jin [ft] — Metal. Lin [$8] - Forest."
+  },
+  "DT.10": {
+    "dongIndications": [
+      "Lumbago (lower back pain) due to atherosclerosis",
+      "tightness in the lower back",
+      "and breathing difficulties"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "DT.11": {
+    "dongIndications": [
+      "Boils with deep roots",
+      "weakness of the heart",
+      "acute heart failure",
+      "stomach disorders",
+      "severe cold penetrating the face",
+      "severe cold",
+      "CVA (Stroke)",
+      "and acute external diseases causing skin rashes (Sha"
+    ],
+    "indications": [
+      "Singultus (hiccups)."
+    ],
+    "additionalInfo": ""
+  },
+  "DT.12": {
+    "dongIndications": [
+      "Severe cold/flu"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "DT.13": {
+    "dongIndications": [
+      "Kidney deficiency",
+      "nephritis",
+      "irregular menstruation",
+      "constipation",
+      "thirst",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "DT.14": {
+    "dongIndications": [
+      "Spinal pain",
+      "irregular menstruation",
+      "kidney deficiency",
+      "nephritis",
+      "dysuria (urinating difficulty)",
+      "bladder stones",
+      "insomnia",
+      "erectile dysfunction (impotence)",
+      "premature ejaculation",
+      "headache",
+      "diabetes",
+      "lumbago (lower back pain) - acute",
+      "chest pain (Pleurodynia) during breathing",
+      "dizziness",
+      "blurred vision",
+      "Labor induction in cases of fetal death"
+    ],
+    "indications": [
+      "labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Urinary retention."
+    ],
+    "additionalInfo": ""
+  },
+  "DT.15": {
+    "dongIndications": [
+      "Amenorrhea",
+      "uterine inflammation",
+      "enteritis (intestinal inflammation)-acute",
+      "lumbago (lower back pain)",
+      "abdominal side cramping (Cha qi [2Ä])"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "DT.16": {
+    "dongIndications": [
+      "Arm pain",
+      "back and shoulder pain"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "DT.26": {
+    "dongIndications": [
+      "Headache associated with dizziness"
+    ],
+    "indications": [
+      "Brain distending pain.",
+      "Spine osteophytes (bone spurs).",
+      "Cervical osteophytes (neck bone spurs).",
+      "Neck sprain, neck pain.",
+      "Claude O"
+    ],
+    "additionalInfo": ""
+  },
+  "DT.18": {
+    "dongIndications": [
+      "Back pain",
+      "sacrum pain",
+      "buttock pain",
+      "sciatica"
+    ],
+    "indications": [
+      "Sacroiliac pain syndrome (Sl joint pain), sacroiliitis (sacroiliac joint inflammation).",
+      "Coccyx pain.",
+      "Irregular menstruation, oophoritis (ovarian inflammation), metritis (uterine inflammation).",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Occipital headache.",
+      "Lower limbs pain."
+    ],
+    "additionalInfo": "The bloodletting regions for the internal organs on the back are located on the surface of the back, covering a broad area above the organ. There are five bloodletting regions for internal organs, which can be identified relative to the spinous processes. These areas overlap with the VT points. In each zone, bloodletting regions are found through palpation and visual examination. We check for hardening of the connective tissue via palpation, and visually search for Luo channels."
+  },
+  "DT.19": {
+    "dongIndications": [
+      "Common cold",
+      "fever",
+      "chills",
+      "bronchitis",
+      "pneumonia",
+      "asthma"
+    ],
+    "indications": [
+      "chest pain (pleurodynia), chest tightness.",
+      "Enlarged heart, coronary heart disease, myocardial infarction.",
+      "Thoracalgia (upper back pain), scapula pain, pain between the scapula and the spine, spine osteophytes (bone spurs)."
+    ],
+    "additionalInfo": "The bloodletting regions for the internal organs on the back are located on the surface of the back, covering a broad area above the organ. There are five bloodletting regions for internal organs, which can be identified relative to the spinous processes. These areas overlap with the VT points. In each zone, bloodletting regions are found through palpation and visual examination. We check for hardening of the connective tissue via palpation, and visually search for Luo channels."
+  },
+  "DT.20": {
+    "dongIndications": [
+      "Hepatitis",
+      "liver cirrhosis",
+      "cholecystitis (gallbladder inflammation)",
+      "cholelithiasis (gallstones)"
+    ],
+    "indications": [
+      "Splenomegaly (enlarged spleen).",
+      "Vomiting, gastritis.",
+      "Rib pain.",
+      "Thoracalgia (middle back pain), spine osteophytes."
+    ],
+    "additionalInfo": "The bloodletting regions for the internal organs on the back are located on the surface of the back, covering a broad area above the organ. There are five bloodletting regions for internal organs, which can be identified relative to the spinous processes. These areas overlap with the VT points. In each zone, bloodletting regions are found through palpation and visual examination. We check for hardening of the connective tissue via palpation, and visually search for Luo channels."
+  },
+  "DT.21": {
+    "dongIndications": [
+      "Dyspepsia (digestive difficulties)",
+      "flatulence (gas)",
+      "abdominal bloating",
+      "gastritis",
+      "gastric ulcers (stomach ulcer)",
+      "duodenal ulcers",
+      "abdominal pain"
+    ],
+    "indications": [
+      "Anorexia (appetite poor).",
+      "Emesis (vomiting).",
+      "Diarrhea.",
+      "Splenomegaly (enlarged spleen).",
+      "Dorsalgia (back pain).",
+      "Spine osteophytes (bone spurs)."
+    ],
+    "additionalInfo": "The bloodletting regions for the internal organs on the back are located on the surface of the back, covering a broad area above the organ. There are five bloodletting regions for internal organs, which can be identified relative to the spinous processes. These areas overlap with the VT points. In each zone, bloodletting regions are found through palpation and visual examination. We check for hardening of the connective tissue via palpation, and visually search for Luo channels."
+  },
+  "DT.24": {
+    "dongIndications": [
+      "Sacralgia (sacral pain)"
+    ],
+    "indications": [
+      "Sacroiliac pain syndrome (Sl joint pain), sacroiliitis (sacroiliac joint inflammation).",
+      "Dysmenorrhea (painful menstruation).",
+      "Amenorrhea (absence of menstruation).",
+      "Premenstrual Syndrome (PMS).",
+      "Endometriosis.",
+      "Symphysi01ysis (separation/loosening of the pubic symphysis joint)."
+    ],
+    "additionalInfo": "The points are not included in Master Tung's original book. They were discovered by Shaun Goodman, inspired by Master Tung's principles. These points are highly effective in treating sacroiliac joint disorders in combination with Shang Shi (33). They can also address gynecological issues that cause pain in the sacral area. Imaging The scapula imges the sacrum. Point Name Sän [E] — Three. Jiän [B] — Shoulder. Liåo [B] — Hole in the bone. The holes in the sacrum are called Liao. The name of these points suggests their ability to treat the sacral area."
+  },
+  "DT.22": {
+    "dongIndications": [
+      "Nephritis",
+      "proteinuria (protein in urine)",
+      "cystitis (urinary bladder inflammation)",
+      "urinary urgency",
+      "edema"
+    ],
+    "indications": [
+      "Metritis (uterine inflammation), oophoritis (ovarian inflammation).",
+      "Vaginal discharge.",
+      "Nocturnal emission, impotence.",
+      "Constipation, enteritis (intestinal inflammation).",
+      "Lower back pain, sciatica, spine osteophytes."
+    ],
+    "additionalInfo": "The bloodletting regions for the internal organs on the back are located on the surface of the back, covering a broad area above the organ. There are five bloodletting regions for internal organs, which can be identified relative to the spinous processes. These areas overlap with the VT points. In each zone, bloodletting regions are found through palpation and visual examination. We check for hardening of the connective tissue via palpation, and visually search for Luo channels."
+  },
+  "DT.25": {
+    "dongIndications": [
+      "Hemiplegia (one-sided paralysis)"
+    ],
+    "indications": [
+      "Hand numbness exceptionally effective), leg numbness (exceptionally effective).",
+      "Arteriosclerosis of the four limbs.",
+      "Dizziness (exceptionally effective), headache (exceptionally effective).",
+      "Hand pain, leg pain.",
+      "Childbed fever (Fever due to an infection after childbirth, usually of the placental site within the uterus).",
+      "Myocardial infarction.",
+      "Lung cancer pain (exceptionally effective).",
+      "Gastric ulcers (stomach ulcer), duodenal ulcer, peptic ulcer disease (PUD).",
+      "Singultus (hiccups)."
+    ],
+    "additionalInfo": "These points did not appear in Master Tung's original text. Hu Wen Zhi introduced them first. When treating Singultus (hiccups), use the 4 lower points that are located at level T 7. Point Name SI - four. Löng [R] — dragon."
+  },
+  "DT.17": {
+    "dongIndications": [
+      "Pain in the cerebellum",
+      "swelling in the cerebellum",
+      "pain in the center of the nape"
+    ],
+    "indications": [
+      "Occipital headache.",
+      "Coccydynia (tailbone pain)."
+    ],
+    "additionalInfo": "Master Tung applied the principle of \"the lower treats the upper.\" Susan Johnson. This area can be bled in both male and female patients suffering from fertility issues. Imaging: Visualize between the sacrum and the occipital bone; these points can treat pain in the center of the nape and disorders of the cerebellum. Point Name Chöng [39] — Surge, rush, rise. Xiäo - Clouds, sky. Xiäo [Al — Clouds, sky. The name of the points suggests their ability to treat disorders in the upper part of the body."
+  },
+  "DT.23": {
+    "dongIndications": [
+      "Vomiting (particularly effective)"
+    ],
+    "indications": [
+      "Heart pain, depression (particularly effective).",
+      "Dizziness, vertigo (particularly effective).",
+      "Neck pain (particularly effective).",
+      "Migraine (particularly effective).",
+      "Pediatric flatulence and meteorism (gas and bloating in children particularly effective).",
+      "Gastritis acute.",
+      "Eye pain and swelling.",
+      "Intracranial pressure.",
+      "Cold Ssensitivity, fever and chills (particularly effective).",
+      "High fever in children.",
+      "Restlessness of the five Zang organs.",
+      "Shoulder pain.",
+      "Cervical osteophytes (neck bone spurs particularly effective), whiplash injury.",
+      "CVA (Stroke), hemiplegia (one-sided paralysis)",
+      "Achilles tendonitis.",
+      "Hyperemesis gravidarum (morning sickness — severe).",
+      "Hyperemesis gravidarum (morning sickness - severe).",
+      "Meniere's disease, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Retinal degeneration, macular degeneration (AMD), retinitis.",
+      "Epilepsy.",
+      "Nausea and vomiting.",
+      "Dysarthria."
+    ],
+    "additionalInfo": "These points did not appear in Master Tung's original text. Hu Wen Zhi introduced them first. It is not necessary to bleed all 18 points. You can start by bleeding the six points located in the center. You may bleed all the points if the bleeding does not yield good results. Point Name Shibä [+Jk] - Eighteen. Xing [R] - Star. The term \"star\" in the points' names suggests their location in the upper part of the body, which symbolically corresponds to heaven. Shibä [+A] — Eighteen."
+  }
+}

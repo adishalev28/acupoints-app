@@ -1,0 +1,64 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "VT.02": {
+    "dongIndications": [
+      "Scarlet fever",
+      "asthma",
+      "cholera"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "VT.03": {
+    "dongIndications": [
+      "Cholera of the liver with intestinal and stomach diseases",
+      "Indigestion",
+      "pain in the rib area",
+      "bronchitis",
+      "and various types of acute Sha diseases"
+    ],
+    "indications": [
+      "Coccydynia (tailbone pain)."
+    ],
+    "additionalInfo": "Jin [f] — Metal. Wü [E] - Five. Wü - Five. The character \"metal\" in the name of the points suggests their influence on the lungs. In the Yellow River Diagram, five represents the earth's phase. The number five in the name of the points signifies their ability to treat phlegm and indicates the presence of five points. Point Name Sha [B] — External viral diseases characterized by pain and papules on the skin."
+  },
+  "VT.05": {
+    "dongIndications": [
+      "Enteritis (intestinal inflammation)",
+      "metritis (uterine inflammation)",
+      "nephritis",
+      "nephrolithiasis (kidney stones)",
+      "navel pain"
+    ],
+    "indications": [
+      "Cervical Dysplasia."
+    ],
+    "additionalInfo": "It is not necessary to use all 23 points. Palpate the points and needle only where the tone is high. Lee Kuo Zheng suggests that the points can be needled superficially, Threading the points on the five lines. Point Name Fü [Mi] — Hollow organs. Chåo — Nest. Érshisän [Z+E] - Twenty-three. The character Fu in the name of the points suggests their ability to treat intestinal diseases. Fü [F] — Hollow organs. The character Chao implies the points' ability to address gynecological disorders. The number 23 in the name indicates that there are 23 points."
+  },
+  "VT.04": {
+    "dongIndications": [
+      "Wool-like furuncles",
+      "stomach disorders",
+      "various types of cholera",
+      "palpitations",
+      "stomach bleeding"
+    ],
+    "indications": [
+      "Singultus (hiccups).",
+      "Gastric hyperacidity (stomach acid excess).",
+      "Gastroesophageal reflux disease (GRED), acid reflux, heartburn."
+    ],
+    "additionalInfo": "These points are important for treating stomach diseases, especially when the area is very sensitive. They can also address stomach disorders that affect the heart and cause palpitations. The points are effective in treating intestinal issues that arise from stomach problems. Point Name Wéi [A] - Stomach. Måo — Hair. Qi — Seven. The number 7 in the name of the points indicates that there are seven points. In the Yellow River Diagram, seven represent fire, suggesting that these points influence the heart. QT [E] — Seven. The character \"stomach\" in the name implies their effect on the stomach. ⚠️ GAP Bloodletting. Perpendicular, 0.5—1 cun. Reaction Area Six-Fu. Enteritis (intestinal inflammation), metritis (uterine inflammation), nephritis, nephrolithiasis (kidney stones), navel pain. Cervical Dysplasia. It is not necessary to use all 23 points. Palpate the points and needle only where the tone is high. Lee Kuo Zheng suggests that the points can be needled superficially, Threading the points on the five lines. Point Name Fü [Mi] — Hollow organs. Chåo — Nest. Érshisän [Z+E] - Twenty-three. The character Fu in the name of the points suggests their ability to treat intestinal diseases. Fü [F] — Hollow organs. The character Chao implies the points' ability to address gynecological disorders. The number 23 in the name indicates that there are 23 points."
+  },
+  "VT.01": {
+    "dongIndications": [
+      "Tonsillitis",
+      "sore throat",
+      "accumulation of phlegm in the throat (phlegm that is difficult to expel along with breathing difficulties)",
+      "thyroiditis (inflammation of the thyroid gland)"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  }
+}

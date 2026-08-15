@@ -1,0 +1,121 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "99.01": {
+    "dongIndications": [
+      "Neutralizes the effect of alcohol (hangover)",
+      "vomiting (emesis)"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "99.02": {
+    "dongIndications": [
+      "Liver pain",
+      "cirrhosis of the liver",
+      "enlarged liver",
+      "fatigue due to liver deficiency",
+      "urinary urgency and pain (stranguria)"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "99.03": {
+    "dongIndications": [
+      "Heart deficiency",
+      "knee pain",
+      "four limbs pain"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "99.04": {
+    "dongIndications": [
+      "Neurasthenia (anxiety disorder)",
+      "excess red blood cells (polycythaemia)",
+      "high fever",
+      "diabetes"
+    ],
+    "indications": [],
+    "additionalInfo": "Ér - Ear. Tü — Earth. The name of the point suggests its influence on the spleen, associated with the Earth phase. Ér [B] - Ear."
+  },
+  "99.05": {
+    "dongIndications": [
+      "Sciatica due to Lung deficiency",
+      "scoliosis of the upper and lower back",
+      "allergic rhinitis (hay fever)"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "99.06": {
+    "dongIndications": [
+      "Kidney deficiency",
+      "Lumbago (lower back pain) - bilateral",
+      "abdominal bloating"
+    ],
+    "indications": [],
+    "additionalInfo": ""
+  },
+  "99.07": {
+    "dongIndications": [
+      "Pharyngitis (throat inflammation)",
+      "tonsillitis"
+    ],
+    "indications": [
+      "Dermatitis, acne.",
+      "Migraine.",
+      "Difficulty opening the mouth.",
+      "Conjunctivitis.",
+      "Nausea and vomiting."
+    ],
+    "additionalInfo": "Yang Wei Chieh This point is highly effective for treating dermatitis, acne, migraine, difficulty opening the mouth, tonsillitis, and conjunctivitis. A blue vein may sometimes appear in the area of the point, which can be bled to achieve improved results. Point Name Ér - Ear Ér [B] - Ear. Béi [ii] - Behind the body, behind a bone."
+  },
+  "99.08": {
+    "dongIndications": [
+      "Cholera",
+      "migraine",
+      "common cold"
+    ],
+    "indications": [
+      "Sore throat, enlarged tonsils.",
+      "Conjunctivitis, hordeolum (stye).",
+      "Hypertension.",
+      "Ear diseases.",
+      "Skin diseases, itching, pruritus gravidarum (itching related pregnancy).",
+      "Herpes zoster (Shingles), herpes zoster face.",
+      "Lumbago (lower back pain).",
+      "Urinary tract infection (UTI).",
+      "Palpitations, insomnia.",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema.",
+      "Urticaria (hives), pruritus (Itching).",
+      "Allergic rhinitis (hay fever).",
+      "labyrinthitis (ear infection-inner ear).",
+      "Meniere's disease."
+    ],
+    "additionalInfo": "Primarily use the upper point Er San Shang. Er San Zhong and Er San Xia are used to treat pharyngitis and tonsillitis, similar to the corresponding auriculotherapy points Helix-6 and Tonsil-I. Point Name Ér [El - Ear. Sän [E] - Three."
+  },
+  "shen-er-san": {
+    "dongIndications": [
+      "First aid treatment for any acute condition",
+      "including heart-related emergencies"
+    ],
+    "indications": [
+      "Dizziness accompanied by weakness, light-headedness, and a sensation of impending.",
+      "Fainting.",
+      "Fatigue.",
+      "Weakness of the four limbs.",
+      "Shock.",
+      "Vertigo, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Nausea, vomiting, morning sickness, nausea and vomiting.",
+      "Liver failure.",
+      "Hypercholesterolemia (high cholesterol) causing dizziness and weakness, Hyperlipidemia (high lipids) causing dizziness and weakness.",
+      "Tightness in the chest.",
+      "Motion sickness.",
+      "Meniere's disease.",
+      "Epstein Barr Virus.",
+      "Chemotherapy treatment (Side effects)."
+    ],
+    "additionalInfo": "Hu Wen Zhi The points did not appear in Master Tung's original book. They were first introduced by Hu Wen Zhi. The points are three of Tung's 72 Absolute Needles and three of Tung's 32 Solution Needles. These three points are cornerstones of emergency acupuncture. The posterior ear—particularly the hypotensive groove—is a prime anatomical target for clinical bloodletting. Bleeding the superficial posterior auricular veins here provides a rapid, highly effective response to cardiovascular crises, severe hypertension, and acute vertigo. Point Name Shén — Spirit, soul Ér - Ear Ér [B] - Ear Sän E] — Three"
+  }
+}

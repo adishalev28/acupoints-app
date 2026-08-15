@@ -1,0 +1,21 @@
+{
+  "_comment": "לכידת OCR של נקודה שקיימת באפליקציה של שון ואינה קיימת ב-src/data/zones. נלכדה 15.8.2026 עם אזור 99.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "ZhongLiu": {
+    "header": "Zhöng Liü | Tumor Points",
+    "zone": "99",
+    "cardCount": 2,
+    "dongIndications": [
+      "Carcinomas (cancer)",
+      "polyps",
+      "lymphatic tumors",
+      "scrofula",
+      "cervical tuberculous",
+      "lymphadenitis"
+    ],
+    "indications": [
+      "Functioning Adenoma (Pituitary Growth)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them. This group is specifically indicated for the treatment of malignant tumors. In Master Tung's system, points treating severe masses or tumors are often related to the Lung system, as the Lungs govern Qi and are responsible for moving stagnation and breaking up accumulations in the body Point Name Zhöng [7] - Swelling, bump. Lid - Tumor. The name of the point suggests its ability to treat tumors."
+  }
+}

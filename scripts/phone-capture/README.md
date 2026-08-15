@@ -1,27 +1,61 @@
-# לכידת אפליקציית שון גודמן דרך Phone Link
+# חילוץ אפליקציית שון גודמן דרך Phone Link
 
 כלים לקריאה אוטומטית של "MASTER TUNG'S POINTS" מהטלפון המשוקף למחשב.
-נבנה 14.8.2026 אחרי שהתגלה שהחילוץ המקורי איבד את גבולות כרטיסי ההתוויות.
+נבנה 14.8.2026 אחרי שהתגלה שהחילוץ המקורי איבד את גבולות כרטיסי ההתוויות,
+והורחב 15.8.2026 לצינור OCR מלא שמחזיר טקסט במקום תמונות.
+
+## למה זה קיים
+באפליקציה של שון, **הכרטיס הראשון ברשימת ה-Indications הוא ההתוויות של מאסטר דונג עצמו**
+(המודגשות בספר). בחילוץ המקורי מבנה הכרטיסים נמחק והכל נכנס לרשימה שטוחה,
+ולפעמים שורה אחת מיזגה התוויה של דונג עם התוויה של מטפל מאוחר.
+
+בנוסף, **בתחתית אותו טאב יושב `Additional Information`** — פרוזה קלינית
+(מקרים של דונג, אטימולוגיה, פרוטוקולים) שברובה חסרה אצלנו.
+סריקה אחת של הטאב מחזירה את שתי השכבות.
 
 ## דרישות
 - Phone Link פתוח עם שיקוף מסך (תהליך `YourPhoneAppProxy`)
 - האפליקציה פתוחה על נקודה כלשהי
+- מנוע ה-OCR המובנה של Windows (`Windows.Media.Ocr`) — אין צורך בהתקנה
 
-## שימוש
+## הצינור
 
 ```bash
 SP=scripts/phone-capture
-# איתור + מיקסום + צילום
+D=/path/to/scratch
+
+# 1. לכידה — פותח Indications, גולל עד התחתית, עובר לנקודה הבאה
+powershell -NoProfile -File $SP/capture-batch.ps1 -Ids "p01,p02,p03" -OutDir "$D/shots"
+
+# 2. קריאה — OCR + זיהוי מלבני הכרטיסים לפי צבע הרקע
+powershell -NoProfile -File $SP/cards.ps1 -Path "$D/shots" -Out "$D/shots.json"
+
+# 3. תפירה — איחוי הצילומים החופפים לרשומה אחת לכל נקודה
+node $SP/stitch.cjs "$D/shots.json" > "$D/points.json"
+
+# 4. קליטה — מקור ל-sources/app-indications/ + ספירות ל-dong-cards.json
+node $SP/ingest.cjs "$D/points.json"            # דוח הצלבה בלבד
+node $SP/ingest.cjs "$D/points.json" --write
+
+# 5. מילוי dongIndications
+node scripts/apply-dong-cards.cjs --write
+```
+
+התוויות `-Ids` הן רק שמות קבצים. **מזהה הנקודה נקרא מהכותרת ב-OCR**, כך
+שאין צורך לדעת מראש מה סדר הנקודות באפליקציה.
+
+## כלי עזר
+```bash
+# OCR גולמי של צילום בודד, לניפוי באגים
+powershell -NoProfile -File $SP/ocr.ps1 -Path shot.png -Crop "0,195,1920,120" -WithY
+
+# איתור + מיקסום + צילום / רשימת חלונות
 powershell -NoProfile -File $SP/phone.ps1 -Max -Out shot.png
-# צילום בלי לגעת בחלון (אחרי שכבר בחזית)
-powershell -NoProfile -File $SP/phone.ps1 -NoFocus -Out shot.png
-# רשימת כל החלונות
 powershell -NoProfile -File $SP/phone.ps1 -List
 
-# גלילה למטה (Amount שלילי)
-powershell -NoProfile -File $SP/input.ps1 -Action scroll -X 960 -Y 700 -Amount -5
-# לחיצה
+# לחיצה וגלילה ידניות
 powershell -NoProfile -File $SP/input.ps1 -Action click -X 1868 -Y 953
+powershell -NoProfile -File $SP/input.ps1 -Action scroll -X 960 -Y 700 -Amount -12
 ```
 
 ## קואורדינטות במסך מלא 1920x988
@@ -36,10 +70,15 @@ powershell -NoProfile -File $SP/input.ps1 -Action click -X 1868 -Y 953
 | נקודה קודמת < | 45 | 953 |
 | ⭐ מועדפים | 955 | 940 |
 
+אזור התוכן: y בין 330 ל-914. רקע כרטיס = RGB(245,244,246), רווח = לבן.
+
 ## ⚠️ כללי בטיחות
 - **לא ללחוץ על הכוכב (955, 940)** — משנה מועדפים אצל המשתמש
 - **לא ללחוץ על "Add a Note"** — משנה נתונים
 - מותר: גלילה, הטאבים למעלה, והחצים בקצוות
+- **אסור למשתמש לגעת בחלונות המחשב בזמן ריצה** — כל פעולה מביאה את חלון
+  הטלפון לחזית וחוטפת פוקוס. הטלפון עצמו פנוי לשימוש (זו הזרמת אפליקציה
+  בודדת, לא שיקוף מסך מלא)
 
 ## מלכודות שנתקלנו בהן
 1. **DPI** — חובה `SetProcessDPIAware()` בשני הסקריפטים, אחרת הקואורדינטות לא תואמות
@@ -47,5 +86,14 @@ powershell -NoProfile -File $SP/input.ps1 -Action click -X 1868 -Y 953
 3. **צילום תופס את מה שגלוי למעלה** — חובה `SetForegroundWindow` לפני
 4. **המלבן משתנה אחרי הבאה לחזית** — למדוד מחדש
 5. **זיהוי לפי יחס גובה-רוחב תפס את חלון Claude** — לזהות לפי `YourPhoneAppProxy`
-6. **החיפוש באפליקציה לא מקבל מספרי נקודות** — לנווט דרך Zone
-7. נקודה חדשה נפתחת בטאב Location — צריך ללחוץ Indications בכל פעם
+6. **החיפוש באפליקציה לא מקבל מספרי נקודות** — לנווט דרך Zone או בחצים
+7. **נקודה חדשה נפתחת בטאב Location** — צריך ללחוץ Indications בכל פעם.
+   הלחיצה הראשונה אחרי ניווט נבלעת בהפעלת החלון, לכן לוחצים פעמיים
+8. **PowerShell 5.1 דורש BOM של UTF-8** לקבצי `.ps1` עם עברית, אחרת שגיאות פרסינג
+   שנראות כמו סוגריים חסרים
+9. **`$arr += , @(...)` נשבר** ב-PowerShell — להשתמש ב-`ArrayList` + `[pscustomobject]`
+10. **צילום באמצע אנימציית הגלילה יוצא מטושטש** — `SettleMs = 900`
+11. **שורה שנחתכת בגבול אזור התוכן נקראת שגוי** (`spine` הופך ל-`soine`), ואז
+    התפירה לא מזהה חפיפה ומשכפלת משפטים שלמים — `ClipMargin = 28` ב-`cards.ps1`
+12. **`Additional Information` ארוך עובר את תקרת הגלילה** — `MaxScrolls = 45`.
+    הסקריפט מדפיס "MAX" כשלא הגיע לתחתית; נקודה כזו חייבת לכידה חוזרת

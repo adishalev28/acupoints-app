@@ -1,0 +1,356 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "77.01": {
+    "dongIndications": [
+      "Spinal pain",
+      "lumbago (lower back pain)",
+      "cervicalgia (neck pain)",
+      "neck sprain",
+      "hydrocephalus"
+    ],
+    "indications": [
+      "Cervical osteophytes (neck bone spurs).",
+      "Lumbar rigidity (stiff lower back).",
+      "Occipital headache.",
+      "Cervical spine disorders, whiplash injury.",
+      "Brain tumors, meningitis, cerebral concussion.",
+      "Head tremor.",
+      "Tinnitus.",
+      "Epilepsy.",
+      "Herniated disc.",
+      "Achilles tendon pain, heel spur, plantar fasciitis.",
+      "Coccydynia (tailbone pain).",
+      "Torticollis (wry neck).",
+      "Occipital pain.",
+      "Carpal tunnel syndrome (CTS).",
+      "Occipital headache, vertex headache."
+    ],
+    "additionalInfo": "For additional information, see 77.02 Zheng Zong. Carpal Tunnel Syndrome (Treatment Guide): When treating Carpal Tunnel Syndrome, the foot area is highly effective for addressing conditions of the hand. There is an important principle in acupuncture regarding the use of corresponding influence zones. In the carpal tunnel area, there are two points in Master Tung's acupuncture— Mu Guan and Gu Guan—that affect the foot and heel area. Therefore, points on the foot can be used to influence the hand. The area where the Achilles tendon connects to the heel corresponds to the palmar side of the wrist. For this reason, 77.01 Zheng Jin is an important point for treating Carpal Tunnel Syndrome. I also add 77.02 Zheng Zong. An additional advantage of using these two points is that Carpal Tunnel Syndrome often involves the neck as well. These two points are important points that influence the neck. In addition to the points recommended in the indication search, the following points from the 14 main channels can be added: Ki-3 Taixi, BI-60 Kunlun, Sp-5 Shangqiu, Gb-40 Qiuxu. Needle two needles at St-41 Jiexi—one directed toward Gb-40 Qiuxu, and the other toward Sp-5 Shangqiu. From the perspective of Master Tung's channels, the main channel involved is the Heart channel, which passes through the center of the forearm—such as the points Xin Ling and 33.04-06 Shou San Huo. I also use 33.04—06 Shou San Huo, as well as Tong Ling, located on the Heart channel in the thigh, and two points beside it: 88.10 Tong Wei, and a corresponding point on the Lung channel line, along the same axis as 88.17-19 Si Ma. All of these points are needled on the contralateral side—opposite to the affected hand. Point Name Zhéng — straight, precise, to correct, principal, principle. Jin [5] - tendons and ligaments. The point's name, \"Straighten Tendons,\" suggests its ability to influence the muscles and tendons supporting the spine. For additional information, see 77.03 Zheng Shi."
+  },
+  "77.02": {
+    "dongIndications": [
+      "Spinal pain",
+      "lumbago (lower back pain)",
+      "cervicalgia (neck pain)",
+      "neck sprain",
+      "hydrocephalus"
+    ],
+    "indications": [
+      "Cervical osteophytes (neck bone spurs).",
+      "Lumbar rigidity (stiff lower back).",
+      "Occipital headache.",
+      "Cervical spine disorders.",
+      "Whiplash injury.",
+      "Brain tumors, meningitis, cerebral concussion.",
+      "Head tremor.",
+      "Tinnitus.",
+      "Epilepsy.",
+      "Herniated disc.",
+      "Achilles tendon pain.",
+      "Heel spur, plantar fasciitis.",
+      "Coccydynia (tailbone pain).",
+      "Torticollis (wry neck).",
+      "Occipital pain.",
+      "Carpal tunnel syndrome (CTS).",
+      "Occipital headache.",
+      "Scapula pain, shoulder pain (posterior)."
+    ],
+    "additionalInfo": "Sometimes, 77.01 Zheng Jin is needled together with 77.02 Zheng Zong using the Dao Ma technique. 77.01-02 Zheng Jin/Zong are essential for treating neck and brain disorders. Case — Master Tung Neck pain, needling 77.02 Zheng Zong. Imaging In Master Tung's acupuncture, the area above the malleolus affects the neck. Point Name Zhéng [E] - straight, precise, to correct, principal, principle. Zöng — ancestors. The Zong Qi is located in the chest, so the point's name suggests its influence on the spine in the upper thoracic area. For additional information, see 77.03 Zheng Shi."
+  },
+  "77.03": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "thoracalgia (middle back pain)",
+      "sciatica",
+      "upper back pain (near the scapulae)"
+    ],
+    "indications": [
+      "Headache.",
+      "Dizziness.",
+      "Herniated disc.",
+      "Carpal tunnel syndrome (CTS).",
+      "Occipital headache.",
+      "Scapula pain, shoulder pain (posterior)."
+    ],
+    "additionalInfo": "77.01-03 Zheng Jin/Zong/Shi are sometimes needled using the Dao Ma technique to treat spine and brain disorders. 77.01-02 Zheng Jin/Zong has a greater influence on the spine and brain, while 77.03 Zheng Shi has a greater effect on the upper back and shoulder area. Cases of Master Tung Neck and upper back pain: Needling 77.01-03 Zheng Jin/Zong/Shi. Scapula pain: Needling 77.01-03 Zheng Jin/Zong/Shi. Point Name Zhéng - straight, precise, to correct, principal, principle. Shi [f] — scholar, member of the senior ministerial class, bachelor's degree holder, respectable, soldier, officer, sub-inspector, specialist worker. The character Shi signifies management. In Chapter 8 of the Su Wen, the lungs are described as responsible for managing the state (prime minister). The point's name suggests its connection to the lungs, affecting the spine in the upper back area. The names of the three points, 77.01 Zheng Jin (Straighten Tendons), 77.02 Zheng Zong (Straighten Ancestors), and 77.03 Zheng Shi (Straighten Scholar), hint at a Taoist concept of losing our center. Symbolically, the spine represents the center. The character Zhéng means to correct, to straighten: correcting the tendons that support the spine (77.01 Zheng Jin), correcting our connection to the ancestors (77.02 Zheng Zong), and correcting the management of life so that we can return to being balanced at the center (77.03 Zheng Shi)."
+  },
+  "77.04": {
+    "dongIndications": [
+      "Cramps in the legs",
+      "cholera (Huo Luan)",
+      "dorsalgia (back pain)",
+      "epistaxis (nosebleed)"
+    ],
+    "indications": [
+      "Cervicalgia (neck pain), neck sprain.",
+      "thoracalgia (middle back pain), upper back pain (near the scapulae).",
+      "Dysmenorrhea (Menstrual pain).",
+      "Hemorrhoids, fissura ani (anal fissure).",
+      "Coccydynia (tailbone pain).",
+      "Occipital headache."
+    ],
+    "additionalInfo": "The point is close to BI-57 Cheng Shan and can be needled together using the Dao Ma technique. For treating hemorrhoids Bloodletting of the connecting channels around the point along with bloodletting of the connecting channels around BI-40 Wei Zhong. BI-57 Cheng Shan, 77.04 Bo Qiu, and 77.03 Zheng Shi can treat pain near the scapulae. Needle on the affected side. The meaning of Huo Luan [Gil,] is vomiting and diarrhea at the same time. Point Name Bö [$4] — to grasp. Qiü [i*] - ball. The point's name suggests its location in the lower part of the gastrocnemius muscle. The \"ball\" refers to the gastrocnemius muscle. Bö [iT] —to grasp."
+  },
+  "77.05-07": {
+    "dongIndications": [
+      "Goiter secondary to cardiac disease",
+      "exophthalmos",
+      "tonsillitis",
+      "migraine",
+      "neoplasms",
+      "hepatic diseases",
+      "brain neoplasm",
+      "meningitis"
+    ],
+    "indications": [
+      "Facial paralysis (bell's palsy).",
+      "Laryngitis (voice box Inflammation), aphonia (loss of voice).",
+      "Enlarged spleen (Splenomegaly), splenitis.",
+      "Hyperthyroidism, graves disease, goiter.",
+      "Inflammation of the salivary glands (Sialadenitis).",
+      "Trigeminal neuralgia, facial numbness.",
+      "Headache, temporal headache, headache above the eye.",
+      "Cirrhosis.",
+      "Leukopenia.",
+      "Pneumonitis (Inflammation of the lung tissue), pleuritis (inflammation of the pleura), tuberculosis.",
+      "Enteritis (intestinal inflammation), proctitis (rectal inflammation).",
+      "Endometritis, myoma, oophoritis (ovarian inflammation), ovarian cyst, endometriosis, metritis (uterus inflammation).",
+      "Mastitis, fibrocystic breast, breast neoplasms, nipple adenoma, mastalgia, hypogalactia (Lactation Iow), breast swelling.",
+      "Acne.",
+      "Claude O",
+      "Costalgia (rib pain), diaphragm tightness.",
+      "Cervicalgia (neck pain on the side of the neck - SCM), whiplash injury.",
+      "Coxalgia (hip pain).",
+      "Carpal tunnel syndrome (CTS).",
+      "Otitis media (ear infection-middle ear), otitis externa (ear infection-externa ear), labyrinthitis (ear infection-inner ear), sudden hearing loss.",
+      "Sinusitis, nasal polyp.",
+      "Hemiplegia (one-sided paralysis)",
+      "Globus hystericus, plum pit qi, fish bone stuck in the throat.",
+      "Skin diseases, psoriasis.",
+      "Herpes zoster face.",
+      "Tonsillolith (tonsil stone).",
+      "Meniere's disease.",
+      "Trigger Finger.",
+      "Hip joint pain, hip bursitis (trochanteric Bursitis of the Hip), hip osteoarthritis.",
+      "Epstein barbr virus.",
+      "Shoulder pain (lateral).",
+      "Prostatic Hyperplasia (enlarged prostate).",
+      "Epilepsy.",
+      "Cervical Dysplasia.",
+      "Functioning Adenoma (Pituitary Growth).",
+      "Sixth nerve palsy (abducens nerve palsy), esotropia (Inward eye deviation)."
+    ],
+    "additionalInfo": "Typically, 77.05 Yi Zhong, 77.06 Er Zhong, and 77.07 San Zhong are needled together using the Dao Ma technique, then called San Zhong [ E ] (Three Weights). They can Typically, 77.05 Yi Zhong, 77.06 Er Zhong, and 77.07 San Zhong are needled together using the Dao Ma technique, then called San Zhong [ E ] (Three Weights). They can eliminate accumulations and clear stagnation of Qi and blood. The Three Weights are primary points for treating the spleen, especially in cases of dampness formation. The spleen is associated with the creation of dampness; therefore, the main innervation of these points is of the spleen. The source of dampness accumulation does not have to be only from excess conditions but can also arise from Qi deficiency. dampness accumulation can cause Qi to stagnate, Which explains Why these points also have innervation for the sub-branch of the lungs (the lungs control Qi). Additionally, Qi stagnation can lead to blood stagnation, which is why these points also have innervation for the sub-branch of the heart (the heart controls blood). It is interesting to note that the location of the Three Weights parallels the Four Flowers' lower points, 77.08, 09, 11 Si Hua. The Four Flowers strengthen the spleen, and at the lower part of this group of points, we find 77.11 Si Hua Xia and 77.12 Fu Chang, two important points for treating intestinal diseases. The Three Weights are important for treating disorders in the neck area, such as throat, tonsil, and thyroid issues, as well as muscle pain on the side of the body. These points significantly influence the brain, making them primary points for treating brain cancer. 77.05-07 San Zhong and 77.27 Wai San Guan have similar functions. Both groups soften swellings and open Qi stagnation, enabling them to treat tumors, but each has a different mechanism of action. The Three Weights treat swelling and stagnation arising from spleen disorders, heart (blood stagnation), and lung diseases (Qi stagnation or deficiency). In contrast, the Three Outer Gates innervate the lungs, making them more suitable for Qi deficiency or stagnation conditions. Their range of action is more limited. Hu wen Zhi 11.14 Zhi San Zhong (Three Weights of the Finger) is more suitable for chest disorders, whereas 77.05-07 San Zhong is more suitable for brain tumors. For treating breast disorders, you can needle 77.05-07 San Zhong together with Shuang Long (77). Lai Jing-Xiong These are important points that Master Tung used for patients after a stroke. The points can open Qi and blood stagnation in the brain. Master Tung used this group of points to treat early stages of breast, esophageal, and tongue cancer, achieving good results. The Three Weights and 88.01-03 Tong Guan/Shan/Tian can treat hyperthyroidism. Cases of Master Tung Deviation of the mouth angle to the left: Needling 77.06-07 San Zhong Er/San, 88.25 Zhong Jiu Li on the right side. Three days later, needling 1010.17 Qi Kuai. A patient with a bone stuck in the throat for two days: After Master Tung needled 77.05-07 San Zhong, the patient swallowed the bone. Bloodletting Area — Ears The lateral lower side of the calf reflects the ear area. 77.05-07 San Zhong is located in this area. The bloodletting of the connecting channels in the area can treat ear pain, external ear inflammation, middle ear inflammation, inner ear inflammation (labyrinthitis), tinnitus, and deafness. Imaging In Master Tung's acupuncture, the area above the malleolus affects the neck and, in this case, the throat. Point Name Sän [E] — three. Zhöng [m] — heavy, weight, important. Sän [Z] — three. If you add the flesh radical to the character Zhong [ ] , you get the character Zhong [ ], which means swelling or tumor. The points' names suggest their ability to treat phlegm and dampness that create lumps."
+  },
+  "77.08": {
+    "dongIndications": [
+      "Asthma",
+      "palpitations",
+      "heart diseases",
+      "oral neoplasms (oral tumors)",
+      "dizziness",
+      "cholera with leg cramps"
+    ],
+    "indications": [
+      "Toothache.",
+      "Gastric ulcers (stomach ulcer), duodenal ulcer, peptic ulcer disease (PUD), nausea and vomiting.",
+      "Gastritis (stomach lining inflammation), duodenitis (duodenum inflammation), Gastric hyperacidity (stomach acid excess).",
+      "Temporomandibular Joint Syndrome (TMJ), lockjaw, bruxism (teeth grinding).",
+      "Vomiting (emesis), abdominal pain, Irritable Bowel Syndrome (IBS), Crohn's disease.",
+      "Sudden tremors.",
+      "Facial paralysis (bell's palsy).",
+      "Aphthous ulcers (mouth ulcers), recurrent aphthous stomatitis (RAS).",
+      "Headache - Frontal headache.",
+      "Eye diseases, glaucoma.",
+      "Shoulder pain, finger pain - second finger.",
+      "Elbow pain, tennis elbow (lateral epicondylitis).",
+      "Hyperhidrosis (excessive sweating).",
+      "Otitis media (ear infection-middle ear).",
+      "Hypogalactia (Lactation low).",
+      "Neurasthenia (anxiety disorder).",
+      "Alopecia (hair loss).",
+      "Anorexia (appetite poor).",
+      "Edema.",
+      "Glossodynia (burning mouth syndrome).",
+      "Shoulder pain (anterior).",
+      "Cerebral thrombosis (CVA).",
+      "Premenstrual syndrome (PMS)."
+    ],
+    "additionalInfo": "The point's name reflects the spleen's transformation and transportation of postnatal Qi. The point's innervation (branch of the lungs and heart) reflects the result of this action: the creation of Qi (lungs) and blood (heart). 77.08 Si Hua Shang influences the mechanism of transforming and transporting the Ying Qi. It affects the upper part of the digestive system (the source of postnatal Qi), mainly including the mouth, teeth, and stomach. The point's ability to regulate the creation of postnatal Qi through digestion affects the lungs and heart. The point does not act directly on the lungs and heart but through the earth (spleen and stomach). The spleen and stomach are responsible for transforming the Gu Qi and transporting it to the upper burner. In the lungs, it becomes the protective Qi, and in the heart, it becomes blood. When cholera is mentioned, it refers not only to the disease but also to vomiting and diarrhea. For more additional information, see 77.11 Si Hua Xia. Bloodletting — Mouth and Teeth Area The upper part of the calf, from the anterior to the lateral area, reflects the mouth and teeth. The bloodletting of the connecting channels in this area can treat aphthae, mouth tumors, herpes on the lips, toothache, and gum problems. Points located in this area include 77.08 Si Hua Shang, 77.15-16 Shang/Xia Chun, and 77.22-23 Ce/Xia San Li. Point Name Point Name Si - four. Huä [it] — flower. Shång [El — upper. Huä [7E] - flower. Shång [YI — upper. In the Yellow River Map, the number four represents metal. The lungs belong to the metal element, so the point's name suggests its influence on the lungs. The flower in the name symbolizes summer, and summer is associated with the fire phase (heart). Therefore, the point's name also indicates its effect on the heart. There is also a hidden meaning in the name. At the top of the character Huä [ (flower), there is the radical cäo [ (grass), and below it is the character Huå (to transform). The spleen transforms, so the Huä - flower. point's name suggests its connection with the earth (spleen). Flowers grow from the earth. The point's name suggests its mechanism of action: the transformation of Gu qi by the spleen and its transportation to the upper burner, the lungs, and the heart to generate protective qi and blood. The \"Upper\" in the name indicates that this is the uppermost point among the Four Flowers (Si Hua), affecting the upper part of the digestive system. Shång — upper."
+  },
+  "77.09": {
+    "dongIndications": [
+      "Asthma",
+      "eye disorders",
+      "heart diseases",
+      "coronary artery disease (pain on both sides of the heart",
+      "myocardial infarction (chest pressure",
+      "restlessness in sitting and at rest)",
+      "acute abdominal pain",
+      "swollen bones (Osteoarthritis)"
+    ],
+    "indications": [
+      "Eye pain, Keratitis, Conjunctivitis, Cataract.",
+      "Endocarditis.",
+      "Pneumonia, emphysema, lung cancer.",
+      "Enteritis (intestinal inflammation)-acute, gastritis (stomach lining inflammation)-acute.",
+      "Sensation of chest constriction, pleuritis (inflammation of the pleura).",
+      "Abdominal pain, Irritable Bowel Syndrome (IBS).",
+      "Frontal headache.",
+      "Facial paralysis (bell's palsy).",
+      "Toothache.",
+      "Scapula pain, frozen shoulder (50 year old shoulder), shoulder pain (posterior), shoulder pain (anterior).",
+      "Finger pain - second finger.",
+      "Elbow pain, tennis elbow (lateral epicondylitis).",
+      "Hypogalactia (Lactation low).",
+      "Neurasthenia (anxiety disorder).",
+      "Alopecia (hair loss).",
+      "Herpes zoster eye.",
+      "Anorexia (appetite poor).",
+      "Eyeball pain, eyeball pressure, orbital pain, intraocular pain, intraocular pressure.",
+      "Cerebral thrombosis (CVA).",
+      "Premenstrual syndrome (PMS).",
+      "Claude O"
+    ],
+    "additionalInfo": "77.09 Si Hua Zhong is often needled together with 77.10 Si Hua Fu using the Dao Ma technique. For additional information, see 77.08 Si Hua Shang and 77.11 Si Hua Xia. Master Tung Master Tung said, \"77.09 Si Hua Zhong with 77.10 Si Hua Fu reduce bone to produce muscle.\" This is likely why these two points are used for bone swellings and protrusions. Chuan Min Wang In cases of stubborn and chronic diseases, a dark blood vessel in the area of the point can be bled. Wei Chieh Young Bloodletting the point achieves particularly good results when there is a black vein in the area of the point. The point should be bled when treating pulmonary Edema, lung tumors, and emphysema. The point can treat migraines through deep needling, which should be repeated five times. Liv-3 Tai Chong can also be combined. 77.09 Si Hua Zhong, 77.10 Si Hua Fu, and 77.12 Fu Chang can treat bone swellings and inflammations that deform the bones, especially in the hands, knees, and heels. Point Name Si — four Huä [?E]— flower Huä [7Z]— flower Zhöng [#2] — center The character \"center\" in the point's name indicates that it is the middle point among the Four Flowers (Si hua). For more information about the point's name, see 77.08 Si Hua Shang."
+  },
+  "77.10": {
+    "dongIndications": [
+      "Asthma",
+      "eye disorders",
+      "heart diseases",
+      "coronary artery disease (pain on both sides of the heart)",
+      "myocardial infarction (chest operation, restlessness in sitting and at rest)",
+      "acute abdominal pain",
+      "swollen bones (osteoarthritis)"
+    ],
+    "indications": [
+      "Eye pain, keratitis, conjunctivitis, cataract.",
+      "Endocarditis.",
+      "Pneumonia, emphysema, Lung cancer.",
+      "Acute gastritis and enteritis.",
+      "Abdominal pain, Irritable bowel Syndrome (IBS).",
+      "Frontal headache.",
+      "Facial paralysis (bell's palsy).",
+      "Toothache.",
+      "Scapula pain, frozen shoulder (50 year old shoulder), shoulder pain (posterior).",
+      "Pain in the second finger.",
+      "Elbow pain, tennis elbow (lateral epicondylitis).",
+      "Neurasthenia (anxiety disorder).",
+      "Alopecia (hair loss)."
+    ],
+    "additionalInfo": "The point's indications are similar to those of 77.09 Si Hua Zhong, and they are sometimes needled together using the Dao Ma technique. For more information, see 77.09 Si Hua Zhong. Point Name Si — four. Huä [7E] — flower. Fü [BJ] — deputy. Fü [HIJ] — deputy. The character \"deputy\" in the point's name suggests that it is a supporting point to 77.09 Si Hua Zhong, and they can be needled together using the Dao Ma technique. For more information about the point's name, see 77.08 Si Hua Shang."
+  },
+  "77.11": {
+    "dongIndications": [
+      "Enteritis (intestinal inflammation)",
+      "abdominal distension",
+      "bruxism (teeth grinding)"
+    ],
+    "indications": [
+      "Stomach pain.",
+      "Edema in the lower limbs.",
+      "Osteoarthritis.",
+      "Diarrhea.",
+      "Neurasthenia (anxiety disorder).",
+      "Alopecia (hair loss).",
+      "Anorexia (appetite poor).",
+      "Fissura ani (anal fissure).",
+      "Cerebral thrombosis (CVA).",
+      "Premenstrual syndrome (PMS)."
+    ],
+    "additionalInfo": "77.08 Si Hua Shang, 77.09 Si Hua Zhong, and 77.11 Si Hua Xia are often needled together using the Dao Ma technique. This combination is called the Four Flowers (Si Hua [ gg J). The flower in the point's name symbolizes summer. Summer is associated with the fire phase (heart), so the points' names suggest their influence on the heart. However, there is also a hidden meaning in the name; at the bottom of the character, Hua (flower), appears the radical Hua [ l, which means to transform. In Chinese medicine, the spleen is responsible for transformation, so the name of the points suggests the influence of the Four Flowers on the spleen (pancreas), especially the role of the spleen in digestion. Therefore, the Four Flowers are also used for digestive disorders. The Four Flowers is an important combination that can strengthen postnatal Qi. The spleen (pancreas) transforms food that rises to the upper burner to support the heart and lungs. In the lungs, it becomes the protective Qi, and in the heart, it becomes blood. Therefore, the Four Flowers points also impact the heart and lungs. The Four Flowers combination strengthens all aspects of postnatal Qi (nutritive Qi, protective Qi, and blood) by regulating the digestive system. The Four Flowers can treat gynecological disorders when Qi and blood deficiency are present for conditions such as amenorrhea, dysmenorrhea, and irregular menstruation. 77.11 Si Hua Xia and 77.12 Fu Chang are essential points for treating intestinal diseases, and they are often needled together using the Dao Ma technique. Differential Diagnosis of the Four Flowers 77.08 Si Hua Shang treats the mouth, teeth, and stomach. 77.08 Si Hua Shang and 77.09 Si Hua Zhong treat the lungs and heart. 77.11 Si Hua Xia and 77.12 Fu Chang treat the intestines. Lee Kuo Cheng If 77.08, 09, II Si Hua are needled on the right side, the points also influence the liver, lungs, spleen, and heart. Therefore, combining Si Hua on the right side with 88.09, IO, II Tong Shen/Wei/Bei on the left side, which are points influencing the kidneys, strengthens all five solid organs. 77.08, 09, II Si Hua can treat female and thyroid reproductive systems disorders. Lai Jing-Xiong 77.11 Si Hua Xia and 77.12 Fu Chang can treat sciatica due to a herniated disc. Case — Master Tung A patient with left shoulder pain. Master Tung needled on the right side 77.11 Si Hua Xia, and two more points 1 cun above and below 77.11 Si Hua Xia. Bloodletting — Heart Area The Four Flowers are located in the anterior bloodletting area of the calf, known as the heart area. If connecting channels exist in the area, they can be bled to treat heart diseases: chest operation, palpitations, angina pectoris, endocarditis (inflammation of the inner heart), arrhythmias, valve disorders, and high blood lipid levels (hyperlipidemia). Additionally, bloodletting in the area can treat stomach and intestinal diseases, lung diseases, pneumonia, eye diseases, and headaches. Point Name Si - four. Huä [lü - flower. Xiå [F] — lower. The character \"lower\" in the point's name suggests it is the lowest point among the Four Flowers (Si Hua). Xiå [T] — lower. For additional information about the point's name, see 77.08 Si Hua Shang."
+  },
+  "77.12": {
+    "dongIndications": [
+      "Eenteritis (intestinal inflammation)",
+      "abdominal distension",
+      "bruxism (teeth grinding)"
+    ],
+    "indications": [
+      "Stomach pain.",
+      "Edema in the lower limbs.",
+      "Bone protrusions and swelling (Osteoarthritis).",
+      "Diarrhea.",
+      "Hypogalactia (Lactation Iow).",
+      "Fissura ani (anal fissure)."
+    ],
+    "additionalInfo": "77.12 Fu Chang is needled together with 77.11 Si Hua Xia using the Dao Ma technique, and they share the same indications. Point Name Fü [Mi] — internal organs. Chång — intestines. The name of the point suggests its influence on the intestines."
+  },
+  "77.13": {
+    "dongIndications": [
+      "Gastroenteritis",
+      "heart diseases",
+      "palpitations",
+      "myocardial infarction",
+      "cholera with tendon spasms (nausea and vomiting)"
+    ],
+    "indications": [
+      "Gastritis (stomach lining inflammation), enteritis (intestinal inflammation), vomiting (emesis).",
+      "Arrhythmia (irregular heartbeat).",
+      "Degenerative knee diseases.",
+      "Elbow pain, tennis elbow (lateral epicondylitis), medial epicondylitis (golfer's elbow).",
+      "Frozen shoulder (50 year old shoulder), shoulder pain (posterior), shoulder pain (anterior)."
+    ],
+    "additionalInfo": ""
+  },
+  "77.14": {
+    "dongIndications": [
+      "Acute enteritis",
+      "toothache",
+      "migraine",
+      "facial paralysis (bell's palsy)",
+      "costochondritis (rib cartilage inflammation)"
+    ],
+    "indications": [
+      "Pleuritis (inflammation of the pleura).",
+      "Otitis media (ear infection-middle ear).",
+      "Chronic rhinitis.",
+      "Asthma.",
+      "Hypertension.",
+      "Intercostal neuralgia.",
+      "Shoulder pain, shoulder pain (posterior), shoulder pain (anterior).",
+      "Sciatica.",
+      "Foot and arch pain.",
+      "Temporal headache.",
+      "Neurasthenia (anxiety disorder).",
+      "Alopecia (hair loss).",
+      "Arm pain.",
+      "Elbow pain, tennis elbow (lateral epicondylitis)."
+    ],
+    "additionalInfo": "The Four Flowers points are located in the heart bloodletting area in the anterior part of the leg. When a connecting channel appears in the heart bloodletting area (in such cases, bloodletting the connecting channels), the Four Flowers can treat chest operation, palpitations, angina pectoris, myocarditis, arrhythmias, Valvular Heart Disease, high blood lipid levels, stomach and intestinal diseases, lung diseases, pneumonia, eye diseases, and headaches. Wei Chieh Young This point is essential for bloodletting. It can treat pathological conditions on the side of the body, such as migraine, ear pain, shoulder pain, intercostal neuralgia, and lateral sciatica. The point is frequently bloodlet, Which can clear blood stagnation and dissolve phlegm. In cases of chronic and difficult-to-treat diseases, bloodletting to the point can lead to good results. Point Name Si - four. Huä [7E] — flower. Huä - flower. Wåi [5b] - external, foreign. For additional information about the point's name, see 77.08 Si Hua Shang."
+  },
+  "77.15": {
+    "dongIndications": [
+      "Cheilalgia (lip pain)",
+      "Labial vitiligo (lips vitiligo)"
+    ],
+    "indications": [
+      "Labial ulceration (lip ulcers), Herpes labialis (cold sores) on the mouth and genitalia.",
+      "Oral candidiasis (oral thrush), aphthous ulcers (mouth ulcers), recurrent aphthous stomatitis (RAS).",
+      "Genital ulceration (genital sores), herpes genitalis (genital herpes).",
+      "Mouth deviation, facial paralysis (bell's palsy).",
+      "Elbow pain, tennis elbow (lateral epicondylitis), medial epicondylitis (golfer's elbow).",
+      "Cubital Tunnel Syndrome.",
+      "77.15-16 Shang/xia Chun"
+    ],
+    "additionalInfo": "In Master Tung's original book, these points are described as affecting the lips, but some of his students note that they can also be used for disorders of the labia (female genital lips). The points are located in an area that, in Master Tung's acupuncture, affects the mouth and teeth. Point Name Shång — upper. Chün [E] — lip. The names of the points suggest their ability to treat lip-related problems. Chün [FS] — lip."
+  },
+  "77.16": {
+    "dongIndications": [
+      "Cheilalgia (lip pain)",
+      "Labial vitiligo (lips vitiligo)"
+    ],
+    "indications": [
+      "Labial ulceration (lip ulcers), Herpes labialis (cold sores) on the mouth and genitalia.",
+      "Oral candidiasis (oral thrush), aphthous ulcers (mouth ulcers), recurrent aphthous stomatitis (RAS).",
+      "Genital ulceration (genital sores), herpes genitalis (genital herpes).",
+      "Mouth deviation, facial paralysis (bell's palsy).",
+      "Elbow pain, tennis elbow (lateral epicondylitis), medial epicondylitis (golfer's elbow).",
+      "Cubital Tunnel Syndrome.",
+      "77.15-16 Shang/xia Chun Upper/lower Lip"
+    ],
+    "additionalInfo": "In Master Tung's original book, these points are described as affecting the lips, but some of his students note that they can also be used for disorders of the labia (female genital lips). The points are located in an area that, in Master Tung's acupuncture, affects the mouth and teeth. Point Name Xiå [F] — lower. Chün [E] — lip. The names of the points suggest their ability to treat lip-related problems. Chün [FS] — lip."
+  }
+}

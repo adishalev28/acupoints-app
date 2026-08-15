@@ -1,0 +1,634 @@
+{
+  "_comment": "חילוץ מילולי מטאב Indications באפליקציה של שון גודמן, דרך OCR של צילומי מסך. הכרטיס הראשון = ההתוויות של מאסטר דונג. זהו מקור, לא נתוני התצוגה — אין לערוך ידנית.",
+  "_tool": "scripts/phone-capture/{capture-batch.ps1,cards.ps1,stitch.cjs}",
+  "33.01-03": {
+    "dongIndications": [
+      "Menstrual disorders",
+      "leukorrhea (vaginal discharge-white and red)",
+      "prolapsed rectum",
+      "hemorrhoids"
+    ],
+    "indications": [
+      "Metritis (uterus inflammation), oophoritis (ovarian inflammation), uterine tumor, cervical cancer.",
+      "Constipation.",
+      "Dysentery.",
+      "Urinary tract infection (UTI), cystitis (urinary bladder inflammation), urethritis, nocturnal enuresis (bedwetting), dysuria (urinating difficulty).",
+      "Hemorrhoidal bleeding, fissura ani (anal fissure).",
+      "Bloating, diarrhea, irritable bowel syndrome (IBS).",
+      "Claude O",
+      "Peritonitis.",
+      "Myoma.",
+      "Sacrum pain, coccydynia (tailbone pain).",
+      "Undescended testicle (cryptorchidism)."
+    ],
+    "additionalInfo": "The points innervate the lungs and the six Fu organs. Master Tung's acupuncture points, with the reaction area of the six Fu organs, address excess conditions. In this case, it concerns excess in the lower burner. The lung qi descends to the lower burner to relieve stagnation. The three points are usually needled together. These points influence the organs located in the pelvis: the rectum, uterus, and bladder. When treating hemorrhoids or anal fissures with these points, it is important to perform bloodletting of dark blood vessels in the occipital region of the leg. When needling the three points together, we also activate Li-6 Pian Li, the Luo point, and Li-7 Wen Liu, the accumulation point. The connecting and accumulation points move blood stagnation and stagnant qi, which are common causes of hemorrhoids, rectal prolapse, and irregular menstruation. Nocturnal enuresis (bedwetting) - Treatment guide: When treating bedwetting, applying moxa on GV-4 Mingmen can enhance the effectiveness of the treatment. In addition to the points listed under the indications, it may be beneficial to consider using LIJ-7 Lieque. Point Name Qi [R] - This. Mén [P f] — Gate. Jiao — Corner, horn, angle. Mén — Gate. Zhéng — Straight. The Core Concept: What is \"Qi\"? In this point group, the character Qi [ ] does not mean \"Energy\" [ l. Instead, it translates to the pronoun \"Its\" or \"That.\" In classical Chinese texts, this was used as a polite euphemism for the private parts of the body—specifically, the anus, pelvic floor, and urogenital region. Therefore, these three points map out the structural anatomy of the pelvic floor: 1. Qi Men - \"Its Gate.\" Meaning: Represents the main opening itself. Clinical Focus: Targets the anal sphincter and vaginal opening directly. It is the primary point for opening and healing the \"gate\" at the bottom of the torso. Mén [B] — Gate. 2. Qi Jiao - \"Its corner.\" Meaning: Represents the margins, edges, or lateral borders of the gate. Clinical Focus: Targets peripheral issues related to the opening, such as anal fissures (tears at the edge), external hemorrhoids, and lateral pelvic inflammation (e.g., ovaritis). 3. Qi Zheng - \"Its Upright / center.\" Meaning: Represents the central core and the mechanical action of keeping things \"upright\" and in their correct position. Clinical Focus: Utilizes a lifting action to treat deep, central, or collapsed conditions. It is crucial for lifting rectal prolapse, uterine prolapse, and treating internal hemorrhoids."
+  },
+  "33.04": {
+    "dongIndications": [
+      "Constipation",
+      "Palpitations",
+      "forearm pain"
+    ],
+    "indications": [
+      "Chest pain (Pleurodynia), chest oppression (chest tightness).",
+      "Lumbago (lower back pain), thoracalgia (middle back pain).",
+      "Deafness.",
+      "Costal pain (Rib pain).",
+      "Herpes zoster (Shingles), herpes zoster upper back, herpes zoster ribs, herpes zoster lower back, herpes zoster sciatic nerve.",
+      "Calf pain - anterior or lateral, sciatica - anterior or lateral.",
+      "Carpal tunnel syndrome (CT S).",
+      "Hemorrhoids, fissura ani (anal fissure).",
+      "Menopause, hot flashes, night sweats, restlessness, depression.",
+      "Neurasthenia (anxiety disorder).",
+      "Edema in the lower limbs, cold feet, cold handes."
+    ],
+    "additionalInfo": "33.04 Huo Chuan, 33.05 Huo Ling, and 33.06 Huo Shan are usually needled together. When the three points are needled together, they are called Shou San Huo [ Three Fire. Additional information can be found in 33.06 Huo Shan. E 'k Hand Point Name Huö ['k] — Fire. Chuån [$1 — To string together, to connect, cluster, group. The name of the point suggests its influence on the heart. Huö ['A'] — Fire."
+  },
+  "33.05": {
+    "dongIndications": [
+      "Chest pain (Pleurodynia)",
+      "chest oppression (chest tightness)",
+      "costal pain (rib pain)",
+      "hand pain and cramps"
+    ],
+    "indications": [
+      "Chest pain (pleurodynia) radiating to the back.",
+      "Hand spasm.",
+      "Pneumonia.",
+      "Lumbago (lower back pain) , thoracalgia (middle back pain).",
+      "Sciatica on the anterior and lateral aspects of the leg.",
+      "Calf Pain - anterior or lateral.",
+      "Pyelonephritis (kidney infection).",
+      "Neurasthenia (anxiety disorder).",
+      "Carpal tunnel syndrome (CTS).",
+      "Herpes zoster (Shingles), herpes zoster upper back, herpes zoster ribs, herpes zoster lower back, herpes zoster sciatic nerve.",
+      "Edema in the lower limbs, cold feet, cold handes."
+    ],
+    "additionalInfo": "33.04 Huo Chuan, 33.05 Huo Ling, and 33.06 Huo Shan are usually needled together. When the three points are needled together, they are called Shou San Huo [ Tthree Fire. Additional information can be found in 33.06 Huo Shan. E 'k Hand Point Name Huö ['k] — Fire. Chuån [$1 — To string together, to connect, cluster, group. The name of the point suggests its influence on the heart. Huö ['A'] — Fire."
+  },
+  "33.06": {
+    "dongIndications": [
+      "Chest pain (Pleurodynia)",
+      "chest oppression (chest tightness)",
+      "costal pain (rib pain)",
+      "hand pain and cramps"
+    ],
+    "indications": [
+      "Neurasthenia (anxiety disorder), pyelitis (inflammation of the renal pelvis).",
+      "Chest pain (Pleurodynia) radiating to the back.",
+      "Hand spasm.",
+      "Pneumonia.",
+      "Lumbago (lower back pain) , thoracalgia (middle back pain).",
+      "Sciatica on the anterior and lateral aspect of the leg.",
+      "Calf pain - anterior or lateral.",
+      "Pyelonephritis (kidney infection).",
+      "Carpal tunnel syndrome (CTS).",
+      "Herpes zoster (Shingles), herpes zoster upper back, herpes zoster ribs, herpes zoster lower back, herpes zoster sciatic nerve.",
+      "Edema in the lower limbs, cold feet, cold handes."
+    ],
+    "additionalInfo": "33.04 Huo Chuan, 33.05 Huo Ling, and 33.06 Huo Shan are usually needled together. When these three points are needled together, they are referred to as Shou San Huo [ 'A'], Three Fires of the Hand. In Tung's acupuncture, the Three Fires of the Hand are located on the Heart channel. These points open the chest, enhance blood circulation, and warm the Yang. They can also treat coldness and numbness in the hands and feet. These three points are highly effective in treating rib disorders and a sense of oppression in the Chest, even when the cause is emotional. They are also beneficial for treating middle and lower back pain and pain radiating to the anterolateral side of the shin and thigh. Liu Li mentions that bloodletting 33.05-06 Huo Ling/Shan can treat external invasion with high fever and the inability to sweat. Summary of Differences While all three points treat the Heart (Chest pain, distress), there are specific nuances: 33.04 Huo Chuan Lung & Heart Nerves Hearing issues, Back pain. 33.05 Huo Ling Heart Nerve Hand cramps, Finger numbness. 33.06 Huo Shan Heart & Kidney Nerves Lower Back Pain, Sciatica, Kidney inflammation, Neurasthenia. Point Name HI-IO [ k] — Fire. Huö — Fire. Shän (III] — Mountain. The point's name indicates its position at the peak of the muscle (mountain), in contrast to point 33.05 Huo Ling, which is located at the base of the muscle (fire mound). Huö ['A'] — Fire. Shän [Lb] — Mountain."
+  },
+  "33.07": {
+    "dongIndications": [
+      "Common cold",
+      "rhinitis",
+      "asthma",
+      "sciatica",
+      "lumbago (lower back pain)",
+      "leg pain",
+      "anemia",
+      "dizziness",
+      "blurred vision",
+      "eyestrain",
+      "fatigue."
+    ],
+    "indications": [
+      "Cough, cough (chronic), cough (with yellow phlegm), dyspnea (shortness of breath).",
+      "Tennis elbow (lateral epicondylitis).",
+      "Herniated disc - cervical.",
+      "Blood cells diseases, leukopenia (Iow white blood cell count), erythropenia (reduced red blood cell count).",
+      "Vertigo.",
+      "Epstein Barr Virus.",
+      "Psoas syndrome.",
+      "33.07 Huo Fu Hai Fire Bowel Sea",
+      "Needling • Perpendicular, 0.5-1 cun.",
+      "33.07 Huo Fu Hai [',kfiifiiq] Fire Bowel Sea • Leave the needle in for ten minutes to treat anemia, dizziness, blurred vision, eyestrain, and exhaustion.",
+      "• • Then, remove the needle and perform indirect moxibustion (using ginger or garlic) for 3 to 5 cones. Alternati can skip needling and apply 3 to 5 moxa cones directly.",
+      "ennis elbow, needle the opposite side. • When tre",
+      "When trea 43"
+    ],
+    "additionalInfo": "33.07 Huo Fu Hai innervates the Lungs, which govern the Qi, and the Heart, which governs the Blood. Its primary action is to stimulate the Fu organs, actively encouraging them to produce and generate abundant Qi and Blood in the body. If this mechanism sounds familiar to you, it's because it functions very similarly to the classic Lower He-sea points of the Stomach, Large Intestine, and Small Intestine: Stomach 36 (Zu San Li), Stomach 37 (Shang Ju Xu), and Stomach 39 (Xia Ju Xu). In Traditional Chinese Medicine (TCM), these points strengthen the Blood by improving the absorption of nutrients into the body through the digestive system. As we know, ST-37 and ST-39 are also known as the Points of the Sea of Blood. Together, these three leg points stimulate the Fu organs to promote Qi and Blood production. The mechanism of action of 33.07 Huo Fu Hai on the arm is practically the same. But here is what makes Huo Fu Hai truly stand out. This is a deep tonifying point known to extend life, specifically when we apply moxibustion. In the Daoist tradition, there is a profound emphasis on strengthening the Yang to nourish life and vitality. By doing moxa on Huo Fu Hai, we directly strengthen the body's fire and Yang. In fact, pay attention to this detail: this is the only point in Master Tung•s entire acupuncture system where moxibustion is applied. Clinically, because of this incredible ability to tonify Qi and Blood and strengthen the Yang, this point is extremely important for strengthening the immune system. This also makes it highly effective for treating and rebuilding patients suffering from post-viral syndrome. It is also highly effective for respiratory issues. If you are treating a cough, you will want to use this specific combination: needle Large Intestine 11 (Qu Chi), 33.07 Huo Fu Hai, and the extra point Ding Ke. Finally, let's look at the holographic imaging. Why does it work so well for the respiratory tract? According to Master Tung's imaging principles, the area just above and below the elbow directly mirrors and treats disorders of the throat and the upper respiratory system. Point Name Huö - Fire. Fü — The hollow organs. Håi - Sea. Huö ['k] — Fire. The character \"fire\" in the point's name suggests its ability to strengthen Yang and warm the organs. The characters \"sea\" and \"hollow organs\" indicate its influence on the Fu organs, particularly in generating qi and blood."
+  },
+  "33.08-09": {
+    "dongIndications": [
+      "Abdominal pain",
+      "sciatica",
+      "calf pain",
+      "leg pain",
+      "leg numbness"
+    ],
+    "indications": [
+      "Paresthesia of the hands and feet (special effect), neuropathy, Occipital Pain, cervicalgia (neck pain).",
+      "Skin sores due to toxicity, skin diseases.",
+      "Drugs poisoning, food poisoning, alcohol poisoning, insect bite .",
+      "Hypercholesterolemia (high cholesterol), Hyperlipidemia (high lipids).",
+      "Torticollis (wry neck).",
+      "Headache.",
+      "Facial paralysis (bell's palsy), facial tics.",
+      "Irritable bowel syndrome (IBS).",
+      "Heel pain, heel spur, plantar fasciitis.",
+      "Herpes zoster sciatic nerve, herpes zoster face.",
+      "Numbness of the hands and feet (special effect).",
+      "Chemotherapy treatment (Side effects)."
+    ],
+    "additionalInfo": "33.08-09 Shou Wu/Qian Jin points are needled together using the Dao Ma technique. These two points open the channels and stimulate blood circulation. They innervate the lungs and liver, regulate qi, and control the movement axis from top to bottom and east to west. Therefore, 33.08-09 Shou Wu/Qian Jin are essential for treating qi and blood stagnation. When using these points for numbness, they are combined with 22.10 Shou Jie. Due to their connection to the lungs and liver, they are crucial for treating skin diseases. Their influence on the liver makes them very important for treating body toxicity, in combination with 88.12-14 Shang San Huang and DT.01-02 Fen Zhi Shang/Xia. Bloodletting can be performed on the occipital area and the anterior side of the leg to enhance the detoxifying ability of 33.08-09 Shou Wu/Qian Jin. Because of their liver connection, these points can also treat high cholesterol. Two of Tung's 72 Absolute points and two of the 32 Solution points. Master Tung used these points to treat numbness and toxicity (drugs, food, alcohol, insect bites) together with Shou Jie 22.10. Liao Li These points strengthen metal to control wood, as indicated by their name. Therefore, they primarily treat liver diseases, especially when there is blood toxicity. Imaging Imaging between the upper and lower limbs: The area of the points mirrors the calf; hence, these points can treat calf swelling and sciatica. Point Name Shöu [+] — Hand. Wü - Five. Shöu [3] — Hand. Qiän [+] — Thousand. Jin - Metal. There are three groups of points with the name Thousand/Five Metal: 11.08 Zhi Wu Qian Jin: Finger Five and Finger Thousand Metals. 33.08-09 Shou Qian/Wu Jin: Hand Thousand/Five Metal. 77.24-25 Zu Qian/Wu Jin: Foot Thousand/Five Metal. Wü [E] - Five. Jin [ft] — Metal. The character \"hand\" in the point's name indicates that the points are located on the hand. The numbers five and ten in the Yellow River chart represent the earth's phase. In the nurturing cycle, the earth nourishes metal. A thousand is a multiple of ten, which links the point to the earth phase. The character \"metal\" in the points' names suggests their mechanism of action: nourishing metal to control wood. The connection to the earth in the points' names also implies the effect these points have on the four limbs associated with the earth."
+  },
+  "33.10": {
+    "dongIndications": [
+      "Hepatitis - Gastroenteritis-",
+      "dizziness",
+      "blurred vision"
+    ],
+    "indications": [
+      "Gastroenteritis acute, gastroenteritis chronic .",
+      "Colitis.",
+      "Cholecystitis (gallbladder inflammation).",
+      "Nausea, vomiting.",
+      "Abdominal pain acute, bloating, flatulence (gas), irritable bowel syndrome (IBS), diarrhea.",
+      "Anus diseases, hemorrhoids.",
+      "Hepatitis.",
+      "Calf cramps, calf pain - posterior and medial.",
+      "Medial epicondylitis (golfer's elbow).",
+      "Hemorrhoids, hemorrhoidal bleeding, fissura ani (anal fissure).",
+      "Blood cells diseases, leukopenia (low white blood cell count), erythropenia (reduced red blood cell count).",
+      "Heel pain, heel spur, plantar fasciitis.",
+      "Epstein Barr Virus."
+    ],
+    "additionalInfo": "33.10 Chang Men can regulate the intestines and treat acute and chronic intestinal inflammations. This point is also effective for treating diarrhea. 33.10 Chang Men is combined with 33.11 Gan Men in cases of intestinal and liver diseases. It is combined with Shen Er San (99) when treating dizziness. For chronic and acute intestinal inflammations, it is combined with 77.08, 09, 11 Si Hua. Yang Wei Chieh Pressing and applying a message to the area of this point can help to suppress the strong urge to defecate when there is a need to hold it. Miriam Lee Uses this point for diarrhea with jaundice (\"The person feels the urge to go to the bathroom but cannot evacuate, and as soon as they get up, they feel the need to go again\"). Point Name Chång [AZ] — Intestines. Mén [B] — Gate. Chång [\"l — Intestines. Mén — Gate. The character \"intestines\" in the name of the point suggests its effect on the intestines. Points with the character \"gate\" releasing stagnation and excess. In this case, the effect of 33.10 Chang Men is specifically on the intestines. in their names are associated with opening and"
+  },
+  "33.11": {
+    "dongIndications": [
+      "Hepatitis acute (special effect)"
+    ],
+    "indications": [
+      "Gastroenteritis acute .",
+      "Chest pain (Pleurodynia), chest contraction.",
+      "Calf cramps, calf pain - posterior and medial.",
+      "Blood cells diseases, leukopenia (Iow white blood cell count), erythropenia (reduced red blood cell count).",
+      "Heel pain, heel spur, plantar fasciitis.",
+      "Epstein Barr Virus.",
+      "Hypochondrium pain, diaphragm tightness."
+    ],
+    "additionalInfo": "Primary point for the treatment of hepatitis. The point is needled on the left side combined with 88.12-14 Shang San Huang on the right side. If digestive disorders accompany hepatitis, the point can be combined with 33.10 Chang Men. Yang Wei Chieh 33.10 Chang Men can be used with 33.11 Gan Men to address digestive disorders related to an imbalance between the spleen and liver. When the needle is rotated clockwise, the point treats Chest stiffness and pressure. When it is rotated counterclockwise, it treats intestinal pain. Clockwise rotation directs the Qi towards 33.12 Xin Men, affecting the upper burner. Conversely, counterclockwise rotation directs the Qi towards 33.10 Chang Men, thus influencing the lower burner. Point Name Gän [+] - Liver. The character \"liver\" in the point's name suggests its ability to treat liver diseases. Points with the character \"gate\" in their names are associated with opening and releasing Gän [+] - Mén — Gate. stagnation and excess. In this case, the effect of 33.11 Gan Men is specifically on the liver."
+  },
+  "33.12": {
+    "dongIndications": [
+      "Carditis",
+      "palpitations",
+      "Chest oppression (chest tightness)",
+      "chest pain (pleurodynia)",
+      "dry cholera"
+    ],
+    "indications": [
+      "Pericarditis (inflammation of the pericardium).",
+      "Nausea, vomiting.",
+      "Myocarditis, tachycardia.",
+      "Sacrum pain, lumbago (lower back pain), coccydynia (tailbone pain).",
+      "Groin Pain.",
+      "Knee pain (medial), Knee osteoarthritis (medial).",
+      "Elbow pain, Medial epicondylitis (golfer's elbow).",
+      "Calf cramps, calf pain - posterior and medial.",
+      "Erysipelas.",
+      "Heel pain, heel spur, plantar fasciitis."
+    ],
+    "additionalInfo": "Dry Cholera (Qian Huo Luan is characterized by the urge to vomit and have a bowel movement without success. The combination of 33.10 Chang Men, 33.11 Gan Men, and 33.12 Xin Men is known as Three Gates (San Men [ Z l). This combination can be used to treat sciatica along the medial or posterior aspect of the thigh, cramps, and pain in the calf, digestive disorders, and chest pain and Tightness. Point Name Xin - Heart. Mén [h] — Gate. Mén [FY] — Gate. The point's name suggests its ability to treat heart diseases. Points with the character \"gate\" in their names are associated with opening and releasing stagnation and excess. In the case of point 33.12 Xin Men, the effect is specifically on the heart. Mén — Gate."
+  },
+  "33.13": {
+    "dongIndications": [
+      "Asthma",
+      "palm pain",
+      "finger pain",
+      "arm pain",
+      "shoulder pain"
+    ],
+    "indications": [
+      "Chest pain (Pleurodynia).",
+      "Cough, cough (dry), cough (chronic), cough (with yellow phlegm).",
+      "Proteinuria (protein in urine).",
+      "Elbow pain, tennis elbow (lateral epicondylitis).",
+      "33.13 Ren Shi [A ±ft] Human Scholar",
+      "• Asthma, palm pain, finger pain, arm pain, shoulder pain.",
+      "• • Chest pain (Pleurodynia). Cough, cough (dry), cough (chronic), cough (with yellow phlegm).",
+      "Ren • Elbow pa' is elbow (lateral epicondylitis).",
+      "33.13",
+      "Ren Shi",
+      "Shi"
+    ],
+    "additionalInfo": "Of the three Shi points, it is the only one that can be used for pain in the shoulders, fingers, hands, arms, and back. It is needled on the opposite side. For additional information, see 33.15 Tian Shi. Point Name Rén [Al - Person. Shi — Scholar, senior official, bachelor's degree holder, respected figure, soldier, officer, specialist. The character \"person\" in the point's name suggests that it is the most distal point of the three scholars. The term \"Shi\" means management. According to Chapter 8 of the Su Wen, the lungs are responsible for managing the state (like a prime minister). The point's name indicates its connection with the lungs."
+  },
+  "33.14": {
+    "dongIndications": [
+      "Asthma",
+      "common cold",
+      "headache",
+      "kidney deficiency",
+      "heart diseases"
+    ],
+    "indications": [
+      "Lumbago (lower back pain).",
+      "Inguinal hernia (shan qi).",
+      "Constipation.",
+      "Cough, cough (dry), cough (chronic), cough (with yellow phlegm).",
+      "Shoulder pain (anterior).",
+      "37"
+    ],
+    "additionalInfo": "For additional information, see 33.15 Tian Shi. Point Name Di [ft] - Earth. 2114 Di - Earth. Shi - Scholar, senior official, bachelor's degree holder, respected figure, soldier, officer, specialist. The character for \"earth\" in the point's name suggests that it is the middle point of the three scholars. Di [it] - Earth."
+  },
+  "33.15": {
+    "dongIndications": [
+      "Asthma",
+      "common cold",
+      "rhinitis",
+      "chest pain (Pleurodynia)",
+      "arm pain"
+    ],
+    "indications": [
+      "Bronchitis, cough.",
+      "Sinusitis.",
+      "Headache.",
+      "Kidney deficiency.",
+      "Lumbago (lower back pain).",
+      "Cough, cough (dry), cough (chronic), cough (with yellow phlegm).",
+      "33.15 Tian Shi Heavenly Scholar",
+      "39"
+    ],
+    "additionalInfo": "It is common practice to needle 33.13 Ren Shi, 33.14 Di Shi, and 33.15 Tian Shi together using the Dao Ma technique. This combination is known as the Three Scholars (San Shi [E±]). This combination can treat conditions affecting the lungs, heart, lower back, and upper and lower limbs. The three points have a special effect for treating asthma. The Three Scholars also impact the kidneys: 33.13 Ren Shi treats proteinuria, while 33.14 Di Shi and 33.15 Tian Shi address kidney deficiency. The lungs can strengthen the kidney Qi. The Qi of the lungs descends to stimulate the kidney Qi, and metal (lungs) nourishes water (kidneys) according to the generating cycle of the Five Phases. Master Tung For the treatment of asthma, the Three Scholars are needled on both sides in combination with 22.05 Ling Gu. Imaging Imaging between the upper and lower limbs: the forearm represents the lower leg, so 33.13-15 San Shi can treat lower leg disorders. Point Name Tiän [k] — Heaven. Shi - Scholar, senior official, bachelor's degree holder, respected figure, soldier, officer, specialist. The character \"heaven\" in the name of the point suggests that it is the most proximal point of the three scholars. For more information, see 33.13 Ren Shi."
+  },
+  "33.16": {
+    "dongIndications": [
+      "Asthma",
+      "palpitations",
+      "gastroenteritis",
+      "tendon spasms",
+      "arthritis"
+    ],
+    "indications": [
+      "Elbow Inflammation.",
+      "Myocardial Infarction, cardiomegaly.",
+      "Goiter, hyperthyroidism, graves disease.",
+      "Chest pain (Pleurodynia).",
+      "Dorsalgia (back pain).",
+      "Common cold (severe).",
+      "Nasal obstruction (blocked nose).",
+      "Bronchitis, cough.",
+      "Allergic rhinitis (hay fever).",
+      "Psoas syndrome."
+    ],
+    "additionalInfo": "The point is located on the Lung channel in Master Tung's acupuncture, and therefore, they can treat lung-related disorders such as asthma and severe colds. Metal is the mother of the kidneys, so this point can strengthen the kidneys, helping them nourish the wood phase and thus treating arthritis and tendon spasms. Imaging Imaging between the 33 region and the trunk (including the head and neck): The area of the point corresponds to the throat so that the point can treat goiter. For more information, see Zhong Li and Jian Li. Point Name Qü - Bend. Ling [E] - Mound."
+  },
+  "Li11QuChi": {
+    "dongIndications": [
+      "Headache"
+    ],
+    "indications": [
+      "Skin diseases.",
+      "Knee pain."
+    ],
+    "additionalInfo": "In Master Tung book Li-II Qu Chi and Li-4 He Gu can be used together to treat headaches. Claude O Point Name Qü - Curved, bent, winding, incorrect. Chi - Pool, small lake, reservoir. The point's name suggests a small hole that forms when the elbow is bent 900. The name refers to the location at the bend of the elbow."
+  },
+  "GanLingYi": {
+    "dongIndications": [
+      "Hepatitis",
+      "liver cirrhosis",
+      "liver pain"
+    ],
+    "indications": [
+      "Costal pain (rib pain).",
+      "Spondylitis.",
+      "Leukocytosis, leukopenia.",
+      "Splenomegaly (enlarged spleen).",
+      "Sciatica.",
+      "Hemiplegia (one-sided paralysis)",
+      "Lumbago (lower back pain), bone pain, tendon pain, muscle pain.",
+      "Leukemia.",
+      "Hypercholesterolemia (high cholesterol), Hyperlipidemia (high lipids).",
+      "Hypochondrium pain, diaphragm tightness."
+    ],
+    "additionalInfo": "Gän [hF] - Liver. Ling - Spirit, quick, alert, efficient, coffin. The name of the points indicates their efficiency in treating Liver diseases. Point Name The points correspond to 88.12-14 Shang San Huang but are considered less powerful. Both groups can be used together to increase the effect, or just Gan Ling when it is not possible to needle Shang San Huang. According to Tung's acupuncture, the points are located on the Liver channel. If a line is drawn toward the fingers, it reaches the fourth finger, which, according to Tung's palm Gän [AT] - Liver. diagnosis, represents the Liver and Spleen. Hu Wen Zhi Gän [+] - Liver. The points do not appear in Master Tung's original book; Hu Wen Zhi introduced them first. They are three of the 72 Absolute Needles of Tung."
+  },
+  "GanLingEr": {
+    "dongIndications": [
+      "Hepatitis",
+      "liver cirrhosis",
+      "liver pain"
+    ],
+    "indications": [
+      "Costal pain (rib pain).",
+      "Spondylitis.",
+      "Leukocytosis, leukopenia.",
+      "Splenomegaly (enlarged spleen).",
+      "Sciatica.",
+      "Hemiplegia (one-sided paralysis)",
+      "Lumbago (lower back pain), bone pain, tendon pain, muscle pain.",
+      "Leukemia.",
+      "Hypercholesterolemia (high cholesterol), Hyperlipidemia (high lipids).",
+      "Hypochondrium pain, diaphragm tightness."
+    ],
+    "additionalInfo": "Gän [hF] - Liver. Ling - Spirit, quick, alert, efficient, coffin. The name of the points indicates their efficiency in treating Liver diseases. Point Name The points correspond to 88.12-14 Shang San Huang but are considered less powerful. Both groups can be used together to increase the effect, or just Gan Ling when it is not possible to needle Shang San Huang. According to Tung's acupuncture, the points are located on the Liver channel. If a line is drawn toward the fingers, it reaches the fourth finger, which, according to Tung's palm Gän [AT] - Liver. diagnosis, represents the Liver and Spleen. Hu Wen Zhi Gän [+] - Liver. The points do not appear in Master Tung's original book; Hu Wen Zhi introduced them first. They are three of the 72 Absolute Needles of Tung."
+  },
+  "GanLingSan": {
+    "dongIndications": [
+      "Hepatitis",
+      "liver cirrhosis",
+      "liver pain"
+    ],
+    "indications": [
+      "Costal pain (rib pain).",
+      "Spondylitis.",
+      "Leukocytosis, leukopenia.",
+      "Splenomegaly (enlarged spleen).",
+      "Sciatica.",
+      "Hemiplegia (one-sided paralysis)",
+      "Lumbago (lower back pain), bone pain, tendon pain, muscle pain.",
+      "Leukemia.",
+      "Hypercholesterolemia (high cholesterol), Hyperlipidemia (high lipids).",
+      "Hypochondrium pain, diaphragm tightness."
+    ],
+    "additionalInfo": "Gän [hF] - Liver. Ling - Spirit, quick, alert, efficient, coffin. The name of the points indicates their efficiency in treating Liver diseases. Point Name The points correspond to 88.12-14 Shang San Huang but are considered less powerful. Both groups can be used together to increase the effect, or just Gan Ling when it is not possible to needle Shang San Huang. According to Tung's acupuncture, the points are located on the Liver channel. If a line is drawn toward the fingers, it reaches the fourth finger, which, according to Tung's palm Gän [AT] - Liver. diagnosis, represents the Liver and Spleen. Hu Wen Zhi Gän [+] - Liver. The points do not appear in Master Tung's original book; Hu Wen Zhi introduced them first. They are three of the 72 Absolute Needles of Tung."
+  },
+  "HouZhong": {
+    "dongIndications": [
+      "Laryngitis (voice box Inflammation)",
+      "aphonia (loss of voice)"
+    ],
+    "indications": [
+      "Throat cancer.",
+      "Tonsillitis.",
+      "Bronchitis, cough.",
+      "Herniated disc - cervical.",
+      "Huo Zhong Throat Center",
+      "Huo Zhong [PGCFft] Throat Center • Laryngitis (voice box Inflammation), aphonia (loss of voice). LI-5 Li-IO • Ding Ke 11",
+      "•4 • Bronchiti 3.0V • Huo Li-II Hai",
+      "• cervical. • Herniat Hou Zhong 9.5 2.5",
+      "• Huo Hai",
+      "3.07"
+    ],
+    "additionalInfo": "Hu wen Zhi The point does not appear in Master Tung's original book. Hu Wen Zhi introduced it first. Pairing this point with 44.01 San Jin creates a special effect combination for treating cough, laryngitis, bronchitis, and throat cancer. This point was Master Tung's specific supplementary point for treating throat cancer; the effects are remarkably rapid, yielding outstanding results immediately upon needle insertion. Imaging Imaging between area 33 and the trunk (including head and neck): the point area images the throat and shoulder area. Point Name Höu [G] - Throat. Zhöng [+] - Center. The name of the point indicates its ability to treat throat disorders."
+  },
+  "HuoSheng": {
+    "dongIndications": [
+      "Cardiomegaly (enlarged heart)"
+    ],
+    "indications": [
+      "Myocardial infarction, chest oppression (chest tightness), palpitations.",
+      "Frontal headache.",
+      "Dizziness."
+    ],
+    "additionalInfo": "The point does not appear in Master Tung's original book. Hu Wen Zhi introduced it first. Point Name Huö ['k] - Fire. Shéng - Sacred, holy, sage, wise."
+  },
+  "JianLi": {
+    "dongIndications": [
+      "Severe common cold"
+    ],
+    "indications": [
+      "Nasal obstruction (blocked nose), rhinitis, allergic rhinitis (hay fever).",
+      "Laryngitis (voice box Inflammation), aphonia (loss of voice).",
+      "Asthma, cough, bronchitis.",
+      "Dorsalgia (back pain), knee pain, shoulder pain, swelling, and inflammation of the elbow joint.",
+      "Hyperthyroidism, graves disease.",
+      "Psoas syndrome."
+    ],
+    "additionalInfo": "33.16 Qu Ling is often needled alone or together with 33.16 Qu Ling, Zhong Li, and Jian Li. He wen Zi These points do not appear in Master Tung's original book. He Wen Zi introduced them. The three points, 33.16 Qu Ling, Zhong Li, and Jian Li, are important for treating colds, flu, and nasal polyps. Imaging Imaging between area 33 and the torso (including head and neck): The area of the point reflects the throat and shoulder region. Point Name Jiån [E] — to build, establish, or construct. Zhöng — center or middle. Li [h] — strength, power, or ability."
+  },
+  "ZhongLi": {
+    "dongIndications": [
+      "Severe common cold"
+    ],
+    "indications": [
+      "Nasal obstruction (blocked nose), rhinitis, allergic rhinitis (hay fever).",
+      "Laryngitis (voice box Inflammation), aphonia (loss of voice).",
+      "Asthma, cough, bronchitis.",
+      "Dorsalgia (back pain), knee pain, shoulder pain, swelling, and inflammation of the elbow joint.",
+      "Hyperthyroidism, graves disease.",
+      "Psoas syndrome."
+    ],
+    "additionalInfo": "33.16 Qu Ling is often needled alone or together with 33.16 Qu Ling, Zhong Li, and Jian Li. He wen Zi These points do not appear in Master Tung's original book. He Wen Zi introduced them. The three points, 33.16 Qu Ling, Zhong Li, and Jian Li, are important for treating colds, flu, and nasal polyps. Imaging Imaging between area 33 and the torso (including head and neck): The area of the point reflects the throat and shoulder region. Point Name Jiån [E] — to build, establish, or construct. Zhöng — center or middle. Li [h] — strength, power, or ability."
+  },
+  "MuDing": {
+    "dongIndications": [
+      "Frontal headache",
+      "vertex headache",
+      "tension headache"
+    ],
+    "indications": [
+      "Vomiting (emesis).",
+      "Dry cholera [EGiI] Qian Huo Luan.",
+      "Facial paralysis (bell's palsy).",
+      "Alopecia (hair loss)."
+    ],
+    "additionalInfo": "For additional information, see Shui Ding (33). Point Name Mü - Wood. crown. Mü [X] - Wood. Ding [Jk] - Summit, top, crown. The character \"summit\" in the point name indicates the point's action in the area above the nose."
+  },
+  "ShangShi": {
+    "dongIndications": [
+      "Lumbago (lower back pain)",
+      "sciatica"
+    ],
+    "indications": [
+      "Hand Paresthesia.",
+      "Spine pain.",
+      "Sacroiliac pain syndrome (Sl joint pain), sacroiliitis (sacroiliac joint inflammation).",
+      "Scapula pain, neck pain, scapula and neck pain, arm pain, muscle tension in the shoulders (trapezius spasm).",
+      "Thoracic outlet syndrome.",
+      "Cervicalgia (neck pain), neck sprain, herniated disc - cervical, whiplash injury.",
+      "Upper thoracalgia (upper back pain)."
+    ],
+    "additionalInfo": "You can add Xia and Zhong Shi to Shang Shi for better results. When Shang Shi, Zhong Shi, and Xia Shi are needled together, this combination is called San Shang Shi [E-E±] Point Name Shång [YI — Behind, above. Shi — Scholar, member of the senior officials, bachelor's degree holder, respected person, soldier, officer, specialist. The term \"Shi\" has a connotation of governance. According to Chapter 8 of the Su Wen, the lungs govern the state (acting as the Prime Minister). The name of the point suggests its ability to treat Qi stagnation."
+  },
+  "ShuiDing": {
+    "dongIndications": [
+      "Optic nerve degeneration"
+    ],
+    "indications": [
+      "Myopia.",
+      "Hordeolum (stye).",
+      "Cataract.",
+      "Eye pain.",
+      "Presbyopia (age-related vision decline).",
+      "Facial paralysis (bell's palsy).",
+      "Alopecia (hair loss).",
+      "Herpes zoster eye."
+    ],
+    "additionalInfo": "When needling Tu Ding, Mu Ding, and Shui Ding together, the combination is called San Ding [ Three Summits. The Three Summits do not appear in Master Tung's original book. Hu Wen Zhi introduced the points first. Point Name Shui [7k] - Water. Ding [Jh] - Summit, top, crown. Ding [JB] - Summit, top, crown. The character \"summit\" in the point name indicates the point's action in the area above the nose."
+  },
+  "TuDing": {
+    "dongIndications": [
+      "Vertex headache"
+    ],
+    "indications": [
+      "Tinnitus.",
+      "Headache due to nervousness and anger, frontal headache, occipital headache, vertex headache.",
+      "Facial paralysis (bell's palsy).",
+      "Alopecia (hair loss)."
+    ],
+    "additionalInfo": "For additional information, see Shui Ding (33). Point Name Tü - Earth. crown. Ding [JB] - Summit, top, crown. The character \"summit\" in the point name indicates the point's action in the area above the nose."
+  },
+  "TuWeiYi": {
+    "dongIndications": [
+      "Gastritis (stomach lining inflammation)",
+      "duodenitis (duodenum inflammation)"
+    ],
+    "indications": [
+      "Gastric ulcers (stomach ulcer), duodenal ulcer, peptic ulcer disease (PUD).",
+      "Gastroesophageal reflux disease (GRED), acid reflux, heartburn.",
+      "Morning sickness.",
+      "Lower abdomen pain."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. According to Tung's acupuncture, the points are located on the Spleen channel. If a line is drawn toward the fingers, it reaches the fourth finger, which, according to Tung's palm diagnosis, represents the Liver and Spleen. Forearm diagnosis The stomach and duodenum can be diagnosed in the points area. Point Name Tü - Earth. Wéi [B] - stomach. The name of the points indicates their effect on the Stomach."
+  },
+  "TuWeiEr": {
+    "dongIndications": [
+      "Gastritis (stomach lining inflammation)",
+      "duodenitis (duodenum inflammation)"
+    ],
+    "indications": [
+      "Gastric ulcers (stomach ulcer), duodenal ulcer, peptic ulcer disease (PUD).",
+      "Gastroesophageal reflux disease (GRED), acid reflux, heartburn.",
+      "Morning sickness.",
+      "Lower abdomen pain."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. According to Tung's acupuncture, the points are located on the Spleen channel. If a line is drawn toward the fingers, it reaches the fourth finger, which, according to Tung's palm diagnosis, represents the Liver and Spleen. Forearm diagnosis The stomach and duodenum can be diagnosed in the points area. Point Name Tü - Earth. Wéi [B] - stomach. The name of the points indicates their effect on the Stomach."
+  },
+  "TuWeiSan": {
+    "dongIndications": [
+      "Gastritis (stomach lining inflammation)",
+      "duodenitis (duodenum inflammation)"
+    ],
+    "indications": [
+      "Gastric ulcers (stomach ulcer), duodenal ulcer, peptic ulcer disease (PUD).",
+      "Gastroesophageal reflux disease (GRED), acid reflux, heartburn.",
+      "Morning sickness.",
+      "Lower abdomen pain."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. According to Tung's acupuncture, the points are located on the Spleen channel. If a line is drawn toward the fingers, it reaches the fourth finger, which, according to Tung's palm diagnosis, represents the Liver and Spleen. Forearm diagnosis The stomach and duodenum can be diagnosed in the points area. Point Name Tü - Earth. Wéi [B] - stomach. The name of the points indicates their effect on the Stomach."
+  },
+  "XinLingYi": {
+    "dongIndications": [
+      "Arrhythmia (irregular heartbeat)"
+    ],
+    "indications": [
+      "Myocarditis, angina pectoris.",
+      "Chest oppression (chest tightness), chest pain (Pleurodynia).",
+      "Stomachache.",
+      "Leg pain.",
+      "Frontal headache.",
+      "Dizzy as if about to faint.",
+      "Hand paresthesia, feet paresthesia.",
+      "Sore throat.",
+      "Coronary artery disease.",
+      "Dysmenorrhea (Menstrual pain), menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB), premenstrual syndrome (PMS), endometriosis.",
+      "Nausea, morning sickness.",
+      "Vertigo, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Anorexia (appetite poor).",
+      "Meniere's disease.",
+      "Delirium.",
+      "CVA (Stroke) - first aid point for ischemic and hemorrhagic stroke.",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Anxiety disorder.",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema."
+    ],
+    "additionalInfo": "To treat frontal headache, one should bleed the veins in the painful area of the head, and then needle xin ling (33). The points are three out of Tung's 72 absolute needles. He wen Zi Introduced these points, and they do not appear in Master Tung's original book. Point Name Xin — heart. Ling — spirit, quick, alert, efficient, magical. The name of the points suggests their influence on the heart."
+  },
+  "XinLingEr": {
+    "dongIndications": [
+      "Arrhythmia (irregular heartbeat)"
+    ],
+    "indications": [
+      "Myocarditis, angina pectoris.",
+      "Chest oppression (chest tightness), chest pain (Pleurodynia).",
+      "Stomachache.",
+      "Leg pain.",
+      "Frontal headache.",
+      "Dizzy as if about to faint.",
+      "Hand paresthesia, feet paresthesia.",
+      "Sore throat.",
+      "Coronary artery disease.",
+      "Dysmenorrhea (Menstrual pain), menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB), premenstrual syndrome (PMS), endometriosis.",
+      "Nausea, morning sickness.",
+      "Vertigo, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Anorexia (appetite poor).",
+      "Meniere's disease.",
+      "Delirium.",
+      "CVA (Stroke) - first aid point for ischemic and hemorrhagic stroke.",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Anxiety disorder.",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema."
+    ],
+    "additionalInfo": "To treat frontal headache, one should bleed the veins in the painful area of the head, and then needle xin ling (33). The points are three out of Tung's 72 absolute needles. He wen Zi Introduced these points, and they do not appear in Master Tung's original book. Point Name Xin — heart. Ling — spirit, quick, alert, efficient, magical. The name of the points suggests their influence on the heart."
+  },
+  "XinLingSan": {
+    "dongIndications": [
+      "Arrhythmia (irregular heartbeat)"
+    ],
+    "indications": [
+      "Myocarditis, angina pectoris.",
+      "Chest oppression (chest tightness), chest pain (Pleurodynia).",
+      "Stomachache.",
+      "Leg pain.",
+      "Frontal headache.",
+      "Dizzy as if about to faint.",
+      "Hand paresthesia, feet paresthesia.",
+      "Sore throat.",
+      "Coronary artery disease.",
+      "Dysmenorrhea (Menstrual pain), menorrhagia (Irregular Uterine Bleeding), abnormal uterine bleeding (AI-JB), premenstrual syndrome (PMS), endometriosis.",
+      "Nausea, morning sickness.",
+      "Vertigo, dysequilibrium (impaired sense of balance), balance disorder, vestibular dysfunction.",
+      "Anorexia (appetite poor).",
+      "Meniere's disease.",
+      "Delirium.",
+      "CVA (Stroke) - first aid point for ischemic and hemorrhagic stroke.",
+      "Labor induction, labor augmentation, dystocia (Difficult Childbirth).",
+      "Anxiety disorder.",
+      "Skin diseases, skin allergies, allergic Dermatitis, atopic dermatitis, eczema."
+    ],
+    "additionalInfo": "To treat frontal headache, one should bleed the veins in the painful area of the head, and then needle xin ling (33). The points are three out of Tung's 72 absolute needles. He wen Zi Introduced these points, and they do not appear in Master Tung's original book. Point Name Xin — heart. Ling — spirit, quick, alert, efficient, magical. The name of the points suggests their influence on the heart."
+  },
+  "YaoLingYi": {
+    "dongIndications": [
+      "Nephritis (special effect)"
+    ],
+    "indications": [
+      "Lumbago (lower back pain) (special effect).",
+      "Hemorrhoids,fissura ani (anal fissure).",
+      "Constipation chronic.",
+      "Urinary urgency, frequent urination, bladder painful syndrome (Interstitial cystitis).",
+      "Pyelonephritis (kidney infection)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. The points affect the Kidneys and Uterus, therefore they are very effective in treating nephritis and hemorrhoids. Point Name Yäo [An - Waist. Ling [F] - Spirit, quick, alert, efficient. The points' names indicate their effect on the waist area. Efficient in the points' names indicate their effectiveness, especially in treating nephritis and hemorrhoids."
+  },
+  "YaoLingEr": {
+    "dongIndications": [
+      "Nephritis (special effect)"
+    ],
+    "indications": [
+      "Lumbago (lower back pain) (special effect).",
+      "Hemorrhoids,fissura ani (anal fissure).",
+      "Constipation chronic.",
+      "Urinary urgency, frequent urination, bladder painful syndrome (Interstitial cystitis).",
+      "Pyelonephritis (kidney infection)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. The points affect the Kidneys and Uterus, therefore they are very effective in treating nephritis and hemorrhoids. Point Name Yäo [An - Waist. Ling [F] - Spirit, quick, alert, efficient. The points' names indicate their effect on the waist area. Efficient in the points' names indicate their effectiveness, especially in treating nephritis and hemorrhoids."
+  },
+  "YaoLingSan": {
+    "dongIndications": [
+      "Nephritis (special effect)"
+    ],
+    "indications": [
+      "Lumbago (lower back pain) (special effect).",
+      "Hemorrhoids,fissura ani (anal fissure).",
+      "Constipation chronic.",
+      "Urinary urgency, frequent urination, bladder painful syndrome (Interstitial cystitis).",
+      "Pyelonephritis (kidney infection)."
+    ],
+    "additionalInfo": "The points do not appear in Master Tung's original book. Hu Wen Zhi introduced them first. The points affect the Kidneys and Uterus, therefore they are very effective in treating nephritis and hemorrhoids. Point Name Yäo [An - Waist. Ling [F] - Spirit, quick, alert, efficient. The points' names indicate their effect on the waist area. Efficient in the points' names indicate their effectiveness, especially in treating nephritis and hemorrhoids."
+  }
+}

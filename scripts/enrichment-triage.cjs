@@ -67,6 +67,11 @@ for (const f of files) {
     // מופיעים בטקסט. בלי זה עשרות נקודות מסומנות בשווא.
     const hasCjk = /[一-鿿]/.test(he)
 
+    // רשומות של קבוצה שנדקרת יחד: ה-`additionalInfo` שלהן הוא הפניה
+    // מכוונת למחזיקת התוכן ("ראה Gan Ling San"), וההתוויות מולאו מהמחזיקה.
+    // בלי הדילוג הן מדווחות ככאלה שחסר להן תוכן בכל סבב מחדש.
+    if (/^ראה [A-Za-z]/.test(he.trim())) continue
+
     const missing = []
     for (const [needle, forms] of ANCHORS) {
       if (!en.includes(needle)) continue

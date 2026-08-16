@@ -27,3 +27,28 @@ dist-ssr
 
 # עמודי PDF מרונדרים - נוצרים מקומית ע"י scripts/render-sources.py
 sources/pages/
+
+# --- קבצי עבודה של פרויקט הרילים (מסך "סרטוני טיפול") ---
+# הפלט הגולמי של Apify + 500 הכריכות המקוריות, ~40MB.
+# הכריכות שהאפליקציה מגישה מקומטות בנפרד ב-public/reel-thumbs/.
+# העבודה הושלמה - 500 סרטונים באוויר. אלה שאריות ולא קוד.
+reel-thumbs/
+reels-full.json
+reels-raw.json
+reel-index.json
+catalog.json
+batch*.json
+match-reels.cjs
+download-thumbs.cjs
+scm_thumb.jpg
+thumb_url.txt
+
+# חומרי מקור - מגובים בנפרד, לא בגיט (ראה sources/reference/)
+sources/reference/
+export/
+screenshots/
+
+# צילומי ניפוי מצינור הטלפון
+probe.png
+loc.png
+goto-probe.png

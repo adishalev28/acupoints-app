@@ -39,7 +39,7 @@ const ANCHORS = [
   ['Liao Li', ['Liao Li', 'ליאו לי']],
   ['Yuan Guo Ben', ['Yuan Guo', 'יואן גואו']],
   ['James H. Maher', ['Maher', 'מאהר']],
-  ['Bloodletting', ['הקזת דם', 'הקזה']],
+  ['Bloodletting', ['הקז']],
   ['Imaging', ['הדמיה', 'דימוי']],
   ['Palm Diagnosis', ['אבחון כף יד', 'אבחון כף היד']],
   ['Point Name', ['שם הנקודה', 'שם הנקודות']],
@@ -57,9 +57,15 @@ for (const f of files) {
     const en = app[m[1]].additionalInfo || ''
     const mm = blk.match(/additionalInfo:\s*\n?\s*'((?:[^'\\]|\\.)*)'/)
     const he = mm ? mm[1] : ''
+    // מקטע אטימולוגיה מזוהה גם בלי הכותרת "שם הנקודה": נוכחות תו סיני
+    // ב-additionalInfo מעידה עליו, כי זה המקום היחיד שבו תווים סיניים
+    // מופיעים בטקסט. בלי זה עשרות נקודות מסומנות בשווא.
+    const hasCjk = /[一-鿿]/.test(he)
+
     const missing = []
     for (const [needle, forms] of ANCHORS) {
       if (!en.includes(needle)) continue
+      if (needle === 'Point Name' && hasCjk) continue
       if (forms.some((x) => he.includes(x))) continue
       if (!missing.includes(needle)) missing.push(needle)
     }

@@ -38,7 +38,8 @@ export const zone11Points: Point[] = [
       'דלקת ערמונית',
       'פציעת צליפת שוט',
     ],
-    additionalInfo: '',
+    additionalInfo:
+      'להרחבה ראה 11.02 XiaoJian.\n\nשם הנקודה: דָא (大) - גדול. ג\'יאן (間) - מרווח קטן, חלל בין-רקמתי.',
     sources: [{ source: 'tung-study' }, { source: 'sean-goodman' }],
   },
   {

@@ -444,5 +444,35 @@
       "Xerostomia (dry mouth)."
     ],
     "additionalInfo": "The point has special effect when treting bronchitis and night cough."
+  },
+  "44.01": {
+    "dongIndications": [
+      "Common cold",
+      "rhinitis",
+      "pharyngitis (Throat inflammation)"
+    ],
+    "indications": [
+      "Allergic rhinitis (hay fever).",
+      "Abscesses in the nose.",
+      "Cough, cough (dry).",
+      "Laryngitis (voice box Inflammation), aphonia (loss of voice).",
+      "Upper thoracalgia (upper back pain), uper back and neck pain, scapula pain.",
+      "Shoulder pain (anterior)."
+    ],
+    "additionalInfo": "In Master Tung's original book, there is only one point, Fen jin 44.01. Master Tung noted that this point has a special effect on colds, rhinitis, and throat inflammation. Hu Wen Zhi added two more points. The points affect the upper respiratory system. When treating sinusitis or cough, it is recommended to needle the points together with 33.16 Qu ling. Imaging The elbow area images the upper respiratory system. Point Name ' —to close, unite, fit. Fén [h] — to divide, separate, and distribute. He [ Fén [ft] — to divide, separate, and distribute. Néi — inside, internal. Jin — metal. The metal phase is related to the lungs. The names of the points suggest their effect on them."
+  },
+  "44.02": {
+    "dongIndications": [
+      "Dislocated vertebra",
+      "nephritis",
+      "lumbago (lower back pain)"
+    ],
+    "indications": [
+      "Bronchitis (special effect).",
+      "Night cough (special effect).",
+      "Xerostomia (dry mouth).",
+      "Spinal pain, herniated disc, coccydynia (tailbone pain)."
+    ],
+    "additionalInfo": "For additional information, see 44.03 Shou Ying. Point Name Hbu [f*] Zhui — Back, behind. — Vertebra. Höu [f*] — Back, behind. Zhui [it] — Vertebra. The point's name suggests its ability to treat disorders of the vertebrae of the spine."
   }
 }

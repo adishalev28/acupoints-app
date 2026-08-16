@@ -46,7 +46,7 @@ const GLOSSARY = {
   gonorrhea: ['זיבה', 'גונוריאה'],
   prostatitis: ['דלקת ערמונית', 'פרוסטטיטיס'],
   leukorrhea: ['לויקוריאה', 'הפרשות לבנות', 'הפרשה לבנה'],
-  hematuria: ['דם בשתן'],
+  hematuria: ['דם בשתן', 'המטוריה'],
   proteinuria: ['חלבון בשתן'],
   lumbago: ['לומבגו', 'גב תחתון'],
   sciatica: ['סיאטיקה'],

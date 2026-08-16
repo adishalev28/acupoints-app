@@ -383,4 +383,53 @@ export const zone77ExtraPoints: Point[] = [
     additionalInfo: 'בטיפול באזורים אלו, יש לסרוק תחילה את האזור לאיתור ערוץ לואו. לאחר מכן למשש ולבצע הקזת דם באזורים שזוהו.',
     sources: [{ source: 'sean-goodman' }],
   },
+  {
+    id: 'ZhengYang',
+    zone: '77',
+    pinyinName: 'Zheng Yang',
+    chineseName: '正陽穴',
+    hebrewName: 'יאנג מיושר',
+    englishName: 'Rectifying Yang',
+    location:
+      'שלוש נקודות.\nZheng Yang Yi: 1 צון מתחת ל-BL-40 Wei Zhong.\nZheng Yang Er: 1 צון לטרלית ל-Zheng Yang Yi.\nZheng Yang San: 1 צון מדיאלית ל-Zheng Yang Yi.',
+    needling: '⚠️ טרם נלכד מהאפליקציה.',
+    reactionAreas: [],
+    dongIndications: ['הגדלת הלב (קרדיומגליה)'],
+    indications: [
+      'הגדלת הלב (קרדיומגליה)',
+      'לחץ וכאב בחזה',
+      'כאב באזור BL-43 Gao Huang',
+      'צוואר תפוס',
+      'טחורים, דימום מטחורים, פיסורה אנאלית',
+      'חומצת קיבה עודפת',
+      'כאב ראש',
+      'מיגרנה',
+      'חוסר תחושה בידיים וברגליים, פרסתזיה בידיים וברגליים',
+      'דפיקות לב',
+      'כאב כתף',
+    ],
+    additionalInfo:
+      'הנקודות אינן מופיעות בספר המקורי של מאסטר דונג - Hu Wen Zhi הציג אותן.\n\nשם הנקודה: ג\'נג [正] - ישר, נכון, מדויק, לתקן, ראשי. יאנג [陽] - חיובי, שמש, העיקרון הזכרי, ההפך מיין.',
+    sources: [{ source: 'sean-goodman' }],
+  },
+  {
+    id: 'ZhongXi_NeiXiYan',
+    zone: '77',
+    pinyinName: 'Zhong Xi / Nei Xi Yan',
+    chineseName: '中膝 / 內膝眼',
+    hebrewName: 'מרכז הברך / עין הברך הפנימית',
+    englishName: 'Centre Knee / Inner Knee Eye',
+    location:
+      'Nei Xi Yan: בשקע המדיאלי לגיד הפיקה, מיד דיסטלית לפיקה. לאתר עם הברך כפופה. זהה במיקומה ל-MN-LE-16 Knee Eye.\nZhong Xi: במרכז גיד הפיקה, באותו גובה כמו Nei Xi Yan ו-ST-35 Du Bi.',
+    needling: 'Nei Xi Yan: אלכסוני ממדיאלי ללטרלי, 1-2 צון.\nZhong Xi: אנכי, 0.3-0.8 צון.',
+    reactionAreas: [],
+    dongIndications: ['כאב מרפק', 'מרפק טניס (אפיקונדיליטיס לטרלית)'],
+    indications: [
+      'כאב מרפק, מרפק טניס (אפיקונדיליטיס לטרלית)',
+      'כאבי ברכיים, אוסטיאוארתריטיס של הברך',
+    ],
+    additionalInfo:
+      'בשלב החריף: תחילה להקיז דם במרפק הפגוע, ורק אחר כך לדקור את Zhong Xi, Nei Xi Yan ו-ST-35 Du Bi.\n\nשם הנקודה: ג\'ונג [中] - מרכז, אמצע. שי [膝] - ברך. נאי [內] - החלק הפנימי של הגוף. יאן [眼] - עיניים. השם מציין שהנקודה ממוקמת על הברך.',
+    sources: [{ source: 'sean-goodman' }],
+  },
 ]

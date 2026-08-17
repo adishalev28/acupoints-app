@@ -227,7 +227,7 @@ export const zone33ExtraPoints: Point[] = [
     hebrewName: 'פסגת עץ',
     englishName: 'Wood Summit',
     imageId: 'mu ding',
-    location: '',
+    location: '0.5 צון דיסטלית ל-Lu-5 Chi Ze.',
     needling: 'אנכי, 0.2-0.3 צון עומק.',
     reactionAreas: ['עצב:קיבה', 'עצב:לב'],
     // אומת מול צילום האפליקציה של שון — הכרטיס הראשון = דונג

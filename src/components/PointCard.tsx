@@ -1,8 +1,34 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import type { Point } from '../types'
 
 interface PointCardProps {
   point: Point
+}
+
+/** Thumbnail: falls back to the point id when imageId is absent, and tries jpg/png/webp */
+function PointThumb({ point }: { point: Point }) {
+  const formats = ['jpg', 'png', 'webp']
+  const [formatIdx, setFormatIdx] = useState(0)
+  const fileBase = point.imageId || point.id
+
+  if (formatIdx >= formats.length) {
+    return (
+      <svg className="w-6 h-6 text-gray-400 dark:text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
+      </svg>
+    )
+  }
+
+  return (
+    <img
+      src={`/images/${fileBase}.${formats[formatIdx]}`}
+      alt={point.pinyinName}
+      className="w-full h-full object-cover"
+      loading="lazy"
+      onError={() => setFormatIdx(prev => prev + 1)}
+    />
+  )
 }
 
 export default function PointCard({ point }: PointCardProps) {
@@ -14,18 +40,7 @@ export default function PointCard({ point }: PointCardProps) {
     >
       {/* Point image or placeholder */}
       <div className="w-11 h-11 rounded-md bg-gray-50 dark:bg-dark-bg border border-gray-200 dark:border-dark-border flex items-center justify-center flex-shrink-0 overflow-hidden">
-        {point.imageId ? (
-          <img
-            src={`/images/${point.imageId}.jpg`}
-            alt={point.pinyinName}
-            className="w-full h-full object-cover"
-            loading="lazy"
-          />
-        ) : (
-          <svg className="w-6 h-6 text-gray-400 dark:text-dark-muted" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M7 11.5V14m0-2.5v-6a1.5 1.5 0 113 0m-3 6a1.5 1.5 0 00-3 0v2a7.5 7.5 0 0015 0v-5a1.5 1.5 0 00-3 0m-6-3V11m0-5.5v-1a1.5 1.5 0 013 0v1m0 0V11m0-5.5a1.5 1.5 0 013 0v3m0 0V11" />
-          </svg>
-        )}
+        <PointThumb point={point} />
       </div>
 
       <div className="flex-1 min-w-0">

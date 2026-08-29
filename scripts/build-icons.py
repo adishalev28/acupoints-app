@@ -37,10 +37,16 @@ def save(img, name, size):
     print("%-24s %6.1f KB" % (name, os.path.getsize(p) / 1024))
 
 
+# 🚨 לשמות יש סיומת גרסה. שירות הרקע מגיש תמונות בשיטת
+# stale-while-revalidate, כלומר מהמטמון קודם - ולכן החלפת קובץ באותו
+# שם לא מגיעה לטלפון גם אחרי התקנה מחדש. שינוי שם הוא הדרך היחידה.
+# בכל החלפת סמל בעתיד: להעלות את מספר הגרסה בכל ארבעת השמות,
+# במניפסט, ב-index.html וברשימת הקדם-מטמון של sw.js.
+
 # purpose "any" - נראה כפי שהוא, בלי חיתוך
-save(src, "icon-512-any.png", 512)
-save(src, "icon-192.png", 192)
-save(src, "apple-touch-icon.png", 180)
+save(src, "icon-512-any-v2.png", 512)
+save(src, "icon-192-v2.png", 192)
+save(src, "apple-touch-icon-v2.png", 180)
 
 # purpose "maskable" - התוכן מוקטן ל-86% כדי לשרוד את החיתוך
-save(shrink(src, 0.86), "icon-512.png", 512)
+save(shrink(src, 0.86), "icon-512-v2.png", 512)

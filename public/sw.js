@@ -5,7 +5,7 @@ const CACHE_NAME = `acupoints-${CACHE_VERSION}`
 const PRECACHE_URLS = [
   '/',
   '/index.html',
-  '/icon.svg',
+  '/icon-192.png',
   '/manifest.json',
 ]
 

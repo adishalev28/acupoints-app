@@ -17,46 +17,6 @@
   <body>
     <div id="root"></div>
 
-    <!-- מסך פתיחה. הרקע זהה ל-background_color שבמניפסט, ולכן המעבר
-         ממסך הטעינה של אנדרואיד אליו אינו נראה בכלל. -->
-    <div id="splash" style="
-      position: fixed; inset: 0; z-index: 9999;
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: #0d7377;
-      transition: opacity 0.45s ease;
-    ">
-      <img src="/splash-mark.png" alt="נקודות דיקור" width="210" height="210"
-           style="width: 210px; height: 210px; margin-bottom: 14px;" />
-      <div style="font-family: Heebo, system-ui, sans-serif; font-size: 26px; font-weight: 800; color: #ffffff; line-height: 1;">
-        נקודות דיקור
-      </div>
-      <div style="font-family: Heebo, system-ui, sans-serif; font-size: 13px; font-weight: 500; color: #bfe3e2; margin-top: 7px;">
-        מאסטר דונג · שון גודמן
-      </div>
-    </div>
-    <script>
-      // 🚨 הזמן נספר מרגע שהאפליקציה מוכנה ולא מטעינת הדף. אנדרואיד
-      // מציג מסך טעינה משלו שמכסה את הדף בזמן הטעינה, וספירה מטעינת
-      // הדף נבלעת בתוכו - בדפדפן רואים את הזמן המלא ובטלפון כמעט כלום.
-      const MIN_MS = 2200;
-      const _hide = () => {
-        const splash = document.getElementById("splash");
-        if (!splash) return;
-        splash.style.opacity = "0";
-        setTimeout(() => splash.remove(), 450);
-      };
-      const _obs = new MutationObserver(() => {
-        const root = document.getElementById("root");
-        if (root && root.children.length > 0) {
-          _obs.disconnect();
-          // ⚠️ בלי requestAnimationFrame כאן. בלשונית שאינה גלויה הדפדפן
-          // אינו מריץ פריימים, ואז המסך לא היה נעלם לעולם.
-          setTimeout(_hide, MIN_MS);
-        }
-      });
-      _obs.observe(document.getElementById("root"), { childList: true });
-    </script>
-
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

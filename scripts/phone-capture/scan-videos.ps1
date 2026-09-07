@@ -97,6 +97,45 @@ function Grab([int]$cx, [int]$cy, [int]$cw, [int]$ch, [string]$save) {
   return ($res.Lines | ForEach-Object { $_.Text })
 }
 
+# Cheap fingerprint of the lower half of the window, used to tell whether a
+# wheel step actually moved the page. Sampling every 8th pixel keeps this at a
+# few milliseconds while still catching any real scroll.
+function Get-BottomSig {
+  $w = Get-PhoneWindow
+  if (-not $w) { return '' }
+  $bmp = New-Object System.Drawing.Bitmap $w.W, $w.H
+  $g = [System.Drawing.Graphics]::FromImage($bmp)
+  $g.CopyFromScreen($w.X, $w.Y, 0, 0, $bmp.Size)
+  $g.Dispose()
+  $sum = 0
+  for ($y = 420; $y -lt 900; $y += 8) {
+    for ($x = 40; $x -lt 1900; $x += 8) {
+      $sum = ($sum + $bmp.GetPixel($x, $y).ToArgb()) % 2147483647
+    }
+  }
+  $bmp.Dispose()
+  return $sum
+}
+
+function Scroll-ToBottom([int]$maxSteps = 40) {
+  $stable = 0
+  for ($s = 0; $s -lt $maxSteps; $s++) {
+    $before = Get-BottomSig
+    $w = Get-PhoneWindow
+    # x=200 on purpose: over the centre diagram the wheel zooms the image
+    [void][SV]::SetCursorPos($w.X + 200, $w.Y + 850)
+    [SV]::mouse_event(0x0800, 0, 0, 4294966936, [IntPtr]::Zero)
+    Start-Sleep -Milliseconds 130
+    if ((Get-BottomSig) -eq $before) {
+      $stable++
+      if ($stable -ge 2) { return $s + 1 }
+    } else {
+      $stable = 0
+    }
+  }
+  return $maxSteps
+}
+
 function Click([int]$x, [int]$y) {
   $w = Get-PhoneWindow
   [void][SV]::SetCursorPos($w.X + $x, $w.Y + $y)
@@ -126,25 +165,21 @@ for ($i = 0; $i -lt $Steps; $i++) {
   Start-Sleep -Milliseconds 400
   Click 1830 167
   Start-Sleep -Milliseconds 500
-  for ($s = 0; $s -lt 11; $s++) {
-    $w = Get-PhoneWindow
-    [void][SV]::SetCursorPos($w.X + 200, $w.Y + 850)
-    [SV]::mouse_event(0x0800, 0, 0, 4294966936, [IntPtr]::Zero)
-    Start-Sleep -Milliseconds 110
-  }
-  Start-Sleep -Milliseconds 700
+  $used = Scroll-ToBottom 40
+  Start-Sleep -Milliseconds 500
 
-  $body = Grab 0 330 1920 620 $shot
+  $body = Grab 0 195 1920 745 $shot
   $hasVideos = $false
   $titles = New-Object System.Collections.ArrayList
   foreach ($ln in $body) {
     if ($ln -match '^\s*Videos\s*$') { $hasVideos = $true; continue }
+    if ($ln -match '^\s*Video\s*$') { $hasVideos = $true; continue }
     if ($hasVideos -and $ln.Trim()) { [void]$titles.Add($ln.Trim()) }
   }
   $mark = if ($hasVideos) { 'VIDEO' } else { '-' }
   $title = ($titles -join ' ')
 
-  $line = "{0}`t{1}`t{2}" -f $id, $mark, $title
+  $line = "{0}`t{1}`t{2}`t{3}" -f $id, $mark, $used, $title
   Write-Host ("[{0,3}] {1}" -f $i, $line)
   [void]$rows.Add($line)
 

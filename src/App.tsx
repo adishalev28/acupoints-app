@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
@@ -13,10 +14,21 @@ import DaoMa from './pages/DaoMa'
 import SmartDiagnosis from './pages/SmartDiagnosis'
 import Videos from './pages/Videos'
 
+// three.js כבד - נטען רק כשנכנסים למסך הגוף
+const BodyModel = lazy(() => import('./pages/BodyModel'))
+
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route
+          path="/body"
+          element={
+            <Suspense fallback={<div className="fixed inset-0 bg-[#0e1a1b]" />}>
+              <BodyModel />
+            </Suspense>
+          }
+        />
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
           <Route path="/explore" element={<Explore />} />

@@ -48,6 +48,11 @@ src/
 │       ├── zoneVT.ts      # Chest & abdomen
 │       └── zoneDT{a,b,c}.ts  # Back & neck (split to 3)
 └── svg/HandDorsal.tsx
+
+public/models/body-{female,male}.glb   # גופי המודל התלת ממדי (CC BY 4.0, FormForge3D)
+src/components/body/BodyScene.ts        # three.js ישירות (react-three-fiber לא תומך ב-React 19.3)
+src/data/bodyModel/                     # meridians.ts (הגדרות והסבר) + meridianPaths.ts (מיקומים)
+scripts/body-model/                     # convert-fbx.mjs (המרת הגופים), seed-stomach.mjs (מיקום ראשוני)
 ```
 
 ## Point Interface
@@ -75,7 +80,7 @@ interface Point {
 /rubric          → Symptom index  /organs         → Organ lookup
 /mirror          → Mirror map     /diagnosis      → Symptom wizard
 /dao-ma          → Dao Ma groups  /smart-diagnosis → Advanced diagnosis
-/principle/:id   → Theory pages
+/principle/:id   → Theory pages   /body → 3D body for patients (lazy, ?edit=1)
 ```
 
 URL params: `q` (search), `tab` (all|indications|reactionAreas), `zone`, `filter` (72|32)

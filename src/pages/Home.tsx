@@ -112,6 +112,19 @@ export default function Home() {
       {/* Quick Actions */}
       <div className="px-6 mt-6 pb-6 space-y-3">
         <Link
+          to="/body"
+          className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
+        >
+          <div className="w-12 h-12 rounded-full bg-teal-50 dark:bg-teal-500/20 flex items-center justify-center">
+            <span className="text-2xl">🧍</span>
+          </div>
+          <div>
+            <div className="font-bold text-gray-900 dark:text-dark-text">הגוף והערוצים</div>
+            <div className="text-sm text-gray-500 dark:text-dark-muted">מודל תלת ממדי להסבר למטופלים</div>
+          </div>
+        </Link>
+
+        <Link
           to="/mirror"
           className="flex items-center gap-4 p-5 bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-dark-border hover:border-teal-primary/30 transition-colors"
         >

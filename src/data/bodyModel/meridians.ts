@@ -88,6 +88,8 @@ export const largeIntestineMeridian: MeridianDef = {
   ],
   controlPoints: [
     { id: 'LI1', pinyin: 'Shangyang', hint: 'בפינה של ציפורן האצבע המורה, בצד האגודל' },
+    { id: 'LI2', pinyin: 'Erjian', hint: 'בצד האגודל של האצבע המורה, לפני מפרק הבסיס' },
+    { id: 'LI3', pinyin: 'Sanjian', hint: 'בצד האגודל של האצבע המורה, מאחורי מפרק הבסיס' },
     { id: 'LI4', pinyin: 'Hegu', hint: 'בגב כף היד, בין האגודל לאצבע המורה' },
     { id: 'LI5', pinyin: 'Yangxi', hint: 'בשקע בשורש כף היד, בצד האגודל' },
     { id: 'LI10', pinyin: 'Shousanli', hint: '2 צון מתחת לקפל המרפק, בצד האגודל' },
@@ -98,7 +100,7 @@ export const largeIntestineMeridian: MeridianDef = {
     { id: 'LI18', pinyin: 'Futu', hint: 'בצוואר, בגובה בליטת הגרון, על השריר הצידי' },
     { id: 'LI20', pinyin: 'Yingxiang', hint: 'לצד כנף האף' },
   ],
-  segments: [['LI1', 'LI4', 'LI5', 'LI10', 'LI11', 'LI14', 'LI15', 'LI16', 'LI18', 'LI20']],
+  segments: [['LI1', 'LI2', 'LI3', 'LI4', 'LI5', 'LI10', 'LI11', 'LI14', 'LI15', 'LI16', 'LI18', 'LI20']],
 }
 
 export const meridians: MeridianDef[] = [stomachMeridian, largeIntestineMeridian]

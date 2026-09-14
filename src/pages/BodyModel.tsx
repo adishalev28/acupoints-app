@@ -50,6 +50,8 @@ const emptyEdits = (): Edits => ({ female: {}, male: {} })
 
 /** השורה של תת-הנקודה מתוך תיאור המיקום של הקבוצה, למשל "88.18 Sì Mǎ Shàng: 2 צון..." */
 function locationHint(groupId: string, pointId: string): string {
+  const own = allPoints.find(p => p.id === pointId)
+  if (own) return own.location
   const point = allPoints.find(p => p.id === groupId)
   if (!point) return ''
   const line = point.location.split('\n').find(l => l.startsWith(pointId))

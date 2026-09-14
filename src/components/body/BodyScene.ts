@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import type { BodySex, MeridianDef, SurfacePoint, Vec3 } from '../../data/bodyModel/meridians'
-import { createFlow, createHeart, createLiver, createLungs, createNeedlePoint, type Animated } from './treatmentVisuals'
+import { createFlow, createHeart, createKidneys, createLiver, createLungs, createNeedlePoint, createSpleen, type Animated } from './treatmentVisuals'
 import type { TungGroup } from '../../data/bodyModel/tungGroups'
 
 export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg' | 'treatment'
@@ -178,7 +178,7 @@ export class BodyScene {
       back: [[0, 0.56 * H, -4.4], [0, 0.53 * H, 0]],
       head: [[0.35, 0.93 * H, 1.0], [0, 0.9 * H, 0]],
       leg: [[0.9, 0.2 * H, 1.8], [0.1, 0.17 * H, 0]],
-      treatment: [[1.5, 0.62 * H, 2.9], [0, 0.55 * H, 0]],
+      treatment: [[1.6, 0.58 * H, 3.3], [0, 0.5 * H, 0]],
     }
     const [p, t] = presets[view]
     this.tween = {
@@ -207,14 +207,30 @@ export class BodyScene {
     // עוגן האיבר: לאן הקשת מגיעה, בכל צד
     let target: (side: number) => THREE.Vector3
     if (group.organ === 'lungs') {
-      const baseY = 0.678 * H
-      const size = 0.115 * H
-      const halfSpan = 0.78 * this.frontHalfWidth(0.72 * H, 0.3)
+      const baseY = 0.685 * H
+      const size = 0.1 * H
+      const halfSpan = 0.66 * this.frontHalfWidth(0.72 * H, 0.3)
       this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size, halfSpan))
       target = side => new THREE.Vector3(side * halfSpan * 0.52, baseY + size * 0.45, midZ)
     } else if (group.organ === 'heart') {
-      const center = new THREE.Vector3(0.025 * s, 0.715 * H, midZ + 0.02 * s)
-      this.add(createHeart(center, 0.075 * H))
+      const center = new THREE.Vector3(0.02 * s, 0.705 * H, midZ + 0.025 * s)
+      this.add(createHeart(center, 0.068 * H))
+      target = () => center.clone()
+    } else if (group.organ === 'kidneys') {
+      // בגב, בגובה המותניים העליונים, משני צידי עמוד השדרה
+      const y = 0.64 * H
+      const backHit = this.rayHit([0.05 * s, y, -1], [0, 0, 1])
+      const z = backHit ? backHit.point.z + 0.05 * s : midZ - 0.04 * s
+      const centers: [THREE.Vector3, THREE.Vector3] = [
+        new THREE.Vector3(0.055 * s, y + 0.008 * s, z),
+        new THREE.Vector3(-0.055 * s, y - 0.008 * s, z),
+      ]
+      this.add(createKidneys(centers, 0.068 * H))
+      target = side => centers[side === 1 ? 0 : 1].clone()
+    } else if (group.organ === 'spleen') {
+      // צד שמאל של המטופל, מאחורי הצלעות התחתונות
+      const center = new THREE.Vector3(0.09 * s, 0.665 * H, midZ - 0.03 * s)
+      this.add(createSpleen(center, 0.1 * H))
       target = () => center.clone()
     } else {
       const center = new THREE.Vector3(-0.04 * s, 0.678 * H, midZ + 0.02 * s)

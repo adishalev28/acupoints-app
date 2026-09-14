@@ -220,44 +220,76 @@ function hologramShape(geo: THREE.BufferGeometry, material: THREE.ShaderMaterial
   return group
 }
 
+/** צינור לאורך נקודות, לכלי דם */
+function vesselTube(points: [number, number, number][], radius: number, material: THREE.Material) {
+  const curve = new THREE.CatmullRomCurve3(points.map(p => new THREE.Vector3(...p)))
+  return new THREE.Mesh(new THREE.TubeGeometry(curve, 24, radius, 12), material)
+}
+
+/** טיפה מסובבת: קודקוד מחודד בתחתית ובסיס מעוגל למעלה */
+function dropGeometry(height: number, radius: number) {
+  const profile: THREE.Vector2[] = []
+  for (let i = 0; i <= 16; i++) {
+    const t = i / 16 // 0 בקודקוד, 1 בבסיס
+    const r = radius * Math.sin(Math.PI * 0.5 * Math.pow(t, 0.6)) * (1 - 0.35 * Math.pow(t, 6))
+    profile.push(new THREE.Vector2(Math.max(r, 0.0001), (t - 0.5) * height))
+  }
+  profile.push(new THREE.Vector2(0.0001, 0.5 * height))
+  return new THREE.LatheGeometry(profile, 32)
+}
+
 /**
- * לב הולוגרמה שפועם. צורת טיפה עם קודקוד שפונה למטה ושמאלה (לצד שמאל של המטופל).
- * @param center מרכז הלב, @param size גובה הלב במטרים
+ * לב הולוגרמה שפועם: שני חדרים, שתי עליות, אבי העורקים עם הקשת שלו,
+ * גזע עורק הריאה והווריד הנבוב העליון. יחידת המידה היא אורך הלב.
+ * @param center מרכז הלב, @param size אורך הלב במטרים
  */
 export function createHeart(center: THREE.Vector3, size: number, color = '#ff5f7a'): Animated {
-  const profile = [
-    [0.0, 0.0], [0.28, 0.1], [0.46, 0.3], [0.54, 0.52], [0.52, 0.72],
-    [0.42, 0.88], [0.24, 0.98], [0.0, 1.0],
-  ].map(([r, y]) => new THREE.Vector2(r, y))
-  const geo = new THREE.LatheGeometry(profile, 32)
-  geo.translate(0, -0.5, 0)
   const material = hologramMaterial(color)
-  const shape = hologramShape(geo, material, color)
+  const vesselMaterial = hologramMaterial('#ff9aa8')
+
+  // החדרים - החלק שמתכווץ בכל פעימה
+  const ventricles = new THREE.Group()
+  const left = hologramShape(dropGeometry(0.8, 0.36), material, color)
+  left.position.set(0.06, -0.06, -0.03)
+  const right = hologramShape(dropGeometry(0.66, 0.32), material, color)
+  right.position.set(-0.1, 0.0, 0.07)
+  right.scale.set(1, 1, 0.72)
+  right.rotation.z = -0.25
+  ventricles.add(left, right)
+
+  // העליות והכלים - יושבים על בסיס הלב
+  const top = new THREE.Group()
+  const atrium = (r: number, x: number, y: number, z: number) => {
+    const m = hologramShape(new THREE.SphereGeometry(r, 24, 16), material, color)
+    m.position.set(x, y, z)
+    m.scale.set(1, 0.85, 0.9)
+    return m
+  }
+  top.add(atrium(0.19, -0.2, 0.36, -0.04), atrium(0.16, 0.14, 0.38, -0.14))
+  top.add(vesselTube([[0.0, 0.3, 0.0], [0.0, 0.7, 0.03], [0.1, 0.9, -0.06], [0.24, 0.82, -0.2], [0.26, 0.45, -0.28]], 0.075, vesselMaterial))
+  top.add(vesselTube([[-0.06, 0.28, 0.13], [0.0, 0.58, 0.15], [0.26, 0.66, 0.02]], 0.065, vesselMaterial))
+  top.add(vesselTube([[0.0, 0.58, 0.15], [-0.26, 0.62, -0.02]], 0.05, vesselMaterial))
+  top.add(vesselTube([[-0.26, 0.42, -0.06], [-0.27, 0.95, -0.06]], 0.06, vesselMaterial))
+
+  const shape = new THREE.Group()
+  shape.add(ventricles, top)
+  shape.scale.setScalar(size)
   const holder = new THREE.Group()
   holder.position.copy(center)
   // הקודקוד פונה למטה, קדימה ולצד שמאל של המטופל (x חיובי)
-  holder.rotation.set(-0.35, 0, 0.5)
+  holder.rotation.set(-0.3, 0.15, 0.45)
   holder.add(shape)
-
-  // שני כלי דם יוצאים מבסיס הלב, למעלה
-  const vessel = (dx: number, lean: number) => {
-    const curve = new THREE.QuadraticBezierCurve3(
-      new THREE.Vector3(dx, 0.42, 0),
-      new THREE.Vector3(dx, 0.8, 0),
-      new THREE.Vector3(dx + lean, 0.88, -0.05),
-    )
-    shape.add(new THREE.Mesh(new THREE.TubeGeometry(curve, 12, 0.07, 10), material))
-  }
-  vessel(0.12, 0.25)
-  vessel(-0.12, -0.2)
 
   return {
     object: holder,
     update: time => {
       const b = heartbeat(time)
       material.uniforms.uTime.value = time
-      material.uniforms.uOpacity.value = 0.72 + 0.28 * b
-      shape.scale.setScalar(size * (1 + 0.07 * b))
+      vesselMaterial.uniforms.uTime.value = time
+      material.uniforms.uOpacity.value = 0.75 + 0.25 * b
+      vesselMaterial.uniforms.uOpacity.value = 0.6 + 0.2 * b
+      ventricles.scale.set(1 - 0.06 * b, 1 - 0.04 * b, 1 - 0.06 * b)
+      top.scale.setScalar(1 + 0.03 * b)
     },
   }
 }
@@ -295,6 +327,89 @@ export function createLiver(center: THREE.Vector3, width: number, color = '#b98c
       // הסרעפת דוחפת את הכבד מעט למטה בשאיפה
       holder.position.y = center.y - 0.008 * b
       shape.scale.setScalar(width)
+    },
+  }
+}
+
+/** צורת שעועית: אליפסואיד עם שקע בצד שפונה לקו האמצע */
+function beanGeometry(notchSide: 1 | -1) {
+  const geo = new THREE.SphereGeometry(1, 36, 24)
+  const pos = geo.attributes.position
+  for (let i = 0; i < pos.count; i++) {
+    let x = pos.getX(i)
+    const y = pos.getY(i)
+    const z = pos.getZ(i)
+    if (x * notchSide > 0) x *= 1 - 0.45 * Math.exp(-(y * y) / 0.18)
+    pos.setXYZ(i, x * 0.55, y, z * 0.35)
+  }
+  geo.computeVertexNormals()
+  return geo
+}
+
+/**
+ * כליות הולוגרמה בגב, משני צידי עמוד השדרה, עם השופכנים שיורדים מהן.
+ * @param centers מרכזי הכליות [שמאל, ימין], @param size גובה כליה במטרים
+ */
+export function createKidneys(centers: [THREE.Vector3, THREE.Vector3], size: number, color = '#ffa94d'): Animated {
+  const material = hologramMaterial(color)
+  const group = new THREE.Group()
+  const kidneys: THREE.Object3D[] = []
+  centers.forEach((c, i) => {
+    const side = i === 0 ? 1 : -1
+    // השקע פונה לעמוד השדרה: בכליה השמאלית (x חיובי) לכיוון x שלילי
+    const kidney = hologramShape(beanGeometry(side === 1 ? -1 : 1), material, color)
+    kidney.position.copy(c)
+    kidney.scale.setScalar(size / 2)
+    kidney.rotation.z = side * 0.18 // הקוטב העליון נוטה לכיוון עמוד השדרה
+    group.add(kidney)
+    kidneys.push(kidney)
+    const hilum = c.clone().add(new THREE.Vector3(-side * size * 0.2, 0, 0))
+    const ureter = new THREE.CatmullRomCurve3([
+      hilum,
+      hilum.clone().add(new THREE.Vector3(-side * size * 0.15, -size * 0.6, size * 0.1)),
+      hilum.clone().add(new THREE.Vector3(-side * size * 0.3, -size * 1.5, size * 0.3)),
+    ])
+    group.add(new THREE.Mesh(new THREE.TubeGeometry(ureter, 20, size * 0.03, 8), material))
+  })
+  group.renderOrder = 10
+  return {
+    object: group,
+    update: time => {
+      const b = breath(time, 6)
+      material.uniforms.uTime.value = time
+      material.uniforms.uOpacity.value = 0.72 + 0.28 * b
+      for (const k of kidneys) k.scale.setScalar((size / 2) * (1 + 0.03 * b))
+    },
+  }
+}
+
+/**
+ * טחול הולוגרמה: איבר מוארך ומעוקל בצד שמאל של המטופל, מאחורי הצלעות התחתונות.
+ * @param center מרכז הטחול, @param size אורך במטרים
+ */
+export function createSpleen(center: THREE.Vector3, size: number, color = '#6fd68f'): Animated {
+  const geo = new THREE.SphereGeometry(1, 36, 24)
+  const pos = geo.attributes.position
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), y = pos.getY(i), z = pos.getZ(i)
+    // מוארך לאורך y, שטוח, ומעוקל כך שהצד החיצוני קמור
+    pos.setXYZ(i, x * 0.45 - 0.25 * y * y, y, z * 0.3)
+  }
+  geo.computeVertexNormals()
+  const material = hologramMaterial(color)
+  const shape = hologramShape(geo, material, color)
+  const holder = new THREE.Group()
+  holder.position.copy(center)
+  holder.rotation.set(0.5, 0, -0.55) // הציר הארוך נטוי למעלה ואחורה
+  holder.add(shape)
+  return {
+    object: holder,
+    update: time => {
+      const b = breath(time)
+      material.uniforms.uTime.value = time
+      material.uniforms.uOpacity.value = 0.75 + 0.25 * b
+      shape.scale.setScalar((size / 2) * (1 + 0.02 * b))
+      holder.position.y = center.y - 0.006 * b
     },
   }
 }

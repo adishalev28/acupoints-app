@@ -73,7 +73,7 @@ function measure(mesh) {
     return list[list.length - 1]
   }
 
-  return { H, s, front, back, side, down, runs, halfWidth, leg, arm }
+  return { H, s, cast, front, back, side, down, runs, halfWidth, leg, arm }
 }
 
 function surfacePoint(hit) {
@@ -148,18 +148,45 @@ function largeIntestineRules(m) {
     if (!a) return null
     return front(Math.min(a.crest + lateral, a.b - 0.004), y)
   }
-  // קצות האצבעות: הגובה הנמוך ביותר שבו עוד יש רצף של זרוע
-  const handY = (() => {
-    let lowest = 0.5
-    for (let t = 0.58; t > 0.44; t -= 0.004) if (arm(t * H)) lowest = t
-    return lowest
-  })()
+  // כף היד תלויה כשהכף פונה לירך: האצבעות מסודרות מקדימה לאחור (z יורד),
+  // האגודל קצר ומעליהן. האצבע המורה היא האצבע הקדמית ביותר מעט מעל קצות האצבעות.
+  const pos = m.positions
+  let tipY = Infinity
+  for (let i = 0; i < pos.count; i++) if (pos.getX(i) > 0.3 * s && pos.getY(i) < tipY) tipY = pos.getY(i)
+  const frontmostAt = (y, band = 0.003) => {
+    let best = null
+    for (let i = 0; i < pos.count; i++) {
+      if (pos.getX(i) < 0.3 * s || Math.abs(pos.getY(i) - y) > band) continue
+      if (!best || pos.getZ(i) > best.z) best = { x: pos.getX(i), z: pos.getZ(i) }
+    }
+    return best
+  }
+  const indexTip = frontmostAt(tipY + 0.02 * s)
+  // האגודל מכסה את האצבע המורה במבט מלפנים, ולכן עוקבים אחרי המורה לפי הקודקודים שלה
+  // ומטילים קרן קצרה ממש מולה, כדי שלא תפגע באגודל
+  const indexFront = y => {
+    let best = null
+    for (let i = 0; i < pos.count; i++) {
+      if (Math.abs(pos.getY(i) - y) > 0.003 || Math.abs(pos.getX(i) - indexTip.x) > 0.015 * s) continue
+      if (pos.getZ(i) > indexTip.z + 0.012 * s) continue
+      if (!best || pos.getZ(i) > best.z) best = { x: pos.getX(i), z: pos.getZ(i) }
+    }
+    return best ? m.cast([best.x, y, best.z + 0.006], [0, 0, -1]) : null
+  }
+  // גב כף היד פונה החוצה (x חיובי): קרן מהצד, קרוב לשפה הקדמית (צד האגודל)
+  const dorsal = (y, inset) => {
+    const edge = frontmostAt(y)
+    return edge ? m.cast([1, y, edge.z - inset], [-1, 0, 0]) : null
+  }
+
   const shoulderHalf = halfWidth(0.82 * H, 0.3)
 
   return {
-    LI1: () => onArm(handY + 0.004, 0.02 * s),
-    LI4: () => onArm(handY + 0.022, 0.006 * s),
-    LI5: () => onArm(handY + 0.045),
+    LI1: () => front(indexTip.x, tipY + 0.02 * s),
+    LI2: () => indexFront(tipY + 0.055 * s),
+    LI3: () => indexFront(tipY + 0.085 * s),
+    LI4: () => dorsal(tipY + 0.11 * s, 0.018 * s),
+    LI5: () => dorsal(tipY + 0.175 * s, 0.012 * s),
     LI10: () => onArm(0.638),
     LI11: () => onArm(0.662, 0.008 * s),
     LI14: () => onArm(0.735),
@@ -186,6 +213,18 @@ function tungRules(m) {
   const anterior = y => { const r = leg(y); return front(r.crest, y) }
   // שלושה צהובים: הצד הפנימי של הירך
   const medial = y => { const r = leg(y); return front(r.a + 0.012 * s, y) }
+  // הצד הפנימי של השוק: קרן מקו האמצע החוצה, בעומק מרכז הרגל
+  const medialShin = y => {
+    const r = leg(y)
+    const cx = (r.a + r.b) / 2
+    const f = front(cx, y)
+    const b = m.back(cx, y)
+    const z = f && b ? (f.point.z + b.point.z) / 2 + 0.012 * s : 0
+    return m.cast([0, y, z], [1, 0, 0])
+  }
+  const cun = 0.0225 * s
+  const malleolusY = 0.045 * H
+  const shin = y => leg(y).crest
   const sima = offset => {
     const q = simaMid.clone().addScaledVector(simaDir, offset)
     return front(q.x, q.y)
@@ -201,6 +240,13 @@ function tungRules(m) {
     '88.17': () => sima(0),
     '88.18': () => sima(twoCun),
     '88.19': () => sima(-twoCun),
+    // שלושת הקיסרים התחתונים - כליות
+    '77.17': () => medialShin(0.262 * H),
+    '77.21': () => medialShin(malleolusY + 3.5 * cun),
+    '77.19': () => medialShin(malleolusY + 7.5 * cun),
+    // ארבעת הפרחים - טחול
+    '77.08': () => front(shin(0.245 * H) + 0.008 * s, 0.245 * H),
+    '77.09': () => front(shin(0.245 * H - 4.5 * cun) + 0.008 * s, 0.245 * H - 4.5 * cun),
   }
 }
 

@@ -157,7 +157,130 @@ export const spleenMeridian: MeridianDef = {
   segments: [['SP1', 'SP3', 'SP4', 'SP5', 'SP6', 'SP9', 'SP10', 'SP11', 'SP12', 'SP13', 'SP15', 'SP16', 'SP18', 'SP20', 'SP21']],
 }
 
-export const meridians: MeridianDef[] = [stomachMeridian, spleenMeridian, lungMeridian, largeIntestineMeridian]
+export const heartMeridian: MeridianDef = {
+  id: 'heart',
+  hebrewName: 'ערוץ הלב',
+  chineseName: '手少陰心經',
+  color: '#ff6b6b',
+  explanation: [
+    'ערוץ הלב מתחיל במרכז בית השחי, יורד לאורך הצד הפנימי של היד בצד הזרת, ומסתיים בקצה הזרת.',
+    'ברפואה הסינית הלב קשור לא רק לפעימות ולזרימת הדם, אלא גם לשינה, לרוגע ולמצב הרוח.',
+    'לכן נקודה בקפל שורש כף היד, בצד הזרת, משמשת לחרדה, לדפיקות לב ולקושי להירדם.',
+  ],
+  controlPoints: [
+    { id: 'HT1', pinyin: 'Jiquan', hint: 'במרכז בית השחי, במקום הדופק' },
+    { id: 'HT2', pinyin: 'Qingling', hint: '3 צון מעל קפל המרפק, בצד הפנימי של הזרוע' },
+    { id: 'HT3', pinyin: 'Shaohai', hint: 'בקצה הפנימי של קפל המרפק, בצד הזרת' },
+    { id: 'HT4', pinyin: 'Lingdao', hint: '1.5 צון מעל קפל שורש כף היד, בצד הזרת' },
+    { id: 'HT5', pinyin: 'Tongli', hint: '1 צון מעל קפל שורש כף היד, בצד הזרת' },
+    { id: 'HT6', pinyin: 'Yinxi', hint: '0.5 צון מעל קפל שורש כף היד, בצד הזרת' },
+    { id: 'HT7', pinyin: 'Shenmen', hint: 'בקפל שורש כף היד, בצד הזרת, בשקע ליד הגיד' },
+    { id: 'HT8', pinyin: 'Shaofu', hint: 'בכף היד, בין עצמות המסרק הרביעית והחמישית, איפה שהזרת נוגעת באגרוף' },
+    { id: 'HT9', pinyin: 'Shaochong', hint: 'בפינת ציפורן הזרת, בצד הקמיצה' },
+  ],
+  segments: [['HT1', 'HT2', 'HT3', 'HT4', 'HT5', 'HT6', 'HT7', 'HT8', 'HT9']],
+}
+
+export const pericardiumMeridian: MeridianDef = {
+  id: 'pericardium',
+  hebrewName: 'ערוץ קרום הלב',
+  chineseName: '手厥陰心包經',
+  color: '#ff9ecb',
+  explanation: [
+    'ערוץ קרום הלב מתחיל בחזה ליד הפטמה, יורד באמצע הצד הפנימי של היד ומסתיים בקצה האצבע האמצעית.',
+    'ברפואה הסינית קרום הלב הוא מעטפת שמגינה על הלב, והערוץ קשור לחזה, לבטן העליונה ולרגשות.',
+    'לכן נקודה באמה, מעט מעל שורש כף היד, משמשת לבחילה, ללחץ בחזה ולמתח.',
+  ],
+  controlPoints: [
+    { id: 'PC1', pinyin: 'Tianchi', hint: '1 צון מחוץ לפטמה, במרווח הבין צלעי הרביעי' },
+    { id: 'PC2', pinyin: 'Tianquan', hint: '2 צון מתחת לקפל בית השחי הקדמי, בין שני ראשי הדו-ראשי' },
+    { id: 'PC3', pinyin: 'Quze', hint: 'בקפל המרפק, בצד הזרת של גיד הדו-ראשי' },
+    { id: 'PC4', pinyin: 'Ximen', hint: '5 צון מעל קפל שורש כף היד, בין שני הגידים' },
+    { id: 'PC5', pinyin: 'Jianshi', hint: '3 צון מעל קפל שורש כף היד, בין שני הגידים' },
+    { id: 'PC6', pinyin: 'Neiguan', hint: '2 צון מעל קפל שורש כף היד, בין שני הגידים' },
+    { id: 'PC7', pinyin: 'Daling', hint: 'באמצע קפל שורש כף היד, בין שני הגידים' },
+    { id: 'PC8', pinyin: 'Laogong', hint: 'במרכז כף היד, איפה שהאצבע האמצעית נוגעת באגרוף' },
+    { id: 'PC9', pinyin: 'Zhongchong', hint: 'בקצה האצבע האמצעית' },
+  ],
+  segments: [['PC1', 'PC2', 'PC3', 'PC4', 'PC5', 'PC6', 'PC7', 'PC8', 'PC9']],
+}
+
+export const gallbladderMeridian: MeridianDef = {
+  id: 'gallbladder',
+  hebrewName: 'ערוץ כיס המרה',
+  chineseName: '足少陽膽經',
+  color: '#b9e36b',
+  explanation: [
+    'ערוץ כיס המרה מתחיל בזווית החיצונית של העין, מתפתל על צד הראש, יורד בצד הגוף ולאורך הצד החיצוני של הרגל, ומסתיים באצבע הרביעית בכף הרגל.',
+    'ברפואה הסינית הוא קשור לכיס המרה ולכבד, לשרירים ולגידים, וגם ליכולת לקבל החלטות.',
+    'לכן נקודות בכתף וברגל משמשות לכאב ראש בצדדים, לכתפיים תפוסות ולכאב בצד הירך.',
+  ],
+  controlPoints: [
+    { id: 'GB1', pinyin: 'Tongziliao', hint: '0.5 צון מחוץ לזווית החיצונית של העין' },
+    { id: 'GB2', pinyin: 'Tinghui', hint: 'בשקע לפני האוזן, מול החריץ שמתחת לבליטה הקטנה' },
+    { id: 'GB8', pinyin: 'Shuaigu', hint: '1.5 צון מעל קצה האוזן' },
+    { id: 'GB12', pinyin: 'Wangu', hint: 'מאחורי האוזן, בשקע מתחת ומאחורי בליטת העצם' },
+    { id: 'GB14', pinyin: 'Yangbai', hint: '1 צון מעל הגבה, מעל האישון' },
+    { id: 'GB15', pinyin: 'Toulinqi', hint: '0.5 צון בתוך קו השיער, מעל האישון' },
+    { id: 'GB17', pinyin: 'Zhengying', hint: 'על הראש, 2.5 צון בתוך קו השיער, 2.25 צון מקו האמצע' },
+    { id: 'GB19', pinyin: 'Naokong', hint: 'בגב הראש, בגובה הבליטה העורפית, 2.25 צון מקו האמצע' },
+    { id: 'GB20', pinyin: 'Fengchi', hint: 'בשקע מתחת לעצם העורף, בין שני שרירי הצוואר' },
+    { id: 'GB21', pinyin: 'Jianjing', hint: 'על ראש הכתף, באמצע בין הצוואר לקצה הכתף' },
+    { id: 'GB22', pinyin: 'Yuanye', hint: 'בצד בית החזה, 3 צון מתחת לבית השחי' },
+    { id: 'GB24', pinyin: 'Riyue', hint: 'מתחת לפטמה, במרווח הבין צלעי השביעי' },
+    { id: 'GB25', pinyin: 'Jingmen', hint: 'בצד הגוף, בקצה החופשי של הצלע ה-12' },
+    { id: 'GB30', pinyin: 'Huantiao', hint: 'בצד האגן, באזור הבליטה של ראש עצם הירך' },
+    { id: 'GB31', pinyin: 'Fengshi', hint: 'בצד החיצוני של הירך, איפה שקצה האצבע האמצעית נוגע כשהיד צמודה לגוף' },
+    { id: 'GB34', pinyin: 'Yanglingquan', hint: 'בשקע מלפנים ומתחת לראש עצם השוקית' },
+    { id: 'GB39', pinyin: 'Xuanzhong', hint: '3 צון מעל הקרסול החיצוני, בקדמת עצם השוקית' },
+    { id: 'GB40', pinyin: 'Qiuxu', hint: 'בשקע מלפנים ומתחת לקרסול החיצוני' },
+    { id: 'GB41', pinyin: 'Zulinqi', hint: 'בגב כף הרגל, בין עצמות המסרק הרביעית והחמישית' },
+    { id: 'GB44', pinyin: 'Zuqiaoyin', hint: 'בפינה החיצונית של ציפורן האצבע הרביעית ברגל' },
+  ],
+  segments: [
+    ['GB1', 'GB2', 'GB8', 'GB12'],
+    ['GB14', 'GB15', 'GB17', 'GB19', 'GB20', 'GB21', 'GB22', 'GB24', 'GB25', 'GB30',
+      'GB31', 'GB34', 'GB39', 'GB40', 'GB41', 'GB44'],
+  ],
+}
+
+export const liverMeridian: MeridianDef = {
+  id: 'liver',
+  hebrewName: 'ערוץ הכבד',
+  chineseName: '足厥陰肝經',
+  color: '#35c9a0',
+  explanation: [
+    'ערוץ הכבד מתחיל בבוהן הגדולה, עולה לאורך הצד הפנימי של הרגל, עובר במפשעה ובצד הבטן ומסתיים מתחת לחזה.',
+    'ברפואה הסינית הכבד דואג לזרימה חלקה של אנרגיה ודם בגוף, ולכן הוא קשור למתח, לעצבנות ולמחזור החודשי.',
+    'לכן נקודה בגב כף הרגל, בין הבוהן לאצבע השנייה, משמשת להרגעת מתח, לכאבי ראש ולכאבי מחזור.',
+  ],
+  controlPoints: [
+    { id: 'LR1', pinyin: 'Dadun', hint: 'בפינה החיצונית של ציפורן הבוהן הגדולה' },
+    { id: 'LR2', pinyin: 'Xingjian', hint: 'בין הבוהן לאצבע השנייה, בקצה העור שביניהן' },
+    { id: 'LR3', pinyin: 'Taichong', hint: 'בגב כף הרגל, בשקע בין עצמות המסרק הראשונה והשנייה' },
+    { id: 'LR4', pinyin: 'Zhongfeng', hint: 'לפני הקרסול הפנימי, בצד הפנימי של הגיד' },
+    { id: 'LR5', pinyin: 'Ligou', hint: '5 צון מעל הקרסול הפנימי, על המשטח הפנימי של עצם השוק' },
+    { id: 'LR8', pinyin: 'Ququan', hint: 'בקצה הפנימי של קפל הברך' },
+    { id: 'LR9', pinyin: 'Yinbao', hint: '4 צון מעל הבליטה הפנימית של עצם הירך, בצד הפנימי של הירך' },
+    { id: 'LR10', pinyin: 'Zuwuli', hint: '3 צון מתחת לגובה עצם הערווה, בצד הפנימי של הירך' },
+    { id: 'LR11', pinyin: 'Yinlian', hint: '2 צון מתחת לגובה עצם הערווה, בצד הפנימי של הירך' },
+    { id: 'LR12', pinyin: 'Jimai', hint: 'בקפל המפשעה, 2.5 צון מקו האמצע' },
+    { id: 'LR13', pinyin: 'Zhangmen', hint: 'בצד הבטן, בקצה החופשי של הצלע ה-11' },
+    { id: 'LR14', pinyin: 'Qimen', hint: 'בקו הפטמה, במרווח הבין צלעי השישי' },
+  ],
+  segments: [['LR1', 'LR2', 'LR3', 'LR4', 'LR5', 'LR8', 'LR9', 'LR10', 'LR11', 'LR12', 'LR13', 'LR14']],
+}
+
+export const meridians: MeridianDef[] = [
+  lungMeridian,
+  largeIntestineMeridian,
+  stomachMeridian,
+  spleenMeridian,
+  heartMeridian,
+  pericardiumMeridian,
+  gallbladderMeridian,
+  liverMeridian,
+]
 
 export const BODY_MODEL_CREDIT =
   'Body: "Male & Female Base Mesh Pack" by FormForge3D, CC BY 4.0 (sketchfab.com). Modified for modesty.'

@@ -65,7 +65,7 @@ export default function BodyModel() {
   const sceneRef = useRef<BodyScene | null>(null)
   const [mode, setMode] = useState<Mode>(searchParams.get('mode') === 'tung' ? 'tung' : 'channel')
   const [meridianId, setMeridianId] = useState(() =>
-    meridians.find(m => m.id === searchParams.get('channel'))?.id ?? meridians[0].id)
+    meridians.find(m => m.id === searchParams.get('channel'))?.id ?? 'stomach')
   const [groupId, setGroupId] = useState(() =>
     tungGroups.find(g => g.id === searchParams.get('group'))?.id ?? tungGroups[0].id)
   const [sex, setSex] = useState<BodySex>(() => readStorage<BodySex>(SEX_KEY, 'female'))

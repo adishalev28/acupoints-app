@@ -207,10 +207,11 @@ export class BodyScene {
     // עוגן האיבר: לאן הקשת מגיעה, בכל צד
     let target: (side: number) => THREE.Vector3
     if (group.organ === 'lungs') {
-      const baseY = 0.665 * H
-      const size = 0.15 * H
-      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size))
-      target = side => new THREE.Vector3(side * size * 0.4, baseY + size * 0.45, midZ)
+      const baseY = 0.678 * H
+      const size = 0.115 * H
+      const halfSpan = 0.78 * this.frontHalfWidth(0.72 * H, 0.3)
+      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size, halfSpan))
+      target = side => new THREE.Vector3(side * halfSpan * 0.52, baseY + size * 0.45, midZ)
     } else if (group.organ === 'heart') {
       const center = new THREE.Vector3(0.025 * s, 0.715 * H, midZ + 0.02 * s)
       this.add(createHeart(center, 0.075 * H))
@@ -247,6 +248,19 @@ export class BodyScene {
 
   private frontHit(x: number, y: number) {
     return this.rayHit([x, y, 1], [0, 0, -1])
+  }
+
+  /** חצי רוחב הגו בגובה נתון: סורקים החוצה עד שהקרן מפספסת או קופצת לזרוע */
+  private frontHalfWidth(y: number, maxX: number) {
+    let last = 0
+    let prevZ: number | null = null
+    for (let x = 0; x < maxX; x += 0.003) {
+      const h = this.frontHit(x, y)
+      if (!h || (prevZ !== null && prevZ - h.point.z > 0.04)) break
+      prevZ = h.point.z
+      last = x
+    }
+    return last
   }
 
   dispose(): void {

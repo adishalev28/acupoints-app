@@ -75,21 +75,25 @@ function lungLobeGeometry(side: 1 | -1) {
  * ריאות הולוגרמה שנושמות.
  * @param base מרכז בסיס הריאות (גובה הסרעפת, באמצע עומק בית החזה)
  * @param size גובה אונה במטרים
+ * @param halfSpan המרחק מקו האמצע לדופן החיצונית של הריאה - נגזר מרוחב בית החזה
  */
-export function createLungs(base: THREE.Vector3, size: number, color = '#1fb8d8'): Animated {
+export function createLungs(base: THREE.Vector3, size: number, halfSpan: number, color = '#1fb8d8'): Animated {
   const group = new THREE.Group()
   group.position.copy(base)
   const material = hologramMaterial(color)
   const wire = new THREE.LineBasicMaterial({ color, transparent: true, opacity: 0.12, depthTest: false, depthWrite: false })
 
+  // רוחב האונה נגזר מרוחב בית החזה, כדי שהריאות לא יחרגו מהגוף
+  const radiusX = halfSpan * 0.55
+  const depth = Math.min(size * 0.34, halfSpan * 0.6)
   const lobes: THREE.Object3D[] = []
   for (const side of [1, -1] as const) {
     const geo = lungLobeGeometry(side)
     const lobe = new THREE.Group()
     lobe.add(new THREE.Mesh(geo, material))
     lobe.add(new THREE.LineSegments(new THREE.WireframeGeometry(geo), wire))
-    lobe.scale.set(size * 0.36, size, size * 0.42)
-    lobe.position.set(side * size * 0.38, 0, 0)
+    lobe.scale.set(radiusX, size, depth)
+    lobe.position.set(side * halfSpan * 0.52, 0, 0)
     group.add(lobe)
     lobes.push(lobe)
   }
@@ -102,8 +106,8 @@ export function createLungs(base: THREE.Vector3, size: number, color = '#1fb8d8'
   }
   const fork = new THREE.Vector3(0, size * 0.78, 0)
   tube(new THREE.Vector3(0, size * 1.18, 0), fork, size * 0.045)
-  tube(fork, new THREE.Vector3(size * 0.3, size * 0.58, 0), size * 0.035)
-  tube(fork, new THREE.Vector3(-size * 0.3, size * 0.58, 0), size * 0.035)
+  tube(fork, new THREE.Vector3(halfSpan * 0.38, size * 0.58, 0), size * 0.035)
+  tube(fork, new THREE.Vector3(-halfSpan * 0.38, size * 0.58, 0), size * 0.035)
   group.add(airway)
   group.renderOrder = 10
 
@@ -114,7 +118,7 @@ export function createLungs(base: THREE.Vector3, size: number, color = '#1fb8d8'
       material.uniforms.uTime.value = time
       material.uniforms.uOpacity.value = 0.75 + 0.25 * b
       for (const lobe of lobes) {
-        lobe.scale.set(size * 0.36 * (1 + 0.08 * b), size * (1 + 0.035 * b), size * 0.42 * (1 + 0.08 * b))
+        lobe.scale.set(radiusX * (1 + 0.06 * b), size * (1 + 0.03 * b), depth * (1 + 0.06 * b))
       }
     },
   }

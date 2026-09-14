@@ -12,6 +12,8 @@ export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg' | 'treatment
 
 export interface BodySceneEvents {
   onMeridianTap?: (meridianId: string) => void
+  /** לחיצה על נקודת דונג דולקת */
+  onTungPointTap?: () => void
   onMarkerTap?: (pointId: string) => void
   /** מיקום בצד שמאל של המטופל, גם אם נלחץ הצד הימני */
   onBodyTap?: (point: SurfacePoint) => void
@@ -410,6 +412,10 @@ export class BodyScene {
         this.events.onBodyTap(point)
         return
       }
+    }
+    if (this.events.onTungPointTap && this.treatmentGroup.children.length) {
+      const hit = ray.intersectObjects(this.treatmentGroup.children, true).find(h => h.object.userData.tungPick)
+      if (hit) { this.events.onTungPointTap(); return }
     }
     // לחיצה כפולה על הגוף מתקרבת לאותו מקום (במצב עריכה לחיצה מציבה נקודה, אז שם אין)
     const now = performance.now()

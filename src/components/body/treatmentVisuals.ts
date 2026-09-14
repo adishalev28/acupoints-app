@@ -138,7 +138,10 @@ export function createNeedlePoint(sp: SurfacePoint, phase = 0): Animated {
   )
   // ההילה שוכבת על העור
   halo.lookAt(new THREE.Vector3(...sp.n))
-  group.add(core, halo)
+  // אזור לחיצה נדיב ושקוף, כדי שיהיה קל לפגוע בנקודה באצבע
+  const pick = new THREE.Mesh(new THREE.SphereGeometry(0.03, 8, 6), new THREE.MeshBasicMaterial({ visible: false }))
+  pick.userData.tungPick = true
+  group.add(core, halo, pick)
   return {
     object: group,
     update: time => {

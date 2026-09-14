@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { BodyScene, type ViewPreset } from '../components/body/BodyScene'
+import IndicationsSheet from '../components/body/IndicationsSheet'
 import { BODY_MODEL_CREDIT, meridians, type BodySex, type SurfacePoint } from '../data/bodyModel/meridians'
 import { meridianPaths } from '../data/bodyModel/meridianPaths'
 import { tungGroups } from '../data/bodyModel/tungGroups'
@@ -72,6 +73,7 @@ export default function BodyModel() {
   const [loaded, setLoaded] = useState<BodySex | null>(null)
   const [loadError, setLoadError] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
+  const [indicationsOpen, setIndicationsOpen] = useState(false)
   const [edits, setEdits] = useState<Edits>(() => readStorage(EDITS_KEY, emptyEdits()))
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
@@ -136,6 +138,7 @@ export default function BodyModel() {
     if (!scene) return
     scene.events = {
       onMeridianTap: editMode ? undefined : () => setInfoOpen(true),
+      onTungPointTap: editMode || mode !== 'tung' ? undefined : () => { setInfoOpen(false); setIndicationsOpen(true) },
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
       onBodyTap: editMode
         ? point => {
@@ -182,6 +185,7 @@ export default function BodyModel() {
 
   function pickMode(next: Mode) {
     setMode(next)
+    setIndicationsOpen(false)
     setView('front')
     setInfoOpen(false)
   }
@@ -260,6 +264,7 @@ export default function BodyModel() {
       {!editMode && (
         <div className="absolute bottom-0 inset-x-0 p-3 flex flex-col items-start gap-2 pointer-events-none">
           {pickerChips}
+          <div className="flex flex-wrap gap-2">
           <button
             onClick={() => setInfoOpen(true)}
             className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#142426]/85 border border-white/10 px-4 py-2 text-[15px] hover:bg-[#1c3234]"
@@ -268,6 +273,18 @@ export default function BodyModel() {
             {chipLabel}
             <span className="text-[#93aaa7] text-sm">· לחצו להסבר</span>
           </button>
+          {mode === 'tung' && (
+            <button
+              onClick={() => { setInfoOpen(false); setIndicationsOpen(true) }}
+              className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#f7f4ee] text-[#1d2b2c] px-4 py-2 text-[15px] font-medium hover:bg-white"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+              </svg>
+              במה הנקודות עוזרות
+            </button>
+          )}
+          </div>
           <p dir="ltr" className="text-[11px] text-[#93aaa7]/80 text-left">{BODY_MODEL_CREDIT}</p>
         </div>
       )}
@@ -299,6 +316,10 @@ export default function BodyModel() {
             </div>
           </div>
         </div>
+      )}
+
+      {indicationsOpen && mode === 'tung' && !editMode && (
+        <IndicationsSheet group={group} onClose={() => setIndicationsOpen(false)} />
       )}
 
       {/* מצב עריכה */}

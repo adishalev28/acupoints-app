@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { points as allPoints } from '../../data/points'
 import type { TungGroup } from '../../data/bodyModel/tungGroups'
+import { isHiddenFromPatients } from '../../data/bodyModel/patientFilter'
 import { flattenIndications, isGroupedIndications, type Point } from '../../types'
 
 interface Props {
@@ -13,8 +14,9 @@ interface LaterSection {
   items: string[]
 }
 
-/** מפצל פריט שמכיל כמה התוויות מופרדות בפסיקים, בלי לפצל בתוך סוגריים */
+/** מפצל פריט שמכיל כמה התוויות מופרדות בפסיקים או בלוכסן עם רווחים, בלי לפצל בתוך סוגריים */
 function splitItems(text: string): string[] {
+  if (text.includes(' / ')) return text.split(' / ').flatMap(splitItems)
   const out: string[] = []
   let depth = 0
   let current = ''
@@ -46,7 +48,7 @@ function buildLists(group: TungGroup) {
   const seen = new Set<string>()
   const add = (list: string[], item: string) => {
     const key = normalize(item)
-    if (!key || seen.has(key)) return
+    if (!key || seen.has(key) || isHiddenFromPatients(item)) return
     seen.add(key)
     list.push(item)
   }

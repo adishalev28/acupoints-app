@@ -197,6 +197,101 @@ function largeIntestineRules(m) {
   }
 }
 
+// ──────────────────────── ערוץ הריאות (יד) ────────────────────────
+function lungRules(m) {
+  const { H, s, front, halfWidth, arm, cast } = m
+  const pos = m.positions
+  // הזרוע תלויה כשכף היד פונה לירך: צד האגודל קדימה, והצד הפנימי של היד פונה לגוף.
+  // ערוץ הריאות עובר בצד האגודל של הצד הפנימי - קדימה ומעט לכיוון הגוף.
+  const onArmY = (y, medial) => {
+    const a = arm(y)
+    if (!a) return null
+    return front(Math.max(a.crest - medial, a.a + 0.004), y)
+  }
+  let tipY = Infinity
+  for (let i = 0; i < pos.count; i++) if (pos.getX(i) > 0.3 * s && pos.getY(i) < tipY) tipY = pos.getY(i)
+  // קצה האגודל: הקודקוד הקדמי ביותר בכף היד
+  let thumb = null
+  for (let i = 0; i < pos.count; i++) {
+    if (pos.getX(i) < 0.3 * s || pos.getY(i) > tipY + 0.14 * s) continue
+    if (!thumb || pos.getZ(i) > thumb.z) thumb = { x: pos.getX(i), y: pos.getY(i), z: pos.getZ(i) }
+  }
+  const frontEdgeZ = y => {
+    let z = -Infinity
+    for (let i = 0; i < pos.count; i++) {
+      if (pos.getX(i) > 0.3 * s && Math.abs(pos.getY(i) - y) < 0.003) z = Math.max(z, pos.getZ(i))
+    }
+    return z
+  }
+  // צד כף היד פונה לגוף: קרן מבין הירך לכף היד, החוצה
+  const palmSide = (y, inset) => cast([0.3 * s, y, frontEdgeZ(y) - inset], [1, 0, 0])
+  const wristY = tipY + 0.175 * s
+  const cun = 0.0225 * s
+  const shoulderHalf = halfWidth(0.82 * H, 0.3)
+
+  return {
+    LU1: () => front(0.74 * shoulderHalf, 0.79 * H),
+    LU2: () => front(0.8 * shoulderHalf, 0.806 * H),
+    LU3: () => onArmY(0.74 * H, 0.012 * s),
+    LU5: () => onArmY(0.656 * H, 0.012 * s),
+    LU6: () => onArmY(wristY + 7 * cun, 0.008 * s),
+    LU7: () => onArmY(wristY + 1.5 * cun, 0.004 * s),
+    LU9: () => palmSide(wristY, 0.008 * s),
+    LU10: () => palmSide(tipY + 0.12 * s, 0.02 * s),
+    LU11: () => cast([thumb.x, thumb.y + 0.006 * s, thumb.z + 0.01], [0, 0, -1]),
+  }
+}
+
+// ──────────────────────── ערוץ הטחול (רגל) ────────────────────────
+function spleenRules(m) {
+  const { H, s, front, back, cast, halfWidth, leg, runs } = m
+  const pos = m.positions
+  const cun = 0.0225 * s
+  let toe = { x: 0, z: -1 }
+  for (let i = 0; i < pos.count; i++) {
+    if (pos.getX(i) > 0 && pos.getY(i) < 0.03 * s && pos.getZ(i) > toe.z) toe = { x: pos.getX(i), z: pos.getZ(i) }
+  }
+  // הצד הפנימי של כף הרגל והשוק: קרן מקו האמצע החוצה
+  const medialFoot = (y, z) => cast([0, y, z], [1, 0, 0])
+  const legMidZ = y => {
+    const r = leg(y)
+    const cx = (r.a + r.b) / 2
+    const f = front(cx, y)
+    const b = back(cx, y)
+    return f && b ? (f.point.z + b.point.z) / 2 : 0
+  }
+  const medialLeg = (y, forward = 0) => cast([0, y, legMidZ(y) + forward], [1, 0, 0])
+  const medialThigh = y => { const r = leg(y); return front(r.a + 0.012 * s, y) }
+  const malleolusY = 0.045 * H
+  const nippleX = 0.6 * halfWidth(0.722 * H, 0.25)
+  const midaxillary = y => {
+    const list = runs(y, 0.65 * s)
+    const gapX = list.length > 1 ? (list[0].b + list[1].a) / 2 : list[0].b + 0.05 * s
+    const zf = front(0.02 * s, y)
+    const zb = back(0.02 * s, y)
+    const z = zf && zb ? (zf.point.z + zb.point.z) / 2 : 0
+    return cast([gapX, y, z], [-1, 0, 0])
+  }
+
+  return {
+    SP1: () => medialFoot(0.014 * s, toe.z - 0.012 * s),
+    SP3: () => medialFoot(0.016 * s, toe.z - 0.07 * s),
+    SP4: () => medialFoot(0.022 * s, toe.z - 0.1 * s),
+    SP5: () => medialLeg(malleolusY - 0.004 * s, 0.02 * s),
+    SP6: () => medialLeg(malleolusY + 3 * cun, -0.004 * s),
+    SP9: () => medialLeg(0.272 * H, 0.004 * s),
+    SP10: () => medialThigh(0.34 * H),
+    SP11: () => medialThigh(0.415 * H),
+    SP12: () => front(3.5 * cun, 0.508 * H),
+    SP13: () => front(4 * cun, 0.53 * H),
+    SP15: () => front(nippleX, 0.595 * H),
+    SP16: () => front(nippleX, 0.655 * H),
+    SP18: () => front(1.3 * nippleX, 0.72 * H),
+    SP20: () => front(1.3 * nippleX, 0.775 * H),
+    SP21: () => midaxillary(0.705 * H),
+  }
+}
+
 // ──────────────── נקודות דונג להדגמה (שלוש קבוצות בירך) ────────────────
 function tungRules(m) {
   const { H, s, front, leg, halfWidth } = m
@@ -269,6 +364,8 @@ async function seedBody(file) {
     meridians: {
       stomach: runRules(stomachRules(m), 'stomach'),
       largeIntestine: runRules(largeIntestineRules(m), 'largeIntestine'),
+      lung: runRules(lungRules(m), 'lung'),
+      spleen: runRules(spleenRules(m), 'spleen'),
     },
     tung: runRules(tungRules(m), 'tung'),
   }
@@ -303,4 +400,4 @@ export const tungPoints: Record<BodySex, Record<string, SurfacePoint>> = {
 }
 `)
 
-console.log('wrote meridianPaths.ts (stomach, largeIntestine) and tungPoints.ts')
+console.log('wrote meridianPaths.ts and tungPoints.ts')

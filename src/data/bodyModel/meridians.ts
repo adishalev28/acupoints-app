@@ -103,7 +103,61 @@ export const largeIntestineMeridian: MeridianDef = {
   segments: [['LI1', 'LI2', 'LI3', 'LI4', 'LI5', 'LI10', 'LI11', 'LI14', 'LI15', 'LI16', 'LI18', 'LI20']],
 }
 
-export const meridians: MeridianDef[] = [stomachMeridian, largeIntestineMeridian]
+export const lungMeridian: MeridianDef = {
+  id: 'lung',
+  hebrewName: 'ערוץ הריאות',
+  chineseName: '手太陰肺經',
+  color: '#6cb8ff',
+  explanation: [
+    'ערוץ הריאות מתחיל בחזה, מתחת לעצם הבריח, יורד לאורך הצד הפנימי של היד ומסתיים בקצה האגודל.',
+    'ברפואה הסינית הוא קשור לנשימה, לעור ולהגנה של הגוף מפני הצטננות.',
+    'לכן נקודות באמה ובשורש כף היד משמשות לשיעול, לגרון ולנשימה.',
+  ],
+  controlPoints: [
+    { id: 'LU1', pinyin: 'Zhongfu', hint: 'בחזה העליון, 6 צון מקו האמצע, במרווח הבין צלעי הראשון' },
+    { id: 'LU2', pinyin: 'Yunmen', hint: 'בשקע מתחת לקצה החיצוני של עצם הבריח' },
+    { id: 'LU3', pinyin: 'Tianfu', hint: 'בזרוע, בצד החיצוני של שריר הדו-ראשי' },
+    { id: 'LU5', pinyin: 'Chize', hint: 'בקפל המרפק, בצד האגודל של גיד הדו-ראשי' },
+    { id: 'LU6', pinyin: 'Kongzui', hint: '7 צון מעל קפל שורש כף היד, בצד האגודל' },
+    { id: 'LU7', pinyin: 'Lieque', hint: '1.5 צון מעל קפל שורש כף היד, מעל בליטת עצם החישור' },
+    { id: 'LU9', pinyin: 'Taiyuan', hint: 'בקפל שורש כף היד, בצד האגודל, במקום הדופק' },
+    { id: 'LU10', pinyin: 'Yuji', hint: 'בכרית האגודל, באמצע עצם המסרק הראשונה' },
+    { id: 'LU11', pinyin: 'Shaoshang', hint: 'בפינה החיצונית של ציפורן האגודל' },
+  ],
+  segments: [['LU1', 'LU2', 'LU3', 'LU5', 'LU6', 'LU7', 'LU9', 'LU10', 'LU11']],
+}
+
+export const spleenMeridian: MeridianDef = {
+  id: 'spleen',
+  hebrewName: 'ערוץ הטחול',
+  chineseName: '足太陰脾經',
+  color: '#f2d45c',
+  explanation: [
+    'ערוץ הטחול מתחיל בבוהן הגדולה, עולה לאורך הצד הפנימי של הרגל, עובר בבטן ובצד החזה ומסתיים מתחת לבית השחי.',
+    'ברפואה הסינית הטחול אחראי על העיכול ועל הפיכת המזון לאנרגיה.',
+    'לכן נקודות בצד הפנימי של השוק יכולות לעזור בעיכול, בנפיחות ובעייפות.',
+  ],
+  controlPoints: [
+    { id: 'SP1', pinyin: 'Yinbai', hint: 'בפינה הפנימית של ציפורן הבוהן הגדולה' },
+    { id: 'SP3', pinyin: 'Taibai', hint: 'בצד הפנימי של כף הרגל, מאחורי מפרק הבוהן' },
+    { id: 'SP4', pinyin: 'Gongsun', hint: 'בצד הפנימי של כף הרגל, לפני בסיס עצם המסרק הראשונה' },
+    { id: 'SP5', pinyin: 'Shangqiu', hint: 'בשקע מלפנים ומתחת לקרסול הפנימי' },
+    { id: 'SP6', pinyin: 'Sanyinjiao', hint: '3 צון מעל הקרסול הפנימי, מאחורי עצם השוק' },
+    { id: 'SP9', pinyin: 'Yinlingquan', hint: 'בשקע מתחת לבליטה הפנימית של עצם השוק' },
+    { id: 'SP10', pinyin: 'Xuehai', hint: '2 צון מעל הפינה הפנימית העליונה של הפיקה' },
+    { id: 'SP11', pinyin: 'Jimen', hint: 'בצד הפנימי של הירך, 6 צון מעל SP10' },
+    { id: 'SP12', pinyin: 'Chongmen', hint: 'בקפל המפשעה, 3.5 צון מקו האמצע' },
+    { id: 'SP13', pinyin: 'Fushe', hint: '0.7 צון מעל SP12, 4 צון מקו האמצע' },
+    { id: 'SP15', pinyin: 'Daheng', hint: 'בגובה הטבור, 4 צון מקו האמצע' },
+    { id: 'SP16', pinyin: 'Fuai', hint: '3 צון מעל הטבור, 4 צון מקו האמצע' },
+    { id: 'SP18', pinyin: 'Tianxi', hint: 'במרווח הבין צלעי הרביעי, 6 צון מקו האמצע' },
+    { id: 'SP20', pinyin: 'Zhourong', hint: 'במרווח הבין צלעי השני, 6 צון מקו האמצע' },
+    { id: 'SP21', pinyin: 'Dabao', hint: 'בקו האמצע של בית השחי, במרווח הבין צלעי השישי' },
+  ],
+  segments: [['SP1', 'SP3', 'SP4', 'SP5', 'SP6', 'SP9', 'SP10', 'SP11', 'SP12', 'SP13', 'SP15', 'SP16', 'SP18', 'SP20', 'SP21']],
+}
+
+export const meridians: MeridianDef[] = [stomachMeridian, spleenMeridian, lungMeridian, largeIntestineMeridian]
 
 export const BODY_MODEL_CREDIT =
   'Body: "Male & Female Base Mesh Pack" by FormForge3D, CC BY 4.0 (sketchfab.com). Modified for modesty.'

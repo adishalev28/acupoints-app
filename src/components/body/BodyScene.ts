@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import type { BodySex, MeridianDef, SurfacePoint, Vec3 } from '../../data/bodyModel/meridians'
-import { createArc, createHeart, createLiver, createLungs, createNeedlePoint, type Animated } from './treatmentVisuals'
+import { createFlow, createHeart, createLiver, createLungs, createNeedlePoint, type Animated } from './treatmentVisuals'
 import type { TungGroup } from '../../data/bodyModel/tungGroups'
 
 export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg' | 'treatment'
@@ -231,8 +231,53 @@ export class BodyScene {
       const from = sidePoints
         .reduce((acc, sp) => acc.add(new THREE.Vector3(...sp.p)), new THREE.Vector3())
         .divideScalar(sidePoints.length)
-      this.add(createArc(from, target(side), new THREE.Vector3(side * 0.02 * s, 0.1 * s, 0.3 * s), group.color))
+      this.add(createFlow(this.innerPath(from, target(side), side), group.color))
     }
+  }
+
+  /**
+   * מסלול בתוך הגוף: מהנקודה פנימה למרכז הירך, למעלה במרכז הרגל עד המפשעה,
+   * דרך הבטן באותו צד, ועד האיבר.
+   */
+  private innerPath(from: THREE.Vector3, to: THREE.Vector3, side: number): THREE.Vector3[] {
+    const H = this.bodyHeight
+    const s = H / 1.78
+    const core = (x: number, y: number) => {
+      const f = this.frontHit(x, y)
+      const b = this.rayHit([x, y, -1], [0, 0, 1])
+      return f && b ? (f.point.z + b.point.z) / 2 : from.z - 0.05 * s
+    }
+    const legX = (y: number) => side * this.legCenter(y)
+    // מעל המפשעה הרגליים מתמזגות עם האגן, ולכן מודדים את מרכז הירך מעט מתחתיה
+    const hipY = 0.455 * H
+    const bellyY = 0.585 * H
+    const riseY = from.y + 0.07 * s
+    const path = [
+      from.clone(),
+      // נכנסים לעומק בהדרגה, בלי פנייה חדה הצידה
+      new THREE.Vector3((from.x + legX(riseY)) / 2, riseY, core((from.x + legX(riseY)) / 2, riseY)),
+      new THREE.Vector3(legX(hipY), hipY, core(legX(hipY), hipY)),
+      new THREE.Vector3(side * 0.08 * s, bellyY, core(side * 0.08 * s, bellyY)),
+    ]
+    // אם האיבר נמוך מהבטן (למשל כבד), לא עולים מעליו ויורדים חזרה
+    if (to.y < bellyY + 0.03 * s) path.pop()
+    path.push(to.clone())
+    return path
+  }
+
+  /** מרכז הרגל השמאלית בגובה נתון (x חיובי) */
+  private legCenter(y: number): number {
+    const maxX = 0.26 * (this.bodyHeight / 1.78)
+    let best = { a: 0, b: 0 }
+    let cur: { a: number; b: number } | null = null
+    for (let x = 0.02; x < maxX; x += 0.004) {
+      if (this.frontHit(x, y)) {
+        if (!cur) cur = { a: x, b: x }
+        cur.b = x
+        if (cur.b - cur.a > best.b - best.a) best = { ...cur }
+      } else cur = null
+    }
+    return (best.a + best.b) / 2
   }
 
   private add(item: Animated) {

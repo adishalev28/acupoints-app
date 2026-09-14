@@ -149,16 +149,14 @@ export function createNeedlePoint(sp: SurfacePoint, phase = 0): Animated {
   }
 }
 
-/** קשת אור באוויר מהנקודה אל האיבר, עם פעימות שנעות לכיוון האיבר */
-export function createArc(from: THREE.Vector3, to: THREE.Vector3, lift: THREE.Vector3, organColor = '#70e3ff'): Animated {
-  const curve = new THREE.CubicBezierCurve3(
-    from,
-    from.clone().add(lift),
-    to.clone().add(lift.clone().multiplyScalar(0.8)),
-    to,
-  )
+/**
+ * קו זרימה בתוך הגוף, מהנקודה אל האיבר. נראה דרך העור כמו ההולוגרמה,
+ * ופעימות אור נעות לאורכו לכיוון האיבר.
+ */
+export function createFlow(path: THREE.Vector3[], organColor = '#70e3ff'): Animated {
+  const curve = new THREE.CatmullRomCurve3(path, false, 'centripetal')
   const material = new THREE.ShaderMaterial({
-    uniforms: { uTime: { value: 0 }, uOrgan: { value: new THREE.Color(organColor) } },
+    uniforms: { uTime: { value: 0 }, uOrgan: { value: new THREE.Color(organColor) }, uLength: { value: curve.getLength() }, uOpacity: { value: 1 } },
     vertexShader: /* glsl */ `
       varying float vU;
       void main() {
@@ -169,23 +167,41 @@ export function createArc(from: THREE.Vector3, to: THREE.Vector3, lift: THREE.Ve
     fragmentShader: /* glsl */ `
       uniform float uTime;
       uniform vec3 uOrgan;
+      uniform float uLength;
+      uniform float uOpacity;
       varying float vU;
       void main() {
         vec3 gold = vec3(1.0, 0.78, 0.36);
-        vec3 color = mix(gold, uOrgan, smoothstep(0.15, 0.85, vU));
-        float pulse = pow(fract(vU * 2.5 - uTime * 0.55), 6.0);
-        float ends = smoothstep(0.0, 0.06, vU) * smoothstep(1.0, 0.94, vU);
-        float alpha = (0.5 + pulse * 0.5) * ends;
-        gl_FragColor = vec4(mix(color, vec3(1.0), pulse * 0.6), alpha);
+        vec3 color = mix(gold, uOrgan, smoothstep(0.1, 0.9, vU));
+        // פעימה כל כ-25 ס"מ, במהירות קבועה בלי קשר לאורך הקו
+        float along = vU * uLength;
+        float pulse = pow(fract(along * 4.0 - uTime * 0.9), 5.0);
+        float ends = smoothstep(0.0, 0.04, vU) * smoothstep(1.0, 0.96, vU);
+        float alpha = (0.55 + pulse * 0.45) * ends * uOpacity;
+        gl_FragColor = vec4(mix(color, vec3(1.0), pulse * 0.5), alpha);
       }
     `,
     transparent: true,
     depthWrite: false,
-    depthTest: false,
+    depthTest: false, // נראה דרך העור
   })
-  const mesh = new THREE.Mesh(new THREE.TubeGeometry(curve, 90, 0.0045, 8), material)
-  mesh.renderOrder = 11
-  return { object: mesh, update: time => { material.uniforms.uTime.value = time } }
+  const segments = Math.max(80, path.length * 24)
+  const core = new THREE.Mesh(new THREE.TubeGeometry(curve, segments, 0.0045, 8), material)
+  // הילה רכה סביב הקו
+  const glowMaterial = material.clone()
+  glowMaterial.uniforms.uOpacity.value = 0.22
+  const glow = new THREE.Mesh(new THREE.TubeGeometry(curve, segments, 0.011, 10), glowMaterial)
+  const group = new THREE.Group()
+  group.add(glow, core)
+  group.renderOrder = 11
+  core.renderOrder = 12
+  return {
+    object: group,
+    update: time => {
+      material.uniforms.uTime.value = time
+      glowMaterial.uniforms.uTime.value = time
+    },
+  }
 }
 
 /** פעימת לב: כיווץ קצר וחזק ואחריו הרפיה, בערך 66 פעימות בדקה */

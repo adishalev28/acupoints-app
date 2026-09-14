@@ -5,8 +5,10 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import type { BodySex, MeridianDef, SurfacePoint, Vec3 } from '../../data/bodyModel/meridians'
+import { createArc, createHeart, createLiver, createLungs, createNeedlePoint, type Animated } from './treatmentVisuals'
+import type { TungGroup } from '../../data/bodyModel/tungGroups'
 
-export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg'
+export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg' | 'treatment'
 
 export interface BodySceneEvents {
   onMeridianTap?: (meridianId: string) => void
@@ -32,6 +34,8 @@ export class BodyScene {
   private bodyHeight = 1.78
   private meridianGroup = new THREE.Group()
   private markerGroup = new THREE.Group()
+  private treatmentGroup = new THREE.Group()
+  private animated: Animated[] = []
   private pickables: THREE.Mesh[] = []
   private pulses: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; t: number; speed: number }[] = []
   private tween: { p0: THREE.Vector3; p1: THREE.Vector3; t0: THREE.Vector3; t1: THREE.Vector3; k: number } | null = null
@@ -68,7 +72,7 @@ export class BodyScene {
 
     const floor = new THREE.Mesh(new THREE.CircleGeometry(1.6, 64), new THREE.MeshStandardMaterial({ color: '#142426', roughness: 1 }))
     floor.rotation.x = -Math.PI / 2
-    this.scene.add(floor, this.meridianGroup, this.markerGroup)
+    this.scene.add(floor, this.meridianGroup, this.markerGroup, this.treatmentGroup)
 
     this.controls = new OrbitControls(this.camera, canvas)
     this.controls.enableDamping = true
@@ -116,7 +120,7 @@ export class BodyScene {
     this.pulses = []
     if (!this.body) return
     const color = new THREE.Color(def.color)
-    const coreMat = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#fff'), 0.35), toneMapped: false })
+    const coreMat = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#fff'), 0.15), toneMapped: false })
     const glowMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.32, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
     const pickMat = new THREE.MeshBasicMaterial({ visible: false })
     const pulseMat = new THREE.MeshBasicMaterial({ color: '#fff6de', transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
@@ -174,6 +178,7 @@ export class BodyScene {
       back: [[0, 0.56 * H, -4.4], [0, 0.53 * H, 0]],
       head: [[0.35, 0.93 * H, 1.0], [0, 0.9 * H, 0]],
       leg: [[0.9, 0.2 * H, 1.8], [0.1, 0.17 * H, 0]],
+      treatment: [[1.5, 0.62 * H, 2.9], [0, 0.55 * H, 0]],
     }
     const [p, t] = presets[view]
     this.tween = {
@@ -181,6 +186,67 @@ export class BodyScene {
       t0: this.controls.target.clone(), t1: new THREE.Vector3(...t),
       k: animate && !this.reduceMotion ? 0 : 1,
     }
+  }
+
+  /**
+   * מצב דונג: הנקודות של הקבוצה נדלקות בשני הצדדים, קשת אור עולה מכל צד אל האיבר,
+   * והאיבר מופיע כהולוגרמה. points - מיקומי הנקודות בצד שמאל של המטופל.
+   */
+  setTungGroup(group: TungGroup | null, points: Record<string, SurfacePoint>): void {
+    this.clearGroup(this.treatmentGroup)
+    this.animated = []
+    this.meridianGroup.visible = !group
+    if (!group || !this.body) return
+    const H = this.bodyHeight
+    const s = H / 1.78
+
+    const chestFront = this.frontHit(0, 0.72 * H)
+    const chestBack = this.rayHit([0, 0.72 * H, -1], [0, 0, 1])
+    const midZ = chestFront && chestBack ? (chestFront.point.z + chestBack.point.z) / 2 : 0
+
+    // עוגן האיבר: לאן הקשת מגיעה, בכל צד
+    let target: (side: number) => THREE.Vector3
+    if (group.organ === 'lungs') {
+      const baseY = 0.665 * H
+      const size = 0.15 * H
+      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size))
+      target = side => new THREE.Vector3(side * size * 0.4, baseY + size * 0.45, midZ)
+    } else if (group.organ === 'heart') {
+      const center = new THREE.Vector3(0.025 * s, 0.715 * H, midZ + 0.02 * s)
+      this.add(createHeart(center, 0.075 * H))
+      target = () => center.clone()
+    } else {
+      const center = new THREE.Vector3(-0.04 * s, 0.678 * H, midZ + 0.02 * s)
+      this.add(createLiver(center, 0.115 * H))
+      target = side => center.clone().add(new THREE.Vector3(side * 0.04 * s, 0, 0))
+    }
+
+    const leftSide = group.pointIds.map(id => points[id]).filter(Boolean)
+    if (!leftSide.length) return
+    for (const side of [1, -1]) {
+      const sidePoints = leftSide.map(sp => side === 1 ? sp : { p: mirror(sp.p), n: mirror(sp.n) })
+      sidePoints.forEach((sp, i) => this.add(createNeedlePoint(sp, i * 0.33)))
+      // הקשת יוצאת ממרכז הקבוצה
+      const from = sidePoints
+        .reduce((acc, sp) => acc.add(new THREE.Vector3(...sp.p)), new THREE.Vector3())
+        .divideScalar(sidePoints.length)
+      this.add(createArc(from, target(side), new THREE.Vector3(side * 0.02 * s, 0.1 * s, 0.3 * s), group.color))
+    }
+  }
+
+  private add(item: Animated) {
+    this.treatmentGroup.add(item.object)
+    this.animated.push(item)
+  }
+
+  private rayHit(origin: Vec3, dir: Vec3) {
+    if (!this.body) return null
+    const ray = new THREE.Raycaster(new THREE.Vector3(...origin), new THREE.Vector3(...dir).normalize())
+    return ray.intersectObject(this.body)[0] ?? null
+  }
+
+  private frontHit(x: number, y: number) {
+    return this.rayHit([x, y, 1], [0, 0, -1])
   }
 
   dispose(): void {
@@ -192,6 +258,7 @@ export class BodyScene {
     this.controls.dispose()
     this.clearGroup(this.meridianGroup)
     this.clearGroup(this.markerGroup)
+    this.clearGroup(this.treatmentGroup)
     this.body?.geometry.dispose()
     this.renderer.dispose()
   }
@@ -278,7 +345,7 @@ export class BodyScene {
       if (hit) { this.focusOn(hit.point); return }
     }
 
-    if (this.events.onMeridianTap && this.pickables.length) {
+    if (this.events.onMeridianTap && this.pickables.length && this.meridianGroup.visible) {
       const hit = ray.intersectObjects(this.pickables, false)[0]
       if (hit) this.events.onMeridianTap(hit.object.userData.meridianId)
     }
@@ -312,6 +379,8 @@ export class BodyScene {
       this.controls.target.lerpVectors(this.tween.t0, this.tween.t1, e)
       if (this.tween.k >= 1) this.tween = null
     }
+    const elapsed = this.clock.elapsedTime
+    for (const item of this.animated) item.update(this.reduceMotion ? 1.2 : elapsed)
     for (const pulse of this.pulses) {
       pulse.t = (pulse.t + pulse.speed * dt) % 1
       pulse.mesh.position.copy(pulse.curve.getPointAt(pulse.t))
@@ -322,8 +391,7 @@ export class BodyScene {
 
   private clearGroup(group: THREE.Group) {
     for (const child of [...group.children]) {
-      const mesh = child as THREE.Mesh
-      mesh.geometry?.dispose()
+      child.traverse(o => (o as THREE.Mesh).geometry?.dispose())
       group.remove(child)
     }
   }

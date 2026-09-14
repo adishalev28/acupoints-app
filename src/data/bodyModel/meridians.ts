@@ -76,7 +76,32 @@ export const stomachMeridian: MeridianDef = {
   ],
 }
 
-export const meridians: MeridianDef[] = [stomachMeridian]
+export const largeIntestineMeridian: MeridianDef = {
+  id: 'largeIntestine',
+  hebrewName: 'ערוץ המעי הגס',
+  chineseName: '手陽明大腸經',
+  color: '#8fd16a',
+  explanation: [
+    'ערוץ המעי הגס מתחיל בקצה האצבע המורה, עולה לאורך היד והכתף, עובר בצוואר ומסתיים ליד האף.',
+    'ברפואה הסינית הוא קשור ליציאות ולפינוי של מה שהגוף לא צריך, וגם לאף, לשיניים ולפנים.',
+    'לכן נקודה בכף היד יכולה לעזור בכאב ראש, בכאב שיניים או בגודש באף.',
+  ],
+  controlPoints: [
+    { id: 'LI1', pinyin: 'Shangyang', hint: 'בפינה של ציפורן האצבע המורה, בצד האגודל' },
+    { id: 'LI4', pinyin: 'Hegu', hint: 'בגב כף היד, בין האגודל לאצבע המורה' },
+    { id: 'LI5', pinyin: 'Yangxi', hint: 'בשקע בשורש כף היד, בצד האגודל' },
+    { id: 'LI10', pinyin: 'Shousanli', hint: '2 צון מתחת לקפל המרפק, בצד האגודל' },
+    { id: 'LI11', pinyin: 'Quchi', hint: 'בקצה החיצוני של קפל המרפק' },
+    { id: 'LI14', pinyin: 'Binao', hint: 'בזרוע, בקצה התחתון של שריר הכתף' },
+    { id: 'LI15', pinyin: 'Jianyu', hint: 'בשקע הקדמי של הכתף, כשמרימים את היד' },
+    { id: 'LI16', pinyin: 'Jugu', hint: 'בשקע בין עצם הבריח לעצם השכמה' },
+    { id: 'LI18', pinyin: 'Futu', hint: 'בצוואר, בגובה בליטת הגרון, על השריר הצידי' },
+    { id: 'LI20', pinyin: 'Yingxiang', hint: 'לצד כנף האף' },
+  ],
+  segments: [['LI1', 'LI4', 'LI5', 'LI10', 'LI11', 'LI14', 'LI15', 'LI16', 'LI18', 'LI20']],
+}
+
+export const meridians: MeridianDef[] = [stomachMeridian, largeIntestineMeridian]
 
 export const BODY_MODEL_CREDIT =
   'Body: "Male & Female Base Mesh Pack" by FormForge3D, CC BY 4.0 (sketchfab.com). Modified for modesty.'

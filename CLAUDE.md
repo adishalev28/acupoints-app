@@ -51,8 +51,8 @@ src/
 
 public/models/body-{female,male}.glb   # גופי המודל התלת ממדי (CC BY 4.0, FormForge3D)
 src/components/body/BodyScene.ts        # three.js ישירות (react-three-fiber לא תומך ב-React 19.3)
-src/data/bodyModel/                     # meridians.ts (הגדרות והסבר) + meridianPaths.ts (מיקומים)
-scripts/body-model/                     # convert-fbx.mjs (המרת הגופים), seed-stomach.mjs (מיקום ראשוני)
+src/data/bodyModel/                     # meridians.ts, meridianPaths.ts (ערוצים) + tungGroups.ts, tungPoints.ts (נקודות דונג ואיברים)
+scripts/body-model/                     # convert-fbx.mjs (המרת הגופים), seed-positions.mjs (מיקום ראשוני של ערוצים ונקודות דונג)
 ```
 
 ## Point Interface
@@ -80,7 +80,7 @@ interface Point {
 /rubric          → Symptom index  /organs         → Organ lookup
 /mirror          → Mirror map     /diagnosis      → Symptom wizard
 /dao-ma          → Dao Ma groups  /smart-diagnosis → Advanced diagnosis
-/principle/:id   → Theory pages   /body → 3D body for patients (lazy, ?edit=1)
+/principle/:id   → Theory pages   /body → 3D body for patients (lazy; ?mode=tung, ?edit=1)
 ```
 
 URL params: `q` (search), `tab` (all|indications|reactionAreas), `zone`, `filter` (72|32)

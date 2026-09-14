@@ -1,14 +1,19 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { BodyScene, type ViewPreset } from '../components/body/BodyScene'
-import { BODY_MODEL_CREDIT, stomachMeridian, type BodySex, type SurfacePoint } from '../data/bodyModel/meridians'
+import { BODY_MODEL_CREDIT, meridians, type BodySex, type SurfacePoint } from '../data/bodyModel/meridians'
 import { meridianPaths } from '../data/bodyModel/meridianPaths'
+import { tungGroups } from '../data/bodyModel/tungGroups'
+import { tungPoints } from '../data/bodyModel/tungPoints'
+import { points as allPoints } from '../data/points'
 
+/** תיקונים ממצב העריכה, לפי גוף ושכבה: מזהה ערוץ, או 'tung' לנקודות דונג */
 type Edits = Record<BodySex, Record<string, Record<string, SurfacePoint>>>
+type Mode = 'channel' | 'tung'
 
 const SEX_KEY = 'bodyModel.sex'
 const EDITS_KEY = 'bodyModel.edits.v1'
-const meridian = stomachMeridian
+const TUNG_LAYER = 'tung'
 
 const VIEWS: { id: ViewPreset; label: string }[] = [
   { id: 'front', label: 'חזית' },
@@ -17,6 +22,12 @@ const VIEWS: { id: ViewPreset; label: string }[] = [
   { id: 'head', label: 'ראש' },
   { id: 'leg', label: 'רגל' },
 ]
+
+interface EditItem {
+  id: string
+  label: string
+  hint: string
+}
 
 function readStorage<T>(key: string, fallback: T): T {
   try {
@@ -37,25 +48,53 @@ function writeStorage(key: string, value: unknown) {
 
 const emptyEdits = (): Edits => ({ female: {}, male: {} })
 
+/** השורה של תת-הנקודה מתוך תיאור המיקום של הקבוצה, למשל "88.18 Sì Mǎ Shàng: 2 צון..." */
+function locationHint(groupId: string, pointId: string): string {
+  const point = allPoints.find(p => p.id === groupId)
+  if (!point) return ''
+  const line = point.location.split('\n').find(l => l.startsWith(pointId))
+  return (line ?? point.location).replace(/^[\d.]+\s[^:]*:\s*/, '')
+}
+
 export default function BodyModel() {
   const [searchParams] = useSearchParams()
-  const editMode = searchParams.get('edit') === '1'
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const sceneRef = useRef<BodyScene | null>(null)
+  const [mode, setMode] = useState<Mode>(searchParams.get('mode') === 'tung' ? 'tung' : 'channel')
+  const [meridianId, setMeridianId] = useState(() =>
+    meridians.find(m => m.id === searchParams.get('channel'))?.id ?? meridians[0].id)
+  const [groupId, setGroupId] = useState(() =>
+    tungGroups.find(g => g.id === searchParams.get('group'))?.id ?? tungGroups[0].id)
   const [sex, setSex] = useState<BodySex>(() => readStorage<BodySex>(SEX_KEY, 'female'))
   const [view, setView] = useState<ViewPreset>('front')
   const [loaded, setLoaded] = useState<BodySex | null>(null)
   const [loadError, setLoadError] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const [edits, setEdits] = useState<Edits>(() => readStorage(EDITS_KEY, emptyEdits()))
-  const [selectedId, setSelectedId] = useState<string>(meridian.controlPoints[0].id)
+  const [selectedId, setSelectedId] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
 
-  const paths = useMemo(
+  const editMode = searchParams.get('edit') === '1'
+  const meridian = meridians.find(m => m.id === meridianId)!
+  const group = tungGroups.find(g => g.id === groupId)!
+  const layer = mode === 'channel' ? meridian.id : TUNG_LAYER
+
+  const editItems: EditItem[] = useMemo(() => mode === 'channel'
+    ? meridian.controlPoints.map(cp => ({ id: cp.id, label: cp.pinyin, hint: cp.hint }))
+    : group.pointIds.map(id => ({ id, label: group.hebrewName, hint: locationHint(group.id, id) })),
+  [mode, meridian, group])
+  const activeSelectedId = editItems.some(i => i.id === selectedId) ? selectedId! : editItems[0].id
+
+  const channelPaths = useMemo(
     () => ({ ...meridianPaths[sex][meridian.id], ...edits[sex][meridian.id] }),
+    [sex, edits, meridian],
+  )
+  const tungPaths = useMemo(
+    () => ({ ...tungPoints[sex], ...edits[sex][TUNG_LAYER] }),
     [sex, edits],
   )
-  const editedIds = new Set(Object.keys(edits[sex][meridian.id] ?? {}))
+  const layerEdits = edits[sex][layer] ?? {}
+  const editedIds = new Set(Object.keys(layerEdits).filter(id => editItems.some(i => i.id === id)))
 
   useEffect(() => {
     const scene = new BodyScene(canvasRef.current!)
@@ -68,20 +107,26 @@ export default function BodyModel() {
 
   useEffect(() => {
     writeStorage(SEX_KEY, sex)
+    // ב-StrictMode הסצנה נוצרת פעמיים - מתעלמים מטעינה של סצנה שכבר נסגרה
+    let cancelled = false
     sceneRef.current?.loadBody(sex)
-      .then(() => setLoaded(sex))
-      .catch(() => setLoadError(true))
+      .then(() => { if (!cancelled) setLoaded(sex) })
+      .catch(() => { if (!cancelled) setLoadError(true) })
+    return () => { cancelled = true }
   }, [sex])
 
   useEffect(() => {
-    if (loaded !== sex) return
-    sceneRef.current?.setMeridian(meridian, paths)
-    sceneRef.current?.setMarkers(editMode ? paths : null, selectedId)
-  }, [loaded, sex, paths, editMode, selectedId])
+    const scene = sceneRef.current
+    if (!scene || loaded !== sex) return
+    scene.setMeridian(meridian, channelPaths)
+    scene.setTungGroup(mode === 'tung' ? group : null, tungPaths)
+    const markerSource = mode === 'channel' ? channelPaths : Object.fromEntries(group.pointIds.map(id => [id, tungPaths[id]]))
+    scene.setMarkers(editMode ? markerSource : null, activeSelectedId)
+  }, [loaded, sex, mode, meridian, group, channelPaths, tungPaths, editMode, activeSelectedId])
 
   useEffect(() => {
-    if (loaded) sceneRef.current?.setView(view)
-  }, [view, loaded])
+    if (loaded) sceneRef.current?.setView(mode === 'tung' && view === 'front' ? 'treatment' : view)
+  }, [view, loaded, mode])
 
   // האירועים נקראים מתוך הסצנה, ולכן מתעדכנים בכל רינדור עם הערכים העדכניים
   useEffect(() => {
@@ -92,15 +137,12 @@ export default function BodyModel() {
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
       onBodyTap: editMode
         ? point => {
-            const next: Edits = {
-              ...edits,
-              [sex]: { ...edits[sex], [meridian.id]: { ...edits[sex][meridian.id], [selectedId]: point } },
-            }
+            const next: Edits = { ...edits, [sex]: { ...edits[sex], [layer]: { ...layerEdits, [activeSelectedId]: point } } }
             setEdits(next)
             writeStorage(EDITS_KEY, next)
-            const i = meridian.controlPoints.findIndex(cp => cp.id === selectedId)
-            const nextPoint = meridian.controlPoints[i + 1]
-            if (nextPoint) setSelectedId(nextPoint.id)
+            const i = editItems.findIndex(item => item.id === activeSelectedId)
+            const nextItem = editItems[i + 1]
+            if (nextItem) setSelectedId(nextItem.id)
           }
         : undefined,
     }
@@ -117,9 +159,9 @@ export default function BodyModel() {
   }
 
   function undoPoint() {
-    const current = { ...edits[sex][meridian.id] }
-    delete current[selectedId]
-    updateEdits({ ...edits, [sex]: { ...edits[sex], [meridian.id]: current } })
+    const current = { ...layerEdits }
+    delete current[activeSelectedId]
+    updateEdits({ ...edits, [sex]: { ...edits[sex], [layer]: current } })
   }
 
   function clearAll() {
@@ -129,19 +171,52 @@ export default function BodyModel() {
   }
 
   async function copyAll() {
-    const merged = {
-      female: { [meridian.id]: { ...meridianPaths.female[meridian.id], ...edits.female[meridian.id] } },
-      male: { [meridian.id]: { ...meridianPaths.male[meridian.id], ...edits.male[meridian.id] } },
-    }
+    // רק מה שתוקן, לפי גוף ושכבה - אני ממזג לקבצי הנתונים
     try {
-      await navigator.clipboard.writeText(JSON.stringify(merged))
+      await navigator.clipboard.writeText(JSON.stringify(edits))
       showToast('המיקומים הועתקו. אפשר להדביק בשיחה')
     } catch {
       showToast('ההעתקה נחסמה בדפדפן')
     }
   }
 
-  const selected = meridian.controlPoints.find(cp => cp.id === selectedId)
+  function pickMode(next: Mode) {
+    setMode(next)
+    setView('front')
+    setInfoOpen(false)
+  }
+
+  const selected = editItems.find(i => i.id === activeSelectedId)
+  const chipColor = mode === 'tung' ? group.color : meridian.color
+  const card = mode === 'tung'
+    ? { title: group.hebrewName, subtitle: `${group.id} · ${group.chineseName}`, explanation: group.explanation }
+    : { title: meridian.hebrewName, subtitle: meridian.chineseName, explanation: meridian.explanation }
+  const chipLabel = mode === 'tung' ? `${group.hebrewName} ← ${group.organName}` : meridian.hebrewName
+
+  // בחירת ערוץ או קבוצת נקודות. בטלפון בתחתית המסך, כדי לא לכסות את הגוף
+  const pickerChips = (
+    <div className={`flex gap-2 ${editMode ? 'flex-wrap' : 'flex-nowrap overflow-x-auto max-w-full pointer-events-auto [scrollbar-width:none]'}`}>
+      {mode === 'channel'
+        ? meridians.map(m => (
+            <ColorChip
+              key={m.id}
+              color={m.color}
+              label={m.hebrewName}
+              active={m.id === meridianId}
+              onClick={() => { setMeridianId(m.id); setInfoOpen(false) }}
+            />
+          ))
+        : tungGroups.map(g => (
+            <ColorChip
+              key={g.id}
+              color={g.color}
+              label={`${g.hebrewName} ← ${g.organName}`}
+              active={g.id === groupId}
+              onClick={() => { setGroupId(g.id); setInfoOpen(false) }}
+            />
+          ))}
+    </div>
+  )
 
   return (
     <div dir="rtl" className="fixed inset-0 bg-[#0e1a1b] text-[#e6efed] overflow-hidden select-none">
@@ -154,33 +229,43 @@ export default function BodyModel() {
       )}
 
       {/* סרגל עליון */}
-      <div className="absolute top-0 inset-x-0 p-3 flex flex-wrap items-center gap-2 pointer-events-none">
-        <Link
-          to="/"
-          className="pointer-events-auto w-10 h-10 rounded-full grid place-items-center bg-[#142426]/85 border border-white/10 hover:bg-[#1c3234]"
-          aria-label="חזרה לדף הבית"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </Link>
-        <Segmented
-          value={sex}
-          onChange={v => { setLoadError(false); setSex(v as BodySex) }}
-          options={[{ id: 'female', label: 'מטופלת' }, { id: 'male', label: 'מטופל' }]}
-        />
-        <Segmented value={view} onChange={v => setView(v as ViewPreset)} options={VIEWS} />
+      <div className="absolute top-0 inset-x-0 p-3 flex flex-col gap-2 pointer-events-none">
+        <div className="flex flex-wrap items-center gap-2">
+          <Link
+            to="/"
+            className="pointer-events-auto w-10 h-10 rounded-full grid place-items-center bg-[#142426]/85 border border-white/10 hover:bg-[#1c3234]"
+            aria-label="חזרה לדף הבית"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+          <Segmented
+            value={mode}
+            onChange={v => pickMode(v as Mode)}
+            options={[{ id: 'channel', label: 'רפואה סינית' }, { id: 'tung', label: 'שיטת דונג' }]}
+          />
+          <Segmented
+            value={sex}
+            onChange={v => { setLoadError(false); setSex(v as BodySex) }}
+            options={[{ id: 'female', label: 'מטופלת' }, { id: 'male', label: 'מטופל' }]}
+          />
+          <Segmented value={view} onChange={v => setView(v as ViewPreset)} options={VIEWS} />
+        </div>
+
+        {editMode && pickerChips}
       </div>
 
       {/* מקרא ותחתית */}
       {!editMode && (
         <div className="absolute bottom-0 inset-x-0 p-3 flex flex-col items-start gap-2 pointer-events-none">
+          {pickerChips}
           <button
             onClick={() => setInfoOpen(true)}
             className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#142426]/85 border border-white/10 px-4 py-2 text-[15px] hover:bg-[#1c3234]"
           >
-            <span className="w-3 h-3 rounded-full" style={{ background: meridian.color, boxShadow: `0 0 10px ${meridian.color}` }} />
-            {meridian.hebrewName}
+            <span className="w-3 h-3 rounded-full" style={{ background: chipColor, boxShadow: `0 0 10px ${chipColor}` }} />
+            {chipLabel}
             <span className="text-[#93aaa7] text-sm">· לחצו להסבר</span>
           </button>
           <p dir="ltr" className="text-[11px] text-[#93aaa7]/80 text-left">{BODY_MODEL_CREDIT}</p>
@@ -189,15 +274,15 @@ export default function BodyModel() {
 
       {/* כרטיס הסבר למטופל */}
       {infoOpen && !editMode && (
-        <div className="absolute inset-x-0 bottom-0 p-3 flex justify-center" role="dialog" aria-label={meridian.hebrewName}>
+        <div className="absolute inset-x-0 bottom-0 p-3 flex justify-center" role="dialog" aria-label={card.title}>
           <div className="w-full max-w-xl rounded-2xl bg-[#142426]/95 border border-white/10 p-5 shadow-2xl backdrop-blur">
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h2 className="text-xl font-bold flex items-center gap-2">
-                  <span className="w-3 h-3 rounded-full" style={{ background: meridian.color, boxShadow: `0 0 10px ${meridian.color}` }} />
-                  {meridian.hebrewName}
+                  <span className="w-3 h-3 rounded-full" style={{ background: chipColor, boxShadow: `0 0 10px ${chipColor}` }} />
+                  {card.title}
                 </h2>
-                <p className="text-sm text-[#93aaa7] mt-0.5">{meridian.chineseName}</p>
+                <p className="text-sm text-[#93aaa7] mt-0.5">{card.subtitle}</p>
               </div>
               <button
                 onClick={() => setInfoOpen(false)}
@@ -210,7 +295,7 @@ export default function BodyModel() {
               </button>
             </div>
             <div className="mt-3 space-y-2 text-[16px] leading-relaxed">
-              {meridian.explanation.map(p => <p key={p}>{p}</p>)}
+              {card.explanation.map(p => <p key={p}>{p}</p>)}
             </div>
           </div>
         </div>
@@ -218,37 +303,37 @@ export default function BodyModel() {
 
       {/* מצב עריכה */}
       {editMode && (
-        <aside className="absolute inset-x-3 bottom-3 max-h-[42vh] sm:inset-x-auto sm:max-h-none sm:top-16 sm:right-3 sm:w-72 flex flex-col rounded-2xl bg-[#142426]/95 border border-white/10 shadow-2xl">
+        <aside className="absolute inset-x-3 bottom-3 max-h-[42vh] sm:inset-x-auto sm:max-h-none sm:top-28 sm:right-3 sm:w-72 flex flex-col rounded-2xl bg-[#142426]/95 border border-white/10 shadow-2xl">
           <div className="p-4 border-b border-white/10">
-            <h2 className="font-bold">עריכת {meridian.hebrewName} · {sex === 'female' ? 'מטופלת' : 'מטופל'}</h2>
+            <h2 className="font-bold">עריכת {card.title} · {sex === 'female' ? 'מטופלת' : 'מטופל'}</h2>
             <p className="text-sm text-[#93aaa7] mt-1 leading-snug">
               בוחרים נקודה ולוחצים על הגוף במקום הנכון. הצד השני מתעדכן לבד, והרשימה עוברת לנקודה הבאה.
             </p>
             {selected && (
-              <p className="mt-2 text-sm">
-                <span className="font-bold text-[#3fb5b0]">{selected.id}</span> {selected.hint}
+              <p className="mt-2 text-sm leading-snug">
+                <span dir="ltr" className="font-bold text-[#3fb5b0]">{selected.id}</span> {selected.hint}
               </p>
             )}
           </div>
           <ol className="flex-1 overflow-y-auto p-2">
-            {meridian.controlPoints.map(cp => (
-              <li key={cp.id}>
+            {editItems.map(item => (
+              <li key={item.id}>
                 <button
-                  onClick={() => setSelectedId(cp.id)}
+                  onClick={() => setSelectedId(item.id)}
                   className={`w-full text-right rounded-lg px-3 py-1.5 flex items-center gap-2 text-sm ${
-                    cp.id === selectedId ? 'bg-[#0d7377] text-white' : 'hover:bg-white/5'
+                    item.id === activeSelectedId ? 'bg-[#0d7377] text-white' : 'hover:bg-white/5'
                   }`}
                 >
-                  <span dir="ltr" className="font-bold w-12 text-left tabular-nums">{cp.id}</span>
-                  <span dir="ltr" className="flex-1 text-left text-[#c9d8d5]">{cp.pinyin}</span>
-                  {editedIds.has(cp.id) && <span className="w-2 h-2 rounded-full bg-[#ffb547]" aria-label="תוקן" />}
+                  <span dir="ltr" className="font-bold w-12 text-left tabular-nums">{item.id}</span>
+                  <span className="flex-1 text-right text-[#c9d8d5] truncate">{item.label}</span>
+                  {editedIds.has(item.id) && <span className="w-2 h-2 rounded-full bg-[#ffb547]" aria-label="תוקן" />}
                 </button>
               </li>
             ))}
           </ol>
           <div className="p-3 border-t border-white/10 space-y-2">
             <p className="text-xs text-[#93aaa7]">
-              תוקנו {editedIds.size} נקודות בגוף הזה. התיקונים נשמרים בדפדפן הזה בלבד.
+              תוקנו {editedIds.size} נקודות כאן. התיקונים נשמרים בדפדפן הזה בלבד.
             </p>
             <button onClick={copyAll} className="w-full rounded-lg bg-[#0d7377] hover:bg-[#0f8589] py-2 font-bold">
               העתקת המיקומים
@@ -256,7 +341,7 @@ export default function BodyModel() {
             <div className="flex gap-2">
               <button
                 onClick={undoPoint}
-                disabled={!editedIds.has(selectedId)}
+                disabled={!editedIds.has(activeSelectedId)}
                 className="flex-1 rounded-lg border border-white/15 py-1.5 text-sm disabled:opacity-40"
               >
                 ביטול לנקודה
@@ -270,7 +355,7 @@ export default function BodyModel() {
       )}
 
       {toast && (
-        <div className="absolute top-16 left-1/2 -translate-x-1/2 rounded-full bg-white text-[#0e1a1b] px-4 py-2 text-sm font-medium shadow-lg" role="status">
+        <div className="absolute top-28 left-1/2 -translate-x-1/2 rounded-full bg-white text-[#0e1a1b] px-4 py-2 text-sm font-medium shadow-lg" role="status">
           {toast}
         </div>
       )}
@@ -298,5 +383,25 @@ function Segmented({ value, onChange, options }: {
         </button>
       ))}
     </div>
+  )
+}
+
+function ColorChip({ color, label, active, onClick }: {
+  color: string
+  label: string
+  active: boolean
+  onClick: () => void
+}) {
+  return (
+    <button
+      onClick={onClick}
+      aria-pressed={active}
+      className={`pointer-events-auto shrink-0 whitespace-nowrap flex items-center gap-2 rounded-full border px-3 py-1.5 text-sm backdrop-blur transition-colors ${
+        active ? 'bg-[#142426] border-white/40 text-white' : 'bg-[#142426]/70 border-white/10 text-[#93aaa7] hover:text-white'
+      }`}
+    >
+      <span className="w-2.5 h-2.5 rounded-full" style={{ background: color, boxShadow: active ? `0 0 8px ${color}` : 'none' }} />
+      {label}
+    </button>
   )
 }

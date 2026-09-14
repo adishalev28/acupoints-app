@@ -140,9 +140,7 @@ export default function BodyModel() {
             const next: Edits = { ...edits, [sex]: { ...edits[sex], [layer]: { ...layerEdits, [activeSelectedId]: point } } }
             setEdits(next)
             writeStorage(EDITS_KEY, next)
-            const i = editItems.findIndex(item => item.id === activeSelectedId)
-            const nextItem = editItems[i + 1]
-            if (nextItem) setSelectedId(nextItem.id)
+            // הבחירה נשארת על אותה נקודה, כדי שלחיצה נוספת תדייק אותה ולא תזיז את הבאה
           }
         : undefined,
     }
@@ -165,9 +163,9 @@ export default function BodyModel() {
   }
 
   function clearAll() {
-    if (!window.confirm('למחוק את כל התיקונים של שני הגופים? אי אפשר לבטל.')) return
+    if (!window.confirm('למחוק את כל התיקונים ולחזור למיקומים המקוריים, בשני הגופים?')) return
     updateEdits(emptyEdits())
-    showToast('התיקונים נמחקו')
+    showToast('חזרנו למיקומים המקוריים')
   }
 
   async function copyAll() {
@@ -307,7 +305,7 @@ export default function BodyModel() {
           <div className="p-4 border-b border-white/10">
             <h2 className="font-bold">עריכת {card.title} · {sex === 'female' ? 'מטופלת' : 'מטופל'}</h2>
             <p className="text-sm text-[#93aaa7] mt-1 leading-snug">
-              בוחרים נקודה ולוחצים על הגוף במקום הנכון. הצד השני מתעדכן לבד, והרשימה עוברת לנקודה הבאה.
+              בוחרים נקודה מהרשימה ולוחצים על הגוף במקום הנכון. אפשר ללחוץ שוב כדי לדייק. הצד השני מתעדכן לבד.
             </p>
             {selected && (
               <p className="mt-2 text-sm leading-snug">

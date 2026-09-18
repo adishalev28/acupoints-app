@@ -10,11 +10,13 @@ export default function Layout() {
       {/* Hamburger button */}
       <button
         onClick={() => setSidebarOpen(true)}
-        className="fixed top-4 left-4 z-40 w-10 h-10 rounded-full bg-teal-primary/90
-          flex items-center justify-center shadow-lg hover:bg-teal-primary transition-colors"
+        className="fixed top-2.5 left-3 z-40 w-9 h-9 rounded-full bg-white/90 dark:bg-dark-card/90 backdrop-blur
+          border border-[#b9dcd6] dark:border-dark-border shadow-sm
+          flex items-center justify-center text-teal-dark dark:text-dark-text
+          hover:bg-white hover:text-teal-primary transition-colors"
         aria-label="תפריט עקרונות יסוד"
       >
-        <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>

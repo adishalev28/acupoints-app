@@ -199,51 +199,51 @@ export default function PointDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24">
-      {/* Header — compact with point identity */}
-      <div className="bg-teal-primary text-white px-5 pt-7 pb-5">
-        {/* Top row: back + zone + favorite */}
-        <div className="flex items-center justify-between mb-3">
-          <button onClick={() => navigate(-1)} className="p-2.5 -mr-2" aria-label="חזרה">
+      {/* Header — פס עליון דק ולבן. הירוק משמש רק כצבע הדגשה, לא כרקע */}
+      <div className="sticky top-0 z-30 bg-white/95 dark:bg-dark-card/95 backdrop-blur border-b border-gray-200 dark:border-dark-border">
+        {/* pl-14 משאיר מקום לכפתור התפריט הצף שבפינה השמאלית העליונה */}
+        <div className="flex items-center justify-between h-14 pr-2 pl-14">
+          <button onClick={() => navigate(-1)} className="p-2.5 text-gray-500 dark:text-dark-muted hover:text-teal-primary" aria-label="חזרה">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             {prevPoint ? (
-              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-2.5 text-white/70 hover:text-white" aria-label={`נקודה קודמת: ${prevPoint.pinyinName}`}>
+              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-2 text-gray-400 dark:text-dark-muted hover:text-teal-primary" aria-label={`נקודה קודמת: ${prevPoint.pinyinName}`}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
-            ) : <div className="w-10" />}
+            ) : <div className="w-9" />}
             {zone && (
-              <span className="text-xs bg-white/20 px-3 py-1 rounded-full">
+              <span className="text-xs font-medium text-teal-primary dark:text-teal-300 bg-teal-light dark:bg-teal-primary/15 px-3 py-1 rounded-full">
                 {zone.name} ({point.zone})
               </span>
             )}
             {nextPoint ? (
-              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-2.5 text-white/70 hover:text-white" aria-label={`נקודה הבאה: ${nextPoint.pinyinName}`}>
+              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-2 text-gray-400 dark:text-dark-muted hover:text-teal-primary" aria-label={`נקודה הבאה: ${nextPoint.pinyinName}`}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
-            ) : <div className="w-10" />}
+            ) : <div className="w-9" />}
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center">
             <button onClick={handleShare} className="p-2.5" aria-label="שתף נקודה">
               {shareStatus === 'copied' ? (
-                <svg className="w-5 h-5 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5 text-white/50 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-gray-400 dark:text-dark-muted hover:text-teal-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
               )}
             </button>
-            <button onClick={() => toggleFavorite(point.id)} className="p-2.5 -ml-2" aria-label={isFavorite(point.id) ? 'הסר ממועדפים' : 'הוסף למועדפים'}>
+            <button onClick={() => toggleFavorite(point.id)} className="p-2.5" aria-label={isFavorite(point.id) ? 'הסר ממועדפים' : 'הוסף למועדפים'}>
               <svg
-                className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-300 fill-amber-300' : 'text-white/50'}`}
+                className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-400 fill-amber-400' : 'text-gray-400 dark:text-dark-muted fill-none'}`}
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth={2}
@@ -253,41 +253,35 @@ export default function PointDetail() {
             </button>
           </div>
         </div>
+      </div>
 
-        {/* Point ID + Pinyin */}
-        <div className="text-center">
+      {/* זהות הנקודה — על רקע לבן, בלי בלוק צבעוני */}
+      <div className="bg-white dark:bg-dark-card border-b border-gray-200 dark:border-dark-border px-5 pt-4 pb-4">
+        <div className="flex items-baseline gap-3 flex-wrap">
           {/^\d/.test(point.id) ? (
             <>
-              <div className="text-2xl font-bold tracking-wide">
-                {point.id}
-              </div>
-              <div className="text-lg font-medium mt-0.5 text-white/90">
-                {point.pinyinName}
-              </div>
+              <span className="text-3xl font-bold text-teal-primary dark:text-teal-300 tracking-wide" dir="ltr">{point.id}</span>
+              <span className="text-lg font-semibold text-gray-800 dark:text-dark-text" dir="ltr">{point.pinyinName}</span>
             </>
           ) : (
-            <div className="text-2xl font-bold tracking-wide">
-              {point.pinyinName}
-            </div>
+            <span className="text-2xl font-bold text-teal-primary dark:text-teal-300" dir="ltr">{point.pinyinName}</span>
           )}
-          <div className="text-sm text-white/70 mt-1">
-            [{point.chineseName}]
-          </div>
-          <div className="text-base font-semibold mt-1">
-            {point.hebrewName}
-          </div>
-          {point.englishName && (
-            <div className="text-xs text-white/60 mt-0.5">
-              {point.englishName}
-            </div>
-          )}
+          <span className="text-sm text-gray-400 dark:text-dark-muted">[{point.chineseName}]</span>
         </div>
+        <div className="mt-1 text-base font-semibold text-gray-800 dark:text-dark-text">
+          {point.hebrewName}
+        </div>
+        {point.englishName && (
+          <div className="text-xs text-gray-500 dark:text-dark-muted mt-0.5" dir="ltr" style={{ textAlign: 'right' }}>
+            {point.englishName}
+          </div>
+        )}
 
         {/* Dao Ma group badge */}
         {point.daoMaGroup && (
-          <div className="mt-3 flex justify-center">
-            <span className="text-xs bg-amber-400/90 text-gray-900 px-3 py-1 rounded-full font-medium">
-              {'\u9053\u99AC'} {point.daoMaGroup}
+          <div className="mt-3">
+            <span className="inline-block text-xs bg-amber-50 dark:bg-amber-400/10 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-400/30 px-3 py-1 rounded-full font-medium">
+              {'道馬'} {point.daoMaGroup}
               {daoMaSiblings.length > 0 && (
                 <span className="mr-1">
                   {' '}({[point.id, ...daoMaSiblings.map(p => p.id)].join(', ')})

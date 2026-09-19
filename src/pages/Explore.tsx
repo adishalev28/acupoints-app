@@ -23,7 +23,7 @@ export default function Explore() {
   // Reset visible count when search/filter changes
   useEffect(() => {
     setVisibleCount(10)
-  }, [search, activeTab, selectedZone])
+  }, [search, activeTab, selectedZone, absoluteFilter])
 
   const updateParams = useCallback((updates: Record<string, string | null>) => {
     setSearchParams(prev => {
@@ -73,7 +73,7 @@ export default function Explore() {
     }
 
     return result
-  }, [search, activeTab, selectedZone])
+  }, [search, activeTab, selectedZone, absoluteFilter])
 
   // Search suggestions (top 20 matching points by id/name)
   const suggestions = useMemo(() => {

@@ -4,18 +4,25 @@ const STORAGE_KEY = 'acupoints-notes'
 
 export function useNotes() {
   const [notes, setNotes] = useState<Record<string, string>>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored ? JSON.parse(stored) : {}
+    try {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')
+      return parsed && typeof parsed === 'object' && !Array.isArray(parsed) ? parsed : {}
+    } catch {
+      return {}
+    }
   })
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(notes))
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(notes))
+    } catch { /* storage blocked - notes stay in memory for this visit */ }
   }, [notes])
 
   const setNote = (pointId: string, note: string) => {
     setNotes(prev => {
       if (!note.trim()) {
-        const { [pointId]: _, ...rest } = prev
+        const rest = { ...prev }
+        delete rest[pointId]
         return rest
       }
       return { ...prev, [pointId]: note }

@@ -4,12 +4,18 @@ const STORAGE_KEY = 'acupoints-favorites'
 
 export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>(() => {
-    const stored = localStorage.getItem(STORAGE_KEY)
-    return stored ? JSON.parse(stored) : []
+    try {
+      const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
+      return Array.isArray(parsed) ? parsed : []
+    } catch {
+      return []
+    }
   })
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites))
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites))
+    } catch { /* storage blocked - favorites stay in memory for this visit */ }
   }, [favorites])
 
   const toggleFavorite = (pointId: string) => {

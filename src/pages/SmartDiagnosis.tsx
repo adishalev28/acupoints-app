@@ -235,7 +235,7 @@ export default function SmartDiagnosis() {
           return s
         }
       }
-    } catch {}
+    } catch { /* storage unavailable - best-effort */ }
     return null
   }).current()
 
@@ -336,7 +336,7 @@ export default function SmartDiagnosis() {
         selectedTissue, diagnosticAnswers: Array.from(diagnosticAnswers),
         location, palmFindings: Array.from(palmFindings),
       }))
-    } catch {}
+    } catch { /* storage unavailable - best-effort */ }
   }, [path, directStep, selectedOrgan, conditionType, guidedStep, freeTextSymptom, selectedSymptoms, selectedTissue, diagnosticAnswers, location, palmFindings])
 
   // ── Compute results for direct path ──

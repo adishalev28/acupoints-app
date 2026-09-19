@@ -4,7 +4,7 @@ import { rubricData, type RubricCategory } from '../utils/buildRubric'
 import { points } from '../data/points'
 import { flattenIndications, type Point } from '../types'
 import { getSideBadge } from '../utils/treatmentPrinciples'
-import { getRootCause, getPathogenesisForSymptom, type PathogenesisMap } from '../data/pathogenesis'
+import { getRootCause, getPathogenesisForSymptom, pathogenesisMaps, type PathogenesisMap } from '../data/pathogenesis'
 
 type Step = 'categories' | 'symptoms' | 'rootCause' | 'results'
 
@@ -23,7 +23,8 @@ export default function DiagnosisWizard() {
   const navigate = useNavigate()
 
   // ── Restore state from sessionStorage (survives navigation to point pages) ──
-  const savedState = useRef(() => {
+  // Read once on mount (lazy initializer), not on every render
+  const [restored] = useState(() => {
     try {
       const raw = sessionStorage.getItem('diagnosis_wizard_state')
       if (raw) return JSON.parse(raw) as {
@@ -33,21 +34,27 @@ export default function DiagnosisWizard() {
         rootMapSymptom: string | null
         rootId: string | null
       }
-    } catch {}
+    } catch { /* corrupted or unavailable storage - start fresh */ }
     return null
   })
 
-  const restored = savedState.current()
-  const restoredCategory = restored?.categoryName
-    ? rubricData.find(c => c.name === restored.categoryName) ?? null
-    : null
-
   const [step, setStepRaw] = useState<Step>(restored?.step ?? 'categories')
-  const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(restoredCategory)
-  const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(
-    new Set(restored?.symptoms ?? [])
+  const [activeCategory, setActiveCategory] = useState<RubricCategory | null>(() =>
+    restored?.categoryName
+      ? rubricData.find(c => c.name === restored.categoryName) ?? null
+      : null
   )
-  const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(null)
+  const [selectedSymptoms, setSelectedSymptoms] = useState<Set<string>>(
+    () => new Set(restored?.symptoms ?? [])
+  )
+  // Restore the chosen root cause too, so returning from a point page keeps the protocol
+  const [selectedRoot, setSelectedRoot] = useState<SelectedRoot | null>(() => {
+    if (!restored?.rootMapSymptom || !restored.rootId) return null
+    const map = pathogenesisMaps.find(m => m.symptom === restored.rootMapSymptom)
+    return map && map.roots.some(r => r.rootId === restored.rootId)
+      ? { map, rootId: restored.rootId }
+      : null
+  })
   const [symptomSearch, setSymptomSearch] = useState('')
   const [globalSearch, setGlobalSearch] = useState('')
 
@@ -61,7 +68,7 @@ export default function DiagnosisWizard() {
         rootMapSymptom: root?.map.symptom ?? null,
         rootId: root?.rootId ?? null,
       }))
-    } catch {}
+    } catch { /* storage full or blocked - persistence is best-effort */ }
   }, [])
 
   // ── Browser history sync ──
@@ -149,7 +156,7 @@ export default function DiagnosisWizard() {
         const symptom = symptomKeywords[i]
         // Extract core keyword from the symptom for substring matching
         // e.g. "סיאטיקה (חוסר ריאה)" → match any indication containing "סיאטיקה"
-        const coreKeyword = symptom.split(/[,(\/—]/)[0].trim()
+        const coreKeyword = symptom.split(/[,(/—]/)[0].trim()
 
         if (coreKeyword && allIndications.includes(coreKeyword)) {
           const existing = pointScores.get(point.id) ?? { score: 0, matched: [] }
@@ -208,7 +215,7 @@ export default function DiagnosisWizard() {
     // Check if any selected symptom has a pathogenesis map
     const symptoms = Array.from(selectedSymptoms)
     for (const s of symptoms) {
-      const coreKeyword = s.split(/[,(\/—-]/)[0].trim()
+      const coreKeyword = s.split(/[,(/—-]/)[0].trim()
       const map = getPathogenesisForSymptom(coreKeyword)
       if (map) {
         setSelectedRoot(null)
@@ -243,7 +250,7 @@ export default function DiagnosisWizard() {
   const activePathMap = useMemo(() => {
     const symptoms = Array.from(selectedSymptoms)
     for (const s of symptoms) {
-      const coreKeyword = s.split(/[,(\/—-]/)[0].trim()
+      const coreKeyword = s.split(/[,(/—-]/)[0].trim()
       const map = getPathogenesisForSymptom(coreKeyword)
       if (map) return map
     }

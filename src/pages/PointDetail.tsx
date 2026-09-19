@@ -199,30 +199,30 @@ export default function PointDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-bg pb-24">
-      {/* Header — פס עליון דק בגוון מנטה עדין. הירוק המלא משמש רק להדגשה */}
-      <div className="sticky top-0 z-30 bg-[#d3eae6]/95 dark:bg-dark-card/95 backdrop-blur border-b border-[#b9dcd6] dark:border-dark-border">
+      {/* Header — פס עליון דק בירוק של האפליקציה. דק ולא בלוק שתופס חצי מסך */}
+      <div className="sticky top-0 z-30 bg-teal-primary dark:bg-dark-card text-white border-b border-teal-dark dark:border-dark-border">
         {/* pl-14 משאיר מקום לכפתור התפריט הצף שבפינה השמאלית העליונה */}
         <div className="flex items-center justify-between h-14 pr-2 pl-14">
-          <button onClick={() => navigate(-1)} className="p-2.5 text-teal-dark dark:text-dark-muted hover:text-teal-primary" aria-label="חזרה">
+          <button onClick={() => navigate(-1)} className="p-2.5 text-white/90 hover:text-white" aria-label="חזרה">
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </button>
           <div className="flex items-center gap-1">
             {prevPoint ? (
-              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-2 text-teal-dark/60 dark:text-dark-muted hover:text-teal-primary" aria-label={`נקודה קודמת: ${prevPoint.pinyinName}`}>
+              <button onClick={() => navigate(`/point/${prevPoint.id}`)} className="p-2 text-white/70 hover:text-white" aria-label={`נקודה קודמת: ${prevPoint.pinyinName}`}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </button>
             ) : <div className="w-9" />}
             {zone && (
-              <span className="text-xs font-medium text-teal-primary dark:text-teal-300 bg-white dark:bg-teal-primary/15 px-3 py-1 rounded-full shadow-sm">
-                {zone.name} ({point.zone})
+              <span className="text-sm font-semibold text-white min-w-[4.5rem] text-center">
+                {zone.name}
               </span>
             )}
             {nextPoint ? (
-              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-2 text-teal-dark/60 dark:text-dark-muted hover:text-teal-primary" aria-label={`נקודה הבאה: ${nextPoint.pinyinName}`}>
+              <button onClick={() => navigate(`/point/${nextPoint.id}`)} className="p-2 text-white/70 hover:text-white" aria-label={`נקודה הבאה: ${nextPoint.pinyinName}`}>
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
@@ -232,18 +232,18 @@ export default function PointDetail() {
           <div className="flex items-center">
             <button onClick={handleShare} className="p-2.5" aria-label="שתף נקודה">
               {shareStatus === 'copied' ? (
-                <svg className="w-5 h-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-green-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                 </svg>
               ) : (
-                <svg className="w-5 h-5 text-teal-dark/60 dark:text-dark-muted hover:text-teal-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg className="w-5 h-5 text-white/70 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
               )}
             </button>
             <button onClick={() => toggleFavorite(point.id)} className="p-2.5" aria-label={isFavorite(point.id) ? 'הסר ממועדפים' : 'הוסף למועדפים'}>
               <svg
-                className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-400 fill-amber-400' : 'text-teal-dark/60 dark:text-dark-muted fill-none'}`}
+                className={`w-6 h-6 ${isFavorite(point.id) ? 'text-amber-400 fill-amber-400' : 'text-white/70 fill-none'}`}
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 strokeWidth={2}

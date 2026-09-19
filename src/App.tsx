@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
@@ -42,6 +42,8 @@ export default function App() {
           <Route path="/smart-diagnosis" element={<SmartDiagnosis />} />
           <Route path="/videos" element={<Videos />} />
           <Route path="/principle/:id" element={<PrincipleDetail />} />
+          {/* Unknown URL (old bookmark, typo) → home instead of a blank screen */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </BrowserRouter>

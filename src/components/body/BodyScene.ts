@@ -5,7 +5,7 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import type { BodySex, MeridianDef, SurfacePoint, Vec3 } from '../../data/bodyModel/meridians'
-import { createFlow, createHeart, createKidneys, createLiver, createLungs, createNeedlePoint, createSpleen, type Animated } from './treatmentVisuals'
+import { createFlow, createGallopingHorse, createHeart, createKidneys, createLiver, createLungs, createNeedlePoint, createSpleen, type Animated } from './treatmentVisuals'
 import type { TungGroup } from '../../data/bodyModel/tungGroups'
 
 export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg' | 'treatment'
@@ -38,6 +38,9 @@ export class BodyScene {
   private markerGroup = new THREE.Group()
   private treatmentGroup = new THREE.Group()
   private animated: Animated[] = []
+  /** מתי כל אלמנט מופיע, בשניות מרגע בחירת הקבוצה (להנפשת הפתיחה) */
+  private revealAt = new Map<THREE.Object3D, number>()
+  private groupStart = 0
   private pickables: THREE.Mesh[] = []
   private pulses: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; t: number; speed: number }[] = []
   private tween: { p0: THREE.Vector3; p1: THREE.Vector3; t0: THREE.Vector3; t1: THREE.Vector3; k: number } | null = null
@@ -197,10 +200,17 @@ export class BodyScene {
   setTungGroup(group: TungGroup | null, points: Record<string, SurfacePoint>): void {
     this.clearGroup(this.treatmentGroup)
     this.animated = []
+    this.revealAt.clear()
+    this.groupStart = -1 // נקבע בפריים הראשון שמצויר, כדי שהשעון לא "יקפוץ" אם הלשונית הייתה ברקע
     this.meridianGroup.visible = !group
     if (!group || !this.body) return
     const H = this.bodyHeight
     const s = H / 1.78
+    // הנפשת שם הנקודה: סוסים דוהרים אל הנקודות, ורק אחר כך מופיעים הקשת והאיבר
+    const horses = group.id === '88.17-19' && !this.reduceMotion
+    const departAt = (i: number) => 0.6 + i * 0.45
+    const arriveAt = (i: number) => departAt(i) + 2.4
+    const afterIntro = horses ? arriveAt(group.pointIds.length - 1) + 0.4 : 0
 
     const chestFront = this.frontHit(0, 0.72 * H)
     const chestBack = this.rayHit([0, 0.72 * H, -1], [0, 0, 1])
@@ -212,11 +222,11 @@ export class BodyScene {
       const baseY = 0.685 * H
       const size = 0.1 * H
       const halfSpan = 0.66 * this.frontHalfWidth(0.72 * H, 0.3)
-      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size, halfSpan))
+      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size, halfSpan), afterIntro)
       target = side => new THREE.Vector3(side * halfSpan * 0.52, baseY + size * 0.45, midZ)
     } else if (group.organ === 'heart') {
       const center = new THREE.Vector3(0.02 * s, 0.705 * H, midZ + 0.025 * s)
-      this.add(createHeart(center, 0.068 * H))
+      this.add(createHeart(center, 0.068 * H), afterIntro)
       target = () => center.clone()
     } else if (group.organ === 'kidneys') {
       // בגב, בגובה המותניים העליונים, משני צידי עמוד השדרה
@@ -227,16 +237,16 @@ export class BodyScene {
         new THREE.Vector3(0.055 * s, y + 0.008 * s, z),
         new THREE.Vector3(-0.055 * s, y - 0.008 * s, z),
       ]
-      this.add(createKidneys(centers, 0.068 * H))
+      this.add(createKidneys(centers, 0.068 * H), afterIntro)
       target = side => centers[side === 1 ? 0 : 1].clone()
     } else if (group.organ === 'spleen') {
       // צד שמאל של המטופל, מאחורי הצלעות התחתונות
       const center = new THREE.Vector3(0.09 * s, 0.665 * H, midZ - 0.03 * s)
-      this.add(createSpleen(center, 0.1 * H))
+      this.add(createSpleen(center, 0.1 * H), afterIntro)
       target = () => center.clone()
     } else {
       const center = new THREE.Vector3(-0.04 * s, 0.678 * H, midZ + 0.02 * s)
-      this.add(createLiver(center, 0.115 * H))
+      this.add(createLiver(center, 0.115 * H), afterIntro)
       target = side => center.clone().add(new THREE.Vector3(side * 0.04 * s, 0, 0))
     }
 
@@ -244,12 +254,20 @@ export class BodyScene {
     if (!leftSide.length) return
     for (const side of [1, -1]) {
       const sidePoints = leftSide.map(sp => side === 1 ? sp : { p: mirror(sp.p), n: mirror(sp.n) })
-      sidePoints.forEach((sp, i) => this.add(createNeedlePoint(sp, i * 0.33)))
+      sidePoints.forEach((sp, i) => {
+        this.add(createNeedlePoint(sp, i * 0.33), horses ? arriveAt(i) : 0)
+        if (horses) {
+          const to = new THREE.Vector3(...sp.p)
+          // הסוס מגיע מחוץ לרגל, מהצד של אותה רגל
+          const from = to.clone().add(new THREE.Vector3(side * 0.42 * s, 0.03 * s, 0.05 * s))
+          this.add(createGallopingHorse(from, to, () => this.groupStart, departAt(i), arriveAt(i)))
+        }
+      })
       // הקשת יוצאת ממרכז הקבוצה
       const from = sidePoints
         .reduce((acc, sp) => acc.add(new THREE.Vector3(...sp.p)), new THREE.Vector3())
         .divideScalar(sidePoints.length)
-      this.add(createFlow(this.innerPath(from, target(side), side), group.color))
+      this.add(createFlow(this.innerPath(from, target(side), side), group.color), afterIntro)
     }
   }
 
@@ -298,9 +316,13 @@ export class BodyScene {
     return (best.a + best.b) / 2
   }
 
-  private add(item: Animated) {
+  private add(item: Animated, revealAt = 0) {
     this.treatmentGroup.add(item.object)
     this.animated.push(item)
+    if (revealAt > 0) {
+      this.revealAt.set(item.object, revealAt)
+      item.object.visible = false
+    }
   }
 
   private rayHit(origin: Vec3, dir: Vec3) {
@@ -461,6 +483,9 @@ export class BodyScene {
       if (this.tween.k >= 1) this.tween = null
     }
     const elapsed = this.clock.elapsedTime
+    if (this.groupStart < 0) this.groupStart = elapsed
+    const sinceGroup = elapsed - this.groupStart
+    for (const [object, at] of this.revealAt) object.visible = sinceGroup >= at
     for (const item of this.animated) item.update(this.reduceMotion ? 1.2 : elapsed)
     for (const pulse of this.pulses) {
       pulse.t = (pulse.t + pulse.speed * dt) % 1

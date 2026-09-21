@@ -416,3 +416,118 @@ export function createSpleen(center: THREE.Vector3, size: number, color = '#6fd6
     },
   }
 }
+
+// ── הנפשת שם הנקודה: סוסים דוהרים אל הנקודות ──
+
+const horseTextures: Partial<Record<'left' | 'right', THREE.CanvasTexture>> = {}
+
+/** צללית סוס זוהרת, מצוירת מהאימוג'י ונצבעת אחיד כדי שתיראה כמו הולוגרמה בכל מכשיר */
+function horseTexture(facing: 'left' | 'right'): THREE.CanvasTexture {
+  const cached = horseTextures[facing]
+  if (cached) return cached
+  const size = 256
+  const canvas = document.createElement('canvas')
+  canvas.width = canvas.height = size
+  const ctx = canvas.getContext('2d')!
+  /** צורת הסוס צבועה בצבע אחיד */
+  const silhouette = (color: string) => {
+    const shape = document.createElement('canvas')
+    shape.width = shape.height = size
+    const sctx = shape.getContext('2d')!
+    sctx.textAlign = 'center'
+    sctx.textBaseline = 'middle'
+    sctx.font = `${size * 0.62}px "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",sans-serif`
+    if (facing === 'right') {
+      sctx.translate(size, 0)
+      sctx.scale(-1, 1)
+    }
+    sctx.fillText('🐎', size / 2, size / 2)
+    sctx.globalCompositeOperation = 'source-in'
+    sctx.fillStyle = color
+    sctx.fillRect(0, 0, size, size)
+    return shape
+  }
+  // קו מתאר כהה מבדיל את הסוס מהעור הבהיר, ומעליו הצורה בתכלת של ההולוגרמה
+  const outline = silhouette('#063238')
+  ctx.filter = 'blur(3px)'
+  for (let i = 0; i < 3; i++) ctx.drawImage(outline, 0, 0)
+  ctx.filter = 'none'
+  ctx.drawImage(silhouette('#8ff0ff'), 0, 0)
+  const texture = new THREE.CanvasTexture(canvas)
+  texture.colorSpace = THREE.SRGBColorSpace
+  horseTextures[facing] = texture
+  return texture
+}
+
+/**
+ * סוס שדוהר על העור מ-from אל הנקודה to, ונבלע בה בהבזק.
+ * start - זמן השעון שבו הקבוצה התחילה להיות מוצגת. arriveAt - שניות מ-start עד ההגעה.
+ */
+export function createGallopingHorse(
+  from: THREE.Vector3,
+  to: THREE.Vector3,
+  start: () => number,
+  departAt: number,
+  arriveAt: number,
+  height = 0.17,
+): Animated {
+  const facing = to.x < from.x ? 'left' : 'right'
+  const group = new THREE.Group()
+  group.renderOrder = 20
+  const make = (opacity: number) => {
+    const material = new THREE.SpriteMaterial({
+      map: horseTexture(facing), transparent: true, opacity, depthTest: false, depthWrite: false, toneMapped: false,
+    })
+    const sprite = new THREE.Sprite(material)
+    sprite.scale.set(height, height, 1)
+    sprite.renderOrder = 20
+    group.add(sprite)
+    return sprite
+  }
+  // שני "הדים" שקופים מאחור יוצרים תחושת מהירות
+  const echoes = [make(0.18), make(0.35)]
+  const horse = make(1)
+  const flash = new THREE.Mesh(
+    new THREE.RingGeometry(0.006, 0.014, 40),
+    new THREE.MeshBasicMaterial({ color: '#fff1c9', transparent: true, opacity: 0, side: THREE.DoubleSide, depthTest: false, depthWrite: false, blending: THREE.AdditiveBlending, toneMapped: false }),
+  )
+  flash.position.copy(to)
+  flash.renderOrder = 21
+  group.add(flash)
+
+  const place = (sprite: THREE.Sprite, k: number, t: number) => {
+    const e = 1 - Math.pow(1 - Math.min(1, Math.max(0, k)), 2) // מאט לקראת הנקודה
+    sprite.position.lerpVectors(from, to, e)
+    // קפיצות הדהירה: הסוס מתרומם ונוחת בקצב קבוע
+    sprite.position.y += Math.abs(Math.sin(t * 11)) * height * 0.18 * (1 - e * 0.6)
+    sprite.material.rotation = Math.sin(t * 11) * 0.12 * (facing === 'left' ? 1 : -1)
+  }
+
+  return {
+    object: group,
+    update: time => {
+      const t = time - start()
+      const k = (t - departAt) / (arriveAt - departAt)
+      const running = k >= 0 && k < 1
+      horse.visible = running
+      place(horse, k, t)
+      echoes.forEach((echo, i) => {
+        echo.visible = running
+        place(echo, k - (i === 0 ? 0.12 : 0.06), t - (i === 0 ? 0.12 : 0.06))
+      })
+      // כשמגיעים: הסוס מתכווץ ונעלם, וטבעת אור מתרחבת מהנקודה
+      if (running && k > 0.85) {
+        const shrink = 1 - (k - 0.85) / 0.15
+        horse.scale.set(height * shrink, height * shrink, 1)
+      } else horse.scale.set(height, height, 1)
+      const f = t - arriveAt
+      const ring = flash.material as THREE.MeshBasicMaterial
+      if (f >= 0 && f < 0.7) {
+        flash.visible = true
+        flash.scale.setScalar(1 + f * 5)
+        ring.opacity = 0.9 * (1 - f / 0.7)
+        flash.lookAt(flash.position.clone().add(new THREE.Vector3(0, 0, 1)))
+      } else flash.visible = false
+    },
+  }
+}

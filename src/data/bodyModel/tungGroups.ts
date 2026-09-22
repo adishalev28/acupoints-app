@@ -17,7 +17,7 @@ export interface TungGroup {
 export const tungGroups: TungGroup[] = [
   {
     id: '88.17-19',
-    hebrewName: 'סוס דוהר',
+    hebrewName: 'ארבעת הסוסים',
     chineseName: '駟馬',
     pointIds: ['88.17', '88.18', '88.19'],
     organ: 'lungs',

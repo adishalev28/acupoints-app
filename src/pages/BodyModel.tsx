@@ -69,6 +69,7 @@ export default function BodyModel() {
   const [mode, setMode] = useState<Mode>(searchParams.get('mode') === 'tung' ? 'tung' : 'channel')
   const [meridianId, setMeridianId] = useState(() =>
     meridians.find(m => m.id === searchParams.get('channel'))?.id ?? 'stomach')
+  const [showAll, setShowAll] = useState(() => searchParams.get('channel') === 'all')
   const [groupId, setGroupId] = useState(() =>
     tungGroups.find(g => g.id === searchParams.get('group'))?.id ?? tungGroups[0].id)
   const [sex, setSex] = useState<BodySex>(() => readStorage<BodySex>(SEX_KEY, 'female'))
@@ -124,9 +125,18 @@ export default function BodyModel() {
 
   // שלושה עדכונים נפרדים, כדי שמעבר בין קבוצות דונג לא יבנה מחדש את הערוץ,
   // ובחירת נקודה במצב עריכה לא תתחיל מחדש את הנפשת הקבוצה
+  // כל הערוצים יחד: רק במצב רפואה סינית ולא בעריכה
+  const allActive = showAll && mode === 'channel' && !editMode
+  const allChannels = useMemo(
+    () => meridians.map(def => ({ def, paths: { ...meridianPaths[sex][def.id], ...edits[sex][def.id] } })),
+    [sex, edits],
+  )
+
   useEffect(() => {
-    if (loaded === sex) sceneRef.current?.setMeridian(meridian, channelPaths)
-  }, [loaded, sex, meridian, channelPaths])
+    if (loaded !== sex) return
+    if (allActive) sceneRef.current?.setMeridians(allChannels)
+    else sceneRef.current?.setMeridian(meridian, channelPaths)
+  }, [loaded, sex, meridian, channelPaths, allActive, allChannels])
 
   useEffect(() => {
     if (loaded === sex) sceneRef.current?.setTungGroup(mode === 'tung' ? group : null, tungPaths)
@@ -171,7 +181,16 @@ export default function BodyModel() {
     const scene = sceneRef.current
     if (!scene) return
     scene.events = {
-      onMeridianTap: editMode ? undefined : () => setInfoOpen(true),
+      onMeridianTap: editMode
+        ? undefined
+        : id => {
+            // בתצוגת כל הערוצים, לחיצה על קו פותחת את הערוץ הזה לבד
+            if (allActive) {
+              setShowAll(false)
+              setMeridianId(id)
+            }
+            setInfoOpen(true)
+          },
       onTungPointTap: editMode || mode !== 'tung' ? undefined : () => { setInfoOpen(false); setIndicationsOpen(true) },
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
       onBodyTap: editMode
@@ -225,25 +244,37 @@ export default function BodyModel() {
   }
 
   const selected = editItems.find(i => i.id === activeSelectedId)
-  const chipColor = mode === 'tung' ? group.color : meridian.color
+  const chipColor = mode === 'tung' ? group.color : allActive ? ALL_CHANNELS_DOT : meridian.color
   const card = mode === 'tung'
     ? { title: group.hebrewName, subtitle: `${group.id} · ${group.chineseName}`, explanation: group.explanation }
-    : { title: meridian.hebrewName, subtitle: meridian.chineseName, explanation: meridian.explanation }
-  const chipLabel = mode === 'tung' ? `${group.hebrewName} ← ${group.organName}` : meridian.hebrewName
+    : allActive
+      ? ALL_CHANNELS_CARD
+      : { title: meridian.hebrewName, subtitle: meridian.chineseName, explanation: meridian.explanation }
+  const chipLabel = mode === 'tung' ? `${group.hebrewName} ← ${group.organName}` : allActive ? ALL_CHANNELS_CARD.title : meridian.hebrewName
 
   // בחירת ערוץ או קבוצת נקודות. בטלפון בתחתית המסך, כדי לא לכסות את הגוף
   const pickerChips = (
     <div className={`flex gap-2 ${editMode ? 'flex-wrap' : 'flex-nowrap overflow-x-auto max-w-full pointer-events-auto [scrollbar-width:none]'}`}>
       {mode === 'channel'
-        ? meridians.map(m => (
-            <ColorChip
-              key={m.id}
-              color={m.color}
-              label={m.hebrewName}
-              active={m.id === meridianId}
-              onClick={() => { setMeridianId(m.id); setInfoOpen(false) }}
-            />
-          ))
+        ? <>
+            {!editMode && (
+              <ColorChip
+                color={ALL_CHANNELS_DOT}
+                label={ALL_CHANNELS_CARD.title}
+                active={allActive}
+                onClick={() => { setShowAll(true); setInfoOpen(false) }}
+              />
+            )}
+            {meridians.map(m => (
+              <ColorChip
+                key={m.id}
+                color={m.color}
+                label={m.hebrewName}
+                active={!allActive && m.id === meridianId}
+                onClick={() => { setShowAll(false); setMeridianId(m.id); setInfoOpen(false) }}
+              />
+            ))}
+          </>
         : tungGroups.map(g => (
             <ColorChip
               key={g.id}
@@ -439,6 +470,19 @@ function Segmented({ value, onChange, options }: {
       ))}
     </div>
   )
+}
+
+/** נקודת הצבע של "כל הערוצים": גלגל מכל צבעי הערוצים, לפי סדר המחזור */
+const ALL_CHANNELS_DOT = `conic-gradient(${meridians.map(m => m.color).join(', ')})`
+
+const ALL_CHANNELS_CARD = {
+  title: 'כל הערוצים',
+  subtitle: '十二經脈 · 12 הערוצים הראשיים',
+  explanation: [
+    'כאן רואים את כל 12 הערוצים יחד, וכל נקודת אור מראה לאיזה כיוון זורם הערוץ שלה.',
+    'הערוצים לא עובדים כל אחד לבד. הם מחוברים זה לזה ברצף אחד: ערוץ הריאות ממשיך לערוץ המעי הגס, ממנו לקיבה, לטחול, ללב, וכך הלאה עד ערוץ הכבד, שחוזר ומתחבר לריאות.',
+    'לכן דיקור בנקודה אחת משפיע על כל המערכת. לחיצה על קו פותחת את הערוץ הזה לבד, עם ההסבר שלו.',
+  ],
 }
 
 function ColorChip({ color, label, active, onClick }: {

@@ -130,15 +130,30 @@ export class BodyScene {
 
   /** מצייר את המרידיאן בשני צידי הגוף. paths - מיקומים לצד שמאל */
   setMeridian(def: MeridianDef, paths: Record<string, SurfacePoint>): void {
+    this.setMeridians([{ def, paths }])
+  }
+
+  /**
+   * כמה ערוצים יחד. כשמוצגים כולם, הפעימות צבועות בצבע הערוץ וצפופות יותר,
+   * כדי שיראו את כיוון הזרימה של כל ערוץ לצד השאר.
+   */
+  setMeridians(list: { def: MeridianDef; paths: Record<string, SurfacePoint> }[]): void {
     this.clearGroup(this.meridianGroup)
     this.pickables = []
     this.pulses = []
     if (!this.body) return
+    const many = list.length > 1
+    const pickMat = new THREE.MeshBasicMaterial({ visible: false })
+    for (const { def, paths } of list) this.addMeridian(def, paths, pickMat, many)
+  }
+
+  private addMeridian(def: MeridianDef, paths: Record<string, SurfacePoint>, pickMat: THREE.Material, many: boolean): void {
     const color = new THREE.Color(def.color)
     const coreMat = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#fff'), 0.15), toneMapped: false })
     const glowMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.32, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
-    const pickMat = new THREE.MeshBasicMaterial({ visible: false })
-    const pulseMat = new THREE.MeshBasicMaterial({ color: '#fff6de', transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
+    const pulseColor = many ? color.clone().lerp(new THREE.Color('#fff'), 0.45) : new THREE.Color('#fff6de')
+    const pulseMat = new THREE.MeshBasicMaterial({ color: pulseColor, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
+    const spacing = many ? 0.2 : 0.35
 
     for (const sideSign of [1, -1]) {
       for (const segment of def.segments) {
@@ -157,7 +172,7 @@ export class BodyScene {
 
         if (!this.reduceMotion) {
           const length = curve.getLength()
-          const count = Math.max(1, Math.round(length / 0.35))
+          const count = Math.max(1, Math.round(length / spacing))
           for (let i = 0; i < count; i++) {
             const mesh = new THREE.Mesh(new THREE.SphereGeometry(0.0045, 12, 8), pulseMat)
             this.meridianGroup.add(mesh)

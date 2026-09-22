@@ -712,6 +712,124 @@ function tripleBurnerRules(m) {
   }
 }
 
+/** כלים לרגל ולכף הרגל, משותפים לכליות ולשלפוחית השתן */
+function legTools(m) {
+  const { H, s, front, back, cast, leg } = m
+  const pos = m.positions
+  const cun = 0.0225 * s
+  // קצה הבוהן (הנקודה הקדמית ביותר) והעקב (האחורית ביותר) של כף הרגל השמאלית
+  let toe = { x: 0, z: -1 }
+  let heelZ = 1
+  for (let i = 0; i < pos.count; i++) {
+    if (pos.getX(i) <= 0 || pos.getY(i) > 0.03 * s) continue
+    if (pos.getZ(i) > toe.z) toe = { x: pos.getX(i), z: pos.getZ(i) }
+    if (pos.getZ(i) < heelZ) heelZ = pos.getZ(i)
+  }
+  const footLength = toe.z - heelZ
+  const legMidZ = y => {
+    const r = leg(y)
+    const cx = (r.a + r.b) / 2
+    const f = front(cx, y)
+    const b = back(cx, y)
+    return f && b ? (f.point.z + b.point.z) / 2 : 0
+  }
+  const legCenterX = y => { const r = leg(y); return (r.a + r.b) / 2 }
+  /** הצד הפנימי של הרגל: קרן מקו האמצע החוצה */
+  const medialLeg = (y, forward = 0) => cast([0, y, legMidZ(y) + forward], [1, 0, 0])
+  /** הצד החיצוני של הרגל: קרן מבחוץ פנימה */
+  const lateralLeg = (y, forward = 0) => cast([1, y, legMidZ(y) + forward], [-1, 0, 0])
+  /** גב הרגל: קרן מאחור. f=0 הצד הפנימי, f=1 הצד החיצוני */
+  const backLeg = (y, f = 0.5) => { const r = leg(y); return back(r.a + f * (r.b - r.a), y) }
+  /** כף הרגל מלמעלה, עם חיפוש קדימה-אחורה אם הקרן מפספסת */
+  const down = (x, z) => {
+    for (let dz = 0; dz < 0.05; dz += 0.003) {
+      const h = cast([x, 0.3 * s, z - dz], [0, -1, 0])
+      if (h) return h
+    }
+    return null
+  }
+  const malleolusY = 0.045 * H
+  const kneeY = 0.28 * H
+  return { cun, toe, heelZ, footLength, legMidZ, legCenterX, medialLeg, lateralLeg, backLeg, down, malleolusY, kneeY }
+}
+
+// ──────────────────────── ערוץ הכליות (רגל) ────────────────────────
+function kidneyRules(m) {
+  const { H, s, front, cast } = m
+  const { cun, toe, footLength, legMidZ, medialLeg, malleolusY, kneeY } = legTools(m)
+  // בבטן: חצי צון מקו האמצע. בחזה: 2 צון, בגובה המרווחים שבין הצלעות
+  const nearMid = 0.5 * cun
+  return {
+    // בכף הרגל, בשליש הקדמי: קרן מלמטה
+    KI1: () => cast([toe.x + 0.022 * s, -0.1, toe.z - 0.33 * footLength], [0, 1, 0]),
+    KI2: () => cast([0, 0.02 * s, toe.z - 0.5 * footLength], [1, 0, 0]),
+    KI3: () => medialLeg(malleolusY, -0.024 * s),
+    KI6: () => cast([0, 0.028 * H, legMidZ(malleolusY)], [1, 0, 0]),
+    KI7: () => medialLeg(malleolusY + 2 * cun, -0.024 * s),
+    KI9: () => medialLeg(malleolusY + 5 * cun, -0.03 * s),
+    KI10: () => medialLeg(kneeY, -0.035 * s),
+    KI11: () => front(nearMid, 0.53 * H),
+    KI16: () => front(nearMid + 0.006 * s, 0.595 * H),
+    KI21: () => front(nearMid, 0.665 * H),
+    KI22: () => front(2 * cun, 0.7 * H),
+    KI25: () => front(2 * cun, 0.765 * H),
+    KI27: () => front(2 * cun, 0.8 * H),
+  }
+}
+
+// ──────────────────────── ערוץ שלפוחית השתן (רגל) ────────────────────────
+function bladderRules(m) {
+  const { H, s, front, back, cast } = m
+  const { cun, toe, legMidZ, lateralLeg, backLeg, down, malleolusY, kneeY } = legTools(m)
+  const { hw, earZ, headDepth } = headTools(m)
+  const eyeY = 0.93 * H
+  const headMid = earZ + 0.1 * headDepth
+  const fromAbove = (x, z) => cast([x, H + 0.05, z], [0, -1, 0])
+  // גובה החוליות: מהחוליה הבולטת בבסיס הצוואר (C7) עד החוליה המותנית החמישית, 17 חוליות
+  const C7 = 0.838 * H
+  const vertebra = n => C7 - n * (C7 - 0.57 * H) / 17 // n=1 הוא T1, n=13 הוא L1
+  const inner = 1.5 * cun
+  const outer = 3 * cun
+  // הירך: מקפל העכוז עד קפל הברך 14 צון; השוק: מהברך עד הקרסול 16 צון
+  const glutealY = 0.455 * H
+  const thighY = c => glutealY - (glutealY - kneeY) * c / 14
+  const calfY = c => kneeY - (kneeY - malleolusY) * c / 16
+
+  return {
+    BL1: () => front(0.22 * hw, eyeY),
+    BL2: () => front(0.24 * hw, 0.94 * H),
+    BL7: () => fromAbove(inner, headMid + 0.05 * headDepth),
+    BL9: () => back(1.3 * cun, 0.915 * H),
+    BL10: () => back(1.3 * cun, 0.885 * H),
+    BL11: () => back(inner, vertebra(1)),
+    BL13: () => back(inner, vertebra(3)),
+    BL15: () => back(inner, vertebra(5)),
+    BL17: () => back(inner, vertebra(7)),
+    BL18: () => back(inner, vertebra(9)),
+    BL20: () => back(inner, vertebra(11)),
+    BL23: () => back(inner, vertebra(14)),
+    BL25: () => back(inner, vertebra(16)),
+    BL28: () => back(inner, 0.535 * H),
+    BL36: () => backLeg(glutealY, 0.5),
+    BL37: () => backLeg(thighY(6), 0.5),
+    BL40: () => backLeg(kneeY, 0.5),
+    // הענף החיצוני בגב, 3 צון מקו האמצע
+    BL41: () => back(outer, vertebra(2)),
+    BL43: () => back(outer, vertebra(4)),
+    BL47: () => back(outer, vertebra(9)),
+    BL52: () => back(outer, vertebra(14)),
+    BL54: () => back(outer, 0.52 * H),
+    BL39: () => backLeg(kneeY + 0.004 * s, 0.75),
+    BL57: () => backLeg(calfY(8), 0.5),
+    BL58: () => backLeg(calfY(9), 0.72),
+    BL60: () => lateralLeg(malleolusY, -0.024 * s),
+    BL62: () => cast([1, 0.028 * H, legMidZ(malleolusY)], [-1, 0, 0]),
+    BL64: () => cast([1, 0.012 * s, toe.z - 0.1 * s], [-1, 0, 0]),
+    BL65: () => cast([1, 0.012 * s, toe.z - 0.06 * s], [-1, 0, 0]),
+    BL67: () => down(toe.x + 0.062 * s, toe.z - 0.028 * s),
+  }
+}
+
 function runRules(rules, label) {
   const out = {}
   for (const [id, rule] of Object.entries(rules)) {
@@ -739,6 +857,8 @@ async function seedBody(file) {
       liver: runRules(liverRules(m), 'liver'),
       smallIntestine: runRules(smallIntestineRules(m), 'smallIntestine'),
       tripleBurner: runRules(tripleBurnerRules(m), 'tripleBurner'),
+      kidney: runRules(kidneyRules(m), 'kidney'),
+      bladder: runRules(bladderRules(m), 'bladder'),
     },
     tung: runRules(tungRules(m), 'tung'),
   }

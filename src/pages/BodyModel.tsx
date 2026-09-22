@@ -63,6 +63,9 @@ export default function BodyModel() {
   const [searchParams] = useSearchParams()
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const sceneRef = useRef<BodyScene | null>(null)
+  const topBarRef = useRef<HTMLDivElement>(null)
+  const bottomBarRef = useRef<HTMLDivElement>(null)
+  const [safeArea, setSafeArea] = useState({ top: 0, bottom: 0 })
   const [mode, setMode] = useState<Mode>(searchParams.get('mode') === 'tung' ? 'tung' : 'channel')
   const [meridianId, setMeridianId] = useState(() =>
     meridians.find(m => m.id === searchParams.get('channel'))?.id ?? 'stomach')
@@ -119,18 +122,49 @@ export default function BodyModel() {
     return () => { cancelled = true }
   }, [sex])
 
+  // שלושה עדכונים נפרדים, כדי שמעבר בין קבוצות דונג לא יבנה מחדש את הערוץ,
+  // ובחירת נקודה במצב עריכה לא תתחיל מחדש את הנפשת הקבוצה
+  useEffect(() => {
+    if (loaded === sex) sceneRef.current?.setMeridian(meridian, channelPaths)
+  }, [loaded, sex, meridian, channelPaths])
+
+  useEffect(() => {
+    if (loaded === sex) sceneRef.current?.setTungGroup(mode === 'tung' ? group : null, tungPaths)
+  }, [loaded, sex, mode, group, tungPaths])
+
   useEffect(() => {
     const scene = sceneRef.current
     if (!scene || loaded !== sex) return
-    scene.setMeridian(meridian, channelPaths)
-    scene.setTungGroup(mode === 'tung' ? group : null, tungPaths)
     const markerSource = mode === 'channel' ? channelPaths : Object.fromEntries(group.pointIds.map(id => [id, tungPaths[id]]))
     scene.setMarkers(editMode ? markerSource : null, activeSelectedId)
-  }, [loaded, sex, mode, meridian, group, channelPaths, tungPaths, editMode, activeSelectedId])
+  }, [loaded, sex, mode, group, channelPaths, tungPaths, editMode, activeSelectedId])
+
+  // כמה מהמסך מכוסה בכפתורים למעלה ולמטה, כדי שהגוף ייכנס כולו לשטח שביניהם
+  useEffect(() => {
+    const measure = () => {
+      const top = Math.round(topBarRef.current?.getBoundingClientRect().bottom ?? 0)
+      const bottomTop = bottomBarRef.current?.getBoundingClientRect().top
+      const bottom = bottomTop === undefined ? 0 : Math.round(window.innerHeight - bottomTop)
+      setSafeArea(prev => prev.top === top && prev.bottom === bottom ? prev : { top, bottom })
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    if (topBarRef.current) observer.observe(topBarRef.current)
+    if (bottomBarRef.current) observer.observe(bottomBarRef.current)
+    window.addEventListener('resize', measure)
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('resize', measure)
+    }
+  }, [editMode])
+
+  useEffect(() => {
+    sceneRef.current?.setSafeArea(safeArea.top, safeArea.bottom)
+  }, [safeArea])
 
   useEffect(() => {
     if (loaded) sceneRef.current?.setView(mode === 'tung' && view === 'front' ? 'treatment' : view)
-  }, [view, loaded, mode])
+  }, [view, loaded, mode, safeArea])
 
   // האירועים נקראים מתוך הסצנה, ולכן מתעדכנים בכל רינדור עם הערכים העדכניים
   useEffect(() => {
@@ -233,7 +267,7 @@ export default function BodyModel() {
       )}
 
       {/* סרגל עליון */}
-      <div className="absolute top-0 inset-x-0 p-3 flex flex-col gap-2 pointer-events-none">
+      <div ref={topBarRef} className="absolute top-0 inset-x-0 p-3 flex flex-col gap-2 pointer-events-none">
         <div className="flex flex-wrap items-center gap-2">
           <Link
             to="/"
@@ -262,7 +296,7 @@ export default function BodyModel() {
 
       {/* מקרא ותחתית */}
       {!editMode && (
-        <div className="absolute bottom-0 inset-x-0 p-3 flex flex-col items-start gap-2 pointer-events-none">
+        <div ref={bottomBarRef} className="absolute bottom-0 inset-x-0 p-3 flex flex-col items-start gap-2 pointer-events-none">
           {pickerChips}
           <div className="flex flex-wrap gap-2">
           <button

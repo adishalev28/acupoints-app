@@ -4,6 +4,7 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { MeshBVH, acceleratedRaycast } from 'three-mesh-bvh'
 import type { BodySex, MeridianDef, SurfacePoint, Vec3 } from '../../data/bodyModel/meridians'
 import { createFlow, createGallopingHorse, createHeart, createKidneys, createLiver, createLungs, createNeedlePoint, createSpleen, type Animated } from './treatmentVisuals'
 import type { TungGroup } from '../../data/bodyModel/tungGroups'
@@ -34,6 +35,10 @@ export class BodyScene {
   private loader = new GLTFLoader()
   private body: THREE.Mesh | null = null
   private bodyHeight = 1.78
+  private bodyWidth = 1.6 // מקצה יד לקצה יד
+  private bodyDepth = 0.35
+  private safeTop = 0
+  private safeBottom = 0
   private meridianGroup = new THREE.Group()
   private markerGroup = new THREE.Group()
   private treatmentGroup = new THREE.Group()
@@ -107,6 +112,9 @@ export class BodyScene {
     found.material = new THREE.MeshStandardMaterial({ color: SKIN, roughness: 0.72, metalness: 0 })
     found.geometry.computeBoundingBox()
     found.geometry.computeBoundingSphere()
+    // עץ חיפוש למשולשים: מאות המדידות על הגוף (מיקום איברים, קווים, לחיצות) רצות פי מאות מהר יותר
+    found.geometry.boundsTree = new MeshBVH(found.geometry)
+    found.raycast = acceleratedRaycast
     found.removeFromParent()
     if (this.body) {
       this.scene.remove(this.body)
@@ -115,6 +123,8 @@ export class BodyScene {
     }
     this.body = found
     this.bodyHeight = found.geometry.boundingBox!.max.y
+    this.bodyWidth = found.geometry.boundingBox!.max.x - found.geometry.boundingBox!.min.x
+    this.bodyDepth = found.geometry.boundingBox!.max.z - found.geometry.boundingBox!.min.z
     this.scene.add(found)
   }
 
@@ -186,9 +196,17 @@ export class BodyScene {
       treatment: [[1.6, 0.58 * H, 3.3], [0, 0.5 * H, 0]],
     }
     const [p, t] = presets[view]
+    const target = new THREE.Vector3(...t)
+    let position = new THREE.Vector3(...p)
+    if (view === 'front' || view === 'side' || view === 'back' || view === 'treatment') {
+      // מבטי גוף מלא: מרחק שמכניס את כל הגוף, מהראש עד כפות הרגליים, לשטח שבין הכפתורים
+      target.y = 0.5 * H
+      const dir = position.clone().sub(new THREE.Vector3(...t)).normalize()
+      position = target.clone().add(dir.multiplyScalar(this.fitDistance(view === 'side' ? this.bodyDepth : this.bodyWidth)))
+    }
     this.tween = {
-      p0: this.camera.position.clone(), p1: new THREE.Vector3(...p),
-      t0: this.controls.target.clone(), t1: new THREE.Vector3(...t),
+      p0: this.camera.position.clone(), p1: position,
+      t0: this.controls.target.clone(), t1: target,
       k: animate && !this.reduceMotion ? 0 : 1,
     }
   }
@@ -328,6 +346,7 @@ export class BodyScene {
   private rayHit(origin: Vec3, dir: Vec3) {
     if (!this.body) return null
     const ray = new THREE.Raycaster(new THREE.Vector3(...origin), new THREE.Vector3(...dir).normalize())
+    ray.firstHitOnly = true
     return ray.intersectObject(this.body)[0] ?? null
   }
 
@@ -372,6 +391,7 @@ export class BodyScene {
     const normals = points.map(sp => new THREE.Vector3(...sp.n))
     const rough = new THREE.CatmullRomCurve3(controlPts, false, 'centripetal')
     const ray = new THREE.Raycaster()
+    ray.firstHitOnly = true
     const out: THREE.Vector3[] = []
     const spans = points.length - 1
     const total = spans * SAMPLES_PER_SPAN
@@ -417,6 +437,7 @@ export class BodyScene {
     const rect = this.canvas.getBoundingClientRect()
     const ndc = new THREE.Vector2(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1)
     const ray = new THREE.Raycaster()
+    ray.firstHitOnly = true
     ray.setFromCamera(ndc, this.camera)
 
     if (this.events.onMarkerTap && this.markerGroup.children.length) {
@@ -465,11 +486,37 @@ export class BodyScene {
     }
   }
 
+  /**
+   * כמה פיקסלים מכסים הכפתורים למעלה ולמטה. הסצנה מזיזה את מרכז התמונה לאמצע
+   * השטח הפנוי, ומבטי הגוף המלא מתרחקים מספיק כדי שהגוף ייכנס בו כולו.
+   */
+  setSafeArea(top: number, bottom: number): void {
+    if (top === this.safeTop && bottom === this.safeBottom) return
+    this.safeTop = top
+    this.safeBottom = bottom
+    this.resize()
+  }
+
+  /** מרחק המצלמה שבו הגוף כולו, לגובה ולרוחב, נכנס לשטח שבין הכפתורים */
+  private fitDistance(across: number): number {
+    const w = this.canvas.clientWidth || 1, h = this.canvas.clientHeight || 1
+    const free = Math.max(0.35, (h - this.safeTop - this.safeBottom) / h)
+    const tan = Math.tan(THREE.MathUtils.degToRad(this.camera.fov / 2))
+    const byHeight = (this.bodyHeight * 1.08) / (2 * tan * free)
+    const byWidth = (across * 1.08) / (2 * tan * (w / h))
+    const d = Math.max(byHeight, byWidth, 3)
+    this.controls.maxDistance = Math.max(7, d * 1.3)
+    return d
+  }
+
   private resize() {
     const w = this.canvas.clientWidth, h = this.canvas.clientHeight
     if (!w || !h) return
     this.renderer.setSize(w, h, false)
     this.camera.aspect = w / h
+    const shift = (this.safeBottom - this.safeTop) / 2
+    if (shift) this.camera.setViewOffset(w, h, 0, shift, w, h)
+    else this.camera.clearViewOffset()
     this.camera.updateProjectionMatrix()
   }
 

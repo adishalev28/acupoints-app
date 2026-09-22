@@ -25,6 +25,8 @@ export interface BodySceneEvents {
 export interface MeridianLayer {
   def: MeridianDef
   paths: Record<string, SurfacePoint>
+  /** רקע בלבד: עמום, בלי פעימות ובלי לחיצה - למשל שאר הערוצים בזמן עריכה */
+  dim?: boolean
 }
 
 interface BodyClockStep {
@@ -175,7 +177,13 @@ export class BodyScene {
     // בשעון הגוף אין פעימות בכל ערוץ - רק השביט שעובר ביניהם
     const clock = !!options.bodyClock && !this.reduceMotion
     const pickMat = new THREE.MeshBasicMaterial({ visible: false })
-    for (const { def, paths } of list) this.addMeridian(def, paths, pickMat, many, !clock)
+    for (const { def, paths, dim } of list) {
+      this.addMeridian(def, paths, pickMat, many && !dim, !clock && !dim)
+      if (!dim) continue
+      const mats = this.meridianMats.get(def.id)
+      if (mats) { mats.core.transparent = true; mats.core.opacity = 0.3; mats.core.depthWrite = false; mats.glow.opacity = 0.08 }
+      this.pickables = this.pickables.filter(p => p.userData.meridianId !== def.id)
+    }
     if (clock) this.buildBodyClock(list)
   }
 

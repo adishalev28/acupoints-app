@@ -142,8 +142,13 @@ export default function BodyModel() {
   useEffect(() => {
     if (loaded !== sex) return
     if (allActive) sceneRef.current?.setMeridians(allChannels, { bodyClock: clockActive })
+    // בעריכה של ערוץ, שאר הערוצים מוצגים עמומים ברקע כדי לראות את התמונה המלאה
+    else if (editMode && mode === 'channel') sceneRef.current?.setMeridians([
+      ...allChannels.filter(l => l.def.id !== meridian.id).map(l => ({ ...l, dim: true })),
+      { def: meridian, paths: channelPaths },
+    ])
     else sceneRef.current?.setMeridian(meridian, channelPaths)
-  }, [loaded, sex, meridian, channelPaths, allActive, clockActive, allChannels])
+  }, [loaded, sex, meridian, channelPaths, allActive, clockActive, allChannels, editMode, mode])
 
   useEffect(() => {
     if (loaded === sex) sceneRef.current?.setTungGroup(mode === 'tung' ? group : null, tungPaths)
@@ -415,7 +420,7 @@ export default function BodyModel() {
 
       {/* מצב עריכה */}
       {editMode && (
-        <aside className="absolute inset-x-3 bottom-3 max-h-[42vh] sm:inset-x-auto sm:max-h-none sm:top-28 sm:right-3 sm:w-72 flex flex-col rounded-2xl bg-[#142426]/95 border border-white/10 shadow-2xl">
+        <aside className="absolute inset-x-3 bottom-3 max-h-[42vh] sm:inset-x-auto sm:max-h-none sm:top-36 sm:right-3 sm:w-72 flex flex-col rounded-2xl bg-[#142426]/95 border border-white/10 shadow-2xl">
           <div className="p-4 border-b border-white/10">
             <h2 className="font-bold">עריכת {card.title} · {sex === 'female' ? 'מטופלת' : 'מטופל'}</h2>
             <p className="text-sm text-[#93aaa7] mt-1 leading-snug">

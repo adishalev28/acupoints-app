@@ -3,7 +3,9 @@
 //
 // שימוש:  node scripts/body-model/seed-positions.mjs
 // פלט:    src/data/bodyModel/meridianPaths.ts, src/data/bodyModel/tungPoints.ts
-// ⚠️ דורס תיקונים ידניים. להריץ רק אחרי המרת גופים מחדש או בהוספת ערוץ חדש.
+// ערוצים ונקודות שכבר קיימים בקבצים נשמרים כמו שהם (כולל תיקונים ידניים) - נוספים רק חדשים.
+// כדי לחשב הכל מחדש (למשל אחרי המרת גופים):  node scripts/body-model/seed-positions.mjs --reseed-all
+// ⚠️ --reseed-all דורס תיקונים ידניים.
 
 import fs from 'node:fs'
 import * as THREE from 'three'
@@ -595,6 +597,121 @@ function tungRules(m) {
   }
 }
 
+// ──────────────────────── כלים לצד החיצוני של היד ולגב ────────────────────────
+// היד תלויה כשכף היד פונה לירך: גב היד והאמה פונים החוצה (x חיובי), צד הזרת לאחור (z שלילי)
+function outerArmTools(m) {
+  const { H, s, cast, back, arm, halfWidth } = m
+  const tools = armTools(m)
+  const { armSection, handBands } = tools
+  /** נקודה בצד החיצוני של הזרוע. f=0 הצד האחורי (זרת), f=1 הצד הקדמי (אגודל) */
+  const lateralArm = (y, f) => {
+    const c = armSection(y)
+    return c ? cast([1, y, c.z0 + f * (c.z1 - c.z0)], [-1, 0, 0]) : null
+  }
+  /** הצד האחורי של הזרוע. f=0 הצד הפנימי (לכיוון הגו), f=1 הצד החיצוני */
+  const backArm = (y, f = 0.5) => {
+    const a = arm(y)
+    if (!a) return null
+    return back(a.a + f * (a.b - a.a), y)
+  }
+  /** גב כף היד: קרן מבחוץ פנימה, בעומק יחסי f בין הזרת (0) לאצבע המורה (1) */
+  const handDorsal = (y, f) => {
+    const g = handBands(y)
+    if (!g.length) return null
+    const z0 = g[g.length - 1].z0, z1 = g[0].z1
+    return cast([1, y, z0 + f * (z1 - z0)], [-1, 0, 0])
+  }
+  /** שפת כף היד בצד הזרת: קרן מאחור קדימה, במרכז כף היד לרוחב */
+  const handUlnarEdge = y => {
+    const g = handBands(y)
+    if (!g.length) return null
+    const last = g[g.length - 1]
+    const x = last.pts.reduce((sum, p) => sum + p.x, 0) / last.pts.length
+    return cast([x, y, -1], [0, 0, 1])
+  }
+  const shoulderHalf = halfWidth(0.82 * H, 0.3)
+  return { ...tools, lateralArm, backArm, handDorsal, handUlnarEdge, shoulderHalf, H, s }
+}
+
+/** כלים לראש: עומק האוזן וקרניים מהצד */
+function headTools(m) {
+  const { H, front, back, halfWidth } = m
+  const eyeY = 0.93 * H
+  const hw = halfWidth(eyeY, 0.12)
+  const faceZ = front(0, eyeY).point.z
+  const backZ = back(0, eyeY).point.z
+  const headDepth = faceZ - backZ
+  // האוזן בולטת מעט מאחורי אמצע הראש, כמו בערוץ כיס המרה
+  const earZ = (faceZ + backZ) / 2 - 0.1 * headDepth
+  return { hw, earZ, headDepth }
+}
+
+// ──────────────────────── ערוץ המעי הדק (יד) ────────────────────────
+function smallIntestineRules(m) {
+  const { H, s, front, back, side, cast } = m
+  const { tipY, wristY, elbowY, cun, forearmY, fingerTip, fingers, lateralArm, backArm, handUlnarEdge, shoulderHalf } = outerArmTools(m)
+  const { hw, earZ } = headTools(m)
+  const little = fingerTip(fingers[fingers.length - 1])
+  const neckY = 0.858 * H
+  const neckMid = (front(0, neckY).point.z + back(0, neckY).point.z) / 2
+
+  return {
+    // פינת ציפורן הזרת בצד החיצוני (אחורה)
+    SI1: () => cast([little.cx, little.y + 0.008 * s, -1], [0, 0, 1]),
+    SI3: () => handUlnarEdge(tipY + 0.09 * s),
+    SI4: () => handUlnarEdge(tipY + 0.14 * s),
+    SI5: () => handUlnarEdge(wristY),
+    SI6: () => lateralArm(forearmY(1), 0.15),
+    SI7: () => lateralArm(forearmY(5), 0.05),
+    // בין עצם המרפק לבליטה הפנימית, בצד האחורי-פנימי
+    SI8: () => backArm(elbowY, 0.3),
+    // בגב: מעל קפל בית השחי האחורי, ומשם אל השכמה והצוואר
+    SI9: () => back(0.78 * shoulderHalf, 0.745 * H + cun),
+    SI10: () => back(0.78 * shoulderHalf, 0.8 * H),
+    SI11: () => back(0.6 * shoulderHalf, 0.768 * H),
+    SI12: () => back(0.6 * shoulderHalf, 0.81 * H),
+    SI13: () => back(0.4 * shoulderHalf, 0.803 * H),
+    SI14: () => back(3 * cun, 0.828 * H),
+    SI15: () => back(2 * cun, 0.838 * H),
+    SI16: () => side(neckY, neckMid - 0.004 * s),
+    SI17: () => side(0.895 * H, earZ + 0.018 * s),
+    SI18: () => front(0.58 * hw, 0.906 * H),
+    SI19: () => side(0.928 * H, earZ + 0.034 * s),
+  }
+}
+
+// ──────────────────────── ערוץ המחמם המשולש (יד) ────────────────────────
+function tripleBurnerRules(m) {
+  const { H, s, front, back, side } = m
+  const { tipY, wristY, elbowY, cun, forearmY, fingerTip, fingers, lateralArm, backArm, handDorsal, shoulderHalf } = outerArmTools(m)
+  const { hw, earZ } = headTools(m)
+  const ring = fingerTip(fingers[fingers.length - 2])
+  const little = fingerTip(fingers[fingers.length - 1])
+  const shoulderY = 0.818 * H
+  // הזרוע העליונה: מהכתף עד המרפק בערך 10 צון
+  const upperArmY = c => shoulderY - (shoulderY - elbowY) * c / 10
+
+  return {
+    // פינת ציפורן הקמיצה בצד הזרת, מגב האצבע
+    TE1: () => m.cast([1, ring.y + 0.008 * s, ring.z0 + 0.3 * (ring.z1 - ring.z0)], [-1, 0, 0]),
+    TE2: () => m.cast([1, tipY + 0.065 * s, (ring.z0 + little.z1) / 2], [-1, 0, 0]),
+    TE3: () => handDorsal(tipY + 0.095 * s, 0.3),
+    TE4: () => handDorsal(wristY, 0.45),
+    TE5: () => lateralArm(forearmY(2), 0.5),
+    TE6: () => lateralArm(forearmY(3), 0.5),
+    TE8: () => lateralArm(forearmY(4), 0.5),
+    TE10: () => backArm(elbowY + cun, 0.55),
+    TE13: () => backArm(upperArmY(3), 0.6) ?? back(0.95 * shoulderHalf, upperArmY(3)),
+    // בשקע מאחורי קצה הכתף, מאחורי LI15
+    TE14: () => back(0.88 * shoulderHalf, shoulderY),
+    TE15: () => back(0.5 * shoulderHalf, 0.822 * H),
+    TE17: () => side(0.911 * H, earZ - 0.006 * s),
+    TE20: () => side(0.948 * H, earZ),
+    TE21: () => side(0.936 * H, earZ + 0.032 * s),
+    TE23: () => front(0.8 * hw, 0.937 * H),
+  }
+}
+
 function runRules(rules, label) {
   const out = {}
   for (const [id, rule] of Object.entries(rules)) {
@@ -620,6 +737,8 @@ async function seedBody(file) {
       pericardium: runRules(pericardiumRules(m), 'pericardium'),
       gallbladder: runRules(gallbladderRules(m), 'gallbladder'),
       liver: runRules(liverRules(m), 'liver'),
+      smallIntestine: runRules(smallIntestineRules(m), 'smallIntestine'),
+      tripleBurner: runRules(tripleBurnerRules(m), 'tripleBurner'),
     },
     tung: runRules(tungRules(m), 'tung'),
   }
@@ -627,6 +746,19 @@ async function seedBody(file) {
 
 const female = await seedBody('public/models/body-female.glb')
 const male = await seedBody('public/models/body-male.glb')
+
+// שמירה על מה שכבר בקבצים: הקיים גובר על החישוב החדש
+const reseedAll = process.argv.includes('--reseed-all')
+if (!reseedAll) {
+  const { meridianPaths } = await import('../../src/data/bodyModel/meridianPaths.ts')
+  const { tungPoints } = await import('../../src/data/bodyModel/tungPoints.ts')
+  for (const [sex, seeded] of [['female', female], ['male', male]]) {
+    for (const [id, pts] of Object.entries(meridianPaths[sex])) seeded.meridians[id] = pts
+    seeded.tung = { ...seeded.tung, ...tungPoints[sex] }
+  }
+  const added = Object.keys(female.meridians).filter(id => !(id in meridianPaths.female))
+  console.log('existing channels kept; added:', added.join(', ') || 'none')
+}
 
 const pretty = value => JSON.stringify(value, null, 2)
   .replace(/\[\s+([-\d.e]+),\s+([-\d.e]+),\s+([-\d.e]+)\s+\]/g, '[$1, $2, $3]')

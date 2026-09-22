@@ -181,6 +181,39 @@ export const heartMeridian: MeridianDef = {
   segments: [['HT1', 'HT2', 'HT3', 'HT4', 'HT5', 'HT6', 'HT7', 'HT8', 'HT9']],
 }
 
+export const smallIntestineMeridian: MeridianDef = {
+  id: 'smallIntestine',
+  hebrewName: 'ערוץ המעי הדק',
+  chineseName: '手太陽小腸經',
+  color: '#ffd166',
+  explanation: [
+    'ערוץ המעי הדק מתחיל בקצה הזרת, עולה לאורך הצד החיצוני של היד בצד הזרת, עובר על השכמה ומסתיים בפנים, ממש לפני האוזן.',
+    'הוא הערוץ השותף של ערוץ הלב: שניהם מתחילים בזרת, אחד בצד הפנימי של היד ואחד בצד החיצוני.',
+    'בגלל שהוא עובר על השכמה ובצוואר, משתמשים בנקודות שלו ביד לכאבי צוואר, שכמות וכתפיים.',
+  ],
+  controlPoints: [
+    { id: 'SI1', pinyin: 'Shaoze', hint: 'בפינת ציפורן הזרת, בצד החיצוני' },
+    { id: 'SI3', pinyin: 'Houxi', hint: 'בשפת כף היד בצד הזרת, מאחורי מפרק הבסיס של הזרת' },
+    { id: 'SI4', pinyin: 'Wangu', hint: 'בשפת כף היד בצד הזרת, בשקע לפני שורש כף היד' },
+    { id: 'SI5', pinyin: 'Yanggu', hint: 'בשורש כף היד בצד הזרת, בשקע ליד בליטת עצם האמה' },
+    { id: 'SI6', pinyin: 'Yanglao', hint: '1 צון מעל שורש כף היד, בגב האמה בצד הזרת' },
+    { id: 'SI7', pinyin: 'Zhizheng', hint: '5 צון מעל שורש כף היד, בצד הזרת של האמה' },
+    { id: 'SI8', pinyin: 'Xiaohai', hint: 'בגב המרפק, בשקע שבין עצם המרפק לבליטה הפנימית' },
+    { id: 'SI9', pinyin: 'Jianzhen', hint: '1 צון מעל קפל בית השחי האחורי' },
+    { id: 'SI10', pinyin: 'Naoshu', hint: 'מעל SI9, מתחת לרכס השכמה' },
+    { id: 'SI11', pinyin: 'Tianzong', hint: 'במרכז השכמה, מתחת לרכס' },
+    { id: 'SI12', pinyin: 'Bingfeng', hint: 'באמצע השכמה, מעל הרכס' },
+    { id: 'SI13', pinyin: 'Quyuan', hint: 'בקצה הפנימי של השקע שמעל רכס השכמה' },
+    { id: 'SI14', pinyin: 'Jianwaishu', hint: '3 צון מהקו האמצעי, בגובה החוליה הראשונה של הגב' },
+    { id: 'SI15', pinyin: 'Jianzhongshu', hint: '2 צון מהקו האמצעי, בגובה החוליה הבולטת בבסיס הצוואר' },
+    { id: 'SI16', pinyin: 'Tianchuang', hint: 'בצד הצוואר, בגובה בליטת הגרון, מאחורי השריר הגדול של הצוואר' },
+    { id: 'SI17', pinyin: 'Tianrong', hint: 'מאחורי זווית הלסת' },
+    { id: 'SI18', pinyin: 'Quanliao', hint: 'מתחת לעצם הלחי, בקו של זווית העין החיצונית' },
+    { id: 'SI19', pinyin: 'Tinggong', hint: 'לפני האוזן, בשקע שנפתח כשפותחים את הפה' },
+  ],
+  segments: [['SI1', 'SI3', 'SI4', 'SI5', 'SI6', 'SI7', 'SI8', 'SI9', 'SI10', 'SI11', 'SI12', 'SI13', 'SI14', 'SI15', 'SI16', 'SI17', 'SI18', 'SI19']],
+}
+
 export const pericardiumMeridian: MeridianDef = {
   id: 'pericardium',
   hebrewName: 'ערוץ קרום הלב',
@@ -203,6 +236,36 @@ export const pericardiumMeridian: MeridianDef = {
     { id: 'PC9', pinyin: 'Zhongchong', hint: 'בקצה האצבע האמצעית' },
   ],
   segments: [['PC1', 'PC2', 'PC3', 'PC4', 'PC5', 'PC6', 'PC7', 'PC8', 'PC9']],
+}
+
+export const tripleBurnerMeridian: MeridianDef = {
+  id: 'tripleBurner',
+  hebrewName: 'ערוץ המחמם המשולש',
+  chineseName: '手少陽三焦經',
+  color: '#ff8f5a',
+  explanation: [
+    'ערוץ המחמם המשולש מתחיל בקצה הקמיצה, עולה באמצע גב היד והאמה, עובר על הכתף ומקיף את האוזן עד קצה הגבה.',
+    'ברפואה הסינית המחמם המשולש מחבר בין שלושה חלקים של הגוף - החזה, הבטן העליונה והבטן התחתונה - ואחראי על זרימת הנוזלים והחום ביניהם.',
+    'בגלל שהוא מקיף את האוזן ועובר בצד הראש, משתמשים בנקודות שלו לכאבי ראש בצדדים, לבעיות אוזניים ולכאבי כתף.',
+  ],
+  controlPoints: [
+    { id: 'TE1', pinyin: 'Guanchong', hint: 'בפינת ציפורן הקמיצה, בצד הזרת' },
+    { id: 'TE2', pinyin: 'Yemen', hint: 'בגב כף היד, בקפל שבין הקמיצה לזרת' },
+    { id: 'TE3', pinyin: 'Zhongzhu', hint: 'בגב כף היד, בין עצמות המסרק הרביעית והחמישית, מאחורי מפרקי הבסיס' },
+    { id: 'TE4', pinyin: 'Yangchi', hint: 'בגב שורש כף היד, בשקע באמצע הקפל' },
+    { id: 'TE5', pinyin: 'Waiguan', hint: '2 צון מעל שורש כף היד, באמצע גב האמה, בין שתי העצמות' },
+    { id: 'TE6', pinyin: 'Zhigou', hint: '3 צון מעל שורש כף היד, באמצע גב האמה' },
+    { id: 'TE8', pinyin: 'Sanyangluo', hint: '4 צון מעל שורש כף היד, באמצע גב האמה' },
+    { id: 'TE10', pinyin: 'Tianjing', hint: '1 צון מעל עצם המרפק, בשקע כשהמרפק כפוף' },
+    { id: 'TE13', pinyin: 'Naohui', hint: 'בגב הזרוע, 3 צון מתחת ל-TE14, בשפה האחורית של שריר הכתף' },
+    { id: 'TE14', pinyin: 'Jianliao', hint: 'בשקע האחורי של הכתף, מאחורי LI15, כשמרימים את היד' },
+    { id: 'TE15', pinyin: 'Tianliao', hint: 'מעל השכמה, באמצע בין ראש הכתף לבסיס הצוואר' },
+    { id: 'TE17', pinyin: 'Yifeng', hint: 'מאחורי תנוך האוזן, בשקע שבין הלסת לעצם שמאחורי האוזן' },
+    { id: 'TE20', pinyin: 'Jiaosun', hint: 'מעל קצה האוזן העליון, בקו השיער' },
+    { id: 'TE21', pinyin: 'Ermen', hint: 'לפני האוזן, בשקע שמעל הגבשושית הקטנה שלפני תעלת האוזן' },
+    { id: 'TE23', pinyin: 'Sizhukong', hint: 'בקצה החיצוני של הגבה' },
+  ],
+  segments: [['TE1', 'TE2', 'TE3', 'TE4', 'TE5', 'TE6', 'TE8', 'TE10', 'TE13', 'TE14', 'TE15', 'TE17', 'TE20', 'TE21', 'TE23']],
 }
 
 export const gallbladderMeridian: MeridianDef = {
@@ -277,7 +340,9 @@ export const meridians: MeridianDef[] = [
   stomachMeridian,
   spleenMeridian,
   heartMeridian,
+  smallIntestineMeridian,
   pericardiumMeridian,
+  tripleBurnerMeridian,
   gallbladderMeridian,
   liverMeridian,
 ]

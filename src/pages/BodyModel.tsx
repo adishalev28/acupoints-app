@@ -11,6 +11,7 @@ import { points as allPoints } from '../data/points'
 /** תיקונים ממצב העריכה, לפי גוף ושכבה: מזהה ערוץ, או 'tung' לנקודות דונג */
 type Edits = Record<BodySex, Record<string, Record<string, SurfacePoint>>>
 type Mode = 'channel' | 'tung'
+type ChannelView = 'single' | 'all' | 'clock'
 
 const SEX_KEY = 'bodyModel.sex'
 const EDITS_KEY = 'bodyModel.edits.v1'
@@ -69,7 +70,12 @@ export default function BodyModel() {
   const [mode, setMode] = useState<Mode>(searchParams.get('mode') === 'tung' ? 'tung' : 'channel')
   const [meridianId, setMeridianId] = useState(() =>
     meridians.find(m => m.id === searchParams.get('channel'))?.id ?? 'stomach')
-  const [showAll, setShowAll] = useState(() => searchParams.get('channel') === 'all')
+  // ערוץ אחד, כל הערוצים יחד, או שעון הגוף
+  const [channelView, setChannelView] = useState<ChannelView>(() => {
+    const c = searchParams.get('channel')
+    return c === 'all' ? 'all' : c === 'clock' ? 'clock' : 'single'
+  })
+  const [clockIndex, setClockIndex] = useState(0)
   const [groupId, setGroupId] = useState(() =>
     tungGroups.find(g => g.id === searchParams.get('group'))?.id ?? tungGroups[0].id)
   const [sex, setSex] = useState<BodySex>(() => readStorage<BodySex>(SEX_KEY, 'female'))
@@ -126,7 +132,8 @@ export default function BodyModel() {
   // שלושה עדכונים נפרדים, כדי שמעבר בין קבוצות דונג לא יבנה מחדש את הערוץ,
   // ובחירת נקודה במצב עריכה לא תתחיל מחדש את הנפשת הקבוצה
   // כל הערוצים יחד: רק במצב רפואה סינית ולא בעריכה
-  const allActive = showAll && mode === 'channel' && !editMode
+  const allActive = channelView !== 'single' && mode === 'channel' && !editMode
+  const clockActive = allActive && channelView === 'clock'
   const allChannels = useMemo(
     () => meridians.map(def => ({ def, paths: { ...meridianPaths[sex][def.id], ...edits[sex][def.id] } })),
     [sex, edits],
@@ -134,9 +141,9 @@ export default function BodyModel() {
 
   useEffect(() => {
     if (loaded !== sex) return
-    if (allActive) sceneRef.current?.setMeridians(allChannels)
+    if (allActive) sceneRef.current?.setMeridians(allChannels, { bodyClock: clockActive })
     else sceneRef.current?.setMeridian(meridian, channelPaths)
-  }, [loaded, sex, meridian, channelPaths, allActive, allChannels])
+  }, [loaded, sex, meridian, channelPaths, allActive, clockActive, allChannels])
 
   useEffect(() => {
     if (loaded === sex) sceneRef.current?.setTungGroup(mode === 'tung' ? group : null, tungPaths)
@@ -186,11 +193,12 @@ export default function BodyModel() {
         : id => {
             // בתצוגת כל הערוצים, לחיצה על קו פותחת את הערוץ הזה לבד
             if (allActive) {
-              setShowAll(false)
+              setChannelView('single')
               setMeridianId(id)
             }
             setInfoOpen(true)
           },
+      onBodyClockStep: i => setClockIndex(i),
       onTungPointTap: editMode || mode !== 'tung' ? undefined : () => { setInfoOpen(false); setIndicationsOpen(true) },
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
       onBodyTap: editMode
@@ -244,13 +252,14 @@ export default function BodyModel() {
   }
 
   const selected = editItems.find(i => i.id === activeSelectedId)
+  const clockMeridian = meridians[clockIndex] ?? meridians[0]
   const chipColor = mode === 'tung' ? group.color : allActive ? ALL_CHANNELS_DOT : meridian.color
   const card = mode === 'tung'
     ? { title: group.hebrewName, subtitle: `${group.id} · ${group.chineseName}`, explanation: group.explanation }
     : allActive
-      ? ALL_CHANNELS_CARD
+      ? (clockActive ? BODY_CLOCK_CARD : ALL_CHANNELS_CARD)
       : { title: meridian.hebrewName, subtitle: meridian.chineseName, explanation: meridian.explanation }
-  const chipLabel = mode === 'tung' ? `${group.hebrewName} ← ${group.organName}` : allActive ? ALL_CHANNELS_CARD.title : meridian.hebrewName
+  const chipLabel = mode === 'tung' ? `${group.hebrewName} ← ${group.organName}` : allActive ? (clockActive ? BODY_CLOCK_CARD.title : ALL_CHANNELS_CARD.title) : meridian.hebrewName
 
   // בחירת ערוץ או קבוצת נקודות. בטלפון בתחתית המסך, כדי לא לכסות את הגוף
   const pickerChips = (
@@ -261,8 +270,16 @@ export default function BodyModel() {
               <ColorChip
                 color={ALL_CHANNELS_DOT}
                 label={ALL_CHANNELS_CARD.title}
-                active={allActive}
-                onClick={() => { setShowAll(true); setInfoOpen(false) }}
+                active={allActive && !clockActive}
+                onClick={() => { setChannelView('all'); setInfoOpen(false) }}
+              />
+            )}
+            {!editMode && (
+              <ColorChip
+                color={BODY_CLOCK_DOT}
+                label={BODY_CLOCK_CARD.title}
+                active={clockActive}
+                onClick={() => { setChannelView('clock'); setInfoOpen(false) }}
               />
             )}
             {meridians.map(m => (
@@ -271,7 +288,7 @@ export default function BodyModel() {
                 color={m.color}
                 label={m.hebrewName}
                 active={!allActive && m.id === meridianId}
-                onClick={() => { setShowAll(false); setMeridianId(m.id); setInfoOpen(false) }}
+                onClick={() => { setChannelView('single'); setMeridianId(m.id); setInfoOpen(false) }}
               />
             ))}
           </>
@@ -323,6 +340,15 @@ export default function BodyModel() {
         </div>
 
         {editMode && pickerChips}
+
+        {/* שעון הגוף: הערוץ שהשביט עובר בו עכשיו, והשעות שלו */}
+        {clockActive && (
+          <div className="self-center flex items-center gap-2 rounded-full bg-[#142426]/85 border border-white/10 px-4 py-1.5 text-sm backdrop-blur" role="status" aria-live="polite">
+            <span className="w-2.5 h-2.5 rounded-full" style={{ background: clockMeridian.color, boxShadow: `0 0 8px ${clockMeridian.color}` }} />
+            <span className="font-medium text-white">{clockMeridian.hebrewName}</span>
+            <span className="text-[#93aaa7] tabular-nums" dir="ltr">{BODY_CLOCK_HOURS[clockMeridian.id]}</span>
+          </div>
+        )}
       </div>
 
       {/* מקרא ותחתית */}
@@ -482,6 +508,25 @@ const ALL_CHANNELS_CARD = {
     'כאן רואים את כל 12 הערוצים יחד, וכל נקודת אור מראה לאיזה כיוון זורם הערוץ שלה.',
     'הערוצים לא עובדים כל אחד לבד. הם מחוברים זה לזה ברצף אחד: ערוץ הריאות ממשיך לערוץ המעי הגס, ממנו לקיבה, לטחול, ללב, וכך הלאה עד ערוץ הכבד, שחוזר ומתחבר לריאות.',
     'לכן דיקור בנקודה אחת משפיע על כל המערכת. לחיצה על קו פותחת את הערוץ הזה לבד, עם ההסבר שלו.',
+  ],
+}
+
+/** שעון הגוף לפי הרפואה הסינית: שעתיים לכל ערוץ */
+const BODY_CLOCK_HOURS: Record<string, string> = {
+  lung: '03:00-05:00', largeIntestine: '05:00-07:00', stomach: '07:00-09:00', spleen: '09:00-11:00',
+  heart: '11:00-13:00', smallIntestine: '13:00-15:00', bladder: '15:00-17:00', kidney: '17:00-19:00',
+  pericardium: '19:00-21:00', tripleBurner: '21:00-23:00', gallbladder: '23:00-01:00', liver: '01:00-03:00',
+}
+
+const BODY_CLOCK_DOT = 'radial-gradient(circle, #fff 0 30%, #6cb8ff 31% 100%)'
+
+const BODY_CLOCK_CARD = {
+  title: 'שעון הגוף',
+  subtitle: '子午流注 · מחזור הזרימה בין הערוצים',
+  explanation: [
+    'נקודת האור עוברת בין הערוצים לפי הסדר שבו הם מחוברים: מהריאות למעי הגס, לקיבה, לטחול, ללב וכך הלאה, עד הכבד, שחוזר לריאות.',
+    'ברפואה הסינית מתארים את המחזור הזה גם כשעון של 24 שעות: לכל ערוץ יש שעתיים ביממה שבהן הוא בשיא. השעות מופיעות למעלה.',
+    'בגלל שהערוצים מחוברים ברצף אחד, איזון של ערוץ אחד משפיע גם על הערוצים שלפניו ושאחריו.',
   ],
 }
 

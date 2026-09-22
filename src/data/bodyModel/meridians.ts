@@ -26,6 +26,8 @@ export interface MeridianDef {
   controlPoints: ControlPoint[]
   /** קווים רציפים. נקודה יכולה להופיע בשני קווים (פיצול) */
   segments: string[][]
+  /** מסלול הזרימה הראשי ל"שעון הגוף", כשיש כמה קווים. בלי זה - הקו הראשון */
+  flow?: string[]
 }
 
 export const stomachMeridian: MeridianDef = {
@@ -74,6 +76,8 @@ export const stomachMeridian: MeridianDef = {
     ['ST5', 'ST9', 'ST11', 'ST12', 'ST13', 'ST15', 'ST17', 'ST18', 'ST19', 'ST21', 'ST25', 'ST27', 'ST30',
       'ST31', 'ST32', 'ST34', 'ST35', 'ST36', 'ST38', 'ST41', 'ST42', 'ST44', 'ST45'],
   ],
+  flow: ['ST1', 'ST3', 'ST4', 'ST5', 'ST9', 'ST11', 'ST12', 'ST13', 'ST15', 'ST17', 'ST18', 'ST19', 'ST21', 'ST25', 'ST27', 'ST30',
+    'ST31', 'ST32', 'ST34', 'ST35', 'ST36', 'ST38', 'ST41', 'ST42', 'ST44', 'ST45'],
 }
 
 export const largeIntestineMeridian: MeridianDef = {
@@ -382,6 +386,8 @@ export const gallbladderMeridian: MeridianDef = {
     ['GB14', 'GB15', 'GB17', 'GB19', 'GB20', 'GB21', 'GB22', 'GB24', 'GB25', 'GB30',
       'GB31', 'GB34', 'GB39', 'GB40', 'GB41', 'GB44'],
   ],
+  flow: ['GB1', 'GB2', 'GB8', 'GB12', 'GB14', 'GB15', 'GB17', 'GB19', 'GB20', 'GB21', 'GB22', 'GB24', 'GB25', 'GB30',
+    'GB31', 'GB34', 'GB39', 'GB40', 'GB41', 'GB44'],
 }
 
 export const liverMeridian: MeridianDef = {

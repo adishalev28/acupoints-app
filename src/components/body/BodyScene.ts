@@ -18,7 +18,25 @@ export interface BodySceneEvents {
   onMarkerTap?: (pointId: string) => void
   /** מיקום בצד שמאל של המטופל, גם אם נלחץ הצד הימני */
   onBodyTap?: (point: SurfacePoint) => void
+  /** שעון הגוף עבר לערוץ הבא (אינדקס ברשימה שהועברה) */
+  onBodyClockStep?: (index: number) => void
 }
+
+export interface MeridianLayer {
+  def: MeridianDef
+  paths: Record<string, SurfacePoint>
+}
+
+interface BodyClockStep {
+  start: number
+  duration: number
+  meridianIndex: number
+  color: THREE.Color
+  /** מסלול לכל צד: [שמאל, ימין] */
+  curves: THREE.Curve<THREE.Vector3>[]
+}
+
+const WHITE = new THREE.Color('#ffffff')
 
 const SKIN = '#d9b8a3'
 const STAGE = '#0e1a1b'
@@ -47,6 +65,15 @@ export class BodyScene {
   private revealAt = new Map<THREE.Object3D, number>()
   private groupStart = 0
   private pickables: THREE.Mesh[] = []
+  private meridianMats = new Map<string, { core: THREE.MeshBasicMaterial; glow: THREE.MeshBasicMaterial }>()
+  private bodyClock: {
+    steps: BodyClockStep[]
+    total: number
+    heads: THREE.Mesh[][]
+    start: number
+    current: number
+    ids: string[]
+  } | null = null
   private pulses: { mesh: THREE.Mesh; curve: THREE.CatmullRomCurve3; t: number; speed: number }[] = []
   private tween: { p0: THREE.Vector3; p1: THREE.Vector3; t0: THREE.Vector3; t1: THREE.Vector3; k: number } | null = null
   private clock = new THREE.Clock()
@@ -137,20 +164,90 @@ export class BodyScene {
    * כמה ערוצים יחד. כשמוצגים כולם, הפעימות צבועות בצבע הערוץ וצפופות יותר,
    * כדי שיראו את כיוון הזרימה של כל ערוץ לצד השאר.
    */
-  setMeridians(list: { def: MeridianDef; paths: Record<string, SurfacePoint> }[]): void {
+  setMeridians(list: MeridianLayer[], options: { bodyClock?: boolean } = {}): void {
     this.clearGroup(this.meridianGroup)
     this.pickables = []
     this.pulses = []
+    this.meridianMats.clear()
+    this.bodyClock = null
     if (!this.body) return
     const many = list.length > 1
+    // בשעון הגוף אין פעימות בכל ערוץ - רק השביט שעובר ביניהם
+    const clock = !!options.bodyClock && !this.reduceMotion
     const pickMat = new THREE.MeshBasicMaterial({ visible: false })
-    for (const { def, paths } of list) this.addMeridian(def, paths, pickMat, many)
+    for (const { def, paths } of list) this.addMeridian(def, paths, pickMat, many, !clock)
+    if (clock) this.buildBodyClock(list)
   }
 
-  private addMeridian(def: MeridianDef, paths: Record<string, SurfacePoint>, pickMat: THREE.Material, many: boolean): void {
+  /**
+   * שעון הגוף: שביט עובר בין הערוצים לפי סדר המחזור (הריאות, המעי הגס, הקיבה... הכבד, וחזרה),
+   * בשני הצדדים במקביל. הערוץ הנוכחי מואר ושאר הערוצים מעומעמים.
+   */
+  private buildBodyClock(list: MeridianLayer[]): void {
+    const perMeridian = 3.6
+    const perLink = 0.7
+    const sides = [1, -1].map(side => list.map(({ def, paths }) => {
+      const ids = def.flow ?? def.segments[0]
+      const pts = ids.map(id => paths[id]).filter(Boolean)
+      const surface = pts.map(sp => side === 1 ? sp : { p: mirror(sp.p), n: mirror(sp.n) })
+      return this.surfaceCurve(surface)
+    }))
+    const steps: BodyClockStep[] = []
+    let t = 0
+    list.forEach(({ def }, i) => {
+      steps.push({ start: t, duration: perMeridian, meridianIndex: i, color: new THREE.Color(def.color), curves: sides.map(c => c[i]) })
+      t += perMeridian
+      // החיבור הפנימי מסוף הערוץ לתחילת הבא אחריו
+      const next = (i + 1) % list.length
+      steps.push({
+        start: t, duration: perLink, meridianIndex: i, color: new THREE.Color(list[next].def.color),
+        curves: sides.map(c => new THREE.LineCurve3(c[i].getPoint(1), c[next].getPoint(0))),
+      })
+      t += perLink
+    })
+
+    const trail = 7
+    const heads = sides.map(() => Array.from({ length: trail }, (_, k) => {
+      const mesh = new THREE.Mesh(
+        new THREE.SphereGeometry(0.014 * (1 - k / (trail + 2)), 16, 12),
+        new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 1 - k / trail, blending: THREE.AdditiveBlending, depthTest: false, depthWrite: false, toneMapped: false }),
+      )
+      mesh.renderOrder = 30
+      this.meridianGroup.add(mesh)
+      return mesh
+    }))
+    this.bodyClock = { steps, total: t, heads, start: -1, current: -1, ids: list.map(l => l.def.id) }
+  }
+
+  private updateBodyClock(elapsed: number): void {
+    const clock = this.bodyClock
+    if (!clock) return
+    if (clock.start < 0) clock.start = elapsed
+    const t = (elapsed - clock.start) % clock.total
+    const step = clock.steps.find(s => t < s.start + s.duration) ?? clock.steps[clock.steps.length - 1]
+    const u = (t - step.start) / step.duration
+    clock.heads.forEach((trail, side) => trail.forEach((mesh, k) => {
+      const back = Math.max(0, u - k * 0.012)
+      mesh.position.copy(step.curves[side].getPointAt(back))
+      ;(mesh.material as THREE.MeshBasicMaterial).color.copy(step.color).lerp(WHITE, k === 0 ? 0.6 : 0.2)
+    }))
+    if (step.meridianIndex !== clock.current) {
+      clock.current = step.meridianIndex
+      const active = clock.ids[step.meridianIndex]
+      for (const [id, mats] of this.meridianMats) {
+        const on = id === active
+        mats.core.opacity = on ? 1 : 0.12
+        mats.glow.opacity = on ? 0.6 : 0.04
+      }
+      this.events.onBodyClockStep?.(step.meridianIndex)
+    }
+  }
+
+  private addMeridian(def: MeridianDef, paths: Record<string, SurfacePoint>, pickMat: THREE.Material, many: boolean, withPulses = true): void {
     const color = new THREE.Color(def.color)
-    const coreMat = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#fff'), 0.15), toneMapped: false })
+    const coreMat = new THREE.MeshBasicMaterial({ color: color.clone().lerp(new THREE.Color('#fff'), 0.15), transparent: !withPulses, toneMapped: false })
     const glowMat = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.32, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
+    this.meridianMats.set(def.id, { core: coreMat, glow: glowMat })
     const pulseColor = many ? color.clone().lerp(new THREE.Color('#fff'), 0.45) : new THREE.Color('#fff6de')
     const pulseMat = new THREE.MeshBasicMaterial({ color: pulseColor, transparent: true, opacity: 0.95, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
     const spacing = many ? 0.2 : 0.35
@@ -170,7 +267,7 @@ export class BodyScene {
         this.meridianGroup.add(core, glow, pick)
         this.pickables.push(pick)
 
-        if (!this.reduceMotion) {
+        if (!this.reduceMotion && withPulses) {
           const length = curve.getLength()
           const count = Math.max(1, Math.round(length / spacing))
           for (let i = 0; i < count; i++) {
@@ -549,6 +646,7 @@ export class BodyScene {
     const sinceGroup = elapsed - this.groupStart
     for (const [object, at] of this.revealAt) object.visible = sinceGroup >= at
     for (const item of this.animated) item.update(this.reduceMotion ? 1.2 : elapsed)
+    this.updateBodyClock(elapsed)
     for (const pulse of this.pulses) {
       pulse.t = (pulse.t + pulse.speed * dt) % 1
       pulse.mesh.position.copy(pulse.curve.getPointAt(pulse.t))

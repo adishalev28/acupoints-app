@@ -53,7 +53,7 @@ function writeStorage(key: string, value: unknown) {
 const emptyEdits = (): Edits => ({ female: {}, male: {} })
 
 /** מספר הנקודה בערוץ, למיון: ST36 → 36 */
-const pointNumber = (code: string) => Number(code.replace(/^D+/, ''))
+const pointNumber = (code: string) => Number(code.replace(/^\D+/, ''))
 
 /** כל נקודות הערוץ לפי התקן של ארגון הבריאות העולמי, לפי הסדר */
 const whoCodesByMeridian: Record<string, string[]> = {}

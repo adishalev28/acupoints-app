@@ -4,6 +4,7 @@ import { BodyScene, type ViewPreset } from '../components/body/BodyScene'
 import IndicationsSheet from '../components/body/IndicationsSheet'
 import { BODY_MODEL_CREDIT, meridians, type BodySex, type SurfacePoint } from '../data/bodyModel/meridians'
 import { meridianPaths } from '../data/bodyModel/meridianPaths'
+import { whoPointInfo, whoPoints } from '../data/bodyModel/whoPoints'
 import { tungGroups } from '../data/bodyModel/tungGroups'
 import { tungPoints } from '../data/bodyModel/tungPoints'
 import { points as allPoints } from '../data/points'
@@ -50,6 +51,27 @@ function writeStorage(key: string, value: unknown) {
 }
 
 const emptyEdits = (): Edits => ({ female: {}, male: {} })
+
+/** מספר הנקודה בערוץ, למיון: ST36 → 36 */
+const pointNumber = (code: string) => Number(code.replace(/^D+/, ''))
+
+/** כל נקודות הערוץ לפי התקן של ארגון הבריאות העולמי, לפי הסדר */
+const whoCodesByMeridian: Record<string, string[]> = {}
+for (const [code, info] of Object.entries(whoPointInfo)) (whoCodesByMeridian[info.meridian] ??= []).push(code)
+for (const codes of Object.values(whoCodesByMeridian)) codes.sort((a, b) => pointNumber(a) - pointNumber(b))
+
+/**
+ * מיקומי נקודות הערוץ לציור הקו: המיקום הראשוני מהסקריפט, מעליו התקן של ארגון הבריאות,
+ * ומעל הכול התיקונים הידניים של עדי.
+ */
+function channelPathsFor(sex: BodySex, meridianId: string, edits: Edits): Record<string, SurfacePoint> {
+  const who: Record<string, SurfacePoint> = {}
+  for (const code of whoCodesByMeridian[meridianId] ?? []) {
+    const sp = whoPoints[sex][code]
+    if (sp) who[code] = sp
+  }
+  return { ...meridianPaths[sex][meridianId], ...who, ...edits[sex][meridianId] }
+}
 
 /** השורה של תת-הנקודה מתוך תיאור המיקום של הקבוצה, למשל "88.18 Sì Mǎ Shàng: 2 צון..." */
 function locationHint(groupId: string, pointId: string): string {
@@ -102,7 +124,7 @@ export default function BodyModel() {
   const activeSelectedId = editItems.some(i => i.id === selectedId) ? selectedId! : editItems[0].id
 
   const channelPaths = useMemo(
-    () => ({ ...meridianPaths[sex][meridian.id], ...edits[sex][meridian.id] }),
+    () => channelPathsFor(sex, meridian.id, edits),
     [sex, edits, meridian],
   )
   const tungPaths = useMemo(
@@ -137,7 +159,7 @@ export default function BodyModel() {
   const allActive = channelView !== 'single' && mode === 'channel' && !editMode
   const clockActive = allActive && channelView === 'clock'
   const allChannels = useMemo(
-    () => meridians.map(def => ({ def, paths: { ...meridianPaths[sex][def.id], ...edits[sex][def.id] } })),
+    () => meridians.map(def => ({ def, paths: channelPathsFor(sex, def.id, edits) })),
     [sex, edits],
   )
 
@@ -162,7 +184,9 @@ export default function BodyModel() {
     if (loaded !== sex) return
     sceneRef.current?.setChannelPoints(
       channelPointsVisible
-        ? meridian.controlPoints.map(cp => ({ id: cp.id, sp: channelPaths[cp.id] })).filter(item => item.sp)
+        ? (whoCodesByMeridian[meridian.id]?.length ? whoCodesByMeridian[meridian.id] : meridian.controlPoints.map(cp => cp.id))
+            .map(id => ({ id, sp: channelPaths[id] ?? whoPoints[sex][id] }))
+            .filter(item => item.sp)
         : null,
       meridian.color,
     )
@@ -222,8 +246,8 @@ export default function BodyModel() {
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
       onChannelPointTap: channelPointsVisible
         ? id => {
-            const point = meridian.controlPoints.find(cp => cp.id === id)
-            setToast(point ? `${point.id} · ${point.pinyin}` : id)
+            const pinyin = whoPointInfo[id]?.pinyin ?? meridian.controlPoints.find(cp => cp.id === id)?.pinyin
+            setToast(pinyin ? `${id} · ${pinyin}` : id)
             window.setTimeout(() => setToast(null), 2200)
           }
         : undefined,

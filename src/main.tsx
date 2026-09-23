@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import { showUpdatePrompt } from './updatePrompt'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -15,15 +16,16 @@ if ('serviceWorker' in navigator) {
     try {
       const registration = await navigator.serviceWorker.register('/sw.js')
 
-      // When a new SW is found and activated, reload to get fresh content
+      // A new version shows a small prompt instead of reloading by itself.
+      // A forced reload blanks the screen mid-use; without it the new version
+      // loads on the next launch anyway, because the SW already claimed the page.
       registration.addEventListener('updatefound', () => {
         const newWorker = registration.installing
         if (!newWorker) return
 
         newWorker.addEventListener('statechange', () => {
           if (newWorker.state === 'activated' && navigator.serviceWorker.controller) {
-            // New version activated — reload to show updated content
-            window.location.reload()
+            showUpdatePrompt()
           }
         })
       })

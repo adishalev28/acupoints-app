@@ -2,6 +2,9 @@
 // (WHO Standard Acupuncture Point Locations in the Western Pacific Region, 2008).
 //
 // שימוש:  node scripts/body-model/who-solver.mjs [נתיב-לטקסט-WHO]
+// הטקסט לא נשמר בריפו (זכויות יוצרים של WHO). מפיקים אותו מהמסמך הרשמי:
+//   https://iris.who.int/handle/10665/353407  →  pdftotext 9789290613831-eng.pdf who-plain.txt
+//   (בלי -layout, כדי שהטקסט ייצא בעמודה אחת)
 // פלט:    src/data/bodyModel/whoPoints.ts
 // דגלים:  --report  מדפיס טבלת כיסוי ורשימת נקודות שלא נפתרו, בלי לכתוב קובץ
 //

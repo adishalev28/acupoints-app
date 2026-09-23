@@ -16,6 +16,7 @@ type ChannelView = 'single' | 'all' | 'clock'
 const SEX_KEY = 'bodyModel.sex'
 const EDITS_KEY = 'bodyModel.edits.v1'
 const TUNG_LAYER = 'tung'
+const POINTS_KEY = 'bodyModel.showPoints'
 
 const VIEWS: { id: ViewPreset; label: string }[] = [
   { id: 'front', label: 'חזית' },
@@ -84,6 +85,7 @@ export default function BodyModel() {
   const [loadError, setLoadError] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const [indicationsOpen, setIndicationsOpen] = useState(false)
+  const [showPoints, setShowPoints] = useState(() => readStorage(POINTS_KEY, false))
   const [edits, setEdits] = useState<Edits>(() => readStorage(EDITS_KEY, emptyEdits()))
   const [selectedId, setSelectedId] = useState<string | null>(null)
   const [toast, setToast] = useState<string | null>(null)
@@ -154,6 +156,18 @@ export default function BodyModel() {
     if (loaded === sex) sceneRef.current?.setTungGroup(mode === 'tung' ? group : null, tungPaths)
   }, [loaded, sex, mode, group, tungPaths])
 
+  // נקודות הערוץ למטופל: רק כשהמתג דולק, בערוץ אחד, ולא בעריכה (שם יש סמנים משלה)
+  const channelPointsVisible = showPoints && mode === 'channel' && !allActive && !editMode
+  useEffect(() => {
+    if (loaded !== sex) return
+    sceneRef.current?.setChannelPoints(
+      channelPointsVisible
+        ? meridian.controlPoints.map(cp => ({ id: cp.id, sp: channelPaths[cp.id] })).filter(item => item.sp)
+        : null,
+      meridian.color,
+    )
+  }, [loaded, sex, meridian, channelPaths, channelPointsVisible])
+
   useEffect(() => {
     const scene = sceneRef.current
     if (!scene || loaded !== sex) return
@@ -206,6 +220,13 @@ export default function BodyModel() {
       onBodyClockStep: i => setClockIndex(i),
       onTungPointTap: editMode || mode !== 'tung' ? undefined : () => { setInfoOpen(false); setIndicationsOpen(true) },
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
+      onChannelPointTap: channelPointsVisible
+        ? id => {
+            const point = meridian.controlPoints.find(cp => cp.id === id)
+            setToast(point ? `${point.id} · ${point.pinyin}` : id)
+            window.setTimeout(() => setToast(null), 2200)
+          }
+        : undefined,
       onBodyTap: editMode
         ? point => {
             const next: Edits = { ...edits, [sex]: { ...edits[sex], [layer]: { ...layerEdits, [activeSelectedId]: point } } }
@@ -361,6 +382,22 @@ export default function BodyModel() {
         <div ref={bottomBarRef} className="absolute bottom-0 inset-x-0 p-3 flex flex-col items-start gap-2 pointer-events-none">
           {pickerChips}
           <div className="flex flex-wrap gap-2">
+          {mode === 'channel' && !allActive && (
+            <button
+              onClick={() => { const next = !showPoints; setShowPoints(next); writeStorage(POINTS_KEY, next) }}
+              aria-pressed={showPoints}
+              className={`pointer-events-auto flex items-center gap-2 rounded-full border px-4 py-2 text-[15px] ${
+                showPoints ? 'bg-[#0d7377] border-transparent text-white' : 'bg-[#142426]/85 border-white/10 text-[#93aaa7] hover:text-white'
+              }`}
+            >
+              <span className="flex items-center gap-[3px]" aria-hidden="true">
+                <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                <span className="w-1.5 h-1.5 rounded-full bg-current" />
+                <span className="w-1.5 h-1.5 rounded-full bg-current" />
+              </span>
+              נקודות
+            </button>
+          )}
           <button
             onClick={() => setInfoOpen(true)}
             className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#142426]/85 border border-white/10 px-4 py-2 text-[15px] hover:bg-[#1c3234]"

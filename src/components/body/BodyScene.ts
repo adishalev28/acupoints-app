@@ -16,6 +16,8 @@ export interface BodySceneEvents {
   /** לחיצה על נקודת דונג דולקת */
   onTungPointTap?: () => void
   onMarkerTap?: (pointId: string) => void
+  /** לחיצה על נקודה של ערוץ בתצוגה למטופל */
+  onChannelPointTap?: (pointId: string) => void
   /** מיקום בצד שמאל של המטופל, גם אם נלחץ הצד הימני */
   onBodyTap?: (point: SurfacePoint) => void
   /** שעון הגוף עבר לערוץ הבא (אינדקס ברשימה שהועברה) */
@@ -61,6 +63,7 @@ export class BodyScene {
   private safeBottom = 0
   private meridianGroup = new THREE.Group()
   private markerGroup = new THREE.Group()
+  private pointGroup = new THREE.Group()
   private treatmentGroup = new THREE.Group()
   private animated: Animated[] = []
   private pickables: THREE.Mesh[] = []
@@ -108,7 +111,7 @@ export class BodyScene {
 
     const floor = new THREE.Mesh(new THREE.CircleGeometry(1.6, 64), new THREE.MeshStandardMaterial({ color: '#142426', roughness: 1 }))
     floor.rotation.x = -Math.PI / 2
-    this.scene.add(floor, this.meridianGroup, this.markerGroup, this.treatmentGroup)
+    this.scene.add(floor, this.meridianGroup, this.markerGroup, this.pointGroup, this.treatmentGroup)
 
     this.controls = new OrbitControls(this.camera, canvas)
     this.controls.enableDamping = true
@@ -302,6 +305,32 @@ export class BodyScene {
     }
   }
 
+  /** נקודות הערוץ בתצוגה למטופל: כדור קטן בצבע הערוץ, בשני הצדדים */
+  setChannelPoints(points: { id: string; sp: SurfacePoint }[] | null, color: string): void {
+    this.clearGroup(this.pointGroup)
+    if (!points?.length) return
+    const shell = new THREE.MeshBasicMaterial({ color, transparent: true, opacity: 0.55, blending: THREE.AdditiveBlending, depthWrite: false, toneMapped: false })
+    const core = new THREE.MeshBasicMaterial({ color: '#fffdf6', toneMapped: false })
+    const pickMat = new THREE.MeshBasicMaterial({ visible: false })
+    const coreGeo = new THREE.SphereGeometry(0.0042, 12, 8)
+    const shellGeo = new THREE.SphereGeometry(0.0085, 12, 8)
+    const pickGeo = new THREE.SphereGeometry(0.02, 8, 6)
+    for (const { id, sp } of points) {
+      for (const p of [sp.p, mirror(sp.p)]) {
+        const dot = new THREE.Mesh(coreGeo, core)
+        const halo = new THREE.Mesh(shellGeo, shell)
+        const pick = new THREE.Mesh(pickGeo, pickMat)
+        for (const mesh of [dot, halo, pick]) {
+          mesh.position.set(...p)
+          mesh.userData.channelPointId = id
+          this.pointGroup.add(mesh)
+        }
+      }
+    }
+    // הפריים הבא יעדכן את המטריצות, אבל לחיצה יכולה להגיע לפניו
+    this.pointGroup.updateMatrixWorld(true)
+  }
+
   setView(view: ViewPreset, animate = true): void {
     const H = this.bodyHeight
     const presets: Record<ViewPreset, [Vec3, Vec3]> = {
@@ -474,6 +503,7 @@ export class BodyScene {
     this.controls.dispose()
     this.clearGroup(this.meridianGroup)
     this.clearGroup(this.markerGroup)
+    this.clearGroup(this.pointGroup)
     this.clearGroup(this.treatmentGroup)
     this.body?.geometry.dispose()
     this.renderer.dispose()
@@ -553,6 +583,10 @@ export class BodyScene {
         this.events.onBodyTap(point)
         return
       }
+    }
+    if (this.events.onChannelPointTap && this.pointGroup.children.length) {
+      const hit = ray.intersectObjects(this.pointGroup.children, false)[0]
+      if (hit) { this.events.onChannelPointTap(hit.object.userData.channelPointId); return }
     }
     if (this.events.onTungPointTap && this.treatmentGroup.children.length) {
       const hit = ray.intersectObjects(this.treatmentGroup.children, true).find(h => h.object.userData.tungPick)

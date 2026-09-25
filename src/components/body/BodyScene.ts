@@ -85,6 +85,10 @@ export class BodyScene {
   private activePointers = new Set<number>()
   private multiTouch = false // צביטה לזום לא נחשבת ללחיצה
   private lastTap: { x: number; y: number; time: number } | null = null
+  /** אצבעות שנוגעות כרגע, והאם המחווה הנוכחית היא גרירה באצבע אחת (תזוזה אנכית בלבד) */
+  private touches = new Set<number>()
+  private verticalPan = false
+  private lastPanTarget: THREE.Vector3 | null = null
   private loadToken = 0
   events: BodySceneEvents = {}
 
@@ -120,6 +124,10 @@ export class BodyScene {
     this.controls.maxDistance = 7
     this.controls.target.set(0, 0.95, 0)
     this.camera.position.set(0, 1.0, 4.6)
+    // מגע (בקשת עדי, 25.9.2026): אצבע אחת מזיזה את הגוף למעלה ולמטה, שתי אצבעות מסובבות וצובטות לזום.
+    // בעכבר נשאר כמו שהיה: גרירה מסובבת, גלגלת מתקרבת.
+    this.controls.touches = { ONE: THREE.TOUCH.PAN, TWO: THREE.TOUCH.DOLLY_ROTATE }
+    this.controls.addEventListener('change', this.keepPanVertical)
 
     canvas.addEventListener('pointerdown', this.handlePointerDown)
     canvas.addEventListener('pointerup', this.handlePointerUp)
@@ -543,7 +551,30 @@ export class BodyScene {
     return new THREE.CatmullRomCurve3(out, false, 'centripetal')
   }
 
+  /**
+   * גרירה באצבע אחת מזיזה רק למעלה ולמטה: מה שזז הצידה מוחזר מיד, גם למטרה וגם למצלמה,
+   * כך שזווית המבט לא משתנה. לא נוגע במעברי מצלמה (מבטים מוכנים, זום בלחיצה כפולה).
+   */
+  private keepPanVertical = () => {
+    const target = this.controls.target
+    if (!this.verticalPan || this.tween || !this.lastPanTarget) {
+      this.lastPanTarget = target.clone()
+      return
+    }
+    const moved = target.clone().sub(this.lastPanTarget)
+    const right = new THREE.Vector3().setFromMatrixColumn(this.camera.matrixWorld, 0)
+    const sideways = right.multiplyScalar(moved.dot(right))
+    target.sub(sideways)
+    this.camera.position.sub(sideways)
+    this.lastPanTarget = target.clone()
+  }
+
   private handlePointerDown = (e: PointerEvent) => {
+    if (e.pointerType === 'touch') {
+      this.touches.add(e.pointerId)
+      this.verticalPan = this.touches.size === 1
+    } else this.verticalPan = false
+    this.lastPanTarget = this.controls.target.clone()
     this.activePointers.add(e.pointerId)
     if (this.activePointers.size > 1) this.multiTouch = true
     else this.multiTouch = false
@@ -552,11 +583,18 @@ export class BodyScene {
 
   private handlePointerCancel = (e: PointerEvent) => {
     this.activePointers.delete(e.pointerId)
+    this.touches.delete(e.pointerId)
     this.downAt = null
   }
 
   private handlePointerUp = (e: PointerEvent) => {
     this.activePointers.delete(e.pointerId)
+    this.touches.delete(e.pointerId)
+    // הורידו אצבע אחת משתיים - האצבע שנשארה ממשיכה בגרירה אנכית, כמו מחווה של אצבע אחת
+    if (e.pointerType === 'touch' && this.touches.size === 1) {
+      this.verticalPan = true
+      this.lastPanTarget = this.controls.target.clone()
+    }
     if (!this.downAt || this.multiTouch) { this.downAt = null; return }
     const moved = Math.hypot(e.clientX - this.downAt.x, e.clientY - this.downAt.y)
     this.downAt = null

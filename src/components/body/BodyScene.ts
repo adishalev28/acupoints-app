@@ -584,15 +584,9 @@ export class BodyScene {
         return
       }
     }
-    if (this.events.onChannelPointTap && this.pointGroup.children.length) {
-      const hit = ray.intersectObjects(this.pointGroup.children, false)[0]
-      if (hit) { this.events.onChannelPointTap(hit.object.userData.channelPointId); return }
-    }
-    if (this.events.onTungPointTap && this.treatmentGroup.children.length) {
-      const hit = ray.intersectObjects(this.treatmentGroup.children, true).find(h => h.object.userData.tungPick)
-      if (hit) { this.events.onTungPointTap(); return }
-    }
-    // לחיצה כפולה על הגוף מתקרבת לאותו מקום (במצב עריכה לחיצה מציבה נקודה, אז שם אין)
+    // לחיצה כפולה מתקרבת לאותו מקום, וכל לחיצה כפולה נוספת מתקרבת עוד.
+    // נבדקת לפני הלחיצה על נקודה או על קו, אחרת לחיצה כפולה עליהם לא הייתה מגיעה לזום.
+    // (במצב עריכה לחיצה מציבה נקודה, ולכן שם היא נתפסת קודם ואין זום)
     const now = performance.now()
     const isDouble = this.lastTap && now - this.lastTap.time < 320 && Math.hypot(e.clientX - this.lastTap.x, e.clientY - this.lastTap.y) < 24
     this.lastTap = isDouble ? null : { x: e.clientX, y: e.clientY, time: now }
@@ -601,6 +595,14 @@ export class BodyScene {
       if (hit) { this.focusOn(hit.point); return }
     }
 
+    if (this.events.onChannelPointTap && this.pointGroup.children.length) {
+      const hit = ray.intersectObjects(this.pointGroup.children, false)[0]
+      if (hit) { this.events.onChannelPointTap(hit.object.userData.channelPointId); return }
+    }
+    if (this.events.onTungPointTap && this.treatmentGroup.children.length) {
+      const hit = ray.intersectObjects(this.treatmentGroup.children, true).find(h => h.object.userData.tungPick)
+      if (hit) { this.events.onTungPointTap(); return }
+    }
     if (this.events.onMeridianTap && this.pickables.length && this.meridianGroup.visible) {
       const hit = ray.intersectObjects(this.pickables, false)[0]
       if (hit) this.events.onMeridianTap(hit.object.userData.meridianId)
@@ -610,7 +612,10 @@ export class BodyScene {
   /** מקרב את המצלמה לנקודה, מאותו כיוון מבט */
   private focusOn(point: THREE.Vector3) {
     const dir = this.camera.position.clone().sub(this.controls.target).normalize()
-    const distance = Math.min(0.75, this.camera.position.distanceTo(this.controls.target))
+    // זום בהדרגה: כל לחיצה כפולה מקצרת את המרחק ל-60%, עד המרחק הקרוב ביותר המותר.
+    // קודם הלחיצה הראשונה קפצה ישר ל-75 ס"מ, ועדי ביקש (25.9.2026) להתקרב צעד אחרי צעד
+    const current = this.camera.position.distanceTo(this.controls.target)
+    const distance = Math.max(this.controls.minDistance, current * 0.6)
     this.tween = {
       p0: this.camera.position.clone(), p1: point.clone().addScaledVector(dir, distance),
       t0: this.controls.target.clone(), t1: point.clone(),

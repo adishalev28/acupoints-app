@@ -134,6 +134,23 @@ export default function BodyModel() {
   const layerEdits = edits[sex][layer] ?? {}
   const editedIds = new Set(Object.keys(layerEdits).filter(id => editItems.some(i => i.id === id)))
 
+  // העמוד עצמו לא זז ולא מתקרב: רק הגוף. בלי זה, צביטה שמתחילה על כפתור
+  // מגדילה את כל העמוד, והתפריטים זזים ומשנים גודל
+  useEffect(() => {
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="viewport"]')
+    const original = meta?.content
+    if (meta) meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+    // ספארי באייפון מתעלם מההגדרה למעלה בחלק מהמקרים - חוסמים את מחוות הזום שלו ישירות
+    const block = (e: Event) => e.preventDefault()
+    document.addEventListener('gesturestart', block, { passive: false })
+    document.addEventListener('gesturechange', block, { passive: false })
+    return () => {
+      if (meta && original !== undefined) meta.content = original
+      document.removeEventListener('gesturestart', block)
+      document.removeEventListener('gesturechange', block)
+    }
+  }, [])
+
   useEffect(() => {
     const scene = new BodyScene(canvasRef.current!)
     sceneRef.current = scene
@@ -313,7 +330,7 @@ export default function BodyModel() {
 
   // בחירת ערוץ או קבוצת נקודות. בטלפון בתחתית המסך, כדי לא לכסות את הגוף
   const pickerChips = (
-    <div className={`flex gap-2 ${editMode ? 'flex-wrap' : 'flex-nowrap overflow-x-auto max-w-full pointer-events-auto [scrollbar-width:none]'}`}>
+    <div className={`flex gap-2 ${editMode ? 'flex-wrap' : 'flex-nowrap overflow-x-auto max-w-full pointer-events-auto [scrollbar-width:none] touch-pan-x overscroll-x-contain'}`}>
       {mode === 'channel'
         ? <>
             {!editMode && (
@@ -355,7 +372,7 @@ export default function BodyModel() {
   )
 
   return (
-    <div dir="rtl" className="fixed inset-0 bg-[#0e1a1b] text-[#e6efed] overflow-hidden select-none">
+    <div dir="rtl" className="fixed inset-0 bg-[#0e1a1b] text-[#e6efed] overflow-hidden select-none touch-none overscroll-none">
       <canvas ref={canvasRef} className="absolute inset-0 w-full h-full touch-none" aria-label="מודל תלת ממדי של הגוף" />
 
       {loaded !== sex && (
@@ -493,7 +510,7 @@ export default function BodyModel() {
               </p>
             )}
           </div>
-          <ol className="flex-1 overflow-y-auto p-2">
+          <ol className="flex-1 overflow-y-auto p-2 touch-pan-y overscroll-contain">
             {editItems.map(item => (
               <li key={item.id}>
                 <button

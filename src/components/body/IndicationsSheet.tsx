@@ -113,7 +113,7 @@ export default function IndicationsSheet({ group, onClose }: Props) {
           </button>
         </header>
 
-        <div className="overflow-y-auto px-6 py-5 space-y-7">
+        <div className="overflow-y-auto px-6 py-5 space-y-7 touch-pan-y overscroll-contain">
           {dong.length > 0 && (
             <section>
               <h3 className="flex items-center gap-2 text-lg font-bold text-[#0d7377]">

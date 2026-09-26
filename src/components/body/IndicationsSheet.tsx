@@ -4,8 +4,11 @@ import type { TungGroup } from '../../data/bodyModel/tungGroups'
 import { isHiddenFromPatients } from '../../data/bodyModel/patientFilter'
 import { flattenIndications, isGroupedIndications, type Point } from '../../types'
 
+/** קבוצת דונג, או נקודה בודדת (למשל נקודת אצבע) באותה צורה */
+type SheetGroup = Pick<TungGroup, 'id' | 'hebrewName' | 'chineseName' | 'pointIds'>
+
 interface Props {
-  group: TungGroup
+  group: SheetGroup
   onClose: () => void
 }
 
@@ -36,13 +39,13 @@ function splitItems(text: string): string[] {
 const normalize = (text: string) => text.replace(/\([^)]*\)/g, '').replace(/[\s\-–/,.·]+/g, '').replace(/או/g, '')
 
 /** רשומות הנתונים של הקבוצה: רשומה אחת לכל הקבוצה, או רשומה לכל נקודה */
-function groupRecords(group: TungGroup): Point[] {
+function groupRecords(group: SheetGroup): Point[] {
   const whole = allPoints.find(p => p.id === group.id)
   if (whole) return [whole]
   return group.pointIds.map(id => allPoints.find(p => p.id === id)).filter((p): p is Point => Boolean(p))
 }
 
-function buildLists(group: TungGroup) {
+function buildLists(group: SheetGroup) {
   const records = groupRecords(group)
   const dong: string[] = []
   const seen = new Set<string>()

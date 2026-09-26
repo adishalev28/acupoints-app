@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { BodyScene, type ViewPreset } from '../components/body/BodyScene'
 import IndicationsSheet from '../components/body/IndicationsSheet'
@@ -8,11 +8,27 @@ import { whoPointInfo, whoPoints } from '../data/bodyModel/whoPoints'
 import { tungGroups } from '../data/bodyModel/tungGroups'
 import { tungPoints } from '../data/bodyModel/tungPoints'
 import { points as allPoints } from '../data/points'
+import { fingerPointPositions, fingerPointSpecs, handFrame, type Finger } from '../data/bodyModel/fingerPoints'
+import { fingerTargets, regionNames } from '../data/bodyModel/fingerTargets'
+import { isHiddenFromPatients } from '../data/bodyModel/patientFilter'
 
 /** תיקונים ממצב העריכה, לפי גוף ושכבה: מזהה ערוץ, או 'tung' לנקודות דונג */
 type Edits = Record<BodySex, Record<string, Record<string, SurfacePoint>>>
 type Mode = 'channel' | 'tung'
 type ChannelView = 'single' | 'all' | 'clock'
+type TungView = 'groups' | 'fingers'
+
+const FINGER_NAMES: Record<Finger, string> = { 1: 'אגודל', 2: 'מורה', 3: 'אמצעית', 4: 'קמיצה', 5: 'זרת' }
+
+/** ההתוויות הראשונות של דונג לנקודה, בלי מה שמוסתר ממטופלים */
+function mainDongUses(pointId: string, count = 3): string[] {
+  const record = allPoints.find(p => p.id === pointId)
+  const items = (record?.dongIndications ?? [])
+    .flatMap(entry => entry.split(/[,;]\s*/))
+    .map(item => item.trim())
+    .filter(item => item && !isHiddenFromPatients(item))
+  return items.slice(0, count)
+}
 
 const SEX_KEY = 'bodyModel.sex'
 const EDITS_KEY = 'bodyModel.edits.v1'
@@ -107,6 +123,11 @@ export default function BodyModel() {
   const [loadError, setLoadError] = useState(false)
   const [infoOpen, setInfoOpen] = useState(false)
   const [indicationsOpen, setIndicationsOpen] = useState(false)
+  const [tungView, setTungView] = useState<TungView>(searchParams.get('tung') === 'fingers' ? 'fingers' : 'groups')
+  const [fingerSide, setFingerSide] = useState<'palmar' | 'dorsal'>('palmar')
+  const [fingerFilter, setFingerFilter] = useState<Finger | 0>(0)
+  const [fingerId, setFingerId] = useState<string | null>(null)
+  const insetRef = useRef<HTMLDivElement>(null)
   const [showPoints, setShowPoints] = useState(() => readStorage(POINTS_KEY, false))
   const [edits, setEdits] = useState<Edits>(() => readStorage(EDITS_KEY, emptyEdits()))
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -191,9 +212,50 @@ export default function BodyModel() {
     else sceneRef.current?.setMeridian(meridian, channelPaths)
   }, [loaded, sex, meridian, channelPaths, allActive, clockActive, allChannels, editMode, mode])
 
+  // נקודות האצבע של דונג: יד מוגדלת בחלון, והאזור שהנקודה משפיעה עליו נדלק על הגוף
+  const fingersActive = mode === 'tung' && tungView === 'fingers' && !editMode
+  const fingerTarget = fingersActive && fingerId ? fingerTargets[fingerId] ?? null : null
+  const insetPoints = useMemo(() => Object.entries(fingerPointSpecs)
+    .filter(([, spec]) => spec.side === fingerSide)
+    .filter(([, spec]) => !fingerFilter || (Array.isArray(spec.finger) ? spec.finger.includes(fingerFilter) : spec.finger === fingerFilter))
+    .map(([id]) => ({ id, points: fingerPointPositions[sex][id] ?? [] }))
+    .filter(item => item.points.length), [fingerSide, fingerFilter, sex])
+
   useEffect(() => {
-    if (loaded === sex) sceneRef.current?.setTungGroup(mode === 'tung' ? group : null, tungPaths)
-  }, [loaded, sex, mode, group, tungPaths])
+    const scene = sceneRef.current
+    if (!scene || loaded !== sex) return
+    if (fingersActive) {
+      scene.setTungGroup(null, tungPaths)
+      scene.setFingerTarget(fingerTarget)
+      scene.setMeridiansVisible(false)
+    } else {
+      scene.setFingerTarget(null)
+      scene.setTungGroup(mode === 'tung' ? group : null, tungPaths)
+    }
+  }, [loaded, sex, mode, group, tungPaths, fingersActive, fingerTarget])
+
+  useEffect(() => {
+    if (loaded !== sex) return
+    sceneRef.current?.setHandInset(fingersActive ? handFrame[sex] : null, fingerSide, insetPoints, fingerId)
+  }, [loaded, sex, fingersActive, fingerSide, insetPoints, fingerId])
+
+  // מיקום חלון היד על המסך, כדי שהתלת ממד יצויר בדיוק בתוכו
+  useEffect(() => {
+    const scene = sceneRef.current
+    const el = insetRef.current
+    if (!scene) return
+    if (!fingersActive || !el) { scene.setHandInsetRect(null); return }
+    const measure = () => {
+      const r = el.getBoundingClientRect()
+      const c = canvasRef.current?.getBoundingClientRect()
+      scene.setHandInsetRect({ left: r.left - (c?.left ?? 0), top: r.top - (c?.top ?? 0), width: r.width, height: r.height })
+    }
+    measure()
+    const observer = new ResizeObserver(measure)
+    observer.observe(el)
+    window.addEventListener('resize', measure)
+    return () => { observer.disconnect(); window.removeEventListener('resize', measure) }
+  }, [fingersActive, loaded])
 
   // נקודות הערוץ למטופל: רק כשהמתג דולק, בערוץ אחד, ולא בעריכה (שם יש סמנים משלה)
   const channelPointsVisible = showPoints && mode === 'channel' && !allActive && !editMode
@@ -259,7 +321,8 @@ export default function BodyModel() {
             setInfoOpen(true)
           },
       onBodyClockStep: i => setClockIndex(i),
-      onTungPointTap: editMode || mode !== 'tung' ? undefined : () => { setInfoOpen(false); setIndicationsOpen(true) },
+      onFingerPointTap: fingersActive ? id => { setFingerId(id); setIndicationsOpen(false); setInfoOpen(false) } : undefined,
+      onTungPointTap: editMode || mode !== 'tung' || tungView !== 'groups' ? undefined : () => { setInfoOpen(false); setIndicationsOpen(true) },
       onMarkerTap: editMode ? id => setSelectedId(id) : undefined,
       onChannelPointTap: channelPointsVisible
         ? id => {
@@ -314,6 +377,7 @@ export default function BodyModel() {
   function pickMode(next: Mode) {
     setMode(next)
     setIndicationsOpen(false)
+    setFingerId(null)
     setView('front')
     setInfoOpen(false)
   }
@@ -359,6 +423,16 @@ export default function BodyModel() {
               />
             ))}
           </>
+        : fingersActive
+        ? ([0, 1, 2, 3, 4, 5] as const).map(f => (
+            <ColorChip
+              key={f}
+              color="#ffe08a"
+              label={f ? FINGER_NAMES[f] : 'כל האצבעות'}
+              active={fingerFilter === f}
+              onClick={() => setFingerFilter(f)}
+            />
+          ))
         : tungGroups.map(g => (
             <ColorChip
               key={g.id}
@@ -404,6 +478,13 @@ export default function BodyModel() {
             options={[{ id: 'female', label: 'מטופלת' }, { id: 'male', label: 'מטופל' }]}
           />
           <Segmented value={view} onChange={v => setView(v as ViewPreset)} options={VIEWS} />
+          {mode === 'tung' && !editMode && (
+            <Segmented
+              value={tungView}
+              onChange={v => { setTungView(v as TungView); setFingerId(null); setIndicationsOpen(false); setInfoOpen(false) }}
+              options={[{ id: 'groups', label: 'קבוצות' }, { id: 'fingers', label: 'אצבעות' }]}
+            />
+          )}
         </div>
 
         {editMode && pickerChips}
@@ -439,6 +520,12 @@ export default function BodyModel() {
               נקודות
             </button>
           )}
+          {fingersActive ? (
+            <FingerPointCard
+              pointId={fingerId}
+              onMore={() => setIndicationsOpen(true)}
+            />
+          ) : (
           <button
             onClick={() => setInfoOpen(true)}
             className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#142426]/85 border border-white/10 px-4 py-2 text-[15px] hover:bg-[#1c3234]"
@@ -447,7 +534,8 @@ export default function BodyModel() {
             {chipLabel}
             <span className="text-[#93aaa7] text-sm">· לחצו להסבר</span>
           </button>
-          {mode === 'tung' && (
+          )}
+          {mode === 'tung' && !fingersActive && (
             <button
               onClick={() => { setInfoOpen(false); setIndicationsOpen(true) }}
               className="pointer-events-auto flex items-center gap-2 rounded-full bg-[#f7f4ee] text-[#1d2b2c] px-4 py-2 text-[15px] font-medium hover:bg-white"
@@ -493,7 +581,32 @@ export default function BodyModel() {
       )}
 
       {indicationsOpen && mode === 'tung' && !editMode && (
-        <IndicationsSheet group={group} onClose={() => setIndicationsOpen(false)} />
+        <IndicationsSheet group={fingersActive && fingerId ? fingerSheetGroup(fingerId) : group} onClose={() => setIndicationsOpen(false)} />
+      )}
+
+      {/* חלון היד המוגדלת: התלת ממד מצויר מתחת, בתוך המסגרת הזו */}
+      {fingersActive && (
+        <div
+          ref={insetRef}
+          // בטלפון מתחת לסרגל העליון (שגובהו משתנה), במסך רחב באמצע הגובה
+          style={{ '--inset-top': `${safeArea.top + 8}px` } as CSSProperties}
+          className="absolute left-2 top-[var(--inset-top)] w-[46vw] h-[34vh] sm:left-4 sm:top-1/2 sm:-translate-y-1/2 sm:w-[300px] sm:h-[400px] rounded-lg border border-white/15 pointer-events-none"
+        >
+          <div className="absolute top-2 inset-x-2 flex justify-center">
+            <div className="pointer-events-auto inline-flex rounded-full bg-[#0e1a1b]/80 border border-white/10 p-0.5 text-[13px]">
+              {(['palmar', 'dorsal'] as const).map(side => (
+                <button
+                  key={side}
+                  onClick={() => setFingerSide(side)}
+                  aria-pressed={fingerSide === side}
+                  className={`rounded-full px-3 py-1 ${fingerSide === side ? 'bg-[#0d7377] text-white' : 'text-[#93aaa7]'}`}
+                >
+                  {side === 'palmar' ? 'כף היד' : 'גב היד'}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       )}
 
       {/* מצב עריכה */}
@@ -630,5 +743,50 @@ function ColorChip({ color, label, active, onClick }: {
       <span className="w-2.5 h-2.5 rounded-full" style={{ background: color, boxShadow: active ? `0 0 8px ${color}` : 'none' }} />
       {label}
     </button>
+  )
+}
+
+/** נקודת אצבע בודדת במבנה של קבוצה, בשביל מסך ההתוויות */
+function fingerSheetGroup(pointId: string) {
+  const record = allPoints.find(p => p.id === pointId)
+  return { id: pointId, hebrewName: record?.hebrewName ?? pointId, chineseName: record?.chineseName ?? '', pointIds: [pointId] }
+}
+
+/** "11.09 · Xin Xi", ובנקודות שהמזהה שלהן הוא כבר השם - רק השם */
+function codeLabel(id: string, pinyin?: string) {
+  if (!pinyin) return id
+  const plain = (t: string) => t.normalize('NFD').replace(/[^a-zA-Z0-9]/g, '').toLowerCase()
+  return /^\d/.test(id) &&!plain(pinyin).startsWith(plain(id)) ? `${id} · ${pinyin}` : pinyin
+}
+
+/** כרטיס הנקודה שנבחרה ביד: שם, על מה היא משפיעה בעיקר לפי דונג, וההתוויות הראשונות */
+function FingerPointCard({ pointId, onMore }: { pointId: string | null; onMore: () => void }) {
+  if (!pointId) {
+    return (
+      // אותו גובה כמו הכרטיס המלא, כדי שהגוף לא יקפוץ כשבוחרים נקודה
+      <div className="pointer-events-auto w-full max-w-md min-h-[136px] grid place-items-center rounded-2xl bg-[#142426]/90 border border-white/10 px-4 text-[15px] text-[#c9d8d5] text-center">
+        לחצו על נקודה ביד כדי לראות על מה היא משפיעה
+      </div>
+    )
+  }
+  const record = allPoints.find(p => p.id === pointId)
+  const target = fingerTargets[pointId]
+  const uses = mainDongUses(pointId)
+  return (
+    <div className="pointer-events-auto w-full max-w-md min-h-[136px] rounded-2xl bg-[#142426]/95 border border-white/10 p-4 shadow-2xl">
+      <div className="flex items-baseline justify-between gap-3">
+        <h2 className="text-lg font-bold">{record?.hebrewName ?? pointId}</h2>
+        <span dir="ltr" className="text-sm text-[#93aaa7] tabular-nums">{codeLabel(pointId, record?.pinyinName)}</span>
+      </div>
+      {target && (
+        <p className="mt-1 text-[15px]">
+          משפיעה בעיקר על <span className="font-bold text-[#ffd36e]">{regionNames[target]}</span>
+        </p>
+      )}
+      {uses.length > 0 && <p className="mt-1 text-sm text-[#c9d8d5]">דונג: {uses.join(' · ')}</p>}
+      <button onClick={onMore} className="mt-3 rounded-full bg-[#f7f4ee] text-[#1d2b2c] px-4 py-1.5 text-sm font-medium hover:bg-white">
+        במה הנקודה עוזרת
+      </button>
+    </div>
   )
 }

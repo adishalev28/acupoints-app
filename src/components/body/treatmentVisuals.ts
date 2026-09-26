@@ -416,3 +416,30 @@ export function createSpleen(center: THREE.Vector3, size: number, color = '#6fd6
     },
   }
 }
+
+/**
+ * הילה רכה על אזור בגוף (ברך, צוואר, גב תחתון...) - אליפסואיד הולוגרמה שפועם בעדינות.
+ * @param centers מרכז אחד, או כמה (למשל שתי הברכיים), @param radii רדיוסים במטרים
+ */
+export function createRegionGlow(centers: THREE.Vector3[], radii: THREE.Vector3, color = '#ffd36e'): Animated {
+  const material = hologramMaterial(color)
+  const group = new THREE.Group()
+  const blobs: THREE.Mesh[] = []
+  for (const c of centers) {
+    const blob = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 20), material)
+    blob.position.copy(c)
+    blob.scale.copy(radii)
+    blob.renderOrder = 10
+    group.add(blob)
+    blobs.push(blob)
+  }
+  return {
+    object: group,
+    update: time => {
+      const b = breath(time, 2.6)
+      material.uniforms.uTime.value = time
+      material.uniforms.uOpacity.value = 0.55 + 0.45 * b
+      for (const blob of blobs) blob.scale.copy(radii).multiplyScalar(1 + 0.08 * b)
+    },
+  }
+}

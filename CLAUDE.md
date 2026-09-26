@@ -52,7 +52,7 @@ src/
 public/models/body-{female,male}.glb   # גופי המודל התלת ממדי (CC BY 4.0, FormForge3D)
 src/components/body/BodyScene.ts        # three.js ישירות (react-three-fiber לא תומך ב-React 19.3)
 src/data/bodyModel/                     # meridians.ts, meridianPaths.ts (ערוצים) + tungGroups.ts, tungPoints.ts (נקודות דונג ואיברים)
-scripts/body-model/                     # convert-fbx.mjs (המרת הגופים), seed-positions.mjs (מיקום ראשוני), who-solver.mjs (361 נקודות לפי WHO 2008 → whoPoints.ts)
+scripts/body-model/                     # convert-fbx.mjs (המרת הגופים), seed-positions.mjs (מיקום ראשוני), who-solver.mjs (361 נקודות לפי WHO 2008 → whoPoints.ts), finger-solver.mjs (62 נקודות אצבע של דונג → fingerPoints.ts)
 ```
 
 ## Point Interface

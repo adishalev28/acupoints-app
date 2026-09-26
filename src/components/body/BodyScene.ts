@@ -6,8 +6,10 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { MeshBVH, acceleratedRaycast } from 'three-mesh-bvh'
 import type { BodySex, MeridianDef, SurfacePoint, Vec3 } from '../../data/bodyModel/meridians'
-import { createFlow, createHeart, createKidneys, createLiver, createLungs, createNeedlePoint, createSpleen, type Animated } from './treatmentVisuals'
-import type { TungGroup } from '../../data/bodyModel/tungGroups'
+import { createFlow, createHeart, createKidneys, createLiver, createLungs, createNeedlePoint, createRegionGlow, createSpleen, type Animated } from './treatmentVisuals'
+import type { OrganId, TungGroup } from '../../data/bodyModel/tungGroups'
+import type { FingerTarget } from '../../data/bodyModel/fingerTargets'
+import { HandInset, type HandFrame, type InsetPoint, type InsetRect } from './HandInset'
 
 export type ViewPreset = 'front' | 'side' | 'back' | 'head' | 'leg' | 'treatment'
 
@@ -16,6 +18,8 @@ export interface BodySceneEvents {
   /** לחיצה על נקודת דונג דולקת */
   onTungPointTap?: () => void
   onMarkerTap?: (pointId: string) => void
+  /** לחיצה על נקודת אצבע ביד המוגדלת */
+  onFingerPointTap?: (pointId: string) => void
   /** לחיצה על נקודה של ערוץ בתצוגה למטופל */
   onChannelPointTap?: (pointId: string) => void
   /** מיקום בצד שמאל של המטופל, גם אם נלחץ הצד הימני */
@@ -64,6 +68,10 @@ export class BodyScene {
   private meridianGroup = new THREE.Group()
   private markerGroup = new THREE.Group()
   private pointGroup = new THREE.Group()
+  private bodyGlow: THREE.Color | null = null
+  private handInset = new HandInset()
+  private handInsetKey = ''
+  private insetGesture = false
   private treatmentGroup = new THREE.Group()
   private animated: Animated[] = []
   private pickables: THREE.Mesh[] = []
@@ -130,6 +138,7 @@ export class BodyScene {
     // בעכבר נשאר כמו שהיה: גרירה מסובבת, גלגלת מתקרבת, כפתור ימני מזיז.
     this.controls.touches = { ONE: -1 as unknown as THREE.TOUCH, TWO: THREE.TOUCH.DOLLY_PAN }
 
+    this.renderer.autoClear = true
     canvas.addEventListener('pointerdown', this.handlePointerDown)
     canvas.addEventListener('pointermove', this.handlePointerMove)
     canvas.addEventListener('pointerup', this.handlePointerUp)
@@ -376,46 +385,7 @@ export class BodyScene {
     this.animated = []
     this.meridianGroup.visible = !group
     if (!group || !this.body) return
-    const H = this.bodyHeight
-    const s = H / 1.78
-
-    const chestFront = this.frontHit(0, 0.72 * H)
-    const chestBack = this.rayHit([0, 0.72 * H, -1], [0, 0, 1])
-    const midZ = chestFront && chestBack ? (chestFront.point.z + chestBack.point.z) / 2 : 0
-
-    // עוגן האיבר: לאן הקשת מגיעה, בכל צד
-    let target: (side: number) => THREE.Vector3
-    if (group.organ === 'lungs') {
-      const baseY = 0.685 * H
-      const size = 0.1 * H
-      const halfSpan = 0.66 * this.frontHalfWidth(0.72 * H, 0.3)
-      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size, halfSpan))
-      target = side => new THREE.Vector3(side * halfSpan * 0.52, baseY + size * 0.45, midZ)
-    } else if (group.organ === 'heart') {
-      const center = new THREE.Vector3(0.02 * s, 0.705 * H, midZ + 0.025 * s)
-      this.add(createHeart(center, 0.068 * H))
-      target = () => center.clone()
-    } else if (group.organ === 'kidneys') {
-      // בגב, בגובה המותניים העליונים, משני צידי עמוד השדרה
-      const y = 0.64 * H
-      const backHit = this.rayHit([0.05 * s, y, -1], [0, 0, 1])
-      const z = backHit ? backHit.point.z + 0.05 * s : midZ - 0.04 * s
-      const centers: [THREE.Vector3, THREE.Vector3] = [
-        new THREE.Vector3(0.055 * s, y + 0.008 * s, z),
-        new THREE.Vector3(-0.055 * s, y - 0.008 * s, z),
-      ]
-      this.add(createKidneys(centers, 0.068 * H))
-      target = side => centers[side === 1 ? 0 : 1].clone()
-    } else if (group.organ === 'spleen') {
-      // צד שמאל של המטופל, מאחורי הצלעות התחתונות
-      const center = new THREE.Vector3(0.09 * s, 0.665 * H, midZ - 0.03 * s)
-      this.add(createSpleen(center, 0.1 * H))
-      target = () => center.clone()
-    } else {
-      const center = new THREE.Vector3(-0.04 * s, 0.678 * H, midZ + 0.02 * s)
-      this.add(createLiver(center, 0.115 * H))
-      target = side => center.clone().add(new THREE.Vector3(side * 0.04 * s, 0, 0))
-    }
+    const target = this.addOrgan(group.organ)
 
     const leftSide = group.pointIds.map(id => points[id]).filter(Boolean)
     if (!leftSide.length) return
@@ -475,6 +445,118 @@ export class BodyScene {
     return (best.a + best.b) / 2
   }
 
+
+  /** מוסיף את הולוגרמת האיבר ומחזיר את נקודת העוגן שלו בכל צד (לשם מגיע קו הזרימה) */
+  private addOrgan(organ: OrganId): (side: number) => THREE.Vector3 {
+    const H = this.bodyHeight
+    const s = H / 1.78
+    const chestFront = this.frontHit(0, 0.72 * H)
+    const chestBack = this.rayHit([0, 0.72 * H, -1], [0, 0, 1])
+    const midZ = chestFront && chestBack ? (chestFront.point.z + chestBack.point.z) / 2 : 0
+
+    let target: (side: number) => THREE.Vector3
+    if (organ === 'lungs') {
+      const baseY = 0.685 * H
+      const size = 0.1 * H
+      const halfSpan = 0.66 * this.frontHalfWidth(0.72 * H, 0.3)
+      this.add(createLungs(new THREE.Vector3(0, baseY, midZ + 0.01 * s), size, halfSpan))
+      target = side => new THREE.Vector3(side * halfSpan * 0.52, baseY + size * 0.45, midZ)
+    } else if (organ === 'heart') {
+      const center = new THREE.Vector3(0.02 * s, 0.705 * H, midZ + 0.025 * s)
+      this.add(createHeart(center, 0.068 * H))
+      target = () => center.clone()
+    } else if (organ === 'kidneys') {
+      // בגב, בגובה המותניים העליונים, משני צידי עמוד השדרה
+      const y = 0.64 * H
+      const backHit = this.rayHit([0.05 * s, y, -1], [0, 0, 1])
+      const z = backHit ? backHit.point.z + 0.05 * s : midZ - 0.04 * s
+      const centers: [THREE.Vector3, THREE.Vector3] = [
+        new THREE.Vector3(0.055 * s, y + 0.008 * s, z),
+        new THREE.Vector3(-0.055 * s, y - 0.008 * s, z),
+      ]
+      this.add(createKidneys(centers, 0.068 * H))
+      target = side => centers[side === 1 ? 0 : 1].clone()
+    } else if (organ === 'spleen') {
+      // צד שמאל של המטופל, מאחורי הצלעות התחתונות
+      const center = new THREE.Vector3(0.09 * s, 0.665 * H, midZ - 0.03 * s)
+      this.add(createSpleen(center, 0.1 * H))
+      target = () => center.clone()
+    } else {
+      const center = new THREE.Vector3(-0.04 * s, 0.678 * H, midZ + 0.02 * s)
+      this.add(createLiver(center, 0.115 * H))
+      target = side => center.clone().add(new THREE.Vector3(side * 0.04 * s, 0, 0))
+    }
+
+    return target
+  }
+
+  /**
+   * מצב אצבעות של דונג: מדליק את מה שהנקודה משפיעה עליו - איבר (הולוגרמה) או אזור (הילה).
+   * null מכבה.
+   */
+  setFingerTarget(target: FingerTarget | null): void {
+    this.clearGroup(this.treatmentGroup)
+    this.animated = []
+    this.setBodyGlow(null)
+    if (!target || !this.body) return
+    this.meridianGroup.visible = false
+    if (target === 'lungs' || target === 'heart' || target === 'liver' || target === 'kidneys' || target === 'spleen') {
+      this.addOrgan(target)
+      return
+    }
+    if (target === 'wholeBody') { this.setBodyGlow('#ffd36e'); return }
+    const H = this.bodyHeight
+    const s = H / 1.78
+    const V = (x: number, y: number, z: number) => new THREE.Vector3(x, y, z)
+    const frontZ = (x: number, y: number) => this.frontHit(x, y)?.point.z ?? 0
+    const backZ = (x: number, y: number) => this.rayHit([x, y, -1], [0, 0, 1])?.point.z ?? 0
+    const midZ = (y: number) => (frontZ(0, y) + backZ(0, y)) / 2
+    const r = (x: number, y: number, z: number) => V(x * s, y * s, z * s)
+    const regions: Record<Exclude<FingerTarget, OrganId | 'wholeBody'>, [THREE.Vector3[], THREE.Vector3]> = {
+      knee: [[1, -1].map(side => { const x = side * this.legCenter(0.29 * H); return V(x, 0.29 * H, frontZ(Math.abs(x), 0.29 * H) - 0.035 * s) }), r(0.055, 0.06, 0.05)],
+      neck: [[V(0, 0.852 * H, midZ(0.852 * H))], r(0.055, 0.05, 0.055)],
+      throat: [[V(0, 0.845 * H, frontZ(0, 0.845 * H) - 0.02 * s)], r(0.035, 0.03, 0.025)],
+      lowerBack: [[V(0, 0.585 * H, backZ(0, 0.585 * H) + 0.035 * s)], r(0.1, 0.06, 0.04)],
+      upperBack: [[V(0, 0.765 * H, backZ(0, 0.765 * H) + 0.035 * s)], r(0.11, 0.07, 0.04)],
+      spine: [[V(0, 0.69 * H, backZ(0, 0.69 * H) + 0.03 * s)], V(0.03 * s, 0.17 * H, 0.03 * s)],
+      head: [[V(0, 0.935 * H, midZ(0.935 * H))], r(0.095, 0.1, 0.1)],
+      brain: [[V(0, 0.945 * H, midZ(0.945 * H) - 0.01 * s)], r(0.075, 0.065, 0.08)],
+      eyes: [[1, -1].map(side => V(side * 0.032 * s, 0.93 * H, frontZ(0.032 * s, 0.93 * H) - 0.012 * s)), r(0.02, 0.016, 0.016)],
+      face: [[V(0, 0.905 * H, frontZ(0, 0.905 * H) - 0.03 * s)], r(0.075, 0.085, 0.035)],
+      chest: [[V(0, 0.72 * H, midZ(0.72 * H) + 0.03 * s)], r(0.12, 0.08, 0.06)],
+      abdomen: [[V(0, 0.61 * H, midZ(0.61 * H) + 0.02 * s)], r(0.1, 0.07, 0.06)],
+      lowerAbdomen: [[V(0, 0.535 * H, midZ(0.535 * H) + 0.015 * s)], r(0.09, 0.05, 0.05)],
+    }
+    const [centers, radii] = regions[target]
+    this.add(createRegionGlow(centers, radii))
+  }
+
+  /** היד המוגדלת: null מסתיר. היד נבנית מחדש רק כשהגוף או הצד משתנים */
+  setHandInset(frame: HandFrame | null, side: 'palmar' | 'dorsal', points: InsetPoint[], selectedId: string | null): void {
+    const key = frame && this.body ? `${this.body.uuid}:${side}` : ''
+    if (key !== this.handInsetKey) {
+      this.handInset.setHand(frame ? this.body : null, frame, side)
+      this.handInsetKey = key
+    }
+    this.handInset.setPoints(frame ? points : [], selectedId)
+  }
+
+  setMeridiansVisible(visible: boolean): void {
+    this.meridianGroup.visible = visible
+  }
+
+  setHandInsetRect(rect: InsetRect | null): void {
+    this.handInset.setRect(rect)
+  }
+
+  /** זוהר עדין על כל הגוף (למשל מפרקים או עור בכל הגוף). null מכבה */
+  private setBodyGlow(color: string | null): void {
+    const mat = this.body?.material as THREE.MeshStandardMaterial | undefined
+    if (!mat) return
+    this.bodyGlow = color ? new THREE.Color(color) : null
+    if (!color) mat.emissive.setRGB(0, 0, 0)
+  }
+
   private add(item: Animated) {
     this.treatmentGroup.add(item.object)
     this.animated.push(item)
@@ -512,6 +594,7 @@ export class BodyScene {
     this.canvas.removeEventListener('pointercancel', this.handlePointerCancel)
     this.canvas.removeEventListener('pointermove', this.handlePointerMove)
     this.controls.dispose()
+    this.handInset.dispose()
     this.clearGroup(this.meridianGroup)
     this.clearGroup(this.markerGroup)
     this.clearGroup(this.pointGroup)
@@ -563,6 +646,7 @@ export class BodyScene {
   private handlePointerMove = (e: PointerEvent) => {
     if (e.pointerType !== 'touch' || !this.touches.has(e.pointerId)) return
     this.touches.set(e.pointerId, { x: e.clientX, y: e.clientY })
+    if (this.insetGesture) return // גרירה בתוך חלון היד לא מזיזה את הגוף
     const d = this.drag
     if (!d || this.touches.size !== 1) return
     const dx = e.clientX - d.lastX
@@ -593,6 +677,9 @@ export class BodyScene {
   }
 
   private handlePointerDown = (e: PointerEvent) => {
+    // לחיצה בתוך חלון היד המוגדלת לא מסובבת ולא מזיזה את הגוף
+    this.insetGesture = this.handInset.contains(e.clientX, e.clientY, this.canvas.getBoundingClientRect())
+    this.controls.enabled = !this.insetGesture
     if (e.pointerType === 'touch') {
       this.touches.set(e.pointerId, { x: e.clientX, y: e.clientY })
       // שתי אצבעות: צביטה לזום וגרירה להזזה לכל כיוון (הספרייה מטפלת בשתיהן)
@@ -628,12 +715,19 @@ export class BodyScene {
     this.activePointers.delete(e.pointerId)
     this.touches.delete(e.pointerId)
     this.resumeDrag()
+    const insetGesture = this.insetGesture
+    if (!this.activePointers.size) { this.insetGesture = false; this.controls.enabled = true }
     if (!this.downAt || this.multiTouch) { this.downAt = null; return }
     const moved = Math.hypot(e.clientX - this.downAt.x, e.clientY - this.downAt.y)
     this.downAt = null
     if (moved > 6) return // זה היה סיבוב, לא לחיצה
 
     const rect = this.canvas.getBoundingClientRect()
+    if (insetGesture) {
+      const id = this.handInset.pick(e.clientX, e.clientY, rect)
+      if (id) this.events.onFingerPointTap?.(id)
+      return
+    }
     const ndc = new THREE.Vector2(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1)
     const ray = new THREE.Raycaster()
     ray.firstHitOnly = true
@@ -738,6 +832,10 @@ export class BodyScene {
       if (this.tween.k >= 1) this.tween = null
     }
     const elapsed = this.clock.elapsedTime
+    if (this.bodyGlow && this.body) {
+      const pulse = 0.5 - 0.5 * Math.cos(this.clock.elapsedTime * 2.4)
+      ;(this.body.material as THREE.MeshStandardMaterial).emissive.copy(this.bodyGlow).multiplyScalar(0.08 + 0.14 * pulse)
+    }
     for (const item of this.animated) item.update(this.reduceMotion ? 1.2 : elapsed)
     this.updateBodyClock(elapsed)
     for (const pulse of this.pulses) {
@@ -746,6 +844,7 @@ export class BodyScene {
     }
     this.controls.update()
     this.renderer.render(this.scene, this.camera)
+    this.handInset.render(this.renderer, this.canvas.clientHeight, this.clock.elapsedTime)
   }
 
   private clearGroup(group: THREE.Group) {

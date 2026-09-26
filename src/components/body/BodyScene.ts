@@ -124,7 +124,8 @@ export class BodyScene {
     this.controls.target.set(0, 0.95, 0)
     this.camera.position.set(0, 1.0, 4.6)
     // מגע (בחירת עדי, 25.9.2026): אצבע אחת לפי כיוון הגרירה - ימינה ושמאלה מסובב את הגוף סביב הציר,
-    // למעלה ולמטה מזיז אותו מהראש לרגליים. שתי אצבעות - רק צביטה לזום.
+    // למעלה ולמטה מזיז אותו מהראש לרגליים. שתי אצבעות - צביטה לזום, וגרירה בשתיהן מזיזה לכל כיוון
+    // (26.9.2026: בלי זה אי אפשר לזוז ימינה ושמאלה אחרי זום, למשל מיד לברך).
     // את האצבע האחת מנהל handlePointerMove; לספרייה נשארת רק הצביטה (-1 = לא לטפל באצבע אחת).
     // בעכבר נשאר כמו שהיה: גרירה מסובבת, גלגלת מתקרבת, כפתור ימני מזיז.
     this.controls.touches = { ONE: -1 as unknown as THREE.TOUCH, TWO: THREE.TOUCH.DOLLY_PAN }
@@ -594,8 +595,8 @@ export class BodyScene {
   private handlePointerDown = (e: PointerEvent) => {
     if (e.pointerType === 'touch') {
       this.touches.set(e.pointerId, { x: e.clientX, y: e.clientY })
-      // בזמן מגע אין הזזה של הספרייה - שתי אצבעות הן רק צביטה לזום
-      this.controls.enablePan = false
+      // שתי אצבעות: צביטה לזום וגרירה להזזה לכל כיוון (הספרייה מטפלת בשתיהן)
+      this.controls.enablePan = true
       this.drag = this.touches.size === 1
         ? { axis: null, startX: e.clientX, startY: e.clientY, lastX: e.clientX, lastY: e.clientY }
         : null

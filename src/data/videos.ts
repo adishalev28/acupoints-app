@@ -9,14 +9,14 @@
 //     id: 'unique-id',                    // מזהה ייחודי (אנגלית, בלי רווחים)
 //     title: 'טיפול בכאבי לסת',            // כותרת מסודרת בעברית
 //     category: 'לסת ופנים',              // קטגוריה לסינון
-//     platform: 'facebook',               // facebook | youtube
+//     platform: 'facebook',               // facebook | youtube | tiktok
 //     url: 'https://www.facebook.com/reel/...',  // הקישור המקורי לסרטון
 //     source: 'Dr. Joe Damiani',          // שם היוצר (קרדיט)
 //     description: 'שחרור שריר ...',       // (אופציונלי) תיאור קצר
 //   }
 // ──────────────────────────────────────────────────────────────────────────
 
-export type VideoPlatform = 'facebook' | 'youtube'
+export type VideoPlatform = 'facebook' | 'youtube' | 'tiktok'
 
 export interface TreatmentVideo {
   id: string
@@ -52,6 +52,7 @@ export const videoCategories: VideoCategory[] = [
   { name: 'כאבי ראש', emoji: '🤕', description: 'מיגרנות וכאבי ראש כרוניים' },
   { name: 'שרירים וקשרים', emoji: '🔴', description: 'מתח שרירי וקשרים (trigger points)' },
   { name: 'אוזן ודיגסטריק', emoji: '👂', description: 'כאב אוזן ושריר הדיגסטריק' },
+  { name: 'טנטון', emoji: '🔔', description: 'צלצול ורעש באוזניים שמקורו בלסת ובצוואר' },
   { name: 'שריר SCM ויציבה', emoji: '🎯', description: 'שחרור SCM, יציבה ונשימה' },
   { name: 'כאב כרוני ומערכת העצבים', emoji: '🧠', description: 'כאב מתמשך וויסות עצבי' },
 ]
@@ -358,6 +359,7 @@ export const treatmentVideos: TreatmentVideo[] = [
     id: '920192174264779',
     title: '3 פתרונות לכאב, מלאות וצפצוף באוזן',
     category: 'אוזן ודיגסטריק',
+    categories: ['אוזן ודיגסטריק', 'טנטון'],
     platform: 'facebook',
     url: 'https://www.facebook.com/reel/920192174264779/',
     source: 'Dr. Joe Damiani',
@@ -902,6 +904,7 @@ export const treatmentVideos: TreatmentVideo[] = [
     id: '1268128318598623',
     title: 'בעיות באוזניים - בדקו את הלסת',
     category: 'אוזן ודיגסטריק',
+    categories: ['אוזן ודיגסטריק', 'טנטון'],
     platform: 'facebook',
     url: 'https://www.facebook.com/reel/1268128318598623/',
     source: 'Dr. Joe Damiani',
@@ -4048,6 +4051,42 @@ export const treatmentVideos: TreatmentVideo[] = [
     category: 'כאב כרוני ומערכת העצבים',
     platform: 'facebook',
     url: 'https://www.facebook.com/reel/1476788014110141/',
+    source: 'Dr. Joe Damiani',
+  },
+  {
+    id: 'tt-7395420704310578462',
+    title: 'טנטון - שחרור שריר הלעיסה (masseter)',
+    category: 'טנטון',
+    categories: ['טנטון', 'לסת'],
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@drjoedamiani/video/7395420704310578462',
+    source: 'Dr. Joe Damiani',
+  },
+  {
+    id: 'tt-7426965978241715498',
+    title: 'צלצול ולחץ באוזן - בדיקה עצמית אם זה מהלסת',
+    category: 'טנטון',
+    categories: ['טנטון', 'אוזן ודיגסטריק'],
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@drjoedamiani/video/7426965978241715498',
+    source: 'Dr. Joe Damiani',
+  },
+  {
+    id: 'tt-7451785283189755178',
+    title: 'מלאות ולחץ באוזן - שחרור medial pterygoid',
+    category: 'טנטון',
+    categories: ['טנטון', 'אוזן ודיגסטריק'],
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@drjoedamiani/video/7451785283189755178',
+    source: 'Dr. Joe Damiani',
+  },
+  {
+    id: 'tt-7625766897509862670',
+    title: 'מתח בלסת שמגיע מהצוואר - טרפז ו-SCM',
+    category: 'טנטון',
+    categories: ['טנטון', 'צוואר', 'שריר SCM ויציבה'],
+    platform: 'tiktok',
+    url: 'https://www.tiktok.com/@drjoedamiani/video/7625766897509862670',
     source: 'Dr. Joe Damiani',
   },
 ]

@@ -8,6 +8,10 @@ function buildEmbedSrc(video: TreatmentVideo): string {
     const id = extractYouTubeId(video.url)
     return id ? `https://www.youtube.com/embed/${id}` : video.url
   }
+  if (video.platform === 'tiktok') {
+    const id = video.url.match(/\/video\/(\d+)/)?.[1]
+    return id ? `https://www.tiktok.com/player/v1/${id}` : video.url
+  }
   // facebook (reels / videos) - הטמעה דרך iframe קליל, ללא ה-SDK
   const href = encodeURIComponent(video.url)
   return `https://www.facebook.com/plugins/video.php?href=${href}&show_text=false&t=0`
